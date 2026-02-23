@@ -1,0 +1,38 @@
+# Moyduz
+
+> LLM-readable site context for moyduz.com
+
+## About
+
+Moyduz is a software company and web design agency delivering custom e-commerce platforms, SaaS products, and AI automation tools. We serve businesses worldwide across 150+ countries.
+
+## Key Pages
+
+- / - Homepage
+- /about - About Us
+- /services - Services
+- /compare - Karşılaştır (platform karşılaştırması)
+- /alternatives - Alternatifler (Shopify, ikas, Webflow vb. alternatifleri)
+- /careers - Careers
+- /customers - Customers
+- /marketplace/templates - Template marketplace
+- /pricing - Pricing
+- /blog - Blog
+- /faq - FAQ
+- /contact - Contact
+- /privacy-policy - Privacy Policy
+- /refund-policy - Refund Policy
+- /terms-of-service - Terms of Service
+
+## Products & Services
+
+- High-performing e-commerce websites
+- Custom web design and development
+- SaaS platforms and cloud infrastructure
+- AI-powered automation tools
+- Digital marketing and analytics
+- Template marketplace for blocks and designs
+
+## Contact
+
+For inquiries: /contact

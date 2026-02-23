@@ -1,0 +1,105 @@
+---
+title: "Google Analytics Nedir? E-Ticaret için GA4 Kurulum Rehberi"
+slug: "google-analytics-nedir"
+meta_description: "Google Analytics nedir, nasıl kullanılır? GA4 ile e-ticaret takibi, dönüşüm ölçümü ve önemli metrikler üzerine adım adım rehber."
+published_at: "2026-02-07T00:00:00Z"
+updated_at: "2026-02-19T00:00:00Z"
+author_name: "Moyduz Ekibi"
+reading_time: 7
+category:
+  name: "Araçlar"
+  slug: "araclar"
+snippet: "Google Analytics 4 (GA4), web sitenizin trafik kaynaklarını, kullanıcı davranışını ve satış dönüşümlerini izleyen ücretsiz analitik platformdur."
+---
+
+## Google Analytics Nedir?
+
+Google Analytics, web sitenizin performansını izlemek için kullanılan, Google tarafından sunulan ücretsiz analitik platformdur. 2023'ten itibaren GA4 (Google Analytics 4) versiyonu kullanılmaktadır.
+
+**Ne işe yarar:**
+- Kaç kişi siteye geldi?
+- Nereden geldi? (Google, sosyal medya, direkt)
+- Hangi sayfaları gezdiler?
+- Nereden çıktılar?
+- Satın alma gerçekleşti mi?
+
+## GA4 vs Universal Analytics (Eski Versiyon)
+
+GA4 ile temel farklar:
+- Event bazlı ölçüm (session yerine)
+- Gelişmiş kullanıcı yolculuğu takibi
+- Cross-platform (web + mobil uygulama)
+- Makine öğrenimi destekli içgörüler
+- Daha güçlü e-ticaret raporlama
+
+## E-Ticaret için Kritik Metrikler
+
+### Trafik Metrikleri
+
+| Metrik | Açıklama |
+|--------|----------|
+| Oturumlar | Site ziyaret sayısı |
+| Kullanıcılar | Benzersiz ziyaretçi |
+| Organik trafik | Google'dan gelen |
+| Bounce rate | Tek sayfa görüp ayrılan |
+
+### Dönüşüm Metrikleri
+
+| Metrik | Açıklama |
+|--------|----------|
+| Satın alma oranı | Ziyaretçi → Alıcı |
+| Ortalama sipariş değeri | Sepet ortalaması |
+| Gelir | Toplam satış |
+| ROAS | Reklam getirisi |
+
+[Dönüşüm oranı optimizasyonu](/blog/donusum-orani-nasil-artirilir) için bu metrikleri izlemek zorunludur.
+
+## GA4 E-Ticaret Kurulumu
+
+### Adım 1: GA4 Mülkü Oluşturun
+
+analytics.google.com → Yeni Mülk → GA4 seçin.
+
+### Adım 2: İzleme Kodu Ekleyin
+
+Site altyapınıza göre:
+- **Next.js/React:** `@next/third-parties` veya script tag
+- **Shopify:** App Store'dan GA4 uygulaması
+- **WordPress:** Plugin veya theme header
+
+### Adım 3: E-Ticaret Etkinliklerini Kurun
+
+GA4 şu e-ticaret etkinliklerini takip eder:
+- `view_item` (ürün görüntüleme)
+- `add_to_cart`
+- `begin_checkout`
+- `purchase`
+
+Bu etkinlikleri düzgün kurmak [özel e-ticaret sistemi](/ozel-e-ticaret) altyapısıyla en temiz şekilde yapılır.
+
+### Adım 4: Dönüşüm Hedefleri Tanımlayın
+
+Purchase etkinliğini dönüşüm olarak işaretleyin. Böylece hangi trafik kaynağı satışa dönüşüyor izleyebilirsiniz.
+
+## En Önemli GA4 Raporları (E-Ticaret)
+
+1. **Satın alma yolculuğu:** Kullanıcıların hangi adımda düştüğünü görün
+2. **Trafik kaynağı raporları:** Hangi kanal en çok satış getiriyor?
+3. **Gelir raporu:** Ürün bazında ciro
+4. **Kullanıcı segmentasyonu:** Yeni vs geri dönen müşteri davranışı
+
+## GA4 ile A/B Test Bağlantısı
+
+GA4 verilerini kullanarak [A/B testi](/blog/a-b-testi-nedir) kararları alabilirsiniz. Hangi sayfa versiyonu daha iyi dönüşüm sağlıyor?
+
+## Site Hızı ve GA4
+
+[Core Web Vitals](/blog/core-web-vitals-nedir) skorları ve GA4 verileri birlikte kullanıldığında site performans sorunları tespit edilir. Yavaş sayfalar bounce rate artırır.
+
+*İlgili: [Core Web Vitals Nedir?](/blog/core-web-vitals-nedir)*
+
+*İlgili: [ROI Nasıl Hesaplanır?](/blog/roi-nasil-hesaplanir)*
+
+*İlgili: [Dönüşüm Oranı Nasıl Artırılır?](/blog/donusum-orani-nasil-artirilir)*
+
+> **GA4 entegre, analitik odaklı e-ticaret sistemi kurmak ister misiniz?** [Çözümlerimizi inceleyin](/ozel-e-ticaret) veya [iletişime geçin](/contact).

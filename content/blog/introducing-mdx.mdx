@@ -1,0 +1,95 @@
+---
+title: "MDX ile Zengin Blog İçeriği"
+slug: "introducing-mdx"
+meta_description: "MDX, Markdown ve React bileşenlerini bir arada kullanmanıza olanak tanır."
+published_at: "2026-01-15T00:00:00Z"
+updated_at: "2026-02-16T00:00:00Z"
+author_name: "Moyduz Team"
+reading_time: 4
+category:
+  name: "Development"
+  slug: "development"
+snippet: "MDX, Markdown'ın gücünü React bileşenleriyle birleştiren bir format. Blog yazılarınızda interaktif öğeler kullanabilirsiniz. Hızlı yazım, okunabilir format ve SEO dostu statik HTML çıktısı sağlar."
+---
+
+# MDX ile Zengin Blog İçeriği
+
+MDX, Markdown'ın gücünü React bileşenleriyle birleştiren bir format. Blog yazılarınızda interaktif öğeler kullanabilirsiniz.
+
+## Neden MDX?
+
+1. **Markdown kolaylığı** – Hızlı yazım, okunabilir format
+2. **React bileşenleri** – Özel bileşenler ekleyebilirsiniz
+3. **SEO dostu** – Statik HTML çıktısı
+
+## Kullanım Örnekleri
+
+- Kod blokları ve sözdizimi vurgulama
+- Özel callout veya uyarı kutuları
+- Grafikler ve görselleştirmeler
+- Formlar ve etkileşimli öğeler
+
+## Başlangıç
+
+MDX dosyalarınızı `content/blog/` klasörüne ekleyin. Frontmatter ile meta bilgileri tanımlayın ve içeriğinizi Markdown olarak yazın.
+
+### Örnek: Sayısal Veri Gösterimi
+
+<KeyStatistic 
+  value="95%"
+  label="Geliştirici Memnuniyeti"
+  description="MDX kullanan geliştiricilerin %95'i daha hızlı içerik oluşturma ve bakım kolaylığından memnun."
+  source="2026 Developer Survey"
+/>
+
+### Örnek: Bilgi Kutusu
+
+<InfoBox type="tip" title="İpucu">
+MDX dosyalarınızda React component'lerini doğrudan kullanabilirsiniz. Bu, interaktif içerik oluşturmanıza olanak tanır.
+</InfoBox>
+
+### Örnek: Karşılaştırma Tablosu
+
+Aşağıdaki tablo HTML ile yazıldı; MDX içinde tabloları böyle de kullanabilirsiniz:
+
+<div className="my-8 w-full overflow-x-auto rounded-xl border border-ln-gray-200 dark:border-ln-gray-800 shadow-sm">
+  <table className="w-full min-w-[320px] border-collapse text-left text-sm">
+    <thead className="bg-ln-gray-100 dark:bg-ln-gray-900 border-b border-ln-gray-200 dark:border-ln-gray-800">
+      <tr>
+        <th className="px-4 py-3 font-semibold text-ln-gray-900 dark:text-ln-gray-0 uppercase tracking-wide text-xs">Özellik</th>
+        <th className="px-4 py-3 font-semibold text-ln-gray-900 dark:text-ln-gray-0 uppercase tracking-wide text-xs">Markdown</th>
+        <th className="px-4 py-3 font-semibold text-ln-gray-900 dark:text-ln-gray-0 uppercase tracking-wide text-xs">MDX</th>
+      </tr>
+    </thead>
+    <tbody className="divide-y divide-ln-gray-200 dark:divide-ln-gray-800 bg-ln-gray-0 dark:bg-ln-gray-950">
+      <tr className="hover:bg-ln-gray-50 dark:hover:bg-ln-gray-900/50 transition-colors">
+        <td className="px-4 py-3 text-ln-gray-700 dark:text-ln-gray-300">React Component Desteği</td>
+        <td className="px-4 py-3 text-ln-gray-700 dark:text-ln-gray-300">❌</td>
+        <td className="px-4 py-3 text-ln-gray-700 dark:text-ln-gray-300">✅</td>
+      </tr>
+      <tr className="hover:bg-ln-gray-50 dark:hover:bg-ln-gray-900/50 transition-colors">
+        <td className="px-4 py-3 text-ln-gray-700 dark:text-ln-gray-300">Interaktif İçerik</td>
+        <td className="px-4 py-3 text-ln-gray-700 dark:text-ln-gray-300">❌</td>
+        <td className="px-4 py-3 text-ln-gray-700 dark:text-ln-gray-300">✅</td>
+      </tr>
+      <tr className="hover:bg-ln-gray-50 dark:hover:bg-ln-gray-900/50 transition-colors">
+        <td className="px-4 py-3 text-ln-gray-700 dark:text-ln-gray-300">Özel Component'ler</td>
+        <td className="px-4 py-3 text-ln-gray-700 dark:text-ln-gray-300">❌</td>
+        <td className="px-4 py-3 text-ln-gray-700 dark:text-ln-gray-300">✅</td>
+      </tr>
+      <tr className="hover:bg-ln-gray-50 dark:hover:bg-ln-gray-900/50 transition-colors">
+        <td className="px-4 py-3 text-ln-gray-700 dark:text-ln-gray-300">SEO Dostu</td>
+        <td className="px-4 py-3 text-ln-gray-700 dark:text-ln-gray-300">✅</td>
+        <td className="px-4 py-3 text-ln-gray-700 dark:text-ln-gray-300">✅</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Örnek: Alıntı
+
+<QuoteBlock
+  quote="MDX, Markdown'ın basitliği ile React'in gücünü birleştiren mükemmel bir çözümdür."
+  author="Tech Community"
+  source="2026"
+/>
