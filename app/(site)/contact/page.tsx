@@ -57,13 +57,13 @@ export default function page() {
       </svg>
     </div>
     <div className="text-ln-label-md text-ln-gray-500 md:hidden">
-      Contact with us
+      Bizimle iletişime geçin
     </div>
     <h1 className="mt-2 text-[34px]/[40px] font-550 -tracking-[0.022em] text-ln-gray-900 md:mt-6 xl:text-[40px]/[48px] xl:-tracking-[0.028em]">
-      Let's talk, we're here.
+      Konuşalım, buradayız.
     </h1>
     <p className="mt-3 text-pretty text-ln-paragraph-md text-ln-gray-600 xl:mt-2 xl:text-ln-paragraph-lg">
-      We're here to help, so contact us with any questions or feedback.
+      Yardımcı olmak için buradayız. Soru veya geri bildiriminiz için bize ulaşın.
       <br className="hidden md:inline" />
       <span className="md:hidden"> → </span>
       <a href="mailto:info@moyduz.com" className="font-medium text-ln-gray-700">
@@ -73,9 +73,9 @@ export default function page() {
   </div>
   <div className="px-4 md:px-8">
     <div className="w-full max-w-[440px] rounded-3xl bg-ln-gray-0 p-6 shadow-ln-xs xl:rounded-[28px] mx-auto mt-8 md:mt-12">
-      <div className="text-ln-label-lg text-ln-gray-900">Contact Form</div>
+      <div className="text-ln-label-lg text-ln-gray-900">İletişim Formu</div>
       <p className="mt-1 text-ln-paragraph-md text-ln-gray-700 xl:text-ln-paragraph-sm">
-        Contact us to report issues, give feedback, and more.
+        Sorun bildirmek, geri bildirim göndermek ve daha fazlası için bize ulaşın.
       </p>
       <div
         className="h-1 w-full text-ln-gray-300 my-6"
@@ -92,7 +92,7 @@ export default function page() {
               htmlFor="fullname"
               className="text-ln-label-sm text-ln-gray-800"
             >
-              Full Name
+              Ad Soyad
             </label>
             <div className="relative">
               <svg
@@ -112,7 +112,7 @@ export default function page() {
                 className="h-9 w-full rounded-[9px] bg-ln-gray-0 px-2.5 py-2 text-ln-paragraph-sm text-ln-gray-800 shadow-[0_3px_6px_-1.5px_rgba(51,51,51,.06)] ring-1 ring-ln-gray-200 caret-ln-orange transition-all duration-300 ease-out placeholder:transition-all placeholder:duration-300 placeholder:ease-out placeholder:text-ln-gray-500 hover:bg-ln-gray-25 hover:shadow-none hover:ring-transparent hover:placeholder:text-ln-gray-700 focus:bg-ln-gray-0 focus:ring-ln-orange outline-none focus:outline-none pl-[35px]"
                 id="fullname"
                 type="text"
-                placeholder="Enter your name..."
+                placeholder="Adınızı girin..."
                 required=""
                 defaultValue=""
               />
@@ -123,7 +123,7 @@ export default function page() {
               htmlFor="email"
               className="text-ln-label-sm text-ln-gray-800"
             >
-              Email
+              E-posta
             </label>
             <div className="relative">
               <svg
@@ -145,7 +145,7 @@ export default function page() {
                 className="h-9 w-full rounded-[9px] bg-ln-gray-0 px-2.5 py-2 text-ln-paragraph-sm text-ln-gray-800 shadow-[0_3px_6px_-1.5px_rgba(51,51,51,.06)] ring-1 ring-ln-gray-200 caret-ln-orange transition-all duration-300 ease-out placeholder:transition-all placeholder:duration-300 placeholder:ease-out placeholder:text-ln-gray-500 hover:bg-ln-gray-25 hover:shadow-none hover:ring-transparent hover:placeholder:text-ln-gray-700 focus:bg-ln-gray-0 focus:ring-ln-orange outline-none focus:outline-none pl-[35px]"
                 id="email"
                 type="email"
-                placeholder="Enter your email address..."
+                placeholder="E-posta adresinizi girin..."
                 required=""
                 defaultValue=""
               />
@@ -156,7 +156,7 @@ export default function page() {
               htmlFor="subject"
               className="text-ln-label-sm text-ln-gray-800"
             >
-              Subject
+              Konu
             </label>
             <div className="relative">
               <svg
@@ -176,16 +176,16 @@ export default function page() {
                   <Select.SelectTrigger
                     className="group/trigger w-full min-w-0 shrink-0 bg-ln-gray-0 shadow-[0_3px_6px_-1.5px_rgba(51,51,51,.06)] ring-1 ring-ln-gray-200 text-ln-paragraph-sm text-ln-gray-800 flex items-center text-left transition duration-200 ease-out hover:bg-ln-gray-25 hover:shadow-none hover:ring-transparent focus:outline-none focus:ring-ln-orange focus:text-ln-gray-700 data-[placeholder]:focus:text-ln-gray-700 data-[placeholder]:text-ln-gray-500 h-9 min-h-9 gap-2 rounded-[9px] px-2.5 pl-[35px]"
                   >
-                   <Select.SelectValue placeholder="Select a subject..." />
+                   <Select.SelectValue placeholder="Bir konu seçin..." />
                   </Select.SelectTrigger>
                   <Select.SelectContent className='w-full bg-ln-gray-0'>
-                    <Select.SelectItem value="Give Feedback">Give Feedback</Select.SelectItem>
-                    <Select.SelectItem value="Report an Issue/Bug">Report an Issue/Bug</Select.SelectItem>
-                    <Select.SelectItem value="Request a Feature">Request a Feature</Select.SelectItem>
-                    <Select.SelectItem value="Ask for Technical Support">Ask for Technical Support</Select.SelectItem>
-                    <Select.SelectItem value="Propose a Partnership">Propose a Partnership</Select.SelectItem>
-                    <Select.SelectItem value="Need a discount code">Need a discount code</Select.SelectItem>
-                    <Select.SelectItem value="Other">Other</Select.SelectItem>
+                    <Select.SelectItem value="Give Feedback">Geri Bildirim</Select.SelectItem>
+                    <Select.SelectItem value="Report an Issue/Bug">Sorun / Hata Bildirimi</Select.SelectItem>
+                    <Select.SelectItem value="Request a Feature">Özellik Talebi</Select.SelectItem>
+                    <Select.SelectItem value="Ask for Technical Support">Teknik Destek Talebi</Select.SelectItem>
+                    <Select.SelectItem value="Propose a Partnership">Ortaklık Önerisi</Select.SelectItem>
+                    <Select.SelectItem value="Need a discount code">İndirim kodu talebi</Select.SelectItem>
+                    <Select.SelectItem value="Other">Diğer</Select.SelectItem>
                   </Select.SelectContent>
                 </Select.Select>
             </div>
@@ -195,7 +195,7 @@ export default function page() {
               htmlFor="message"
               className="text-ln-label-sm text-ln-gray-800"
             >
-              Message
+              Mesaj
             </label>
             <div className="group/textarea relative flex w-full flex-col rounded-[11px] bg-ln-gray-0 pb-3 shadow-[0_3px_6px_-1.5px_rgba(51,51,51,.06)] ring-1 ring-ln-gray-200 transition duration-200 ease-out hover:[&:not(:focus-within)]:bg-ln-gray-50 hover:[&:not(:focus-within)]:shadow-none hover:[&:not(:focus-within)]:ring-transparent focus-within:shadow-none focus-within:ring-ln-orange">
               <div className="grid">
@@ -203,7 +203,7 @@ export default function page() {
                   <textarea
                     className="block w-full resize-none text-ln-paragraph-sm text-ln-gray-800 pointer-events-auto h-full min-h-[76px] bg-transparent p-3 placeholder:select-none placeholder:text-ln-gray-500 placeholder:transition placeholder:duration-200 placeholder:ease-out group-hover/textarea:placeholder:text-ln-gray-700 focus:outline-none focus:placeholder:text-text-sub-600"
                     id="message"
-                    placeholder="Enter your message..."
+                    placeholder="Mesajınızı yazın..."
                     required=""
                     defaultValue={""}
                   />
@@ -236,14 +236,14 @@ export default function page() {
               htmlFor="product"
               className="text-ln-label-sm text-ln-gray-800"
             >
-              Product Name
+              Ürün / Proje Adı
             </label>
             <div className="relative">
               <input
                 className="h-9 w-full rounded-[9px] bg-ln-gray-0 px-2.5 py-2 text-ln-paragraph-sm text-ln-gray-800 shadow-[0_3px_6px_-1.5px_rgba(51,51,51,.06)] ring-1 ring-ln-gray-200 caret-ln-orange transition-all duration-300 ease-out placeholder:transition-all placeholder:duration-300 placeholder:ease-out placeholder:text-ln-gray-500 hover:bg-ln-gray-25 hover:shadow-none hover:ring-transparent hover:placeholder:text-ln-gray-700 focus:bg-ln-gray-0 focus:ring-ln-orange outline-none focus:outline-none"
                 id="product"
                 type="text"
-                placeholder="Which product is this about?"
+                placeholder="Bu talebiniz hangi ürün veya proje ile ilgili?"
                 defaultValue=""
               />
             </div>
@@ -256,7 +256,7 @@ export default function page() {
               className="flex items-center gap-1"
               style={{ opacity: 1, filter: "blur(0px)", transform: "none" }}
             >
-              Submit
+              Gönder
             </div>
           </button>
         </div>

@@ -273,11 +273,11 @@ export default function Header() {
             </div>
           </header>
           <div className="relative hidden h-px flex-1 bg-ln-gray-200 bleed-bg-r bleed-ln-gray-200 mac:block">
-            <img src="https://alignui.com/images/landing/dot.png" width={9} height={9} alt="" className="absolute z-30 min-h-[9px] min-w-[9px] -top-1 -right-[37px] left-auto" />
-            <img src="https://alignui.com/images/landing/dot.png" width={9} height={9} alt="" className="absolute z-30 min-h-[9px] min-w-[9px] -top-1 -left-px" />
+            <Image src="/images/landing/dot.png" width={9} height={9} alt="Dot" className="absolute z-30 min-h-[9px] min-w-[9px] -top-1 -right-[37px] left-auto" />
+            <Image src="/images/landing/dot.png" width={9} height={9} alt="Dot" className="absolute z-30 min-h-[9px] min-w-[9px] -top-1 -left-px" />
           </div>
         </div>
-        <Link target="_blank" className="relative z-30 block px-2 lg:z-10 lg:px-0" href="https://figma.alignui.com">
+        <Link target="_blank" className="relative z-30 block px-2 lg:z-10 lg:px-0" href="/pricing">
           <div className="flex h-9 items-center gap-1 rounded-[9px] border-ln-gray-200 bg-ln-orange px-1.5 shadow-ln-badge-gray min-[380px]:gap-3 min-[380px]:px-3 lg:h-11 lg:gap-2 lg:rounded-b-[18px] lg:rounded-t-none lg:border-x lg:border-b lg:bg-ln-orange lg:px-4 lg:shadow-none">
             <PackageIcon className="size-5 shrink-0 text-white" strokeWidth={2} />
             <span className="hidden text-ln-label-sm text-white lg:inline">Moyduz&apos;u deneyin</span>
