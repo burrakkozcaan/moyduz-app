@@ -31,7 +31,7 @@ export const CORE_MONEY_PAGES: MoneyPage[] = [
   { path: '/multi-vendor', label: 'Multi Vendor', shortLabel: 'Multi Vendor' },
   { path: '/ecommerce-migration', label: 'E-Ticaret Geçişi', shortLabel: 'Geçiş & Migration' },
   { path: '/pricing', label: 'Fiyatlandırma', shortLabel: 'Pricing' },
-  { path: '/templates', label: 'Şablonlar', shortLabel: 'Templates' },
+  { path: '/marketplace/templates', label: 'Şablonlar', shortLabel: 'Şablonlar' },
 ]
 
 /** Blog slug → cluster + bu yazıdan verilecek money page linkleri */
@@ -74,7 +74,7 @@ export const BLOG_INTERNAL_GRAPH: BlogNode[] = [
     slug: 'ozel-e-ticaret-nedir',
     title: 'Özel E-Ticaret Nedir?',
     cluster: 'nedir',
-    moneyLinks: ['/templates', '/ozel-e-ticaret'],
+    moneyLinks: ['/marketplace/templates', '/ozel-e-ticaret'],
     blogLinks: ['e-ticaret-sitesi-nasil-kurulur', 'shopify-mi-ozel-yazilim-mi', 'multi-vendor-nedir'],
   },
   {
@@ -88,7 +88,7 @@ export const BLOG_INTERNAL_GRAPH: BlogNode[] = [
     slug: 'saas-nedir',
     title: 'SaaS Nedir?',
     cluster: 'nedir',
-    moneyLinks: ['/templates', '/ozel-e-ticaret'],
+    moneyLinks: ['/marketplace/templates', '/ozel-e-ticaret'],
     blogLinks: ['ozel-e-ticaret-nedir', 'multi-vendor-nedir', 'cro-nedir'],
   },
   {
@@ -165,7 +165,7 @@ const MONEY_PAGE_REHBERLER: Record<string, { slug: string; title: string }[]> = 
     { slug: 'e-ticaret-sitesi-nasil-kurulur', title: 'E-Ticaret Sitesi Nasıl Kurulur?' },
     { slug: 'ozel-e-ticaret-nedir', title: 'Özel E-Ticaret Nedir?' },
   ],
-  '/templates': [
+  '/marketplace/templates': [
     { slug: 'e-ticaret-sitesi-nasil-kurulur', title: 'E-Ticaret Sitesi Nasıl Kurulur?' },
     { slug: 'ozel-e-ticaret-nedir', title: 'Özel E-Ticaret Nedir?' },
   ],
@@ -177,15 +177,11 @@ export interface FooterLinkGroup {
   links: { label: string; href: string }[]
 }
 
-/** Geçiş & Destek – Shopify, ikas, WooCommerce, WordPress, optimizasyon, CRO */
+/** Geçiş & Destek – mevcut sayfalara yönlendirme */
 const MIGRATION_SUPPORT_LINKS: FooterLinkGroup['links'] = [
-  { label: 'Shopify Destek', href: '/destek/shopify' },
-  { label: 'ikas Destek', href: '/destek/ikas' },
-  { label: 'WooCommerce Destek', href: '/destek/woocommerce' },
-  { label: 'WordPress Destek', href: '/destek/wordpress' },
-  { label: 'Mevcut Site Optimizasyonu', href: '/destek/site-optimizasyonu' },
-  { label: 'Site Hızlandırma Hizmeti', href: '/destek/site-hizlandirma' },
-  { label: 'Conversion Rate Optimization', href: '/destek/cro' },
+  { label: 'İletişim & Teknik Destek', href: '/contact' },
+  { label: 'Hizmetler', href: '/services' },
+  { label: 'E-Ticaret Geçişi', href: '/ecommerce-migration' },
 ]
 
 export function getFooterLinkGroups(): FooterLinkGroup[] {
@@ -193,16 +189,12 @@ export function getFooterLinkGroups(): FooterLinkGroup[] {
     {
       title: 'Platform',
       links: [
-        { label: 'Moyduz Nedir?', href: '/platform/moyduz-nedir' },
-        { label: 'Nasıl Çalışır?', href: '/platform/nasil-calisir' },
-        { label: 'Template Kategorileri', href: '/marketplace/templates' },
-        ...CORE_MONEY_PAGES.filter((p) => p.path === '/pricing' || p.path === '/templates').map(
-          (p) => ({ label: p.shortLabel || p.label, href: p.path })
-        ),
-        { label: 'Add-ons', href: '/add-ons' },
-        { label: 'Dashboard Demo', href: '/dashboard-demo' },
-        { label: 'Onboarding Süreci', href: '/onboarding' },
-        { label: 'Referanslar', href: '/referanslar' },
+        { label: 'Moyduz Nedir?', href: '/about' },
+        { label: 'Hizmetler', href: '/services' },
+        { label: 'Şablonlar', href: '/marketplace/templates' },
+        { label: 'Fiyatlandırma', href: '/pricing' },
+        { label: 'Referanslar', href: '/customers' },
+        { label: 'İletişim', href: '/contact' },
       ],
     },
     {
@@ -220,22 +212,21 @@ export function getFooterLinkGroups(): FooterLinkGroup[] {
       title: 'Kaynaklar',
       links: [
         { label: 'Blog', href: '/blog' },
-        { label: 'E-Ticaret Rehberleri', href: '/rehberler/e-ticaret' },
-        { label: 'Özel Yazılım Rehberi', href: '/rehberler/ozel-yazilim' },
-        { label: 'SEO & Performans Rehberi', href: '/rehberler/seo-performans' },
-        { label: 'Case Studies', href: '/case-studies' },
-        { label: 'Başarı Hikayeleri', href: '/basari-hikayeleri' },
+        { label: 'Rehber', href: '/rehber' },
+        { label: 'SSS', href: '/faq' },
+        { label: 'Referanslar', href: '/customers' },
+        { label: 'Changelog', href: '/changelog' },
       ],
     },
     {
       title: 'Ücretsiz Araçlar',
       links: [
-        { label: 'ROI Hesaplama', href: '/araclar/roi-hesaplama' },
-        { label: 'E-Ticaret Maliyet Hesaplama', href: '/araclar/e-ticaret-maliyet-hesaplama' },
-        { label: 'Site Hız Testi', href: '/araclar/site-hiz-testi' },
-        { label: 'SEO Meta Preview', href: '/araclar/seo-meta-preview' },
-        { label: 'Komisyon Hesaplayıcı', href: '/araclar/komisyon-hesaplayici' },
-        { label: 'Domain İsim Oluşturucu', href: '/araclar/domain-isim-olusturucu' },
+        { label: 'ROI Hesaplama', href: '/tools/roi-hesaplama' },
+        { label: 'Maliyet Hesaplama', href: '/tools/maliyet-hesaplama' },
+        { label: 'Komisyon Hesaplama', href: '/tools/komisyon-hesaplama' },
+        { label: 'Site Sağlık Skoru', href: '/tools/site-saglik-skoru' },
+        { label: 'Sanal Pos Hesaplama', href: '/tools/sanal-pos-hesaplama' },
+        { label: 'Araçlar', href: '/tools' },
       ],
     },
   ]

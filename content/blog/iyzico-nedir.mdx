@@ -1,0 +1,105 @@
+---
+title: "iyzico Nedir? Komisyon, Entegrasyon ve Alternatifler (2026)"
+slug: "iyzico-nedir"
+meta_description: "iyzico nedir, nasıl çalışır? Komisyon oranları, avantajlar, dezavantajlar ve alternatif ödeme sistemleri karşılaştırması."
+published_at: "2026-02-24T00:00:00Z"
+updated_at: "2026-02-24T00:00:00Z"
+author_name: "Moyduz Ekibi"
+reading_time: 7
+category:
+  name: "Ödeme Sistemleri"
+  slug: "odeme-sistemleri"
+snippet: "iyzico Türkiye'nin en büyük bağımsız ödeme kuruluşu. Ama doğru mu? Bu rehberde komisyon gerçeği, gizli maliyetler ve ne zaman alternatif aramanız gerektiğini bulacaksınız."
+---
+
+## iyzico Nedir?
+
+**iyzico**, Türkiye merkezli bir ödeme kuruluşudur. 2013'te kurulmuş, 2019'da küresel fintech grubu PayU tarafından satın alınmıştır. 200.000+ aktif satıcıyla Türkiye'nin en yaygın e-ticaret ödeme altyapısı konumundadır.
+
+BDDK (Bankacılık Düzenleme ve Denetleme Kurumu) lisanslı çalışır. Bu, kart verilerinin güvenliğini bankalarla eşdeğer düzeyde sağlar.
+
+---
+
+## iyzico Nasıl Çalışır?
+
+1. Müşteri sitenizde ödeme formunu doldurur
+2. iyzico kart bilgilerini şifreli iletir
+3. Banka 3D Secure onayı ister
+4. Ödeme onaylanır → iyzico bakiyenize işlenir
+5. Bakiyeyi banka hesabınıza çekersiniz (T+1 veya T+2)
+
+**Entegrasyon seçenekleri:**
+- Checkout Form (iframe) — en kolay
+- API (REST) — tam kontrol
+- Link ile Ödeme — sosyal medya satıcıları için
+
+---
+
+## Komisyon Oranları (2026)
+
+| Plan | İşlem Ücreti | Aylık Ücret | Kim için |
+|---|---|---|---|
+| Başlangıç | %2.9 + ₺0.25/işlem | ₺0 | Yeni başlayanlar |
+| Büyüme | %2.5 + ₺0.25/işlem | ₺199/ay | Büyüyen mağazalar |
+| Kurumsal | Görüşmeyle | Görüşmeyle | 1M+ TL/ay ciro |
+
+**Dikkat:** Yabancı kart işlemleri ek ücrete tabi. Taksit için banka farkı uygulanır.
+
+---
+
+## Avantajları
+
+- Türkiye'nin en kapsamlı geliştirici dokümantasyonu
+- Sandbox (test ortamı) — ücretsiz ve detaylı
+- 3D Secure, taksit, abonelik, link ile ödeme desteği
+- Shopify, WooCommerce, OpenCart eklentileri hazır
+- BDDK lisanslı — güvenilir altyapı
+
+---
+
+## Dezavantajları
+
+- Başlangıç planında işlem başı sabit ücret düşük ciroda pahalı
+- Yabancı kart kabulü PayPal veya Stripe kadar geniş değil
+- Müşteri desteği yanıt süresi yoğun dönemlerde uzuyor
+- Chargeback sürecinde satıcı aleyhine kararlar
+
+---
+
+## Alternatifler
+
+| Alternatif | Avantaj | Dezavantaj |
+|---|---|---|
+| PayTR | Daha düşük oran | Daha az destek |
+| Shopier | Çok kolay kurulum | Sınırlı özellik |
+| Stripe | Uluslararası | TR kart desteği sınırlı |
+| Banka POS | En düşük oran | Yüksek ciro şartı |
+
+→ Detaylı karşılaştırma: [iyzico vs PayTR](/blog/paytr-vs-iyzico)
+
+---
+
+## iyzico Kimler için Doğru?
+
+**Evet, iyzico seçin:**
+- Türkiye pazarına odaklı e-ticaret
+- Teknik ekibiniz var, API entegrasyonu yapacaksınız
+- Taksit ve 3D Secure zorunlu
+
+**Hayır, alternatif düşünün:**
+- Aylık 10K TL altı ciro → sabit ücret yük oluşturur
+- Yabancı müşteri ağırlıklı → Stripe daha uygun
+- No-code çözüm istiyorsanız → Shopier daha hızlı
+
+---
+
+## Sık Sorulan Sorular
+
+**iyzico güvenli mi?**
+Evet. BDDK lisanslı ve PCI DSS uyumlu. Kart verisi iyzico'nun şifreli altyapısında tutulur, sitenize gelmez.
+
+**iyzico ne kadar sürede başvurusu onaylanır?**
+Genellikle 2–5 iş günü. Belge eksiği olursa uzayabilir. Vergi levhası + banka ekstresi + kimlik gerekir.
+
+**iyzico'dan PayTR'ye geçiş zor mu?**
+API yapıları benzer. Next.js veya custom altyapıda yaklaşık 1–2 günlük geliştirme ile geçiş yapılabilir.

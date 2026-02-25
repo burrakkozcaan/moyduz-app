@@ -96,7 +96,7 @@ function PageIcon({ type, className }: { type: TemplatePage['iconType']; classNa
 const templates: Template[] = [
   {
     id: 'ai',
-    name: 'AI Template',
+    name: 'Yapay Zeka Şablonu',
     icon: '/images/landing/template-ai-icon.png',
     colorClass: 'template-ai',
     shadowClass: 'shadow-ln-special-light-ai',
@@ -135,7 +135,7 @@ const templates: Template[] = [
   },
   {
     id: 'hr',
-    name: 'HR Management',
+    name: 'İnsan Kaynakları Yönetimi',
     icon: '/images/landing/template-hr-icon.png',
     colorClass: 'template-hr',
     shadowClass: 'shadow-ln-special-light-hr',
@@ -173,7 +173,7 @@ const templates: Template[] = [
   },
   {
     id: 'finance',
-    name: 'Finance & Banking',
+    name: 'Finans ve Bankacılık',
     icon: '/images/landing/template-finance-icon.png',
     colorClass: 'template-finance',
     shadowClass: 'shadow-ln-special-light-finance',
@@ -211,7 +211,7 @@ const templates: Template[] = [
   },
   {
     id: 'marketing',
-    name: 'Marketing & Sales',
+    name: 'Pazarlama ve Satış',
     icon: '/images/landing/template-marketing-icon.png',
     colorClass: 'template-marketing',
     shadowClass: 'shadow-ln-special-light-marketing',
@@ -249,7 +249,7 @@ const templates: Template[] = [
   },
   {
     id: 'crypto',
-    name: 'Cryptocurrency',
+    name: 'Kripto Para',
     icon: '/images/landing/template-crypto-icon.png',
     colorClass: 'template-crypto',
     shadowClass: 'shadow-ln-special-light-crypto',
@@ -391,12 +391,12 @@ export default function SectorTemplates() {
                 <span className='pr-1 text-ln-label-md text-ln-gray-800'>{template.name}</span>
                 {template.isNew && (
                   <div className='flex h-5 items-center rounded-full bg-[#12A557]/[.12] px-1.5 text-ln-subheading-xs text-[#12A557] -ml-2.5'>
-                    NEW
+                    YENİ
                   </div>
                 )}
                 {template.comingSoon && (
                   <div className='flex h-5 items-center rounded-full bg-ln-gray-100 px-1.5 text-ln-subheading-xs text-ln-gray-500 -ml-2.5'>
-                    SOON
+                    YAKINDA
                   </div>
                 )}
               </button>

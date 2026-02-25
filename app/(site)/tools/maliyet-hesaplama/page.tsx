@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { ToolsPageShell, TOOLS_CARD_CLASS, TOOLS_BTN_PRIMARY_CLASS, TOOLS_BTN_SECONDARY_CLASS } from '@/components/ToolsPageShell'
 
 const PLATFORM_COSTS: Record<string, { monthly: number; commission: number; label: string }> = {
   shopify_basic: { monthly: 899, commission: 2.0, label: 'Shopify Basic' },
@@ -34,25 +35,14 @@ export default function MaliyetHesaplamaPage() {
   const savingsPerMonth = savings / (years * 12)
 
   return (
-    <main className="flex-1 bg-ln-gray-0 dark:bg-ln-gray-950">
-      <div className="container mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16">
-        {/* Header */}
-        <div className="mb-10 text-center">
-          <span className="inline-block rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 mb-4">
-            Ücretsiz Araç
-          </span>
-          <h1 className="text-3xl font-bold text-ln-gray-900 dark:text-ln-gray-0 md:text-4xl mb-4">
-            E-Ticaret Maliyet Hesaplama
-          </h1>
-          <p className="text-lg text-ln-gray-600 dark:text-ln-gray-400 max-w-2xl mx-auto">
-            Platform maliyetlerinizi hesaplayın ve özel yazılımla ne kadar tasarruf edebileceğinizi görün.
-          </p>
-        </div>
-
-        <div className="grid gap-8 lg:grid-cols-2">
-          {/* Calculator Input */}
-          <div className="rounded-2xl border border-ln-gray-200 dark:border-ln-gray-800 bg-ln-gray-50 dark:bg-ln-gray-900 p-6 space-y-6">
-            <h2 className="text-xl font-semibold text-ln-gray-900 dark:text-ln-gray-0">
+    <ToolsPageShell
+      title="E-Ticaret Maliyet Hesaplama"
+      description="Platform maliyetlerinizi hesaplayın ve özel yazılımla ne kadar tasarruf edebileceğinizi görün."
+    >
+      <div className="grid gap-8 lg:grid-cols-2">
+        {/* Calculator Input */}
+        <div className={`${TOOLS_CARD_CLASS} space-y-6`}>
+          <h2 className="text-ln-label-lg font-semibold text-ln-gray-900 dark:text-ln-gray-0">
               Parametrelerinizi Girin
             </h2>
 
@@ -156,8 +146,8 @@ export default function MaliyetHesaplamaPage() {
           {/* Results */}
           <div className="space-y-6">
             {/* Current Platform Cost */}
-            <div className="rounded-2xl border border-ln-gray-200 dark:border-ln-gray-800 bg-white dark:bg-ln-gray-900 p-6">
-              <h3 className="text-lg font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-4">
+            <div className={TOOLS_CARD_CLASS}>
+              <h3 className="text-ln-label-lg font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-4">
                 {PLATFORM_COSTS[platform].label} Maliyeti
               </h3>
               <div className="space-y-3">
@@ -191,7 +181,7 @@ export default function MaliyetHesaplamaPage() {
             </div>
 
             {/* Custom Software Cost */}
-            <div className="rounded-2xl border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20 p-6">
+            <div className={`${TOOLS_CARD_CLASS} ring-green-200 dark:ring-green-800/50 bg-green-50/50 dark:bg-green-900/20`}>
               <h3 className="text-lg font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-4">
                 Moyduz Özel Yazılım
               </h3>
@@ -217,7 +207,7 @@ export default function MaliyetHesaplamaPage() {
 
             {/* Savings */}
             {savings > 0 && platform !== 'custom' && (
-              <div className="rounded-2xl bg-orange-500 p-6 text-white text-center">
+              <div className="rounded-2xl bg-ln-orange p-6 text-ln-gray-0 text-center shadow-ln-xs">
                 <div className="text-sm font-medium mb-1 opacity-90">Özel yazılımla {years} yılda tasarruf</div>
                 <div className="text-4xl font-bold mb-2">{savings.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</div>
                 <div className="text-sm opacity-80">({savingsPerMonth.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺/ay)</div>
@@ -225,21 +215,15 @@ export default function MaliyetHesaplamaPage() {
             )}
 
             {/* CTA */}
-            <div className="rounded-2xl border border-ln-gray-200 dark:border-ln-gray-800 p-6 text-center">
-              <p className="text-sm text-ln-gray-600 dark:text-ln-gray-400 mb-4">
+            <div className={TOOLS_CARD_CLASS}>
+              <p className="text-ln-paragraph-sm text-ln-gray-600 dark:text-ln-gray-400 mb-4">
                 Hesaplama sonuçlarını bir uzmanla değerlendirmek ister misiniz?
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/pricing"
-                  className="flex-1 rounded-lg bg-ln-gray-900 dark:bg-ln-gray-0 px-4 py-2.5 text-sm font-semibold text-white dark:text-ln-gray-900 text-center hover:opacity-90 transition-opacity"
-                >
+                <Link href="/pricing" className={`flex-1 justify-center ${TOOLS_BTN_PRIMARY_CLASS}`}>
                   Fiyatları Gör
                 </Link>
-                <Link
-                  href="/contact"
-                  className="flex-1 rounded-lg border border-ln-gray-300 dark:border-ln-gray-700 px-4 py-2.5 text-sm font-semibold text-ln-gray-900 dark:text-ln-gray-0 text-center hover:bg-ln-gray-50 dark:hover:bg-ln-gray-800 transition-colors"
-                >
+                <Link href="/contact" className={`flex-1 justify-center ${TOOLS_BTN_SECONDARY_CLASS}`}>
                   Ücretsiz Danışmanlık
                 </Link>
               </div>
@@ -274,7 +258,6 @@ export default function MaliyetHesaplamaPage() {
             <Link href="/tools/roi-hesaplama">ROI Hesaplama Aracımızı</Link> deneyebilirsiniz.
           </p>
         </div>
-      </div>
-    </main>
+    </ToolsPageShell>
   )
 }

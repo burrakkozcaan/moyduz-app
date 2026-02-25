@@ -4,13 +4,13 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Careers | Moyduz',
+  title: 'Kariyer — Moyduz Ekibine Katılın | Açık Pozisyonlar',
   description:
-    'Join Moyduz – remote-first roles in engineering, design, and customer success.',
+    'Moyduz ekibine katılın — mühendislik, tasarım ve müşteri başarısı alanında uzaktan öncelikli açık pozisyonları keşfedin.',
   alternates: { canonical: 'https://moyduz.com/careers' },
   openGraph: {
-    title: 'Careers | Moyduz',
-    description: 'Join Moyduz – remote-first roles in engineering, design, and customer success.',
+    title: 'Kariyer | Moyduz',
+    description: 'Mühendislik, tasarım ve müşteri başarısı alanında uzaktan öncelikli açık pozisyonlar.',
     url: 'https://moyduz.com/careers',
   },
 }

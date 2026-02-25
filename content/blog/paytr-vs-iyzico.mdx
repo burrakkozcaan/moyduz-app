@@ -1,0 +1,120 @@
+---
+title: "PayTR vs iyzico: Hangisi Daha İyi? (2026 Karşılaştırması)"
+slug: "paytr-vs-iyzico"
+meta_description: "PayTR mi iyzico mu? Komisyon, entegrasyon, destek ve güvenlik karşılaştırması. Türkiye e-ticareti için doğru ödeme sistemi seçimi."
+published_at: "2026-02-24T00:00:00Z"
+updated_at: "2026-02-24T00:00:00Z"
+author_name: "Moyduz Ekibi"
+reading_time: 8
+category:
+  name: "Ödeme Sistemleri"
+  slug: "odeme-sistemleri"
+snippet: "PayTR daha ucuz, iyzico daha kapsamlı. Hangisi kazanır? Ciro seviyenize, teknik kapasitenize ve müşteri profilinize göre net cevap bu yazıda."
+---
+
+## Özet: Hangisi Kazanıyor?
+
+**Kısa cevap:**
+- **Yüksek ciro + maliyet odaklı** → PayTR
+- **Geliştirici deneyimi + tam özellik** → iyzico
+- **Yabancı kart + uluslararası** → Stripe (ikisi de yetmez)
+
+---
+
+## 1) Komisyon Karşılaştırması
+
+| Plan | PayTR | iyzico |
+|---|---|---|
+| Başlangıç oranı | %1.99 | %2.9 |
+| Büyüme oranı | %1.79 (görüşme) | %2.5 |
+| Sabit ücret | Yok | ₺0.25/işlem |
+| Aylık ücret | Yok | ₺0 / ₺199 |
+
+**Örnek hesap (50K TL ciro, 100 işlem):**
+- PayTR: 50.000 × %1.99 = **₺995**
+- iyzico Başlangıç: 50.000 × %2.9 + 100 × ₺0.25 = **₺1.475**
+
+PayTR her ciro seviyesinde daha ucuz. **Ancak bu tek kriter değil.**
+
+---
+
+## 2) Entegrasyon ve Geliştirici Deneyimi
+
+| Kriter | PayTR | iyzico |
+|---|---|---|
+| Dokümantasyon | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| Sandbox ortamı | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| SDK / kütüphane | Sınırlı | Node, PHP, Python, Java |
+| iFrame hızı | ✅ Çok hızlı | ✅ Hızlı |
+| API güç | ❌ Orta | ✅ Güçlü |
+
+iyzico geliştirici dostu. PayTR iFrame entegrasyonunda hızlı ama API derinliği eksik.
+
+---
+
+## 3) Güvenlik ve Uyumluluk
+
+Her ikisi de:
+- BDDK lisanslı ✅
+- PCI DSS Level 1 ✅
+- 3D Secure zorunlu ✅
+
+Fark yok. İkisi de kurumsal bankalarla eşdeğer güvenlik sağlıyor.
+
+---
+
+## 4) Müşteri Desteği
+
+| Kriter | PayTR | iyzico |
+|---|---|---|
+| Yanıt süresi | 4–24 saat | 2–12 saat |
+| Telefon desteği | ✅ | ✅ |
+| Canlı sohbet | ❌ | ✅ |
+| Geliştirici forumu | ❌ | Sınırlı |
+
+iyzico destek kalitesinde bir adım önde.
+
+---
+
+## 5) Ek Özellikler
+
+| Özellik | PayTR | iyzico |
+|---|---|---|
+| Taksit | ✅ | ✅ |
+| Abonelik | ✅ | ✅ |
+| Link ile ödeme | ✅ | ✅ |
+| Marketplace bölme | ❌ | ✅ (Marketplace) |
+| Yabancı kart | ⭐⭐⭐ | ⭐⭐⭐⭐ |
+| Çoklu döviz | ✅ | ✅ |
+
+iyzico'nun **Marketplace** özelliği — birden fazla satıcıya otomatik para bölme — dropshipping ve multi-vendor için kritik.
+
+---
+
+## Karar Matrisi
+
+<MintlifyCallout type="tip" title="Hangi durumda hangisi?">
+  Aylık 100K TL altı ciro + hızlı entegrasyon → PayTR iFrame. 100K TL üzeri + API ihtiyacı + uluslararası → iyzico. 1M TL+ → banka POS + iyzico/PayTR kombinasyonu.
+</MintlifyCallout>
+
+| Durum | Öneri |
+|---|---|
+| Ciro < 50K TL | PayTR (sabit ücret yok) |
+| Ciro 50K–500K TL | PayTR (maliyet) veya iyzico (özellik) |
+| Ciro 500K+ TL | Müzakere, her ikisi de uygun |
+| Multi-vendor site | iyzico Marketplace |
+| Yabancı kart ağırlıklı | Stripe + PayTR/iyzico |
+| No-code | Shopier |
+
+---
+
+## Sık Sorulan Sorular
+
+**PayTR'den iyzico'ya geçiş yapmak zor mu?**
+Teknik olarak 1–3 günlük iş. Ödeme formunu, webhook'ları ve refund akışını yeniden yapılandırmanız gerekir.
+
+**İkisini birden kullanabilir miyim?**
+Evet. Büyük siteler fallback için iki sağlayıcı entegre eder. Teknik maliyet var ama uptime açısından değer.
+
+**Komisyon oranları pazarlık edilebilir mi?**
+Evet. Aylık 200K TL+ ciroda her iki sağlayıcı da özel oran verir. Telefon görüşmesi isteyin.

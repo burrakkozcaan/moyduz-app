@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import { buildFAQPageSchema } from '@/seo/json-ld/index'
 
 export const metadata: Metadata = {
-  title: 'Sık Sorulan Sorular | Moyduz',
+  title: 'Sık Sorulan Sorular — Hizmet, Fiyat & Süreç | Moyduz',
   description:
-    'Moyduz hizmetleri, fiyatlandırma, süreç ve destek hakkında sık sorulan sorular.',
+    'Moyduz web tasarım, e-ticaret ve yazılım hizmetleri hakkında sık sorulan sorular. Fiyatlandırma, proje süresi ve destek konularında yanıtlar.',
   alternates: { canonical: 'https://moyduz.com/faq' },
   openGraph: {
     title: 'Sık Sorulan Sorular | Moyduz',
-    description: 'Moyduz hizmetleri, fiyatlandırma, süreç ve destek hakkında sık sorulan sorular.',
+    description: 'Moyduz hizmetleri, fiyatlandırma ve süreç hakkında sık sorulan sorular.',
     url: 'https://moyduz.com/faq',
   },
 }

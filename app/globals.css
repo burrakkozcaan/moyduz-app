@@ -245,6 +245,67 @@
   --color-ln-gray-950: #1c1c1c;
   --color-ln-orange: #f05023;
   --color-brand: var(--color-ln-orange);
+
+  /* ── Color palettes (rgb-wrapped for Tailwind v4 class generation) ─────── */
+  --color-blue-50: rgb(235 241 255);
+  --color-blue-100: rgb(213 226 255);
+  --color-blue-200: rgb(192 213 255);
+  --color-blue-300: rgb(151 186 255);
+  --color-blue-400: rgb(104 149 255);
+  --color-blue-500: rgb(51 92 255);
+  --color-blue-600: rgb(53 89 233);
+  --color-blue-700: rgb(37 71 208);
+  --color-blue-800: rgb(31 59 173);
+  --color-blue-900: rgb(24 47 139);
+  --color-blue-950: rgb(18 35 104);
+
+  --color-orange-50: rgb(255 243 235);
+  --color-orange-100: rgb(255 230 213);
+  --color-orange-200: rgb(255 217 192);
+  --color-orange-300: rgb(255 193 151);
+  --color-orange-400: rgb(255 164 104);
+  --color-orange-500: rgb(250 115 25);
+  --color-orange-600: rgb(225 102 20);
+  --color-orange-700: rgb(206 94 18);
+  --color-orange-800: rgb(183 83 16);
+  --color-orange-900: rgb(150 68 13);
+  --color-orange-950: rgb(113 51 10);
+
+  --color-red-50: rgb(255 235 236);
+  --color-red-100: rgb(255 213 216);
+  --color-red-200: rgb(255 192 197);
+  --color-red-300: rgb(255 151 160);
+  --color-red-400: rgb(255 104 117);
+  --color-red-500: rgb(251 55 72);
+  --color-red-600: rgb(233 53 68);
+  --color-red-700: rgb(208 37 51);
+  --color-red-800: rgb(173 31 43);
+  --color-red-900: rgb(139 24 34);
+  --color-red-950: rgb(104 18 25);
+
+  --color-green-50: rgb(224 250 236);
+  --color-green-100: rgb(208 251 233);
+  --color-green-200: rgb(194 245 218);
+  --color-green-300: rgb(132 235 180);
+  --color-green-400: rgb(62 224 137);
+  --color-green-500: rgb(31 193 107);
+  --color-green-600: rgb(29 175 97);
+  --color-green-700: rgb(23 140 78);
+  --color-green-800: rgb(26 117 68);
+  --color-green-900: rgb(22 100 59);
+  --color-green-950: rgb(11 70 39);
+
+  --color-yellow-50: rgb(255 244 214);
+  --color-yellow-100: rgb(255 239 204);
+  --color-yellow-200: rgb(255 236 192);
+  --color-yellow-300: rgb(255 224 151);
+  --color-yellow-400: rgb(255 210 104);
+  --color-yellow-500: rgb(246 181 30);
+  --color-yellow-600: rgb(230 168 25);
+  --color-yellow-700: rgb(201 154 44);
+  --color-yellow-800: rgb(167 128 37);
+  --color-yellow-900: rgb(134 102 29);
+  --color-yellow-950: rgb(98 76 24);
   --color-white: #ffffff;
   --color-dots: var(--color-ln-gray-200);
   --pattern-fg: var(--color-ln-gray-200);

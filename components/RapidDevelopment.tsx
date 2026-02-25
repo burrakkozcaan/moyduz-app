@@ -53,7 +53,7 @@ export default function RapidDevelopment() {
     <div className='container mx-auto pb-10 md:pb-[120px]'>
       {/* Header — her zaman görünür (mobile + desktop) */}
       <div className='flex flex-col items-start pb-4 md:items-center md:pb-10 md:text-center'>
-        <div className='flex h-7 items-center gap-1.5 rounded-[9px] bg-ln-gray-0 pl-1.5 pr-2.5 text-ln-label-sm text-ln-gray-700 shadow-ln-subheading md:h-8 md:pl-2 md:pr-3'>
+        <div className='flex h-7 items-center justify-center mx-auto gap-1.5 rounded-[9px] bg-ln-gray-0 pl-1.5 pr-2.5 text-ln-label-sm text-ln-gray-700 shadow-ln-subheading md:h-8 md:pl-2 md:pr-3'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
@@ -330,35 +330,38 @@ export default function RapidDevelopment() {
                 'rgba(41, 41, 41, 0.04) 0px 1px 1px 0.5px, rgba(41, 41, 41, 0.02) 0px 3px 3px -1.5px, rgba(41, 41, 41, 0.04) 0px 6px 6px -3px, rgba(41, 41, 41, 0.04) 0px 12px 12px -6px, rgba(41, 41, 41, 0.04) 0px 24px 24px -12px, rgba(41, 41, 41, 0.04) 0px 48px 48px -24px, rgba(51, 51, 51, 0.06) 0px -1px 1px -0.5px inset',
             }}
           >
-            {/* Code column — adıma göre resim değişir (rapid-code-0.png, rapid-code-1.png, rapid-code-2.png veya rapid-code.png) */}
-            <div
-              className='relative flex h-[388px] min-h-0 flex-col overflow-hidden rounded-2xl bg-ln-gray-0 before:absolute before:inset-y-3 before:right-0 before:z-10 before:hidden before:w-px before:bg-ln-gray-100 md:h-full md:rounded-none md:bg-transparent md:!shadow-none md:before:block'
-              style={{
-                boxShadow:
-                  'rgba(41, 41, 41, 0.04) 0px 1px 1px 0.5px, rgba(41, 41, 41, 0.02) 0px 3px 3px -1.5px, rgba(41, 41, 41, 0.04) 0px 6px 6px -3px, rgba(41, 41, 41, 0.04) 0px 12px 12px -6px, rgba(41, 41, 41, 0.04) 0px 24px 24px -12px, rgba(41, 41, 41, 0.04) 0px 48px 48px -24px, rgba(51, 51, 51, 0.06) 0px -1px 1px -0.5px inset',
-              }}
-            >
+            {/* Code column — son adımda gizlenir, "Siten hazırlanıyor" ortalansın diye */}
+            {activeStep < 3 && (
               <div
-                key={activeStep}
-                className='relative flex flex-1 overflow-hidden bg-ln-gray-100'
+                className='relative flex h-[388px] min-h-0 flex-col overflow-hidden rounded-2xl bg-ln-gray-0 before:absolute before:inset-y-3 before:right-0 before:z-10 before:hidden before:w-px before:bg-ln-gray-100 md:h-full md:rounded-none md:bg-transparent md:!shadow-none md:before:block'
+                style={{
+                  boxShadow:
+                    'rgba(41, 41, 41, 0.04) 0px 1px 1px 0.5px, rgba(41, 41, 41, 0.02) 0px 3px 3px -1.5px, rgba(41, 41, 41, 0.04) 0px 6px 6px -3px, rgba(41, 41, 41, 0.04) 0px 12px 12px -6px, rgba(41, 41, 41, 0.04) 0px 24px 24px -12px, rgba(41, 41, 41, 0.04) 0px 48px 48px -24px, rgba(51, 51, 51, 0.06) 0px -1px 1px -0.5px inset',
+                }}
               >
-                {/* Hero'da da kullanılan resimler: 1.png, 2.png, 3.png */}
-                <img
-                  src={`/images/${Math.min(activeStep + 1, 3)}.png`}
-                  alt={`Adım ${activeStep + 1}`}
-                  className='h-full w-full object-cover object-left-top'
-                  onError={(e) => {
-                    const el = e.currentTarget;
-                    if (el.dataset.fallback) return;
-                    el.dataset.fallback = '1';
-                    el.style.display = 'none';
-                  }}
-                />
+                <div
+                  key={activeStep}
+                  className='relative flex flex-1 overflow-hidden bg-ln-gray-100'
+                >
+                  <img
+                    src={`/images/${activeStep + 1}.png`}
+                    alt={`Adım ${activeStep + 1}`}
+                    className='h-full w-full object-cover object-left-top'
+                    onError={(e) => {
+                      const el = e.currentTarget;
+                      if (el.dataset.fallback) return;
+                      el.dataset.fallback = '1';
+                      el.style.display = 'none';
+                    }}
+                  />
+                </div>
               </div>
-            </div>
-            {/* Preview column — adıma göre: şablon / kayıt / paket / hazırlanıyor */}
-            <div className='relative flex min-h-[200px] flex-col justify-center gap-3   p-4 md:min-h-0 md:flex-1 md:justify-center md:p-6'>
-              <div className='mx-auto w-full max-w-[260px] space-y-3 rounded-xl  bg-ln-gray-25 p-4 '>
+            )}
+            {/* Preview column — son adımda tam genişlikte ortalı */}
+            <div
+              className={`relative flex min-h-[200px] flex-col justify-center gap-3 p-4 md:min-h-0 md:flex-1 md:justify-center md:p-6 ${activeStep === 3 ? 'md:col-span-2 flex items-center justify-center' : ''}`}
+            >
+              <div className={`mx-auto w-full space-y-3 rounded-xl bg-ln-gray-25 p-4 ${activeStep === 3 ? 'max-w-[260px] bg-transparent' : 'max-w-[260px]'}`}>
                 {activeStep === 0 && (
                   <>
                     <div className='text-sm font-medium text-ln-gray-800'>Şablonu görüntüle</div>
@@ -474,10 +477,10 @@ export default function RapidDevelopment() {
           </svg>
           <div className='md:mt-4'>
             <div className='text-ln-label-md text-ln-gray-800'>
-              10X Daha Hızlı Geliştirme
+              10X Daha Hızlı Teslimat
             </div>
             <div className='mt-1 text-ln-paragraph-md text-ln-gray-600 md:text-ln-paragraph-sm'>
-              Kullanıma hazır bileşenlerle proje sürenizi hızlandırın.
+              Deneyimli ekip ve doğru süreçle projenizi hızlı teslim ediyoruz.
             </div>
           </div>
         </div>
@@ -508,10 +511,10 @@ export default function RapidDevelopment() {
           </svg>
           <div className='md:mt-4'>
             <div className='text-ln-label-md text-ln-gray-800'>
-              Hazır Şablonlar
+              Size Özel Tasarım
             </div>
             <div className='mt-1 text-ln-paragraph-md text-ln-gray-600 md:text-ln-paragraph-sm'>
-              Sektöre özel tasarımlarla projenize hızlı başlayın.
+              Hazır şablon değil; sektörünüze ve ihtiyacınıza göre sıfırdan tasarlıyoruz.
             </div>
           </div>
         </div>
@@ -542,10 +545,10 @@ export default function RapidDevelopment() {
           </svg>
           <div className='md:mt-4'>
             <div className='text-ln-label-md text-ln-gray-800'>
-              %30 Daha Az Kod
+              Temiz ve Bakımı Kolay Kod
             </div>
             <div className='mt-1 text-ln-paragraph-md text-ln-gray-600 md:text-ln-paragraph-sm'>
-              Daha temiz ve bakımı kolay projeler oluşturun.
+              Yazdığımız kod temiz; projeniz uzun vadede bakımı kolay kalır.
             </div>
           </div>
         </div>

@@ -1,0 +1,641 @@
+{
+  "version": 2,
+  "clusters": {
+    "e_ticaret_baslangic": "E-Ticaret Başlangıç",
+    "trendyol": "Trendyol & Pazaryeri",
+    "tools": "Araçlar (Tool intent)",
+    "teknik_seo": "Teknik SEO",
+    "performans": "Site Performansı",
+    "ai_seo": "AI & SEO",
+    "is_kurma": "İş Kurma & Para Kazanma",
+    "growth_blog": "Growth Blog",
+    "digital_infrastructure": "Dijital Altyapı",
+    "payments": "Ödeme & Fintech",
+    "operations": "Operasyon & Lojistik",
+    "compliance": "Hukuk & Uyum",
+    "compare": "Karşılaştırma",
+    "growth_engine": "Growth Engine"
+  },
+  "items": [
+    {
+      "id": "kw_0001",
+      "keyword": "e ticaret nasıl yapılır",
+      "cluster": "e_ticaret_baslangic",
+      "page_type": "rehber",
+      "intent": "informational",
+      "priority": 5,
+      "status": "done",
+      "last_generated_at": "2026-02-24T01:07:51.481Z",
+      "notes": "TR yüksek hacim — generated as draft"
+    },
+    {
+      "id": "kw_0002",
+      "keyword": "trendyol komisyon oranları 2026",
+      "cluster": "trendyol",
+      "page_type": "blog",
+      "intent": "commercial",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Komisyon hesaplama aracına CTA ver"
+    },
+    {
+      "id": "kw_0003",
+      "keyword": "e ticaret sitesi maliyeti 2026",
+      "cluster": "growth_engine",
+      "page_type": "blog",
+      "intent": "commercial",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Maliyet hesaplama aracına link"
+    },
+    {
+      "id": "kw_0004",
+      "keyword": "core web vitals nedir nasıl düzeltilir",
+      "cluster": "performans",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Site sağlık skoru aracına CTA"
+    },
+    {
+      "id": "kw_0005",
+      "keyword": "dropshipping nasıl yapılır türkiye",
+      "cluster": "e_ticaret_baslangic",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0006",
+      "keyword": "online iş fikirleri 2026 sermayesiz",
+      "cluster": "growth_blog",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "ikas trafik hijack — güncelle"
+    },
+    {
+      "id": "kw_0007",
+      "keyword": "evden iş fikirleri kadınlar için",
+      "cluster": "growth_blog",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0008",
+      "keyword": "chatgpt ile içerik üretimi seo riski",
+      "cluster": "ai_seo",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Ticimax trafik hijack"
+    },
+    {
+      "id": "kw_0009",
+      "keyword": "site hızı satışları nasıl etkiler",
+      "cluster": "performans",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0010",
+      "keyword": "teknik seo nedir nasıl yapılır",
+      "cluster": "teknik_seo",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0011",
+      "keyword": "shopify türkiye kullanılır mı",
+      "cluster": "compare",
+      "page_type": "blog",
+      "intent": "commercial",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0012",
+      "keyword": "b2b e ticaret sitesi nasıl kurulur",
+      "cluster": "e_ticaret_baslangic",
+      "page_type": "rehber",
+      "intent": "informational",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Moyduz b2b sayfasına bağla"
+    },
+    {
+      "id": "kw_0013",
+      "keyword": "ai arama optimizasyonu geo nedir",
+      "cluster": "ai_seo",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0014",
+      "keyword": "marketplace nedir nasıl kurulur",
+      "cluster": "e_ticaret_baslangic",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Multi-vendor sayfasına link"
+    },
+    {
+      "id": "kw_0015",
+      "keyword": "trendyol mağaza açma 2026 rehberi",
+      "cluster": "trendyol",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0016",
+      "keyword": "amazon türkiye satıcı olmak",
+      "cluster": "trendyol",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0017",
+      "keyword": "saas nedir türkiye örnekleri",
+      "cluster": "is_kurma",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 3,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0018",
+      "keyword": "seo hosting nasıl seçilir",
+      "cluster": "teknik_seo",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 3,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0019",
+      "keyword": "e ticaret iade yönetimi",
+      "cluster": "operations",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 3,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0020",
+      "keyword": "dijital ürün satmak nasıl yapılır",
+      "cluster": "is_kurma",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0021",
+      "keyword": "e ticaret nedir",
+      "cluster": "e_ticaret_baslangic",
+      "page_type": "rehber",
+      "intent": "informational",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Top volume — pillar page hedefi"
+    },
+    {
+      "id": "kw_0022",
+      "keyword": "e ticaret sitesi kurmak",
+      "cluster": "e_ticaret_baslangic",
+      "page_type": "rehber",
+      "intent": "informational",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "ikas pattern ile rank alıyor — rehber formatı"
+    },
+    {
+      "id": "kw_0023",
+      "keyword": "online mağaza açmak",
+      "cluster": "e_ticaret_baslangic",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0024",
+      "keyword": "web sitesi maliyeti",
+      "cluster": "growth_engine",
+      "page_type": "blog",
+      "intent": "commercial",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Maliyet hesaplama aracına embed yap"
+    },
+    {
+      "id": "kw_0025",
+      "keyword": "kurumsal web sitesi nasıl kurulur",
+      "cluster": "digital_infrastructure",
+      "page_type": "rehber",
+      "intent": "commercial",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0026",
+      "keyword": "web sitesi kurma",
+      "cluster": "digital_infrastructure",
+      "page_type": "rehber",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0027",
+      "keyword": "hazır e ticaret sitesi avantajları dezavantajları",
+      "cluster": "compare",
+      "page_type": "blog",
+      "intent": "commercial",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0028",
+      "keyword": "trendyol satıcı olmak",
+      "cluster": "trendyol",
+      "page_type": "rehber",
+      "intent": "commercial",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0029",
+      "keyword": "trendyol komisyon hesaplama",
+      "cluster": "trendyol",
+      "page_type": "tool",
+      "intent": "transactional",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Tool embed: /tools/komisyon-hesaplama içinde"
+    },
+    {
+      "id": "kw_0030",
+      "keyword": "trendyol satıcı paneli nasıl kullanılır",
+      "cluster": "trendyol",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0031",
+      "keyword": "trendyol ödeme yöntemleri satıcı",
+      "cluster": "trendyol",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 3,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0032",
+      "keyword": "trendyol ürün yükleme nasıl yapılır",
+      "cluster": "trendyol",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 3,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0033",
+      "keyword": "kargo ücretini kim öder trendyol",
+      "cluster": "trendyol",
+      "page_type": "soru",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0034",
+      "keyword": "trendyol da satış yapmak karlı mı",
+      "cluster": "trendyol",
+      "page_type": "soru",
+      "intent": "commercial",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0035",
+      "keyword": "trendyol da satış için şirket gerekli mi",
+      "cluster": "trendyol",
+      "page_type": "soru",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0036",
+      "keyword": "kargo ücreti hesaplama",
+      "cluster": "tools",
+      "page_type": "tool",
+      "intent": "transactional",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Hızlı rank — hesaplama intent"
+    },
+    {
+      "id": "kw_0037",
+      "keyword": "desi hesaplama",
+      "cluster": "tools",
+      "page_type": "tool",
+      "intent": "transactional",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Düşük rekabet, hızlı rank"
+    },
+    {
+      "id": "kw_0038",
+      "keyword": "kdv hesaplama",
+      "cluster": "tools",
+      "page_type": "tool",
+      "intent": "transactional",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0039",
+      "keyword": "gümrük vergisi hesaplama",
+      "cluster": "tools",
+      "page_type": "tool",
+      "intent": "transactional",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0040",
+      "keyword": "qr kod oluşturucu ücretsiz",
+      "cluster": "tools",
+      "page_type": "tool",
+      "intent": "transactional",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0041",
+      "keyword": "open graph önizleme aracı",
+      "cluster": "tools",
+      "page_type": "tool",
+      "intent": "transactional",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Hızlı rank — dev/marketer intent"
+    },
+    {
+      "id": "kw_0042",
+      "keyword": "meta description title önizleme",
+      "cluster": "tools",
+      "page_type": "tool",
+      "intent": "transactional",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0043",
+      "keyword": "whatsapp link oluşturma",
+      "cluster": "tools",
+      "page_type": "tool",
+      "intent": "transactional",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0044",
+      "keyword": "iyzico nedir nasıl çalışır",
+      "cluster": "payments",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "IdeaSoft en çok trafik alan sayfalardan"
+    },
+    {
+      "id": "kw_0045",
+      "keyword": "iyzico sanal pos kurulumu",
+      "cluster": "payments",
+      "page_type": "rehber",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0046",
+      "keyword": "sanal pos nedir nasıl alınır",
+      "cluster": "payments",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0047",
+      "keyword": "e ticarette kargo anlaşması nasıl yapılır",
+      "cluster": "operations",
+      "page_type": "rehber",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0048",
+      "keyword": "etbis kayıt nedir zorunlu mu",
+      "cluster": "compliance",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0049",
+      "keyword": "mesafeli satış sözleşmesi nedir örnek",
+      "cluster": "compliance",
+      "page_type": "rehber",
+      "intent": "informational",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Template sayfası + rehber: ikas bunu yapıyor"
+    },
+    {
+      "id": "kw_0050",
+      "keyword": "kvkk e ticaret uyumu",
+      "cluster": "compliance",
+      "page_type": "rehber",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0051",
+      "keyword": "en kolay para kazanma yolları 2026",
+      "cluster": "growth_blog",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "IdeaSoft trafik motoru — büyük volume"
+    },
+    {
+      "id": "kw_0052",
+      "keyword": "pasif gelir kaynakları türkiye",
+      "cluster": "growth_blog",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0053",
+      "keyword": "kendi işini kurmak adım adım rehber",
+      "cluster": "is_kurma",
+      "page_type": "rehber",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0054",
+      "keyword": "evden yapılabilecek işler 2026",
+      "cluster": "growth_blog",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0055",
+      "keyword": "chatgpt nedir nasıl kullanılır",
+      "cluster": "ai_seo",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Ticimax en büyük trafik kaynağı"
+    },
+    {
+      "id": "kw_0056",
+      "keyword": "yapay zeka ile içerik oluşturma araçları",
+      "cluster": "ai_seo",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0057",
+      "keyword": "yapay zeka nedir türkiye örnekleri",
+      "cluster": "ai_seo",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0058",
+      "keyword": "meta reklam kütüphanesi nasıl kullanılır",
+      "cluster": "growth_engine",
+      "page_type": "blog",
+      "intent": "informational",
+      "priority": 4,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0059",
+      "keyword": "web sitesi büyüme yol haritası",
+      "cluster": "digital_infrastructure",
+      "page_type": "rehber",
+      "intent": "informational",
+      "priority": 3,
+      "status": "pending",
+      "last_generated_at": null
+    },
+    {
+      "id": "kw_0060",
+      "keyword": "e ticaret sistemi kurma",
+      "cluster": "e_ticaret_baslangic",
+      "page_type": "rehber",
+      "intent": "commercial",
+      "priority": 5,
+      "status": "pending",
+      "last_generated_at": null,
+      "notes": "Moyduz main positioning keyword — pillar sayfa"
+    }
+  ]
+}

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "content:generate": "node scripts/content-generate.mjs",
+    "audio:generate": "node scripts/generate-audio.mjs"
   },
   "dependencies": {
     "@paper-design/shaders-react": "^0.0.71",

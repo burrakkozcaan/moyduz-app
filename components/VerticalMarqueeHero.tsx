@@ -15,20 +15,26 @@ function toMediaItem(item: string | MediaItem): MediaItem {
   return typeof item === "string" ? { type: "image", src: item } : item;
 }
 
-const MEDIA_SETS: Record<string, (string | MediaItem)[]> = {
-  set1: [
-    "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&q=80",
-  ],
-  set2: [
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&q=80",
-  ],
-  set3: [
-    "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&q=80",
-  ],
-};
+/** Tüm görseller tek pool; kolonlara round-robin dağıtılır, hiçbir görsel iki kolonda olmaz. */
+const ALL_MEDIA: (string | MediaItem)[] = [
+  "/images/hero/1.webp",
+  "/images/hero/2.webp",
+  "/images/hero/3.webp",
+  "/images/hero/4.webp",
+  "/images/hero/5.webp",
+  "/images/hero/6.webp",
+  "/images/hero/7.webp",
+  "/images/hero/8.webp",
+  "/images/hero/9.webp",
+];
+
+function splitIntoColumns<T>(array: T[], columnCount: number): T[][] {
+  const columns: T[][] = Array.from({ length: columnCount }, () => []);
+  array.forEach((item, index) => {
+    columns[index % columnCount].push(item);
+  });
+  return columns;
+}
 
 type MarqueeColumnProps = {
   items: (string | MediaItem)[];
@@ -145,14 +151,17 @@ function VerticalMarqueeGrid({
   );
 }
 
-/** 5 sütun desktop; mobilde ortadaki 3 sütun. Tümü aşağı doğru (down). */
-const gridConfiguration = [
-  { items: MEDIA_SETS.set1, speed: 40, direction: "down" as const, gap: "1rem", aspect: "normal" as const, className: "hidden sm:block" },
-  { items: MEDIA_SETS.set2, speed: 35, direction: "down" as const, gap: "1rem", aspect: "tall" as const },
-  { items: MEDIA_SETS.set3, speed: 30, direction: "down" as const, gap: "1rem", aspect: "tall" as const },
-  { items: MEDIA_SETS.set2, speed: 38, direction: "down" as const, gap: "1rem", aspect: "tall" as const },
-  { items: MEDIA_SETS.set1, speed: 42, direction: "down" as const, gap: "1rem", aspect: "normal" as const, className: "hidden sm:block" },
-];
+/** Kolonlara otomatik dağıtım: her kolonda farklı görseller, tekrar yok. */
+const COLUMN_COUNT = 5;
+const columnItems = splitIntoColumns(ALL_MEDIA, COLUMN_COUNT);
+const gridConfiguration = columnItems.map((items, i) => ({
+  items,
+  speed: 30 + i * 3,
+  direction: "down" as const,
+  gap: "1rem",
+  aspect: i % 2 === 0 ? ("normal" as const) : ("tall" as const),
+  className: i === 0 || i === 4 ? "hidden sm:block" : "",
+}));
 
 export default function VerticalMarqueeHero() {
   return (

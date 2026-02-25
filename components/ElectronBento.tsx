@@ -105,11 +105,10 @@ function SecureDeliveryCard() {
 
       {/* text */}
       <div className="pb-12 text-center px-10">
-        <p className="text-sm font-semibold text-ln-gray-900 dark:text-ln-gray-0">Güvenli Teslimat Kolaylaştırıldı</p>
+        <p className="text-sm font-semibold text-ln-gray-900 dark:text-ln-gray-0">Güvenli Teslimat</p>
         <div className="max-w-[272px] mx-auto h-px my-5 bg-ln-gray-200 dark:bg-ln-gray-700" />
         <p className="text-sm text-ln-gray-500 dark:text-ln-gray-400 leading-relaxed">
-          Rehberli sürecimiz sertifika ve güvenlik kurulumunu kolaylaştırır. Güvenli depolama ve sona erme
-          bildirimleriyle gönül rahatlığı sağlar.
+          Teslimat sürecimiz rehberli; SSL ve güvenlik kurulumunu biz hallederiz. Güvenli barındırma ve süre bildirimleriyle gönül rahatlığı.
         </p>
       </div>
     </motion.div>
@@ -187,10 +186,10 @@ function MeasureCard() {
       </div>
 
       <div className="pb-12 text-center px-10">
-        <p className="text-sm font-semibold text-ln-gray-900 dark:text-ln-gray-0">Uygulama Başarısını Ölçün</p>
+        <p className="text-sm font-semibold text-ln-gray-900 dark:text-ln-gray-0">Proje Performansını Takip Edin</p>
         <div className="max-w-[272px] mx-auto h-px my-5 bg-ln-gray-200 dark:bg-ln-gray-700" />
         <p className="text-sm text-ln-gray-500 dark:text-ln-gray-400 leading-relaxed">
-          Trafik, dönüşüm ve etkileşim metrikleriyle performansı takip edin; tek panelden tüm kanalları görün.
+          Teslim ettiğimiz projelerde trafik, dönüşüm ve etkileşim metriklerini tek panelden takip edersiniz.
         </p>
       </div>
     </motion.div>
@@ -217,7 +216,7 @@ function DistributionCard() {
             Bulutta dağıtım
           </h3>
           <p className="text-ln-gray-500 dark:text-ln-gray-400 mt-3 text-sm leading-relaxed">
-            Yayınları planlayın, onayları yönetin, varlıkları hizalayın—CDN ve kendi alan adınızda tek yerden dağıtım.
+            Yayınları planlıyoruz; CDN ve kendi alan adınızda tek yerden dağıtım sunuyoruz.
           </p>
         </div>
 
@@ -358,11 +357,10 @@ function PerformanceCard() {
 
       {/* text */}
       <div className="pb-12 text-center px-10">
-        <p className="text-sm font-semibold text-ln-gray-900">Performans. Karşılaştırıldı!</p>
-        <div className="max-w-[272px] mx-auto h-px my-5 bg-ln-gray-200" />
-        <p className="text-sm text-ln-gray-500 leading-relaxed">
-          Başlatma süresi, bellek ve CPU kullanımını ölçün. Sürümler ve diğer sektör standardı uygulamalar arasında
-          karşılaştırın.
+        <p className="text-sm font-semibold text-ln-gray-900 dark:text-ln-gray-0">Performans, Karşılaştırmalı</p>
+        <div className="max-w-[272px] mx-auto h-px my-5 bg-ln-gray-200 dark:bg-ln-gray-700" />
+        <p className="text-sm text-ln-gray-500 dark:text-ln-gray-400 leading-relaxed">
+          Sayfa hızı, bellek ve yükleme sürelerini ölçüyoruz; sürümler ve sektör standartlarıyla karşılaştırıyoruz.
         </p>
       </div>
     </div>
@@ -387,7 +385,7 @@ function FeaturesBucketCard() {
           Özellikler
         </h3>
         <p className="text-sm text-ln-gray-500 dark:text-ln-gray-400 leading-relaxed">
-          Sitemap analizi, toplu WhatsApp mesaj, marka tanıtımı, yayına hazır altyapı, akıcı animasyonlar, erişilebilirlik ve modern tasarım—hepsi tek yerde.
+          Sitemap analizi, toplu WhatsApp entegrasyonu, marka tanıtımı, yayına hazır altyapı, akıcı animasyonlar, erişilebilirlik ve modern tasarım—hepsini projelerinize entegre ediyoruz.
         </p>
       </div>
     </motion.div>
@@ -450,10 +448,10 @@ function PerformanceOptimizationCard() {
       <div className="flex flex-1 flex-col rounded-3xl overflow-hidden border-0">
         <div className="grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 py-4 sm:px-8 sm:py-5 rounded-t-3xl bg-transparent dark:border-ln-gray-800">
           <h3 className="text-xl font-semibold text-ln-gray-900 dark:text-ln-gray-0 sm:text-2xl">
-            Web Sitesi Performans Optimizasyonu (Sayfa Hızı + Temel Web Metrikleri)
+            Sayfa hızı ve Core Web Vitals
           </h3>
           <p className="text-sm text-ln-gray-500 dark:text-ln-gray-400 leading-relaxed">
-            PageSpeed skorları ve Core Web Vitals ile performans kontrolleri, daha hızlı yükleme ve daha akıcı kullanıcı deneyimi—dönüşüm odaklı web siteleri için.
+            PageSpeed ve Core Web Vitals ile sitenizi ölçüyor, daha hızlı yükleme ve akıcı kullanıcı deneyimi için optimize ediyoruz.
           </p>
         </div>
         <div className="relative mx-auto flex h-62 w-88  max-w-sm items-end ">
@@ -644,7 +642,7 @@ function KurulumStepsCard() {
           Kurulum adımları
         </h3>
         <p className="text-sm text-ln-gray-500 dark:text-ln-gray-400 leading-relaxed">
-          İlk adım: Kayıt ve hesap oluşturma. Sonrasında sitenizi tarayıp analiz ediyoruz.
+          İlk adım kayıt ve hesap; ardından sitenizi tarayıp analiz ediyoruz, sonrasında paket seçimiyle devam ediyoruz.
         </p>
       </div>
     </motion.div>
@@ -698,7 +696,7 @@ function VoiceSupportCard() {
           Sesli destek
         </h3>
         <p className="text-sm text-ln-gray-500 dark:text-ln-gray-400 leading-relaxed">
-          Komut verin veya soru sorun, anında yanıt alın. Canlı masa desteğine ek olarak hafif sesli asistan ile yanınızdayız.
+          Komut veya soru; anında yanıt. Canlı destek ve isteğe bağlı sesli asistan ile yanınızdayız.
         </p>
       </div>
     </motion.div>
@@ -726,7 +724,7 @@ function RealtimeLocationCard() {
             Gerçek zamanlı konum takibi
           </span>
           <p className="mt-4 text-lg font-semibold text-ln-gray-900 dark:text-ln-gray-0 sm:text-xl leading-snug">
-            Gelişmiş takip sistemi. Tüm varlıklarınızı anında konumlandırın.
+            Sunucu ve hizmet durumunu anlık takip edin.
           </p>
         </div>
         <div className="relative w-full overflow-hidden bg-transparent" style={{ aspectRatio: '120/60' }}>
@@ -770,7 +768,7 @@ function EmailWebSupportCard() {
           E-posta ve web destek
         </span>
         <p className="mt-4 text-lg font-semibold text-ln-gray-900 dark:text-ln-gray-0 sm:text-xl">
-          İhtiyacınız olan her türlü yardım için e-posta veya web üzerinden bize ulaşın.
+          Her türlü sorunuz için e-posta veya web üzerinden bize ulaşın; hızlı yanıt veriyoruz.
         </p>
       </div>
       <div className="flex flex-1 flex-col gap-4 px-6 pb-6 sm:px-8">
@@ -892,7 +890,7 @@ function UptimeMonitoringCard() {
         <Activity className="text-muted-foreground size-4" aria-hidden />
         <h3 className="text-foreground mb-2 mt-4 font-medium">Genel site durumu</h3>
         <p className="text-muted-foreground text-balance text-sm">
-          Sitenizin ve hizmetlerinizin anlık durumunu buradan takip edin.
+          Teslim ettiğimiz sitenin ve hizmetlerin anlık durumunu buradan takip edersiniz.
         </p>
       </div>
       <div className="flex flex-col justify-end">
@@ -975,7 +973,7 @@ function ServiceReliabilityCard() {
         <div>
           <h3 className="text-foreground font-semibold">Hizmet güvenilirliği</h3>
           <p className="text-muted-foreground mt-2 text-sm">
-            <span className="text-foreground font-medium">%99,9</span> hedeflenen çalışma süresi ile kesintisiz erişim.
+            Hedeflediğimiz <span className="text-foreground font-medium">%99,9</span> çalışma süresi ile kesintisiz erişim sunuyoruz.
           </p>
         </div>
       </div>
@@ -997,7 +995,7 @@ function EnterpriseSecurityCard() {
       <div>
         <h3 className="text-foreground font-semibold">Kurumsal düzeyde güvenlik</h3>
         <p className="text-muted-foreground mt-3 text-sm">
-          Rol tabanlı erişim, denetim kayıtları ve ayrıntılı kontrollerle veriler varsayılan olarak güvende.
+          Rol tabanlı erişim, denetim kayıtları ve ayrıntılı kontrollerle verilerinizi güvende tutuyoruz.
         </p>
       </div>
       <div className="relative mb-6 flex">

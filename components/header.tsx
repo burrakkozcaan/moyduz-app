@@ -8,24 +8,16 @@ import { cn } from '@/utils/cn';
 import { CommandMenuDemo } from './CommandMenuDemo';
 import { 
   X, 
-  LayoutTemplate, 
-  Building2, 
-  Library, 
   HelpCircle, 
   FileText, 
   CreditCard,
-  Users,
   BookOpen,
-  Briefcase,
   Smile,
-  LifeBuoy,
   Mail,
   Settings,
   Rocket,
   Play,
   Activity,
-  Lightbulb,
-  Grid,
   Package as PackageIcon
 } from 'lucide-react';
 import * as Modal from '@/components/new-ui/modal';
@@ -316,7 +308,7 @@ export default function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="outline-hidden transition text-ln-gray-900 duration-150 ease-in-out focus-visible:ring-2 focus-visible:ring-slate-7"
               >
-                 <img src="/images/logo.svg" alt="AlignUI" className="w-[96px] h-[30px] object-contain" />
+                 <Image src="/favicon.svg" alt="Moyduz" width={42} height={42} />
               </Link>
             </div>
             <div className="flex flex-auto justify-end">
@@ -357,7 +349,9 @@ export default function Header() {
                 className="group flex items-center justify-between text-ln-label-sm w-full border-b border-stroke-soft-200 dark:border-ln-gray-800 py-4 text-text-strong-950 dark:text-white transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
               >
                 <span className="flex items-center gap-2">
-                  <LayoutTemplate className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
+                    <path stroke="currentColor" strokeLinejoin="round" strokeWidth="1.5" d="m8.957 5.043 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0L8.957 6.457a1 1 0 0 1 0-1.414Zm0 12.5 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0l-2.336-2.336a1 1 0 0 1 0-1.414Zm-6.25-6.25 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0l-2.336-2.336a1 1 0 0 1 0-1.414Zm12.5 0 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0l-2.336-2.336a1 1 0 0 1 0-1.414Z" />
+                  </svg>
                   Şablonlar
                 </span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-soft-400">
@@ -369,7 +363,9 @@ export default function Header() {
                 className="group flex items-center justify-between text-ln-label-sm w-full border-b border-stroke-soft-200 dark:border-ln-gray-800 py-4 text-text-strong-950 dark:text-white transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
               >
                 <span className="flex items-center gap-2">
-                  <Building2 className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M9.999 13.542v3.333m0-3.333h-4.97c-.541 0-1.05-.263-1.361-.706l-1.324-1.875a1.67 1.67 0 0 1 0-1.922l1.324-1.875c.312-.443.82-.706 1.361-.706h4.137c.46 0 .833.373.833.834zm.833-10.417h4.137c.541 0 1.049.263 1.361.706l1.324 1.875a1.67 1.67 0 0 1 0 1.922L16.33 9.503c-.312.442-.82.705-1.361.705h-4.137A.833.833 0 0 1 10 9.375V3.958c0-.46.373-.833.833-.833Z" />
+                  </svg>
                   Şirket
                 </span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-soft-400">
@@ -381,7 +377,9 @@ export default function Header() {
                 className="group flex items-center justify-between text-ln-label-sm w-full border-b border-stroke-soft-200 dark:border-ln-gray-800 py-4 text-text-strong-950 dark:text-white transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
               >
                 <span className="flex items-center gap-2">
-                  <Library className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M1.457 4.792h6.25m-6.25 3.333h3.75m12.572-2.314-1.092-1.09a1.667 1.667 0 0 0-2.357 0l-7.385 7.384a1.67 1.67 0 0 0-.488 1.179v2.758h2.758c.442 0 .866-.176 1.178-.489l7.386-7.385c.65-.65.65-1.706 0-2.357" />
+                  </svg>
                   Kaynaklar
                 </span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-soft-400">
@@ -393,7 +391,10 @@ export default function Header() {
                 className="group flex items-center justify-between text-ln-label-sm w-full border-b border-stroke-soft-200 dark:border-ln-gray-800 py-4 text-text-strong-950 dark:text-white transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
               >
                 <span className="flex items-center gap-2">
-                  <HelpCircle className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
+                    <path stroke="currentColor" strokeLinecap="round" strokeWidth="1.25" d="M10.018 9.928c.085-.564.4-.869.717-1.083.309-.21.618-.483.618-.989 0-.697-.56-1.262-1.25-1.262s-1.25.565-1.25 1.262m-1.108 7.547 1.721 1.443a.83.83 0 0 0 1.067.003l1.749-1.45a.83.83 0 0 1 .531-.19h2.395c.92 0 1.667-.747 1.667-1.667v-8.75c0-.92-.746-1.667-1.667-1.667H4.792c-.92 0-1.667.746-1.667 1.667v8.75c0 .92.746 1.666 1.667 1.666H7.21c.196 0 .385.07.535.195Z" />
+                    <path fill="currentColor" stroke="currentColor" strokeWidth="0.417" d="M9.375 11.875a.625.625 0 1 0 1.25 0 .625.625 0 0 0-1.25 0Z" />
+                  </svg>
                   Yardım
                 </span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-soft-400">
@@ -405,7 +406,9 @@ export default function Header() {
                 className="group flex items-center justify-between text-ln-label-sm w-full border-b border-stroke-soft-200 dark:border-ln-gray-800 py-4 text-text-strong-950 dark:text-white transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
               >
                 <span className="flex items-center gap-2">
-                  <FileText className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M2.5 5.833c0-.92.746-1.667 1.667-1.667h11.666c.92 0 1.667.746 1.667 1.667v8.334c0 .92-.746 1.666-1.667 1.666H4.167c-.92 0-1.667-.746-1.667-1.666zm2.5.834v6.666l3.525-2.266a1.67 1.67 0 0 1 1.817 0l3.525 2.266V6.667zm11.075.758-4.492 2.892a1.67 1.67 0 0 1-1.816 0L5.758 6.425z" />
+                  </svg>
                   Dokümantasyon
                 </span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-soft-400">
@@ -448,7 +451,9 @@ export default function Header() {
                       <div className="transition-colors duration-300 ease-[cubic-bezier(.36,.66,.6,1)] border border-transparent hover:border-stroke-soft-200 group/nav-card relative h-full overflow-hidden rounded-xl bg-bg-weak-50 p-px">
                         <div className="h-full w-full rounded-[calc(0.75rem-2px)] bg-bg-weak-50 overflow-hidden relative flex items-end">
                           <span className="font-medium text-text-strong-950 group/nav-card:focus-visible:text-text-strong-950 text-ln-label-sm absolute top-0 pt-3 pl-3 flex flex-col gap-1">
-                            <LayoutTemplate className="size-5 text-text-sub-600 mb-1" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="size-5 text-text-sub-600 mb-1">
+                              <path stroke="currentColor" strokeLinejoin="round" strokeWidth="1.5" d="m8.957 5.043 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0L8.957 6.457a1 1 0 0 1 0-1.414Zm0 12.5 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0l-2.336-2.336a1 1 0 0 1 0-1.414Zm-6.25-6.25 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0l-2.336-2.336a1 1 0 0 1 0-1.414Zm12.5 0 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0l-2.336-2.336a1 1 0 0 1 0-1.414Z" />
+                            </svg>
                             <span>
                               Şablon
                               <br />
@@ -466,7 +471,10 @@ export default function Header() {
                       <div className="transition-colors duration-300 ease-[cubic-bezier(.36,.66,.6,1)] border border-transparent hover:border-stroke-soft-200 group/nav-card relative h-full overflow-hidden rounded-xl bg-bg-weak-50 p-px">
                         <div className="h-full w-full rounded-[calc(0.75rem-2px)] bg-bg-weak-50 overflow-hidden relative flex items-end">
                           <span className="font-medium text-text-strong-950 group/nav-card:focus-visible:text-text-strong-950 text-ln-label-sm absolute top-0 pt-3 pl-3 flex flex-col gap-1">
-                            <Grid className="size-5 text-text-sub-600 mb-1" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-sub-600 mb-1">
+                              <path fill="currentColor" d="M2.917 14.375v-8.75h-1.25v8.75zm14.166-8.75v8.75h1.25v-8.75zm-1.041 9.792H3.958v1.25h12.084zM3.958 4.583h12.084v-1.25H3.958zm13.125 9.792c0 .575-.466 1.042-1.041 1.042v1.25a2.29 2.29 0 0 0 2.291-2.292zm1.25-8.75a2.29 2.29 0 0 0-2.291-2.292v1.25c.575 0 1.041.467 1.041 1.042zm-15.416 0c0-.575.466-1.042 1.041-1.042v-1.25a2.29 2.29 0 0 0-2.291 2.292zm-1.25 8.75a2.29 2.29 0 0 0 2.291 2.292v-1.25a1.04 1.04 0 0 1-1.041-1.042z" />
+                              <path fill="currentColor" d="M9.375 16.042v.625h1.25v-.625zm1.25-12.084v-.625h-1.25v.625zm0 12.084V3.958h-1.25v12.084z" />
+                            </svg>
                             <span>
                               Tüm
                               <br />
@@ -483,7 +491,9 @@ export default function Header() {
                   className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Briefcase className="size-4 text-text-sub-600" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="size-4 text-text-sub-600">
+                  <path stroke="currentColor" strokeLinejoin="round" strokeWidth="1.5" d="m8.957 5.043 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0L8.957 6.457a1 1 0 0 1 0-1.414Zm0 12.5 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0l-2.336-2.336a1 1 0 0 1 0-1.414Z" />
+                </svg>
                   Şablon Kategorileri
                 </Link>
                 <Link
@@ -491,7 +501,9 @@ export default function Header() {
                   className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Lightbulb className="size-4 text-text-sub-600" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-4 text-text-sub-600">
+                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M1.457 4.792h6.25m-6.25 3.333h3.75m12.572-2.314-1.092-1.09a1.667 1.667 0 0 0-2.357 0l-7.385 7.384a1.67 1.67 0 0 0-.488 1.179v2.758h2.758c.442 0 .866-.176 1.178-.489l7.386-7.385c.65-.65.65-1.706 0-2.357" />
+                </svg>
                   Blog
                 </Link>
                 <Link
@@ -531,7 +543,9 @@ export default function Header() {
                             
                             <div className="flex flex-col gap-0.5">
                               <span className="flex items-center gap-2 font-medium text-text-strong-950 group/nav-card:focus-visible:text-text-strong-950 text-ln-label-sm">
-                                <Users className="size-4 text-text-sub-600" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-4 text-text-sub-600">
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M9.999 13.542v3.333m0-3.333h-4.97c-.541 0-1.05-.263-1.361-.706l-1.324-1.875a1.67 1.67 0 0 1 0-1.922l1.324-1.875c.312-.443.82-.706 1.361-.706h4.137c.46 0 .833.373.833.834zm.833-10.417h4.137c.541 0 1.049.263 1.361.706l1.324 1.875a1.67 1.67 0 0 1 0 1.922L16.33 9.503c-.312.442-.82.705-1.361.705h-4.137A.833.833 0 0 1 10 9.375V3.958c0-.46.373-.833.833-.833Z" />
+                              </svg>
                                 Hakkımızda
                               </span>
                               <span className="text-xs text-text-sub-600 font-normal pl-6">
@@ -623,7 +637,9 @@ export default function Header() {
                       <div className="h-full w-full rounded-[calc(0.75rem-2px)] bg-bg-weak-50 overflow-hidden relative flex items-end">
              
                         <span className="font-medium text-text-strong-950 group/nav-card:focus-visible:text-text-strong-950 text-ln-label-sm absolute top-0 pt-3 pl-3 flex flex-col gap-1">
-                          <FileText className="size-5 text-text-sub-600 mb-1" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-sub-600 mb-1">
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M1.457 4.792h6.25m-6.25 3.333h3.75m12.572-2.314-1.092-1.09a1.667 1.667 0 0 0-2.357 0l-7.385 7.384a1.67 1.67 0 0 0-.488 1.179v2.758h2.758c.442 0 .866-.176 1.178-.489l7.386-7.385c.65-.65.65-1.706 0-2.357" />
+                          </svg>
                           <span>Blog</span>
                         </span>
                       </div>
@@ -643,7 +659,9 @@ export default function Header() {
                   className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Mail className="size-4 text-text-sub-600" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-4 text-text-sub-600">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M2.5 5.833c0-.92.746-1.667 1.667-1.667h11.666c.92 0 1.667.746 1.667 1.667v8.334c0 .92-.746 1.666-1.667 1.666H4.167c-.92 0-1.667-.746-1.667-1.666zm2.5.834v6.666l3.525-2.266a1.67 1.67 0 0 1 1.817 0l3.525 2.266V6.667zm11.075.758-4.492 2.892a1.67 1.67 0 0 1-1.816 0L5.758 6.425z" />
+                  </svg>
                   İletişim
                 </Link>
                 <Link
@@ -679,8 +697,11 @@ export default function Header() {
                     <div className="transition-colors duration-300 ease-[cubic-bezier(.36,.66,.6,1)] border border-transparent hover:border-stroke-soft-200 group/nav-card relative h-full overflow-hidden rounded-xl bg-bg-weak-50 p-px">
                       <div className="h-full w-full rounded-[calc(0.75rem-2px)] bg-bg-weak-50 overflow-hidden relative flex items-end">
                         <span className="font-medium text-text-strong-950 group/nav-card:focus-visible:text-text-strong-950 text-ln-label-sm absolute top-0 pt-3 pl-3 flex flex-col gap-1">
-                          <LifeBuoy className="size-5 text-text-sub-600 mb-1" />
-                          <span>Support</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-sub-600 mb-1">
+                            <path stroke="currentColor" strokeLinecap="round" strokeWidth="1.25" d="M10.018 9.928c.085-.564.4-.869.717-1.083.309-.21.618-.483.618-.989 0-.697-.56-1.262-1.25-1.262s-1.25.565-1.25 1.262m-1.108 7.547 1.721 1.443a.83.83 0 0 0 1.067.003l1.749-1.45a.83.83 0 0 1 .531-.19h2.395c.92 0 1.667-.747 1.667-1.667v-8.75c0-.92-.746-1.667-1.667-1.667H4.792c-.92 0-1.667.746-1.667 1.667v8.75c0 .92.746 1.666 1.667 1.666H7.21c.196 0 .385.07.535.195Z" />
+                            <path fill="currentColor" stroke="currentColor" strokeWidth="0.417" d="M9.375 11.875a.625.625 0 1 0 1.25 0 .625.625 0 0 0-1.25 0Z" />
+                          </svg>
+                          <span>Destek</span>
                         </span>
                       </div>
                     </div>
@@ -691,7 +712,10 @@ export default function Header() {
                   className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <LifeBuoy className="size-4 text-text-sub-600" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-4 text-text-sub-600">
+                  <path stroke="currentColor" strokeLinecap="round" strokeWidth="1.25" d="M10.018 9.928c.085-.564.4-.869.717-1.083.309-.21.618-.483.618-.989 0-.697-.56-1.262-1.25-1.262s-1.25.565-1.25 1.262m-1.108 7.547 1.721 1.443a.83.83 0 0 0 1.067.003l1.749-1.45a.83.83 0 0 1 .531-.19h2.395c.92 0 1.667-.747 1.667-1.667v-8.75c0-.92-.746-1.667-1.667-1.667H4.792c-.92 0-1.667.746-1.667 1.667v8.75c0 .92.746 1.666 1.667 1.666H7.21c.196 0 .385.07.535.195Z" />
+                  <path fill="currentColor" stroke="currentColor" strokeWidth="0.417" d="M9.375 11.875a.625.625 0 1 0 1.25 0 .625.625 0 0 0-1.25 0Z" />
+                </svg>
                   Destek
                 </Link>
                 <Link
@@ -699,7 +723,9 @@ export default function Header() {
                   className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Mail className="size-4 text-text-sub-600" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-4 text-text-sub-600">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M2.5 5.833c0-.92.746-1.667 1.667-1.667h11.666c.92 0 1.667.746 1.667 1.667v8.334c0 .92-.746 1.666-1.667 1.666H4.167c-.92 0-1.667-.746-1.667-1.666zm2.5.834v6.666l3.525-2.266a1.67 1.67 0 0 1 1.817 0l3.525 2.266V6.667zm11.075.758-4.492 2.892a1.67 1.67 0 0 1-1.816 0L5.758 6.425z" />
+                  </svg>
                   İletişim
                 </Link>
                 <Link
@@ -707,7 +733,9 @@ export default function Header() {
                   className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <BookOpen className="size-4 text-text-sub-600" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-4 text-text-sub-600">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M1.457 4.792h6.25m-6.25 3.333h3.75m12.572-2.314-1.092-1.09a1.667 1.667 0 0 0-2.357 0l-7.385 7.384a1.67 1.67 0 0 0-.488 1.179v2.758h2.758c.442 0 .866-.176 1.178-.489l7.386-7.385c.65-.65.65-1.706 0-2.357" />
+                  </svg>
                   Kılavuzlar
                 </Link>
                 <Link

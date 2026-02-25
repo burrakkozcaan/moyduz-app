@@ -13,6 +13,7 @@ export interface BlogFrontmatter {
   author_name?: string
   reading_time?: number
   category?: { name: string; slug: string }
+  draft?: boolean
   /** Blog detayına göre FAQ; her yazıda altında accordion ile gösterilir */
   faqs?: Array<{ question: string; answer: string }>
   [key: string]: unknown
@@ -52,8 +53,20 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
       files.map((f) => getBlogPost(f.replace('.mdx', '')))
     )
 
+    const now = new Date()
+
     return posts
       .filter((p): p is BlogPost => p !== null)
+      // hide draft posts
+      .filter((p) => !p.frontmatter.draft)
+      // hide future-dated posts (scheduled publishing)
+      .filter((p) => {
+        const v = p.frontmatter.published_at
+        if (!v) return false
+        const d = new Date(v)
+        if (Number.isNaN(+d)) return false
+        return d <= now
+      })
       .sort((a, b) => {
         const da = new Date(a.frontmatter.published_at).getTime()
         const db = new Date(b.frontmatter.published_at).getTime()

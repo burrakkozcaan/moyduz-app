@@ -17,6 +17,10 @@ import { DocPagination } from '@/components/DocPagination'
 import { DocCardGroup, DocCard } from '@/components/DocCardGroup'
 import { TableFromMarkdown } from '@/components/TableFromMarkdown'
 import { MintlifyCallout } from '@/components/MintlifyCallout'
+import { MintlifyAccordion, MintlifyAccordionGroup } from '@/components/MintlifyAccordion'
+import { AiSummaryButtons } from '@/components/AiSummaryButtons'
+import { ToolCTA } from '@/components/ToolCTA'
+import { AudioPlayer } from '@/components/AudioPlayer'
 
 // Slugify function for generating IDs from headings (TOC uyumluluğu)
 const slugify = (text: string): string => {
@@ -140,4 +144,10 @@ export const MDXComponents: MDXComponents = {
   DocCard,
   TableFromMarkdown,
   MintlifyCallout,
+  MintlifyAccordion,
+  MintlifyAccordionGroup,
+  // Content engine components
+  AiSummaryButtons,
+  ToolCTA,
+  AudioPlayer,
 }

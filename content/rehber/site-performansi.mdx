@@ -1,0 +1,144 @@
+---
+title: 'Site Performansı Rehberi: Core Web Vitals, LCP ve Hız Optimizasyonu'
+meta_description: >-
+  Site hızı nasıl artırılır? LCP, INP, CLS metrikleri, CDN, cache ve Next.js
+  optimizasyonu — e-ticaret için kapsamlı performans rehberi.
+slug: site-performansi
+published_at: '2026-02-24T00:00:00Z'
+updated_at: '2026-02-24T00:00:00Z'
+draft: false
+key_points:
+  - "LCP < 2.5s, INP < 200ms, CLS < 0.1 — Google'ın 2026 Core Web Vitals eşikleri."
+  - "100ms gecikme geliri %1 düşürüyor (Amazon verisi) — hız doğrudan satışı etkiler."
+  - "Hero görsel optimizasyonu en hızlı kazanım; WebP/AVIF + priority ile başlayın."
+  - "Edge hosting (Vercel/Cloudflare) shared hosting'e göre 4× daha düşük TTFB sağlar."
+related_tools:
+  - /tools/site-saglik-skoru
+related_blogs:
+  - core-web-vitals-nedir
+  - site-hizi-satislari-nasil-etkiler
+  - e-ticaret-seo-rehberi
+audio_src: /audio/site-performansi.mp3
+---
+
+## Kısa Tanım
+
+**Site performansı**, bir web sayfasının kullanıcıya ne kadar hızlı, kararlı ve etkileşimli biçimde sunulduğunu ölçen metrikler bütünüdür. 1 saniyelik gecikme, dönüşüm oranını %7'ye kadar düşürür.
+
+---
+
+## 1) Core Web Vitals — 2026 Eşikleri
+
+| Metrik | İyi | Geliştirilmeli | Kötü |
+|---|---|---|---|
+| LCP (yükleme) | < 2.5s | 2.5–4.0s | > 4.0s |
+| INP (etkileşim) | < 200ms | 200–500ms | > 500ms |
+| CLS (kararlılık) | < 0.1 | 0.1–0.25 | > 0.25 |
+
+---
+
+## 2) LCP (Largest Contentful Paint) Optimizasyonu
+
+LCP genellikle hero görseli veya en büyük metin bloğudur.
+
+**Hızlı kazanımlar:**
+1. Hero görselini `priority` ile önceden yükle (`<Image priority />`)
+2. WebP / AVIF formatına geç (JPEG'den %30–50 küçük)
+3. Görsel boyutlarını (`width`, `height`) belirt — layout shift engeller
+4. CDN kullan — statik varlıklar edge'den gelsin
+5. Server response time (TTFB) < 200ms hedefle
+
+---
+
+## 3) INP (Interaction to Next Paint) Optimizasyonu
+
+INP, tıklama-scroll-klavye etkileşimine cevap süresidir. Yüksek INP = donuk site hissi.
+
+**Çözümler:**
+- Uzun JS görevlerini böl (< 50ms task hedefi)
+- Event handler'ları `useCallback` ile optimize et
+- Ağır hesaplamaları `web worker`'a taşı
+- `React.lazy` + `Suspense` ile code splitting
+
+---
+
+## 4) CLS (Cumulative Layout Shift) Önleme
+
+Sayfanın yüklenirken "kayması" = kötü UX + düşük CLS skoru.
+
+**Sık sebepler:**
+- Boyutsuz görseller (width/height yok)
+- `font-display: auto` — FOUT/FOIT sorunu
+- Sonradan yüklenen reklamlar / widget'lar
+- Dinamik içerik (banner, bildirim)
+
+**Çözüm:** Her görsele boyut ver, font'lara `font-display: swap` ekle.
+
+---
+
+## 5) CDN & Caching Stratejisi
+
+<MintlifyCallout type="note" title="Cache katmanları">
+  Browser cache (1 yıl) → CDN edge (revalidation) → Origin server
+</MintlifyCallout>
+
+**Next.js için önerilen:**
+- `Cache-Control: public, max-age=31536000, immutable` (statik dosyalar)
+- ISR (Incremental Static Regeneration) — dinamik ama hızlı
+- `stale-while-revalidate` — eski içerik göster, arka planda güncelle
+
+---
+
+## 6) Türkiye E-Ticaret Siteleri Ortalama Metrikleri (2026 Şubat)
+
+| Segment | LCP P50 | INP P75 | CLS P50 |
+|---|---|---|---|
+| Top 10 hızlı site | 1.8s | 140ms | 0.04 |
+| Sektör ortalaması | 3.2s | 310ms | 0.12 |
+| Yavaş alt %25 | 5.1s | 520ms | 0.28 |
+
+Kaynak: Moyduz Benchmark — 100 Türkiye e-ticaret sitesi örneklemi.
+
+---
+
+## 7) Öncelik Sırası (Bugün Başla)
+
+1. Görselleri optimize et (en hızlı kazanım)
+2. Hero görselini `priority` yap
+3. Gereksiz JS'i kaldır / lazy load
+4. CDN aktif et
+5. Font optimizasyonu
+6. Web Vitals'ı Search Console'da izle
+
+---
+
+## Checklist
+
+- [ ] LCP < 2.5s (PageSpeed Insights)
+- [ ] INP < 200ms
+- [ ] CLS < 0.1
+- [ ] Tüm görseller WebP/AVIF
+- [ ] CDN aktif ve çalışıyor
+- [ ] Gereksiz third-party script yok
+- [ ] Font preload var mı?
+- [ ] Mobile hız desktop kadar iyi mi?
+
+---
+
+## İlgili Araçlar
+
+- [Site Sağlık Skoru →](/tools/site-saglik-skoru)
+
+## Sık Sorulan Sorular
+
+<Accordions type="single">
+  <Accordion title="Site hızı satışları etkiler mi?">
+    Amazon verilerine göre 100ms gecikme geliri %1 düşürüyor. E-ticarette doğrudan etki büyük.
+  </Accordion>
+  <Accordion title="PageSpeed 100 almak şart mı?">
+    100 hedeflemek yerine Core Web Vitals eşiklerini geçmek (LCP &lt; 2.5s, vb.) yeterli.
+  </Accordion>
+  <Accordion title="Shared hosting ile hızlı site olur mu?">
+    Zor. TTFB shared hosting'de genelde 800ms+. VPS veya edge hosting (Vercel/Cloudflare) çok daha iyi.
+  </Accordion>
+</Accordions>

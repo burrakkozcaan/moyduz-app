@@ -1,5 +1,8 @@
 import { getAllBlogPosts } from '@/lib/mdx'
 import { getPage, SERVICE_SLUGS } from '@/lib/mdx-pages'
+import { getAllRehberPosts } from '@/lib/rehber'
+import fs from 'fs'
+import path from 'path'
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || 'https://moyduz.com'
@@ -9,6 +12,8 @@ export const SITEMAP_SECTIONS = [
   'static',
   'blog',
   'services',
+  'rehber',
+  'tools',
 ] as const
 
 export type SitemapSectionId = (typeof SITEMAP_SECTIONS)[number]
@@ -61,6 +66,18 @@ export async function getSegmentLastMod(
               ? new Date(latest).toISOString()
               : new Date().toISOString()
           }
+          case 'rehber': {
+            const posts = await getAllRehberPosts()
+            if (posts.length === 0) return new Date().toISOString()
+            const latest = posts.reduce((acc, p) => {
+              const d = p.frontmatter.updated_at || p.frontmatter.published_at
+              const t = d ? new Date(d).getTime() : 0
+              return t > acc ? t : acc
+            }, 0)
+            return latest ? new Date(latest).toISOString() : new Date().toISOString()
+          }
+          case 'tools':
+            return new Date().toISOString()
           default:
             return new Date().toISOString()
         }

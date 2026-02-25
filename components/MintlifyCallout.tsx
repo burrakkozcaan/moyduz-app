@@ -3,7 +3,7 @@
 import { cn } from '@/utils/cn'
 import type { ReactNode } from 'react'
 
-export type CalloutType = 'note' | 'tip' | 'warning' | 'danger' | 'info'
+export type CalloutType = 'note' | 'tip' | 'warning' | 'danger' | 'info' | 'prompt' | 'general'
 
 /* ──────────────────────────────────────────── */
 /* SVG Icons (inline – no extra dep)            */
@@ -41,6 +41,22 @@ function DangerIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 20 20" fill="currentColor" className={cn('size-4', className)} aria-hidden>
       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+    </svg>
+  )
+}
+
+function GeneralIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className={cn('size-4', className)} aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+    </svg>
+  )
+}
+
+function PromptIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className={cn('size-4', className)} aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
     </svg>
   )
 }
@@ -104,6 +120,24 @@ const cfgMap: Record<CalloutType, Cfg> = {
     bodyCls:
       'text-red-800 dark:text-red-200 [&_a]:text-red-700 dark:[&_a]:text-red-300 [&_a]:underline',
   },
+  general: {
+    label: 'Genel Bilgi',
+    Icon: GeneralIcon,
+    container: 'border-orange-200 bg-orange-50/60 dark:border-orange-800/50 dark:bg-orange-950/25',
+    iconCls: 'text-orange-500 dark:text-orange-400',
+    titleCls: 'text-orange-900 dark:text-orange-100',
+    bodyCls:
+      'text-orange-800 dark:text-orange-200 [&_a]:text-orange-700 dark:[&_a]:text-orange-300 [&_a]:underline',
+  },
+  prompt: {
+    label: 'Öneri',
+    Icon: PromptIcon,
+    container: 'border-orange-200/80 bg-orange-50 dark:border-orange-800/50 dark:bg-orange-950/30',
+    iconCls: 'text-orange-500 dark:text-orange-400',
+    titleCls: 'text-orange-900 dark:text-orange-100',
+    bodyCls:
+      'text-orange-800 dark:text-orange-200 [&_a]:text-orange-600 dark:[&_a]:text-orange-300 [&_a]:underline [&_code]:bg-orange-100 dark:[&_code]:bg-orange-900/40 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded',
+  },
 }
 
 /* ──────────────────────────────────────────── */
@@ -116,8 +150,9 @@ const cfgMap: Record<CalloutType, Cfg> = {
  * MDX içinde:
  *   <MintlifyCallout type="tip" title="Hızlı yol">İçerik</MintlifyCallout>
  *   <MintlifyCallout type="warning">Uyarı metni</MintlifyCallout>
+ *   <MintlifyCallout type="prompt" title="Kurulum">npm install ...</MintlifyCallout>
  *
- * Tipler: note (mavi) | tip (yeşil) | warning (sarı) | danger (kırmızı) | info (mavi)
+ * Tipler: note (mavi) | tip (yeşil) | warning (sarı) | danger (kırmızı) | info (mavi) | general (turuncu) | prompt (turuncu, komut kartı)
  */
 export function MintlifyCallout({
   type = 'note',
@@ -133,6 +168,34 @@ export function MintlifyCallout({
   const cfg = cfgMap[type] ?? cfgMap.note
   const { Icon } = cfg
   const displayTitle = title ?? cfg.label
+
+  // Prompt type: horizontal flex-wrap layout (like Mintlify's prompt card)
+  if (type === 'prompt') {
+    return (
+      <div
+        data-callout-type={type}
+        className={cn(
+          'not-prose my-6 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl border p-4 text-sm/[20px] tracking-[-0.1px]',
+          cfg.container,
+          className
+        )}
+      >
+        <div className="flex min-w-0 items-start gap-2">
+          <div className={cn('mt-0.5 shrink-0', cfg.iconCls)}>
+            <Icon />
+          </div>
+          <div className="space-y-2 whitespace-normal min-w-0">
+            {displayTitle && (
+              <p className={cn('font-semibold leading-snug', cfg.titleCls)}>{displayTitle}</p>
+            )}
+            <div className={cn('leading-relaxed [&>p:last-child]:mb-0', cfg.bodyCls)}>
+              {children}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div
@@ -150,7 +213,13 @@ export function MintlifyCallout({
         <p className={cn('mb-1 text-sm font-semibold leading-snug', cfg.titleCls)}>
           {displayTitle}
         </p>
-        <div className={cn('text-sm leading-relaxed [&>p:last-child]:mb-0', cfg.bodyCls)}>
+        <div className={cn(
+          'text-sm leading-relaxed',
+          '[&>p]:mb-2 [&>p:last-child]:mb-0',
+          '[&>ul]:my-1.5 [&>ul]:list-disc [&>ul]:pl-4 [&>ul>li]:mb-0.5',
+          '[&>ol]:my-1.5 [&>ol]:list-decimal [&>ol]:pl-4 [&>ol>li]:mb-0.5',
+          cfg.bodyCls
+        )}>
           {children}
         </div>
       </div>

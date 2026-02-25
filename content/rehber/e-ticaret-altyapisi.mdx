@@ -1,0 +1,143 @@
+---
+title: "E-Ticaret Sistemi Kurma Rehberi (Adım Adım + Maliyet + Performans)"
+meta_title: "E-Ticaret Altyapısı Nasıl Kurulur? Adım Adım Rehber"
+meta_description: "E-ticaret altyapısı nasıl kurulur? Stack seçimi, hosting, ödeme entegrasyonu, lojistik ve teknik SEO — Türkiye için kapsamlı rehber."
+slug: "e-ticaret-altyapisi"
+published_at: "2026-02-24T00:00:00Z"
+updated_at: "2026-02-24T00:00:00Z"
+draft: false
+audio_src: "/audio/e-ticaret-altyapisi.mp3"
+key_points:
+  - "Doğru altyapı seçimi hız, SEO ve ölçeklenebilirliği doğrudan etkiler."
+  - "SaaS hızlı kurulum, headless tam kontrol — ihtiyacınıza göre seçin."
+  - "Türkiye'de MVP kurulum süresi 5–10 iş günü, tam özellikli mağaza 3–6 hafta."
+  - "Core Web Vitals ve schema markup e-ticaret SEO'sunun temel taşlarıdır."
+related_tools:
+  - "/tools/maliyet-hesaplama"
+  - "/tools/roi-hesaplama"
+  - "/tools/komisyon-hesaplama"
+related_blogs:
+  - "e-ticaret-sitesi-nasil-kurulur"
+  - "e-ticaret-maliyet-hesaplama"
+  - "headless-commerce-nedir"
+  - "checkout-nasil-optimize-edilir"
+---
+
+## Kısa Tanım
+
+**E-ticaret altyapısı**, ürün veya hizmet satışını dijital ortamda mümkün kılan teknik ve operasyonel sistemlerin bütünüdür. Doğru altyapı; hız, ölçeklenebilirlik ve dönüşüm oranını doğrudan etkiler.
+
+---
+
+## 1) Altyapı Türleri: Hangisi Sana Uygun?
+
+| Tür | Avantaj | Dezavantaj | Kimler için |
+|---|---|---|---|
+| SaaS (Shopify, ikas) | Hızlı kurulum | Özelleştirme sınırlı | Başlangıç |
+| Headless + Custom | Tam kontrol | Daha uzun geliştirme | Büyüyen markalar |
+| Marketplace (Trendyol) | Hazır trafik | Komisyon + bağımlılık | Ek kanal |
+
+**Moyduz yaklaşımı:** Özel Next.js altyapısı — hem SEO hem hız hem ölçek.
+
+---
+
+## 2) Teknik Stack Seçimi
+
+### Frontend
+- **Next.js 14+** — SSR + SSG + Edge ready
+- **Tailwind CSS** — hızlı UI
+- **TypeScript** — güvenli kod tabanı
+
+### Backend / API
+- Headless CMS (Sanity, Contentful)
+- REST veya GraphQL API
+- Webhook tabanlı stok/sipariş
+
+### Ödeme
+- iyzico, PayTR, Shopier — TR için yaygın
+- Stripe — uluslararası
+
+### Hosting
+- Vercel veya Cloudflare Workers — edge + CDN
+- TTFB < 200ms hedefi
+
+---
+
+## 3) Lojistik & Operasyon Entegrasyonu
+
+1. **Kargo anlaşması** — MNG, Yurtiçi, Aras, Sendeo
+2. **Stok yönetimi** — Entegrasyon veya manuel API
+3. **İade süreci** — otomatik etiket + geri ödeme
+4. **E-fatura** — GİB entegrasyonu (zorunlu >30K TL ciro)
+
+---
+
+## 4) Teknik SEO Altyapısı
+
+- Sayfa hızı: Core Web Vitals (LCP < 2.5s, INP < 200ms)
+- Yapısal veri: Product + BreadcrumbList + FAQPage schema
+- Canonical + hreflang (çok dil için)
+- Sitemap + robots.txt otomasyonu
+- IndexNow entegrasyonu — anlık index
+
+---
+
+## 5) Maliyet Kırılımı (2026 TR)
+
+| Kalem | Başlangıç | Büyüyen | Ölçekli |
+|---|---|---|---|
+| Geliştirme | ₺85K–₺120K | ₺180K–₺280K | ₺400K+ |
+| Hosting (yıllık) | ₺3K–₺8K | ₺10K–₺25K | ₺30K+ |
+| Ödeme entegrasyonu | ₺2K–₺5K | ₺5K–₺15K | custom |
+| Bakım (aylık) | ₺3K–₺6K | ₺7K–₺15K | ₺18K+ |
+
+[Maliyet hesaplama aracını kullan →](/tools/maliyet-hesaplama)
+
+---
+
+## 6) Adım Adım Kurulum Planı
+
+1. **İhtiyaç analizi** — sektör, ürün sayısı, hedef pazar
+2. **Stack kararı** — SaaS vs headless vs custom
+3. **MVP geliştirme** — çekirdek sayfalar + ödeme + kargo
+4. **SEO kurulumu** — schema, hız, sitemap, Search Console
+5. **Soft launch** — küçük trafik ile test
+6. **Optimizasyon döngüsü** — CRO + A/B test + hız
+
+---
+
+## Checklist
+
+- [ ] Domain + SSL
+- [ ] Ödeme altyapısı (iyzico / Stripe)
+- [ ] E-fatura entegrasyonu
+- [ ] Kargo API bağlantısı
+- [ ] Core Web Vitals < eşik
+- [ ] GA4 + Search Console kurulumu
+- [ ] Sitemap ve robots.txt
+- [ ] Güvenlik: SSL, rate limit, bot koruması
+
+---
+
+## İlgili Araçlar
+
+- [ROI Hesaplama →](/tools/roi-hesaplama)
+- [Komisyon Hesaplama →](/tools/komisyon-hesaplama)
+- [Site Sağlık Skoru →](/tools/site-saglik-skoru)
+
+## Sık Sorulan Sorular
+
+<Accordions type="single">
+  <Accordion title="E-ticaret altyapısı kurmak ne kadar sürer?">
+    MVP için 5–10 iş günü (Başlangıç Paketi), tam özellikli mağaza için 3–6 hafta.
+  </Accordion>
+  <Accordion title="Türkiye'de en yaygın ödeme yöntemi hangisi?">
+    iyzico ve PayTR en yaygın. Uluslararası satış için Stripe eklenebilir.
+  </Accordion>
+  <Accordion title="Shopify Türkiye'de çalışır mı?">
+    Çalışır ama TL desteği ve yerel ödeme entegrasyonu sınırlı. Özel altyapı daha avantajlı.
+  </Accordion>
+  <Accordion title="Kaç sayfadan oluşan bir e-ticaret sitesi hızlı olur?">
+    Sayfa sayısından çok teknik optimizasyon belirler. Doğru CDN + cache + hız optimizasyonu ile 10.000+ ürünlü site de hızlı olur.
+  </Accordion>
+</Accordions>

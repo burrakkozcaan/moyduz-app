@@ -15,30 +15,30 @@ type Testimonial = {
 const leftCol: Testimonial[] = [
   {
     name: "Dr. Olivia Bennett",
-    title: "Clinic Owner",
+    title: "Klinik Sahibi",
     quote:
-      "We chose the CMS Suite package to manage appointments and clinic content. The admin panel is secure, fast, and very easy to use.",
+      "Randevu ve klinik içeriğini yönetmek için CMS Suite paketini seçtik. Yönetim paneli güvenli, hızlı ve çok kullanışlı.",
     avatar: "/images/team/ersad.svg",
   },
   {
     name: "Ethan Carter",
-    title: "Operations Manager",
+    title: "Operasyon Müdürü",
     quote:
-      "Using the CMS Suite package, we replaced several internal tools with one clean dashboard. Roles, workflows, and notifications are all centralized now.",
+      "CMS Suite paketiyle birçok dahili aracı tek bir panelde topladık. Roller, iş akışları ve bildirimler artık merkezi.",
     avatar: "/images/team/moyduz.svg",
   },
   {
     name: "Sofia Miller",
-    title: "Founder",
+    title: "Kurucu",
     quote:
-      "We started with the Starter package, and it gave us a fast, professional website that was ready to grow from day one.",
+      "Starter paketle başladık; ilk günden itibaren büyümeye hazır, hızlı ve profesyonel bir site kurduk.",
     avatar: "/images/team/ersad.svg",
   },
   {
     name: "Daniel Brooks",
-    title: "Business Owner",
+    title: "İşletme Sahibi",
     quote:
-      "The Business package helped us structure our operations with proper access control and scalability. Everything feels solid and well thought out.",
+      "Business paketi operasyonlarımızı erişim kontrolü ve ölçeklenebilirlikle yapılandırmamıza yardımcı oldu. Her şey sağlam ve düşünülmüş.",
     avatar: "/images/team/moyduz.svg",
   },
 ];
@@ -46,33 +46,33 @@ const leftCol: Testimonial[] = [
 const rightCol: Testimonial[] = [
   {
     name: "Marcus Reed",
-    title: "E-commerce Business Owner",
+    title: "E-Ticaret İşletme Sahibi",
     quote:
-      "We went with the Business package to manage products and internal workflows. The platform feels fast, secure, and ready to scale.",
+      "Ürün ve dahili iş akışları için Business paketini seçtik. Platform hızlı, güvenli ve ölçeklenmeye hazır.",
     avatar:
       "https://framerusercontent.com/images/5SvmsGUbwyGolmfue9bSL7VCIc.png?width=800&height=1200",
   },
   {
     name: "Isabelle Turner",
-    title: "Clinic Operations Manager",
+    title: "Klinik Operasyon Müdürü",
     quote:
-      "Using the CMS Suite package, we finally centralized appointments, content, and internal approvals in one secure panel.",
+      "CMS Suite ile randevuları, içeriği ve onay süreçlerini tek güvenli panelde topladık.",
     avatar:
       "https://framerusercontent.com/images/9sOLRhns5l6TC2uP5BRhF14RIUk.png?width=960&height=1200",
   },
   {
     name: "Noah Hayes",
-    title: "Technical Consultant",
+    title: "Teknik Danışman",
     quote:
-      "The Custom Project option allowed us to build exactly what we needed. The API-first approach made integrations very smooth.",
+      "Özel Proje seçeneği tam ihtiyacımız olanı inşa etmemizi sağladı. API-öncelikli yaklaşım entegrasyonları çok akıcı yaptı.",
     avatar:
       "https://framerusercontent.com/images/2T0ZuDGJ91K2VQX5Hu2Mk3YE2no.png?width=960&height=1200",
   },
   {
     name: "Jenna Wallace",
-    title: "Startup Founder",
+    title: "Girişim Kurucusu",
     quote:
-      "We started with the Starter package and later expanded our setup. The dashboard and infrastructure adapted perfectly as we grew.",
+      "Starter paketle başlayıp kurulumumuzu genişlettik. Panel ve altyapı büyüdükçe mükemmel uyum sağladı.",
     avatar:
       "https://framerusercontent.com/images/dPCyMK1mMc6lEw4PNgOWalWDnWg.png?width=1200&height=1200",
   },
@@ -164,12 +164,11 @@ export default function Testimional() {
         <div className="relative md:sticky md:top-[120px] z-20 flex-1 min-w-0 md:pr-6">
           <div className="max-w-[600px] text-center md:text-left mx-auto md:mx-0">
             <h2 className=" text-[32px] md:text-[40px] lg:text-4xl leading-[1.1] tracking-[-0.02em] font-semibold md:leading-tight md:tracking-normal">
-              Trusted by Forward-Thinking Customers
+              İleri Görüşlü Müşterilerimiz Güveniyor
             </h2>
             <p className="mt-3 text-foreground text-[16px] md:text-lg leading-[1.4] md:leading-relaxed">
-              Real stories from users who&apos;ve transformed their digital
-              business with AI-powered solutions, custom websites, e-commerce
-              platforms, and automation tools.
+              Yapay zeka çözümleri, özel web siteleri, e-ticaret platformları ve
+              otomasyon araçlarıyla dijital işlerini dönüştüren kullanıcıların gerçek hikayeleri.
             </p>
           </div>
         </div>

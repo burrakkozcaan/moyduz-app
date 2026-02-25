@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 
   title: "Software Company & Web Design Agency | Moyduz",
   description:
-    "Full-service software company and web design agency delivering scalable e-commerce platforms, custom SaaS products, and AI automation solutions. Trusted by businesses worldwide.",
+    "Software company & web design agency delivering e-commerce platforms, SaaS products, and AI automation. Trusted by businesses worldwide.",
 
   keywords: [
     "software company",
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
         alt: "Moyduz – Software Company & Web Design Agency",
       },
     ],
-    locale: "en_US",
+    locale: "tr_TR",
     type: "website",
   },
 

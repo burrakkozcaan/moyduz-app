@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { ToolsPageShell, TOOLS_CARD_CLASS, TOOLS_BTN_PRIMARY_CLASS, TOOLS_BTN_SECONDARY_CLASS } from '@/components/ToolsPageShell'
 
 export default function ROIHesaplamaPage() {
   const [investment, setInvestment] = useState(30000)
@@ -22,25 +23,14 @@ export default function ROIHesaplamaPage() {
   const roiColor = roi >= 100 ? 'text-green-600' : roi >= 0 ? 'text-orange-600' : 'text-red-600'
 
   return (
-    <main className="flex-1 bg-ln-gray-0 dark:bg-ln-gray-950">
-      <div className="container mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16">
-        {/* Header */}
-        <div className="mb-10 text-center">
-          <span className="inline-block rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 mb-4">
-            Ücretsiz Araç
-          </span>
-          <h1 className="text-3xl font-bold text-ln-gray-900 dark:text-ln-gray-0 md:text-4xl mb-4">
-            E-Ticaret ROI Hesaplama
-          </h1>
-          <p className="text-lg text-ln-gray-600 dark:text-ln-gray-400 max-w-2xl mx-auto">
-            Yeni e-ticaret sisteminizin ne zaman kendini amorti edeceğini ve toplam getirisini hesaplayın.
-          </p>
-        </div>
-
-        <div className="grid gap-8 lg:grid-cols-2">
-          {/* Input */}
-          <div className="rounded-2xl border border-ln-gray-200 dark:border-ln-gray-800 bg-ln-gray-50 dark:bg-ln-gray-900 p-6 space-y-6">
-            <h2 className="text-xl font-semibold text-ln-gray-900 dark:text-ln-gray-0">
+    <ToolsPageShell
+      title="E-Ticaret ROI Hesaplama"
+      description="Yeni e-ticaret sisteminizin ne zaman kendini amorti edeceğini ve toplam getirisini hesaplayın."
+    >
+      <div className="grid gap-8 lg:grid-cols-2">
+        {/* Input */}
+        <div className={`${TOOLS_CARD_CLASS} space-y-6`}>
+          <h2 className="text-ln-label-lg font-semibold text-ln-gray-900 dark:text-ln-gray-0">
               Parametrelerinizi Girin
             </h2>
 
@@ -148,8 +138,8 @@ export default function ROIHesaplamaPage() {
           {/* Results */}
           <div className="space-y-5">
             {/* Main ROI Card */}
-            <div className="rounded-2xl border border-ln-gray-200 dark:border-ln-gray-800 bg-white dark:bg-ln-gray-900 p-6">
-              <h3 className="text-lg font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-5">
+            <div className={TOOLS_CARD_CLASS}>
+              <h3 className="text-ln-label-lg font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-5">
                 Hesaplama Sonuçları
               </h3>
               <div className="space-y-4">
@@ -187,7 +177,7 @@ export default function ROIHesaplamaPage() {
             </div>
 
             {/* ROI Highlight */}
-            <div className={`rounded-2xl p-6 text-center ${roi >= 100 ? 'bg-green-500' : roi >= 0 ? 'bg-orange-500' : 'bg-red-500'} text-white`}>
+            <div className={`rounded-2xl p-6 text-center shadow-ln-xs ${roi >= 100 ? 'bg-green-600' : roi >= 0 ? 'bg-ln-orange' : 'bg-red-600'} text-ln-gray-0`}>
               <div className="text-sm font-medium mb-1 opacity-90">ROI (Yatırım Getirisi)</div>
               <div className="text-5xl font-bold mb-2">%{Math.round(roi)}</div>
               <div className="text-sm opacity-80">
@@ -198,7 +188,7 @@ export default function ROIHesaplamaPage() {
             </div>
 
             {/* Monthly Summary */}
-            <div className="rounded-2xl border border-ln-gray-200 dark:border-ln-gray-800 bg-ln-gray-50 dark:bg-ln-gray-900 p-5">
+            <div className={TOOLS_CARD_CLASS}>
               <div className="flex justify-between text-sm mb-3">
                 <span className="text-ln-gray-600 dark:text-ln-gray-400">Aylık ek kazanç</span>
                 <span className="font-semibold text-green-600">+{totalMonthlyGain.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺/ay</span>
@@ -210,21 +200,15 @@ export default function ROIHesaplamaPage() {
             </div>
 
             {/* CTA */}
-            <div className="rounded-2xl border border-ln-gray-200 dark:border-ln-gray-800 p-5 text-center">
-              <p className="text-sm text-ln-gray-600 dark:text-ln-gray-400 mb-4">
+            <div className={TOOLS_CARD_CLASS}>
+              <p className="text-ln-paragraph-sm text-ln-gray-600 dark:text-ln-gray-400 mb-4">
                 Bu hesabı uzmanlarımızla değerlendirmek ister misiniz?
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/ozel-e-ticaret"
-                  className="flex-1 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white text-center hover:bg-orange-600 transition-colors"
-                >
+                <Link href="/ozel-e-ticaret" className={`flex-1 justify-center ${TOOLS_BTN_PRIMARY_CLASS}`}>
                   Özel E-Ticaret
                 </Link>
-                <Link
-                  href="/contact"
-                  className="flex-1 rounded-lg border border-ln-gray-300 dark:border-ln-gray-700 px-4 py-2.5 text-sm font-semibold text-ln-gray-900 dark:text-ln-gray-0 text-center hover:bg-ln-gray-50 dark:hover:bg-ln-gray-800 transition-colors"
-                >
+                <Link href="/contact" className={`flex-1 justify-center ${TOOLS_BTN_SECONDARY_CLASS}`}>
                   İletişime Geç
                 </Link>
               </div>
@@ -253,7 +237,6 @@ export default function ROIHesaplamaPage() {
             kullanabilirsiniz.
           </p>
         </div>
-      </div>
-    </main>
+    </ToolsPageShell>
   )
 }

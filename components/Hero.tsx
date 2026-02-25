@@ -84,7 +84,7 @@ export default function Hero() {
         {/* Headline */}
         <div className="relative z-10 mt-6 px-2 text-center md:mt-10 lg:px-12">
           <h1 className="mx-auto mb-0 max-w-4xl text-balance text-4xl font-semibold tracking-tight text-foreground md:text-5xl lg:text-6xl xl:text-7xl xl:tracking-tight">
-            <span className="max-sm:hidden">Modern </span>
+            <span className="max-sm:hidden">Yeni nesil yazılım </span>
             İhtiyacını Anlat.
             <br />
             <span className="text-ln-orange">Sistemini Üretelim.</span>

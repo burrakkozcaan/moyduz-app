@@ -4,12 +4,12 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Moyduz',
-  description: 'Learn how we protect your data and ensure privacy compliance.',
+  title: 'Gizlilik Politikası ve KVKK | Moyduz',
+  description: 'Kişisel verilerinizin korunması ve KVKK kapsamındaki haklarınız hakkında bilgi.',
   alternates: { canonical: 'https://moyduz.com/privacy-policy' },
   openGraph: {
-    title: 'Privacy Policy | Moyduz',
-    description: 'Learn how we protect your data and ensure privacy compliance.',
+    title: 'Gizlilik Politikası ve KVKK | Moyduz',
+    description: 'Kişisel verilerinizin korunması ve KVKK kapsamındaki haklarınız.',
     url: 'https://moyduz.com/privacy-policy',
   },
 }

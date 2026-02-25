@@ -1,0 +1,181 @@
+---
+title: "Türkiye'de Online Ödeme Sistemleri Rehberi"
+meta_description: "iyzico, PayTR, Shopier ve sanal POS karşılaştırması. Türkiye'de e-ticaret için doğru ödeme sistemini nasıl seçersiniz? Komisyon, entegrasyon ve maliyet rehberi."
+slug: "odeme-sistemleri"
+published_at: "2026-02-24T00:00:00Z"
+updated_at: "2026-02-24T00:00:00Z"
+draft: false
+audio_src: "/audio/odeme-sistemleri.mp3"
+key_points:
+  - "iyzico ve PayTR Türkiye'de en yaygın ödeme altyapıları — komisyon oranları %1.9–%2.9 arasında."
+  - "Sanal POS maliyeti aylık ciro ve işlem sayısına göre dramatik değişir — hesaplamadan seçmeyin."
+  - "Uluslararası satış için Stripe zorunlu; Türk bankalarıyla birlikte çift altyapı kurun."
+  - "Entegrasyon kolaylığı ve destek kalitesi uzun vadede komisyon kadar önemlidir."
+related_tools:
+  - /tools/sanal-pos-hesaplama
+  - /tools/komisyon-hesaplama
+related_blogs:
+  - iyzico-nedir
+  - paytr-nedir
+  - paytr-vs-iyzico
+  - en-iyi-sanal-pos
+  - e-ticaret-odeme-yontemleri
+---
+
+## Kısa Tanım
+
+**Online ödeme sistemi**, e-ticaret sitelerinin kredi kartı, havale ve dijital cüzdan ödemelerini güvenli biçimde işlemesini sağlayan teknik altyapıdır. Türkiye'de faaliyet göstermek için bankacılık lisansı ya da lisanslı bir aracı kurum (ödeme kuruluşu) gerekir.
+
+---
+
+## 1) Türkiye Ödeme Ekosistemi: Genel Bakış
+
+Türkiye'de e-ticaret ödemeleri üç katmandan oluşur:
+
+1. **Bankalar** — doğrudan POS anlaşması (yüksek ciro gerektirir)
+2. **Ödeme kuruluşları** — iyzico, PayTR, Shopier (orta boy için ideal)
+3. **Uluslararası** — Stripe, PayPal (yabancı kart + çoklu döviz)
+
+**Pazar payı (2026):**
+- iyzico: ~%45
+- PayTR: ~%30
+- Diğer (Shopier, Paycell, Sipay): ~%15
+- Doğrudan banka POS: ~%10
+
+---
+
+## 2) İyzico
+
+<MintlifyCallout type="general" title="iyzico Genel Bilgi">
+  2013'te kurulan iyzico, 2019'da PayU tarafından satın alındı. Türkiye'nin en büyük bağımsız ödeme kuruluşu. 200.000+ aktif satıcı.
+</MintlifyCallout>
+
+**Komisyon oranları:**
+| Plan | Oran | Aylık ücret |
+|---|---|---|
+| Başlangıç | %2.9 + ₺0.25/işlem | ₺0 |
+| Büyüme | %2.5 + ₺0.25/işlem | ₺199 |
+| Kurumsal | Özel | Özel |
+
+**Güçlü yanları:**
+- Türkiye'nin en iyi dokümantasyonu
+- Sandbox test ortamı mükemmel
+- 3D Secure, taksit, link ile ödeme
+
+**Zayıf yanları:**
+- Küçük ciro için maliyetli
+- Destek yanıt süresi değişken
+
+---
+
+## 3) PayTR
+
+<MintlifyCallout type="general" title="PayTR Genel Bilgi">
+  2009'da kurulan PayTR, Türkiye'nin en eski bağımsız ödeme kuruluşlarından. Özellikle KOBİ segmentinde güçlü.
+</MintlifyCallout>
+
+**Komisyon oranları:**
+| Ürün | Oran |
+|---|---|
+| Sanal POS | %1.99–%2.69 |
+| iFrame API | %2.39 |
+| Link ile ödeme | %2.49 |
+
+**Güçlü yanları:**
+- Düşük komisyon, yüksek ciro için avantajlı
+- İframe entegrasyonu çok kolay
+- Türk lirası ve döviz desteği
+
+**Zayıf yanları:**
+- Uluslararası kart kabulü iyzico kadar geniş değil
+- Arayüz modern değil
+
+---
+
+## 4) Diğer Seçenekler
+
+| Sağlayıcı | Güçlü | Kim için |
+|---|---|---|
+| Shopier | En kolay kurulum | Başlangıç / sosyal medya satıcıları |
+| Paycell | Turkcell ekosistemi | Mobil ağırlıklı |
+| Sipay | Fintech odaklı | Startup / API-first |
+| Stripe | Uluslararası | Yabancı müşteri hedefleyenler |
+| Banka POS | En düşük komisyon | 500K+ TL/ay ciro |
+
+---
+
+## 5) Doğru Sistemi Seçme Kriterleri
+
+<MintlifyCallout type="tip" title="Karar çerçevesi">
+  Aylık cironuz 50K TL altındaysa iyzico veya PayTR iFrame yeterli. 50K–500K arasında PayTR kurumsal veya iyzico Büyüme planlayın. 500K+ için banka POS + ödeme kuruluşu kombinasyonu optimaldır.
+</MintlifyCallout>
+
+1. **Ciro seviyesi** — düşük ciroda sabit ücret, yüksek ciroda oran önemli
+2. **Teknik kapasite** — API mi, iFrame mı, no-code entegrasyon mı?
+3. **Müşteri profili** — yabancı kart geliyor mu?
+4. **Taksit ihtiyacı** — kaç taksit sunacaksınız?
+5. **Destek gereksinimi** — hızlı cevap kritik mi?
+
+---
+
+## 6) Entegrasyon (Next.js / React)
+
+<MintlifyCallout type="note" title="Next.js entegrasyon yaklaşımı">
+  Ödeme formunu her zaman sunucu tarafında başlatın — API key'leri client'a asla sızdırmayın. Route Handler veya Server Action kullanın.
+</MintlifyCallout>
+
+```ts
+// app/api/payment/route.ts
+import Iyzipay from 'iyzipay'
+
+const iyzipay = new Iyzipay({
+  apiKey: process.env.IYZICO_API_KEY!,
+  secretKey: process.env.IYZICO_SECRET_KEY!,
+  uri: 'https://api.iyzipay.com',
+})
+
+export async function POST(req: Request) {
+  const { price, basketItems } = await req.json()
+  // checkout form oluştur...
+}
+```
+
+---
+
+## 7) Güvenlik ve Uyumluluk
+
+- **PCI DSS** — kart verisini asla kendi sunucunuzda tutmayın
+- **3D Secure zorunluluğu** — Türkiye'de bankacılık regülasyonu
+- **KVKK** — ödeme verisi işleme için açık rıza
+- **Chargeback yönetimi** — itiraz oranı %1'i geçerse hesap askıya alınabilir
+
+---
+
+## Checklist
+
+- [ ] Ödeme sağlayıcı başvurusu tamamlandı mı?
+- [ ] Sandbox testleri geçildi mi?
+- [ ] 3D Secure aktif mi?
+- [ ] Webhook'lar doğru yapılandırıldı mı?
+- [ ] Başarısız ödeme senaryoları test edildi mi?
+- [ ] SSL sertifikası aktif mi?
+- [ ] Chargeback süreci tanımlandı mı?
+
+---
+
+## Sık Sorulan Sorular
+
+<Accordions type="single">
+  <Accordion title="iyzico mu PayTR mi seçmeliyim?">
+    Küçük ciro için iyzico daha iyi destek ve dokümantasyon sunar. Büyük ciro (500K+ TL/ay) için PayTR'nin oranları avantajlı. Karşılaştırma için sanal POS hesaplayıcımızı kullanın.
+  </Accordion>
+  <Accordion title="Banka POS ne zaman mantıklı?">
+    Aylık 500.000 TL+ ciro seviyesinde banka POS komisyonları %1.5 altına inebilir. Altında ödeme kuruluşu daha pratik ve hızlı.
+  </Accordion>
+  <Accordion title="Uluslararası ödeme için ne kullanmalıyım?">
+    Stripe en iyi seçenek. Yabancı kart oranları %2.9 + $0.30/işlem. Türk iyzico/PayTR ile birlikte çift altyapı kurmanızı öneririz.
+  </Accordion>
+  <Accordion title="Taksit seçeneği sunmak zorunlu mu?">
+    Yasal zorunluluk yok, ama Türkiye'de taksit sunmayan site dönüşüm kaybeder. Bankalar 12 aya kadar taksit için komisyon alıyor — planınıza dahil edin.
+  </Accordion>
+</Accordions>

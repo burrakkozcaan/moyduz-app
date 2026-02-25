@@ -1,14 +1,17 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Pricing | Moyduz',
+  title: 'Fiyatlandırma — Web, E-Ticaret & Yazılım Projeleri | Moyduz',
   description:
-    'Transparent pricing for premium websites, e-commerce platforms, and multi-vendor marketplaces. Starting from $3,250.',
+    'Web tasarım, e-ticaret platformu ve özel yazılım geliştirme için şeffaf fiyatlar. Moyduz ile projenizin maliyetini öğrenin.',
   alternates: { canonical: 'https://moyduz.com/pricing' },
   openGraph: {
-    title: 'Pricing | Moyduz',
-    description: 'Transparent pricing for premium websites, e-commerce platforms, and multi-vendor marketplaces.',
+    title: 'Fiyatlandırma | Moyduz',
+    description: 'Web tasarım, e-ticaret platformu ve özel yazılım geliştirme için şeffaf fiyatlandırma.',
     url: 'https://moyduz.com/pricing',
+    locale: 'tr_TR',
+    siteName: 'Moyduz',
+    images: [{ url: 'https://moyduz.com/opengraph-image', width: 1200, height: 630, alt: 'Moyduz' }],
   },
 }
 

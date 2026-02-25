@@ -1,5 +1,6 @@
 import { getAllBlogPosts } from '@/lib/mdx'
 import { getPage, SERVICE_SLUGS } from '@/lib/mdx-pages'
+import { getAllRehberPosts } from '@/lib/rehber'
 import {
   SITE_URL,
   getSegmentLastMod,
@@ -116,6 +117,33 @@ export async function GET(
         )
       }
       break
+    case 'rehber': {
+      const posts = await getAllRehberPosts()
+      urls = posts.map((p) => {
+        const d = p.frontmatter.updated_at || p.frontmatter.published_at
+        const lastmod = d ? new Date(d).toISOString() : now
+        return urlEntry(
+          `${SITE_URL}/rehber/${p.frontmatter.slug}`,
+          lastmod,
+          'monthly',
+          0.7
+        )
+      })
+      break
+    }
+    case 'tools': {
+      const toolPaths = [
+        '/tools/maliyet-hesaplama',
+        '/tools/roi-hesaplama',
+        '/tools/komisyon-hesaplama',
+        '/tools/site-saglik-skoru',
+        '/tools',
+      ]
+      urls = toolPaths.map((p) =>
+        urlEntry(`${SITE_URL}${p}`, now, 'monthly', 0.7)
+      )
+      break
+    }
     default:
       urls = []
   }

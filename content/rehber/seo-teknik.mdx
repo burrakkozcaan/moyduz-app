@@ -1,0 +1,164 @@
+---
+title: 'Teknik SEO Rehberi: E-Ticaret Siteleri İçin Adım Adım'
+meta_description: >-
+  Teknik SEO nedir, nasıl yapılır? Crawl budget, canonical, schema, Core Web
+  Vitals ve index yönetimi — e-ticaret odaklı kapsamlı rehber.
+slug: seo-teknik
+published_at: '2026-02-24T00:00:00Z'
+updated_at: '2026-02-24T00:00:00Z'
+draft: false
+key_points:
+  - "robots.txt, sitemap.xml ve canonical tag teknik SEO'nun üç temel taşıdır."
+  - "Core Web Vitals eşiklerini geçmek (LCP < 2.5s vb.) sıralamayı doğrudan etkiler."
+  - "Schema markup ile rich snippet'lar SERP tıklama oranını ve dönüşümü artırır."
+  - "Crawl budget büyük sitelerde kritik — değersiz sayfaları noindex yapın."
+related_tools:
+  - /tools/site-saglik-skoru
+  - /tools/maliyet-hesaplama
+related_blogs:
+  - e-ticaret-seo-rehberi
+  - core-web-vitals-nedir
+  - site-hizi-satislari-nasil-etkiler
+audio_src: /audio/seo-teknik.mp3
+---
+
+## Kısa Tanım
+
+**Teknik SEO**, arama motorlarının bir web sitesini doğru şekilde tarayıp indeksleyebilmesi için yapılan altyapı optimizasyonlarıdır. İçerik ne kadar iyi olursa olsun, teknik sorunlar görünürlüğü engeller.
+
+---
+
+## 1) Teknik SEO'nun Temel Bileşenleri
+
+### Tarama & İndeksleme
+- `robots.txt` — hangi sayfalar taranacak/taranmayacak
+- `sitemap.xml` — tüm URL'lerin haritası
+- Crawl budget yönetimi — büyük sitelerde kritik
+- IndexNow — anlık index sinyali (Vercel / Cloudflare uyumlu)
+
+### Sayfa Hızı (Core Web Vitals)
+- **LCP** (Largest Contentful Paint) → hedef: < 2.5s
+- **INP** (Interaction to Next Paint) → hedef: < 200ms
+- **CLS** (Cumulative Layout Shift) → hedef: < 0.1
+
+### Yapısal Veri (Schema)
+- `Product` — e-ticaret ürün sayfaları
+- `FAQPage` — soru-cevap sayfaları
+- `BreadcrumbList` — navigasyon
+- `Article` / `BlogPosting` — içerik sayfaları
+- `Organization` — marka kimliği
+
+---
+
+## 2) E-Ticaret için Kritik Teknik Kontroller
+
+| Kontrol | Sorun | Çözüm |
+|---|---|---|
+| Duplicate content | Aynı içerik farklı URL'lerde | Canonical tag |
+| Faceted navigation | Filtreler sonsuz URL üretiyor | robots / noindex |
+| Yavaş sayfa | LCP > 3s | Image optimize + CDN |
+| Kırık link | 404 sayfaları | Redirect map |
+| Zayıf iç link | Ürün sayfaları izole | Otomatik link graph |
+
+---
+
+## 3) Canonical ve Duplicate Content
+
+<MintlifyCallout type="note" title="Canonical tag nereye eklenir?">
+  Her ürün/kategori sayfasının `<head>` bölümüne eklenir. E-ticarette renk/beden varyantları, sıralama parametreleri ve UTM'ler duplicate içerik oluşturur — hepsi tek yetkili URL'e canonical göstermeli.
+</MintlifyCallout>
+
+```html
+<link rel="canonical" href="https://siteniz.com/urun/abc" />
+```
+
+---
+
+## 4) Crawl Budget Yönetimi (Büyük Siteler)
+
+Binlerce ürünlü sitelerde Google tüm sayfaları tarayamaz. Budget'ı korumak için:
+
+1. Değersiz sayfaları `noindex` yap (filtreler, arama sonuçları)
+2. Sitemap'te sadece indekslenmesini istediğin URL'ler olsun
+3. İç link gücünü önemli sayfalara yönlendir
+4. 404 ve redirect zincirlerini temizle
+
+---
+
+## 5) Hız Optimizasyonu Öncelik Listesi
+
+1. **Görseller** — WebP/AVIF + lazy load + `next/image`
+2. **Font loading** — `font-display: swap` + preload
+3. **JS bundle** — code splitting + tree shaking
+4. **CDN** — statik varlıklar edge'den servis
+5. **Cache** — stale-while-revalidate + ISR
+6. **TTFB** — edge hosting (Vercel / Cloudflare Workers)
+
+---
+
+## 6) Schema Kurulumu (Next.js örnek)
+
+<MintlifyCallout type="tip" title="JSON-LD neden önemli?">
+  Google, yapısal veriyi SERP'te rich snippet olarak gösterir — yıldız puanı, fiyat, stok durumu. E-ticaret ürün sayfaları için `Product` şeması zorunlu, blog için `Article` yeterli.
+</MintlifyCallout>
+
+```tsx
+// app/urun/[slug]/page.tsx
+export default function Page({ product }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.title,
+    description: product.description,
+    offers: {
+      "@type": "Offer",
+      price: product.price,
+      priceCurrency: "TRY",
+      availability: "https://schema.org/InStock",
+    },
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      {/* sayfa içeriği */}
+    </>
+  )
+}
+```
+
+---
+
+## Checklist
+
+- [ ] robots.txt doğru yapılandırıldı mı?
+- [ ] sitemap.xml güncel ve sıkıştırılmış mı?
+- [ ] Her ürün sayfasında canonical var mı?
+- [ ] Core Web Vitals eşiklerin altında mı?
+- [ ] Kırık linkler temizlendi mi?
+- [ ] Schema markup geçerli mi? (Rich Results Test)
+- [ ] HTTPS tüm sayfalarda aktif mi?
+- [ ] Search Console'da hata var mı?
+
+---
+
+## İlgili Araçlar
+
+- [Site Sağlık Skoru →](/tools/site-saglik-skoru)
+
+## Sık Sorulan Sorular
+
+<Accordions type="single">
+  <Accordion title="Teknik SEO ne kadar sürede etki eder?">
+    Hız iyileştirmeleri 1–4 hafta içinde rankings'e yansıyabilir. Index sorunlarının düzelmesi 2–8 hafta sürebilir.
+  </Accordion>
+  <Accordion title="Core Web Vitals sıralamayı ne kadar etkiliyor?">
+    Google, CWV'yi ranking faktörü olarak kullanıyor. Özellikle mobilde rekabetçi sektörlerde fark yaratıyor.
+  </Accordion>
+  <Accordion title="Küçük site için teknik SEO şart mı?">
+    Evet. 10 sayfalık site bile doğru canonical, hız ve schema ile çok daha iyi sonuç alır.
+  </Accordion>
+</Accordions>

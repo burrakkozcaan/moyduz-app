@@ -14,12 +14,12 @@ const INITIAL_CHIPS: {
   {
     id: 1,
     title: "Sitemap analizi",
-    description: "URL ve sayfa takibi",
+    description: "URL ve sayfa yapısı takibi",
     icon: Map,
   },
   {
     id: 2,
-    title: "Toplu WhatsApp mesaj",
+    title: "Toplu WhatsApp mesajı",
     description: "Binlerce kişiye tek tıkla",
     icon: MessageCircle,
   },
@@ -31,26 +31,26 @@ const INITIAL_CHIPS: {
   },
   {
     id: 4,
-    title: "Yayına hazır",
-    description: "Production ready",
+    title: "Yayına hazır altyapı",
+    description: "Canlıya alma hazır",
     icon: ShieldCheck,
   },
   {
     id: 5,
     title: "Akıcı animasyonlar",
-    description: "60fps deneyim",
+    description: "Akıcı kullanıcı deneyimi",
     icon: Zap,
   },
   {
     id: 6,
     title: "Erişilebilirlik",
-    description: "Herkes için uyum",
+    description: "Herkes için uyumlu",
     icon: Users,
   },
   {
     id: 7,
     title: "Modern tasarım",
-    description: "Üst düzey his",
+    description: "Sade ve profesyonel",
     icon: Sparkles,
   },
 ];

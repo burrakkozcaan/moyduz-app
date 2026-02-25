@@ -1,4 +1,4 @@
-import { getBlogPost, getAllBlogPosts } from '@/lib/mdx'
+import { getBlogPost, getAllBlogPosts, getBlogPostsByCategory } from '@/lib/mdx'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { markdownTablesToHtml } from '@/lib/markdown-tables-to-html'
 import { mdxRemoteOptions } from '@/lib/mdx-remote-options'
@@ -13,6 +13,21 @@ import { FeedbackWidget } from '@/components/FeedbackWidget'
 import { DocPagination } from '@/components/DocPagination'
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion'
 import { buildBlogPostingSchema } from '@/seo/json-ld/index'
+import BlogFeedWithFilters from '../_components/BlogFeedWithFilters'
+
+/** Plandaki blog pillar kategorileri — /blog/para-kazanma gibi temiz URL'ler */
+const BLOG_PILLAR_CATEGORIES = ['para-kazanma', 'e-ticaret', 'teknik', 'ai-seo', 'is-kurma'] as const
+const PILLAR_LABELS: Record<string, string> = {
+  'para-kazanma': 'Para Kazanma',
+  'e-ticaret': 'E-Ticaret',
+  'teknik': 'Teknik',
+  'ai-seo': 'AI & SEO',
+  'is-kurma': 'İş Kurma',
+}
+
+function formatCategoryLabel(slug: string) {
+  return PILLAR_LABELS[slug] || slug.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+}
 
 /** Blog içeriğinden otomatik FAQ üretir: ## / ### başlıkları soru, altındaki ilk paragraf cevap */
 function extractFaqFromContent(content: string): Array<{ question: string; answer: string }> {
@@ -73,7 +88,9 @@ function extractFaqFromContent(content: string): Array<{ question: string; answe
 
 export async function generateStaticParams() {
   const posts = await getAllBlogPosts()
-  return posts.map((p) => ({ slug: p.frontmatter.slug }))
+  const categoryParams = BLOG_PILLAR_CATEGORIES.map((slug) => ({ slug }))
+  const postParams = posts.map((p) => ({ slug: p.frontmatter.slug }))
+  return [...categoryParams, ...postParams]
 }
 
 export const dynamicParams = false
@@ -86,6 +103,20 @@ export async function generateMetadata({
   params: Promise<PageParams>
 }): Promise<Metadata> {
   const { slug } = await params
+
+  if (BLOG_PILLAR_CATEGORIES.includes(slug as (typeof BLOG_PILLAR_CATEGORIES)[number])) {
+    const label = formatCategoryLabel(slug)
+    const title = `${label} | Moyduz Blog`
+    const description = `${label.toLowerCase()} ile ilgili rehberler, içgörüler ve büyüme stratejileri.`
+    return {
+      title,
+      description,
+      alternates: { canonical: `https://moyduz.com/blog/${slug}` },
+      openGraph: { title, description, url: `https://moyduz.com/blog/${slug}` },
+      twitter: { card: 'summary', title, description },
+    }
+  }
+
   const post = await getBlogPost(slug)
   if (!post) return { title: 'Not Found' }
 
@@ -95,7 +126,7 @@ export async function generateMetadata({
   const ogImage = post.frontmatter.featured_image || post.frontmatter.og_image
 
   return {
-    title: `${title} | Moyduz Blog`,
+    title: `${title} | Moyduz`,
     description,
     alternates: {
       canonical: `https://moyduz.com/blog/${slug}`,
@@ -105,6 +136,8 @@ export async function generateMetadata({
       description,
       url: `https://moyduz.com/blog/${slug}`,
       type: 'article',
+      locale: 'tr_TR',
+      siteName: 'Moyduz',
       publishedTime: post.frontmatter.published_at,
       modifiedTime: post.frontmatter.updated_at || post.frontmatter.published_at,
       authors: [post.frontmatter.author_name || 'Moyduz Team'],
@@ -161,8 +194,51 @@ export default async function BlogSlugPage({
   params: Promise<PageParams>
 }) {
   const { slug } = await params
-  const post = await getBlogPost(slug)
 
+  if (BLOG_PILLAR_CATEGORIES.includes(slug as (typeof BLOG_PILLAR_CATEGORIES)[number])) {
+    const posts = await getBlogPostsByCategory(slug)
+    const list = posts.map((post) => ({
+      slug: post.frontmatter.slug,
+      title: post.frontmatter.title,
+      meta_description: post.frontmatter.meta_description,
+      published_at: post.frontmatter.published_at,
+      reading_time: post.frontmatter.reading_time,
+      category: post.frontmatter.category,
+      author_name: post.frontmatter.author_name,
+      excerpt: post.frontmatter.meta_description,
+    }))
+    const allPosts = await getAllBlogPosts()
+    const categoryMap = new Map<string, { count: number; name?: string }>()
+    allPosts.forEach((p) => {
+      const cs = typeof p.frontmatter.category === 'object' ? p.frontmatter.category?.slug : p.frontmatter.category
+      const name = typeof p.frontmatter.category === 'object' ? p.frontmatter.category?.name : p.frontmatter.category
+      if (cs) {
+        const cur = categoryMap.get(cs) || { count: 0 }
+        categoryMap.set(cs, { count: cur.count + 1, name: name as string })
+      }
+    })
+    const categoryItems = Array.from(categoryMap.entries())
+      .map(([catSlug, data]) => ({
+        title: data.name || formatCategoryLabel(catSlug),
+        href: `/blog/${catSlug}`,
+        count: data.count,
+        badge: catSlug === slug ? 'Aktif' : 'Kategori',
+      }))
+      .sort((a, b) => b.count - a.count)
+    const label = formatCategoryLabel(slug)
+    return (
+      <BlogFeedWithFilters
+        blogList={list}
+        title={`${label} Insights`}
+        description={`${label.toLowerCase()} ile ilgili rehberler ve içgörüler.`}
+        categoryFilters={categoryItems}
+        showCategoryFilters={categoryItems.length > 0}
+        totalCount={list.length}
+      />
+    )
+  }
+
+  const post = await getBlogPost(slug)
   if (!post) notFound()
 
   const tocItems = extractTOC(post.content)
@@ -188,9 +264,12 @@ export default async function BlogSlugPage({
   ]
 
   if (categorySlug) {
+    const categoryHref = BLOG_PILLAR_CATEGORIES.includes(categorySlug as (typeof BLOG_PILLAR_CATEGORIES)[number])
+      ? `/blog/${categorySlug}`
+      : `/blog?category=${categorySlug}`
     breadcrumbItems.push({
       label: categoryName || "Category",
-      href: `/blog?category=${categorySlug}`,
+      href: categoryHref,
     })
   }
 
@@ -228,7 +307,11 @@ export default async function BlogSlugPage({
     datePublished: post.frontmatter.published_at,
     dateModified: post.frontmatter.updated_at,
     readTimeMinutes: post.frontmatter.reading_time,
-    ...(featuredImage ? { image: { url: featuredImage } } : {}),
+    image: {
+      url: featuredImage || `https://moyduz.com/blog/${slug}/opengraph-image`,
+      width: 1200,
+      height: 630,
+    },
   })
 
   return (
@@ -528,6 +611,24 @@ export default async function BlogSlugPage({
               </section>
             )
           })()}
+
+          {/* Conversion CTA — plandaki "Sitenizi analiz edin" */}
+          <section className="mt-12 pt-8 border-t border-ln-gray-200 dark:border-ln-gray-800">
+            <div className="rounded-2xl border border-ln-orange/30 dark:border-ln-orange/30 bg-ln-orange/5 dark:bg-ln-orange/10 p-6 md:p-8">
+              <h3 className="text-xl font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-2">
+                Sitenizi analiz ettirin
+              </h3>
+              <p className="text-ln-gray-600 dark:text-ln-gray-400 mb-4 max-w-xl">
+                E-ticaret altyapınızı, performansı ve büyüme fırsatlarını ücretsiz değerlendirelim. Uzman ekibimiz size özel öneri sunar.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-xl bg-ln-orange px-5 py-2.5 text-sm font-medium text-white hover:bg-ln-orange/90 transition-colors"
+              >
+                Ücretsiz analiz talep et
+              </Link>
+            </div>
+          </section>
           
           <ShareArticle title={post.frontmatter.title} />
 
@@ -564,7 +665,7 @@ export default async function BlogSlugPage({
           {relatedPosts.length > 0 && (
             <section className="mt-12 pt-8 border-t border-ln-gray-200 dark:border-ln-gray-800">
               <h2 className="text-2xl md:text-3xl font-bold text-ln-gray-900 dark:text-ln-gray-0 mb-6">
-                Related Articles
+                İlgili Yazılar
               </h2>
               <div className="grid gap-6 md:grid-cols-2">
                 {relatedPosts.map((relatedPost) => {

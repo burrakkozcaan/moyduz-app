@@ -26,10 +26,12 @@ export async function generateMetadata({
   const label = activeCategory ? formatLabel(activeCategory) : null
 
   return {
-    title: label ? `${label} Insights | Moyduz` : 'Blog | Moyduz',
+    title: label
+      ? `${label} Rehberleri & İçgörüler | Moyduz Blog`
+      : 'Moyduz Blog — E-Ticaret, SEO ve Dijital Büyüme Rehberleri',
     description: label
-      ? `${formatLabel(label).toLowerCase()} ile ilgili rehberler ve içgörüler.`
-      : 'Moyduz uzman görüşleri, rehberler ve büyüme stratejileri.',
+      ? `Moyduz uzmanlarından ${formatLabel(label).toLowerCase()} konusunda kapsamlı rehberler, stratejiler ve uygulama ipuçları.`
+      : 'E-ticaret altyapısı, teknik SEO, dijital pazarlama ve iş kurma konularında Moyduz uzmanlarından kapsamlı rehberler ve stratejiler.',
     alternates: {
       canonical: label
         ? `https://moyduz.com/blog?category=${activeCategory}`

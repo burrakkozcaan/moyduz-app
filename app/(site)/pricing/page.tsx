@@ -7,6 +7,7 @@ import { SeeMoreButton } from '@/components/SeeMoreButton';
 import Header from '@/components/header';
 import { Root as AccordionRoot, Content as AccordionContent, Item as AccordionItem, Trigger as AccordionTrigger, Arrow as AccordionArrow } from '@/components/new-ui/accordion';
 import { DottedGlowBackground } from '@/components/ui/dotted-glow-background';
+import FaqsPricing from '@/components/Faqs-pricing';
 
 export default function PricingPage() {
   const [activeTab, setActiveTab] = useState<'personal' | 'startup' | 'enterprise'>('startup');
@@ -76,26 +77,26 @@ export default function PricingPage() {
                   <path stroke="currentColor" strokeLinejoin="round" strokeWidth="1.125" d="M2.063 8.371V3.562a1.5 1.5 0 0 1 1.5-1.5H8.37a1.5 1.5 0 0 1 1.06.44l6.008 6.007a1.5 1.5 0 0 1 0 2.122l-4.808 4.808a1.5 1.5 0 0 1-2.122 0L2.502 9.432a1.5 1.5 0 0 1-.44-1.06Z" />
                   <path stroke="currentColor" strokeLinejoin="round" strokeWidth="1.125" d="M6.188 5.625a.563.563 0 1 1-1.126 0 .563.563 0 0 1 1.125 0Z" />
                 </svg>
-                Get-all-access
+                Fiyatlandırma
                 <div className="rounded-[5px] bg-ln-orange/[.12] px-[5px] py-[3px] text-ln-subheading-xs text-ln-orange shadow-ln-badge-orange">PRO</div>
               </div>
             </div>
             <div className="flex items-center gap-1.5 text-ln-label-md text-ln-gray-700 md:hidden">
-              Get-all-access
+              Fiyatlandırma
               <div className="rounded-[5px] bg-ln-orange/[.12] px-[5px] py-[3px] text-ln-subheading-xs text-ln-orange shadow-ln-badge-orange">PRO</div>
             </div>
             <h1 className="mt-3 text-[34px]/[40px] font-550 -tracking-[0.02em] text-ln-gray-900 md:mt-4 md:text-center xl:text-ln-title-h2">
-              Get everything, forever.
+              Her sektör için doğru sistem.
             </h1>
             <p className="mt-4 max-w-xl text-pretty text-ln-paragraph-md text-ln-gray-600 md:mt-5 md:px-2 md:text-center xl:text-ln-paragraph-lg">
-              <span className="font-medium text-ln-gray-700">One-time</span> payment grants you <span className="font-medium text-ln-gray-700">lifetime access</span> and <span className="font-medium text-ln-gray-700">continuous updates</span>, with <span className="font-medium text-ln-gray-700">unlimited</span> projects.
+              <span className="font-medium text-ln-gray-700">Modüler</span> yapı. <span className="font-medium text-ln-gray-700">Performans</span> odaklı. <span className="font-medium text-ln-gray-700">Her sektör</span> için. <span className="font-medium text-ln-gray-700">Tek</span> altyapı.
             </p>
           </div>
           <div dir="ltr" data-orientation="horizontal" className="-mx-5 mt-6 w-[calc(100%+40px)] md:mt-11 xl:hidden">
             <div className="relative grid overflow-x-auto overscroll-contain">
               <div ref={tabListDivRef} role="tablist" aria-orientation="horizontal" className="group/tab-list relative flex items-center gap-2 whitespace-nowrap border-b pb-4 border-ln-gray-200 px-5 pt-5" tabIndex={0} data-orientation="horizontal" style={{ outline: 'none' }}>
                 <button ref={tabBtnPersonalRef} type="button" role="tab" aria-selected={activeTab === 'personal'} onClick={() => setActiveTab('personal')} data-state={activeTab === 'personal' ? 'active' : 'inactive'} className="group/tab-item h-8 rounded-[9px] pl-2 pr-2.5 text-ln-label-sm text-ln-gray-600 flex items-center justify-center gap-1.5 transition duration-200 ease-out focus:outline-none data-[state=active]:text-ln-gray-800 data-[state=active]:shadow-ln-badge-orange flex-1 data-[state=active]:bg-ln-gray-0">
-                  Personal
+                  Başlangıç
                 </button>
               
 {/* <Link
@@ -105,10 +106,10 @@ export default function PricingPage() {
   see more
 </Link> */}
                 <button ref={tabBtnStartupRef} type="button" role="tab" aria-selected={activeTab === 'startup'} onClick={() => setActiveTab('startup')} data-state={activeTab === 'startup' ? 'active' : 'inactive'} className="group/tab-item h-8  rounded-[9px] pl-2 pr-2.5 text-ln-label-sm text-ln-gray-600 flex items-center justify-center gap-1.5 transition duration-200 ease-out focus:outline-none data-[state=active]:text-ln-gray-800 data-[state=active]:shadow-ln-badge-orange  flex-1 data-[state=active]:bg-ln-gray-0">
-                  Startup
+                  Ticaret
                 </button>
                 <button ref={tabBtnEnterpriseRef} type="button" role="tab" aria-selected={activeTab === 'enterprise'} onClick={() => setActiveTab('enterprise')} data-state={activeTab === 'enterprise' ? 'active' : 'inactive'} className="group/tab-item h-8 rounded-[9px] pl-2 pr-2.5 text-ln-label-sm text-ln-gray-600 flex items-center justify-center gap-1.5 transition duration-200 ease-out focus:outline-none data-[state=active]:text-ln-gray-800 data-[state=active]:shadow-ln-badge-orange flex-1 data-[state=active]:bg-ln-gray-0">
-                  Enterprise
+                  Pazar Yeri
                 </button>
                 <div className="absolute -bottom-px left-0 h-0.5 bg-ln-orange transition-all duration-300" style={indicatorStyle} aria-hidden="true" />
               </div>
@@ -137,7 +138,7 @@ export default function PricingPage() {
           />
         </svg>
         <div className="absolute -top-[45px] left-[95px] flex whitespace-nowrap font-kalam text-[20px]/[24px] -tracking-[0.01em] text-ln-orange">
-          {['S','a','v','e','\u00A0','u','p','\u00A0','t','o','\u00A0','2','0','%','\u00A0','t','o','d','a','y','!'].map((char, i) => (
+          {['B','a','k','ı','m','\u00A0','d','a','h','i','l','!'].map((char, i) => (
             <span 
               key={i} 
               className={`transition-all duration-500 ${showSaveBadge ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
@@ -175,17 +176,22 @@ export default function PricingPage() {
           </button>
           <div className="mt-5">
             <div className="text-ln-label-md text-ln-orange">
-              Get the full package!
+              Bakım paketi ekle!
             </div>
             <div className="mt-1 text-[18px]/[26px] font-medium text-ln-gray-900">
-              Include the Figma file to save time on your projects!
+              Aylık bakım & teknik destek ile sisteminizi aktif tutun.
             </div>
+            {includeFigma && (
+              <div className="mt-2 text-[12px]/[16px] text-ln-gray-500">
+                $125–$450/ay · pakete göre değişir
+              </div>
+            )}
           </div>
-          <a
+          <Link
             className="mt-4 flex h-7 items-center gap-1 rounded-[7px] bg-ln-gray-0 pl-2.5 pr-2 text-ln-label-sm text-ln-gray-800 ring-1 ring-ln-gray-100"
             href="/"
           >
-            Learn more
+            Daha fazla bilgi
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -200,7 +206,7 @@ export default function PricingPage() {
                 d="M14.5 12.204V6m0 0H8.296M14.5 6l-8 8"
               />
             </svg>
-          </a>
+          </Link>
         </div>
         <div className="relative h-0 w-full">
           <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
@@ -221,7 +227,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Developer Seats
+              Kapsam
             </span>
             <button data-state="closed">
               <svg
@@ -259,7 +265,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Updates Time
+              Teslimat süresi
             </span>
             <button data-state="closed">
               <svg
@@ -299,7 +305,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Blocks &amp; Components
+              Dahil özellikler
             </span>
             <button data-state="closed">
               <svg
@@ -344,7 +350,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Sectoral Template
+              Tasarım
             </span>
             <button data-state="closed">
               <svg
@@ -380,7 +386,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Communication Methods
+              Destek kanalı
             </span>
             <button data-state="closed">
               <svg
@@ -426,7 +432,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Support Response
+              Yanıt süresi
             </span>
             <button data-state="closed">
               <svg
@@ -483,21 +489,59 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Commercial Usage
+              VPS & Altyapı
             </span>
             <button data-state="closed">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 20"
-                className="size-5 text-ln-gray-300"
-              >
-                <path
-                  fill="currentColor"
-                  fillRule="evenodd"
-                  d="M10 16.25a6.25 6.25 0 1 0 0-12.5 6.25 6.25 0 0 0 0 12.5m1.116-3.041.1-.408a2 2 0 0 1-.25.083 1.2 1.2 0 0 1-.308.048q-.29 0-.407-.095-.118-.096-.118-.359a3.5 3.5 0 0 1 .118-.672l.373-1.318q.055-.182.075-.4a4 4 0 0 0 .02-.304.87.87 0 0 0-.292-.678q-.293-.26-.833-.26-.3 0-.636.106a9 9 0 0 0-.704.256l-.1.409a4 4 0 0 1 .262-.087q.151-.045.297-.045.297 0 .4.1.105.1.105.354.001.14-.034.31a6 6 0 0 1-.084.36l-.374 1.325q-.05.21-.073.374a2.4 2.4 0 0 0-.022.325q0 .408.301.673.302.265.846.265.354 0 .621-.092c.267-.092.417-.152.717-.27M11.05 7.85a.77.77 0 0 0 .26-.587.78.78 0 0 0-.26-.59.89.89 0 0 0-.628-.244.9.9 0 0 0-.63.244.78.78 0 0 0-.264.59q0 .345.263.587a.9.9 0 0 0 .63.243.9.9 0 0 0 .629-.243"
-                  clipRule="evenodd"
-                />
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-ln-gray-300">
+                <path fill="currentColor" fillRule="evenodd" d="M10 16.25a6.25 6.25 0 1 0 0-12.5 6.25 6.25 0 0 0 0 12.5m1.116-3.041.1-.408a2 2 0 0 1-.25.083 1.2 1.2 0 0 1-.308.048q-.29 0-.407-.095-.118-.096-.118-.359a3.5 3.5 0 0 1 .118-.672l.373-1.318q.055-.182.075-.4a4 4 0 0 0 .02-.304.87.87 0 0 0-.292-.678q-.293-.26-.833-.26-.3 0-.636.106a9 9 0 0 0-.704.256l-.1.409a4 4 0 0 1 .262-.087q.151-.045.297-.045.297 0 .4.1.105.1.105.354.001.14-.034.31a6 6 0 0 1-.084.36l-.374 1.325q-.05.21-.073.374a2.4 2.4 0 0 0-.022.325q0 .408.301.673.302.265.846.265.354 0 .621-.092c.267-.092.417-.152.717-.27M11.05 7.85a.77.77 0 0 0 .26-.587.78.78 0 0 0-.26-.59.89.89 0 0 0-.628-.244.9.9 0 0 0-.63.244.78.78 0 0 0-.264.59q0 .345.263.587a.9.9 0 0 0 .63.243.9.9 0 0 0 .629-.243" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div className="relative h-0 w-full">
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
+        </div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="hidden size-5 shrink-0 text-ln-orange sm:block">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M10 2.5a7.5 7.5 0 1 0 0 15 7.5 7.5 0 0 0 0-15Zm0 0c-2.083 2.917-2.083 11.667 0 15m0-15c2.083 2.917 2.083 11.667 0 15M2.5 10h15" />
+          </svg>
+          <div className="flex items-center gap-0.5">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">GEO & Çoklu Dil</span>
+            <button data-state="closed">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-ln-gray-300">
+                <path fill="currentColor" fillRule="evenodd" d="M10 16.25a6.25 6.25 0 1 0 0-12.5 6.25 6.25 0 0 0 0 12.5m1.116-3.041.1-.408a2 2 0 0 1-.25.083 1.2 1.2 0 0 1-.308.048q-.29 0-.407-.095-.118-.096-.118-.359a3.5 3.5 0 0 1 .118-.672l.373-1.318q.055-.182.075-.4a4 4 0 0 0 .02-.304.87.87 0 0 0-.292-.678q-.293-.26-.833-.26-.3 0-.636.106a9 9 0 0 0-.704.256l-.1.409a4 4 0 0 1 .262-.087q.151-.045.297-.045.297 0 .4.1.105.1.105.354.001.14-.034.31a6 6 0 0 1-.084.36l-.374 1.325q-.05.21-.073.374a2.4 2.4 0 0 0-.022.325q0 .408.301.673.302.265.846.265.354 0 .621-.092c.267-.092.417-.152.717-.27M11.05 7.85a.77.77 0 0 0 .26-.587.78.78 0 0 0-.26-.59.89.89 0 0 0-.628-.244.9.9 0 0 0-.63.244.78.78 0 0 0-.264.59q0 .345.263.587a.9.9 0 0 0 .63.243.9.9 0 0 0 .629-.243" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div className="relative h-0 w-full">
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
+        </div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="hidden size-5 shrink-0 text-ln-orange sm:block">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M10 2.083 3.333 4.583v4.584c0 4.333 2.917 7.583 6.667 8.75 3.75-1.167 6.667-4.417 6.667-8.75V4.583L10 2.083Z" />
+          </svg>
+          <div className="flex items-center gap-0.5">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">Güvenlik & Bot Koruması</span>
+            <button data-state="closed">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-ln-gray-300">
+                <path fill="currentColor" fillRule="evenodd" d="M10 16.25a6.25 6.25 0 1 0 0-12.5 6.25 6.25 0 0 0 0 12.5m1.116-3.041.1-.408a2 2 0 0 1-.25.083 1.2 1.2 0 0 1-.308.048q-.29 0-.407-.095-.118-.096-.118-.359a3.5 3.5 0 0 1 .118-.672l.373-1.318q.055-.182.075-.4a4 4 0 0 0 .02-.304.87.87 0 0 0-.292-.678q-.293-.26-.833-.26-.3 0-.636.106a9 9 0 0 0-.704.256l-.1.409a4 4 0 0 1 .262-.087q.151-.045.297-.045.297 0 .4.1.105.1.105.354.001.14-.034.31a6 6 0 0 1-.084.36l-.374 1.325q-.05.21-.073.374a2.4 2.4 0 0 0-.022.325q0 .408.301.673.302.265.846.265.354 0 .621-.092c.267-.092.417-.152.717-.27M11.05 7.85a.77.77 0 0 0 .26-.587.78.78 0 0 0-.26-.59.89.89 0 0 0-.628-.244.9.9 0 0 0-.63.244.78.78 0 0 0-.264.59q0 .345.263.587a.9.9 0 0 0 .63.243.9.9 0 0 0 .629-.243" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div className="relative h-0 w-full">
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
+        </div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="hidden size-5 shrink-0 text-ln-orange sm:block">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M2.5 7.083h15v2.5h-15zm0 4.584h15v2.5h-15zM5 7.083v2.5m0 1.584v2.5" />
+          </svg>
+          <div className="flex items-center gap-0.5">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">CDN & Önbellek</span>
+            <button data-state="closed">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-ln-gray-300">
+                <path fill="currentColor" fillRule="evenodd" d="M10 16.25a6.25 6.25 0 1 0 0-12.5 6.25 6.25 0 0 0 0 12.5m1.116-3.041.1-.408a2 2 0 0 1-.25.083 1.2 1.2 0 0 1-.308.048q-.29 0-.407-.095-.118-.096-.118-.359a3.5 3.5 0 0 1 .118-.672l.373-1.318q.055-.182.075-.4a4 4 0 0 0 .02-.304.87.87 0 0 0-.292-.678q-.293-.26-.833-.26-.3 0-.636.106a9 9 0 0 0-.704.256l-.1.409a4 4 0 0 1 .262-.087q.151-.045.297-.045.297 0 .4.1.105.1.105.354.001.14-.034.31a6 6 0 0 1-.084.36l-.374 1.325q-.05.21-.073.374a2.4 2.4 0 0 0-.022.325q0 .408.301.673.302.265.846.265.354 0 .621-.092c.267-.092.417-.152.717-.27M11.05 7.85a.77.77 0 0 0 .26-.587.78.78 0 0 0-.26-.59.89.89 0 0 0-.628-.244.9.9 0 0 0-.63.244.78.78 0 0 0-.264.59q0 .345.263.587a.9.9 0 0 0 .63.243.9.9 0 0 0 .629-.243" clipRule="evenodd" />
               </svg>
             </button>
           </div>
@@ -522,9 +566,9 @@ export default function PricingPage() {
             />
           </svg>
           <div className="mt-4">
-            <div className="text-ln-label-lg text-ln-gray-900">Personal</div>
+            <div className="text-ln-label-lg text-ln-gray-900">Başlangıç</div>
             <div className="mt-1 h-10 max-w-44 text-ln-paragraph-xs text-ln-gray-600 sm:text-ln-paragraph-sm">
-              Perfect for freelancers and indie developers.
+              Kurumsal siteler, portfolyolar ve landing page'ler için.
             </div>
           </div>
           <div className="my-6 flex flex-col items-start">
@@ -534,19 +578,25 @@ export default function PricingPage() {
                   $
                   <div className="grid overflow-hidden">
                     <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '0ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>2</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>9</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>9</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '0ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>3</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)'  }}>,</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>2</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
                     </div>
                   </div>
+                  +
                 </div>
               </div>
               <div>
                 <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-700">
-                  one-time payment
+                  başlangıç fiyatı
                 </div>
                 <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-500">
-                  plus local taxes
+                  KDV hariç
+                </div>
+                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-400">
+                  ≈ ₺109.000+
                 </div>
               </div>
             </div>
@@ -556,30 +606,34 @@ export default function PricingPage() {
                   $
                   <div className="grid overflow-hidden">
                     <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '0ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>2</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>9</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>9</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '0ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>3</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>2</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
                     </div>
                   </div>
+                  +
                 </div>
               </div>
               <div>
                 <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-700">
-                  one-time payment
+                  başlangıç fiyatı
                 </div>
                 <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-500">
-                  plus local taxes
+                  KDV hariç
+                </div>
+                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-400">
+                  ≈ ₺109.000+
                 </div>
               </div>
             </div>
           </div>
           <a
-            href="https://alignui.lemonsqueezy.com/buy/a3537cad-193b-486d-ac49-d127af2c31fd"
-            target="_blank"
-            rel="noopener nofollow"
+            href="/contact"
             className="flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-10 bg-ln-gray-50 text-ln-label-sm text-ln-gray-800"
           >
-            Buy now
+            Hemen Başla
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -616,7 +670,36 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Single user license
+              10 sayfaya kadar
+            </span>
+          </div>
+        </div>
+        {includeFigma && (
+          <div className="flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.08] px-2 py-1 -mt-1">
+            <span className="text-[11px]/[14px] font-medium text-ln-orange">+ $125–175/ay bakım</span>
+          </div>
+        )}
+        <div className="relative h-0 w-full">
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
+        </div>
+        <div className="flex items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 20 20"
+            className="size-5 shrink-0 text-ln-orange"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.25"
+              d="m5.625 10.886 2.625 2.656 6.125-7.083"
+            />
+          </svg>
+          <div className="flex items-center gap-0.5">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
+              5–10 iş günü
             </span>
           </div>
         </div>
@@ -640,7 +723,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Life-time
+              SEO + GA4 + CDN
             </span>
           </div>
         </div>
@@ -664,7 +747,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Includes all blocks
+              Özel UI/UX tasarım
             </span>
           </div>
         </div>
@@ -688,7 +771,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Included all templates
+              E-posta
             </span>
           </div>
         </div>
@@ -712,7 +795,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Email address
+              48 saat
             </span>
           </div>
         </div>
@@ -736,7 +819,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              24 hours
+              Dahil
             </span>
           </div>
         </div>
@@ -744,24 +827,33 @@ export default function PricingPage() {
           <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
         </div>
         <div className="flex items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 20 20"
-            className="size-5 shrink-0 text-ln-orange"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.25"
-              d="m5.625 10.886 2.625 2.656 6.125-7.083"
-            />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" />
           </svg>
           <div className="flex items-center gap-0.5">
-            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Use in unlimited projects
-            </span>
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">GEO temelleri</span>
+          </div>
+        </div>
+        <div className="relative h-0 w-full">
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
+        </div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" />
+          </svg>
+          <div className="flex items-center gap-0.5">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">Temel güvenlik</span>
+          </div>
+        </div>
+        <div className="relative h-0 w-full">
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
+        </div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" />
+          </svg>
+          <div className="flex items-center gap-0.5">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">CDN + hız opt.</span>
           </div>
         </div>
       </div>
@@ -781,7 +873,7 @@ export default function PricingPage() {
         speedScale={1}
       />
         <div className="absolute right-3 top-3 flex h-5 items-center rounded-[5px] bg-ln-orange/[.12] px-[7px] text-ln-subheading-xs text-ln-orange">
-          MOST POPULAR
+          EN ÇOK TERCİH EDİLEN
         </div>
         <div
           className="flex w-full flex-col items-start pb-2 max-[768px]:!h-72"
@@ -801,9 +893,9 @@ export default function PricingPage() {
             />
           </svg>
           <div className="mt-4">
-            <div className="text-ln-label-lg text-ln-gray-0">Startups</div>
+            <div className="text-ln-label-lg text-ln-gray-0">Ticaret</div>
             <div className="mt-1 h-10 text-ln-paragraph-xs text-ln-gray-450 sm:text-ln-paragraph-sm">
-              Ideal for small teams and growing companies.
+              B2C + B2B e-ticaret projeleri için.
             </div>
           </div>
           <div className="my-6 flex flex-col items-start">
@@ -813,19 +905,25 @@ export default function PricingPage() {
                   $
                   <div className="grid overflow-hidden">
                     <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>3</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>9</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
                       <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '250ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>9</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '300ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '350ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
                     </div>
                   </div>
+                  +
                 </div>
               </div>
               <div>
                 <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-400">
-                  one-time payment
+                  başlangıç fiyatı
                 </div>
                 <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-600">
-                  plus local taxes
+                  KDV hariç
+                </div>
+                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-500">
+                  ≈ ₺199.000+
                 </div>
               </div>
             </div>
@@ -835,34 +933,38 @@ export default function PricingPage() {
                   $
                   <div className="grid overflow-hidden">
                     <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>3</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>9</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
                       <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '250ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>9</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '300ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '350ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
                     </div>
                   </div>
+                  +
                 </div>
               </div>
               <div>
                 <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-400">
-                  one-time payment
+                  başlangıç fiyatı
                 </div>
                 <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-600">
-                  plus local taxes
+                  KDV hariç
+                </div>
+                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-500">
+                  ≈ ₺199.000+
                 </div>
               </div>
             </div>
           </div>
           <a
-            href="https://alignui.lemonsqueezy.com/buy/15cfcce7-8c96-45f0-8217-b7eb1297fcae"
-            target="_blank"
-            rel="noopener nofollow"
+            href="/contact"
             className="flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-10 bg-ln-orange text-ln-label-sm text-ln-gray-0"
             style={{
               boxShadow:
                 "0 19px 8px rgba(31, 31, 31, 0.01), 0 11px 6px rgba(31, 31, 31, 0.04), 0 5px 5px rgba(31, 31, 31, 0.07), 0 1px 3px rgba(31, 31, 31, 0.08), 0 0 0 1px rgba(26, 26, 26, 0.28), inset 0 1px 2px rgba(255, 255, 255, 0.34)"
             }}
           >
-            Buy now
+            Teklif Al
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -879,6 +981,11 @@ export default function PricingPage() {
             </svg>
           </a>
         </div>
+        {includeFigma && (
+          <div className="flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.15] px-2 py-1">
+            <span className="text-[11px]/[14px] font-medium text-ln-orange">+ $175–275/ay bakım</span>
+          </div>
+        )}
         <div className="relative h-0 w-full">
           <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" />
         </div>
@@ -899,7 +1006,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">
-              5-user license
+              Sınırsız ürün & katalog
             </span>
           </div>
         </div>
@@ -923,7 +1030,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">
-              Life-time
+              3–6 hafta
             </span>
           </div>
         </div>
@@ -947,7 +1054,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">
-              Includes all blocks
+              B2B + RFQ + Sepet akışı
             </span>
           </div>
         </div>
@@ -971,7 +1078,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">
-              Included all templates
+              Özel mağaza tasarımı
             </span>
           </div>
         </div>
@@ -995,7 +1102,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">
-              Discord
+              Canlı chat + e-posta
             </span>
           </div>
         </div>
@@ -1019,7 +1126,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">
-              24 hours
+              24 saat
             </span>
           </div>
         </div>
@@ -1043,8 +1150,41 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">
-              Use in unlimited projects
+              Dahil
             </span>
+          </div>
+        </div>
+        <div className="relative h-0 w-full">
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" />
+        </div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" />
+          </svg>
+          <div className="flex items-center gap-0.5">
+            <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">Çoklu dil + GEO</span>
+          </div>
+        </div>
+        <div className="relative h-0 w-full">
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" />
+        </div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" />
+          </svg>
+          <div className="flex items-center gap-0.5">
+            <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">Bot koruması + IP filtre</span>
+          </div>
+        </div>
+        <div className="relative h-0 w-full">
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" />
+        </div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" />
+          </svg>
+          <div className="flex items-center gap-0.5">
+            <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">Gelişmiş CDN + önbellek</span>
           </div>
         </div>
       </div>
@@ -1068,16 +1208,16 @@ export default function PricingPage() {
             />
           </svg>
           <div className="mt-4">
-            <div className="text-ln-label-lg text-ln-gray-900">Enterprise</div>
+            <div className="text-ln-label-lg text-ln-gray-900">Pazar Yeri</div>
             <div className="mt-1 h-10 max-w-44 text-ln-paragraph-xs text-ln-gray-600 sm:text-ln-paragraph-sm">
-              Best for enterprises with unique challenges.
+              Multi-vendor marketplace ve B2B platformları için.
             </div>
           </div>
           <a
             className="mt-auto flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-10 bg-ln-gray-0 text-ln-label-sm text-ln-gray-800 ring-1 ring-inset ring-ln-gray-100"
-            href="https://alignui.com/contact"
+            href="/contact"
           >
-            Contact us
+            Görüşme Başlat
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1094,6 +1234,11 @@ export default function PricingPage() {
             </svg>
           </a>
         </div>
+        {includeFigma && (
+          <div className="flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.08] px-2 py-1">
+            <span className="text-[11px]/[14px] font-medium text-ln-orange">+ $250–450/ay bakım</span>
+          </div>
+        )}
         <div className="relative h-0 w-full">
           <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
         </div>
@@ -1114,7 +1259,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Custom user license
+              Çoklu satıcılı platform
             </span>
           </div>
         </div>
@@ -1138,7 +1283,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Life-time
+              6–10 hafta
             </span>
           </div>
         </div>
@@ -1162,7 +1307,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Includes all blocks
+              Komisyon + otomatik ödeme
             </span>
           </div>
         </div>
@@ -1186,7 +1331,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Included all templates
+              Özel vendor paneli
             </span>
           </div>
         </div>
@@ -1210,7 +1355,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Private Slack channel
+              Özel WhatsApp
             </span>
           </div>
         </div>
@@ -1234,7 +1379,7 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              12 hours
+              12 saat
             </span>
           </div>
         </div>
@@ -1258,8 +1403,41 @@ export default function PricingPage() {
           </svg>
           <div className="flex items-center gap-0.5">
             <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
-              Use in unlimited projects
+              Dahil
             </span>
+          </div>
+        </div>
+        <div className="relative h-0 w-full">
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
+        </div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" />
+          </svg>
+          <div className="flex items-center gap-0.5">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">Tam çoklu dil + IP filtre</span>
+          </div>
+        </div>
+        <div className="relative h-0 w-full">
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
+        </div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" />
+          </svg>
+          <div className="flex items-center gap-0.5">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">Gelişmiş güvenlik + DDoS</span>
+          </div>
+        </div>
+        <div className="relative h-0 w-full">
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
+        </div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" />
+          </svg>
+          <div className="flex items-center gap-0.5">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">Enterprise CDN</span>
           </div>
         </div>
       </div>
@@ -1288,16 +1466,15 @@ export default function PricingPage() {
       </div>
       <div>
         <div className="text-ln-label-sm text-ln-gray-800 sm:text-ln-label-md">
-          We value PPP and offer discounts.
+          Özel bir projeniz mi var?
         </div>
         <p className="mt-1 text-ln-paragraph-xs text-ln-gray-600 sm:text-ln-paragraph-sm">
-          Verify your eligibility with a student ID, license, or similar proof
-          by contacting us at{/* */}{" "}
+          Kapsama özel teklif almak için bize yazın:{/* */}{" "}
           <a
-            href="mailto:hi@alignui.com"
+            href="mailto:hi@moyduz.com"
             className="font-medium text-ln-orange"
           >
-            hi@alignui.com
+            hi@moyduz.com
           </a>
         </p>
       </div>
@@ -1307,8 +1484,53 @@ export default function PricingPage() {
 
 
 
-         
+
          </div>
+
+{/* Dijital Pazarlama Paketi */}
+<div className="relative mt-4 w-full overflow-hidden rounded-[32px] bg-ln-gray-925 p-5 ring-1 ring-inset ring-ln-gray-800 md:mt-6 md:p-6">
+  <div className="absolute right-4 top-4 flex h-5 items-center rounded-[5px] bg-ln-orange/[.12] px-[7px] text-ln-subheading-xs text-ln-orange">YENİ</div>
+  <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-start md:justify-between md:gap-8">
+    <div className="flex-1">
+      <div className="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="size-6 shrink-0 text-ln-orange">
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.5 8.5h17M7 12h2m4 0h4M7 15.5h1m4 0h5M4.5 19.5h15a2 2 0 0 0 2-2v-11a2 2 0 0 0-2-2h-15a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2Z" />
+        </svg>
+        <div className="text-ln-label-lg text-ln-gray-0">Dijital Pazarlama Paketi</div>
+      </div>
+      <div className="mt-1.5 text-ln-paragraph-sm text-ln-gray-450 max-w-sm">
+        Sosyal medya yönetimi, toplu mesajlaşma ve e-posta kampanya yönetimi. Fiyatlar projeye ve kapsama göre değişir.
+      </div>
+    </div>
+    <div className="flex flex-col items-start gap-1 md:items-end md:shrink-0">
+      <div className="text-[28px]/[32px] font-550 text-ln-gray-0">Görüşme gerekli</div>
+      <div className="text-[13px]/[16px] text-ln-gray-500">aylık veya proje bazlı</div>
+      <a href="/contact" className="mt-2 flex h-9 items-center justify-center gap-1.5 rounded-10 bg-ln-orange px-4 text-ln-label-sm text-ln-gray-0" style={{ boxShadow: "0 0 0 1px rgba(26,26,26,.28), inset 0 1px 2px rgba(255,255,255,.34)" }}>
+        Teklif Al
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-gray-0">
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M14.5 12.204V6m0 0H8.296M14.5 6l-8 8" />
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div className="grid grid-cols-2 gap-2 border-t border-ln-gray-800 pt-4 sm:grid-cols-3 md:grid-cols-6">
+    {[
+      { icon: 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12', label: 'Sosyal Medya Yönetimi' },
+      { icon: 'M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z', label: 'Toplu Mesaj (SMS/WA)' },
+      { icon: 'M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75', label: 'E-posta Kampanyaları' },
+      { icon: 'M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5', label: 'İçerik Takvimi' },
+      { icon: 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z', label: 'Analytics & Raporlama' },
+      { icon: 'M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z', label: 'Meta & Google Reklam' },
+    ].map(({ icon, label }) => (
+      <div key={label} className="flex items-start gap-2 rounded-[12px] bg-ln-gray-800/50 px-3 py-2.5">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="mt-0.5 size-4 shrink-0 text-ln-orange">
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d={icon} />
+        </svg>
+        <span className="text-[11px]/[15px] font-medium text-ln-gray-300">{label}</span>
+      </div>
+    ))}
+  </div>
+</div>
 
 <div className="relative flex flex-col justify-center gap-6 md:flex-row md:py-7 xl:gap-8 before:absolute before:left-0 before:top-0 before:hidden before:h-px before:w-full before:bg-ln-gray-200 md:before:block after:absolute after:bottom-0 after:left-0 after:hidden after:h-px after:w-full after:bg-ln-gray-200 md:after:block mb-16 mt-10 md:mb-24 md:mt-20">
   <img
@@ -1356,10 +1578,10 @@ export default function PricingPage() {
     </svg>
     <div className="md:mt-4">
       <div className="text-ln-label-md text-ln-gray-800">
-        All-Inclusive Access
+        Multi-Industry Engine
       </div>
       <div className="mt-1 text-ln-paragraph-sm text-ln-gray-600 md:max-w-64">
-        Buy an all-access license to get all components, templates, and updates.
+        Tek altyapı. E-ticaret, SaaS, Booking, B2B ve kurumsal için.
       </div>
     </div>
   </div>
@@ -1387,9 +1609,9 @@ export default function PricingPage() {
       />
     </svg>
     <div className="md:mt-4">
-      <div className="text-ln-label-md text-ln-gray-800">One-Time Payment</div>
+      <div className="text-ln-label-md text-ln-gray-800">Modüler Yapı</div>
       <div className="mt-1 text-ln-paragraph-sm text-ln-gray-600 md:max-w-64">
-        No subscriptions or extra fees. Pay once, get updates forever.
+        Abonelik, ödeme, çoklu dil, API ve rol sistemi. İhtiyacınıza göre.
       </div>
     </div>
   </div>
@@ -1416,9 +1638,9 @@ export default function PricingPage() {
       />
     </svg>
     <div className="md:mt-4">
-      <div className="text-ln-label-md text-ln-gray-800">Forever Access</div>
+      <div className="text-ln-label-md text-ln-gray-800">Performance First</div>
       <div className="mt-1 text-ln-paragraph-sm text-ln-gray-600 md:max-w-64">
-        One payment gives you lifetime access to all premium AlignUI resources.
+        Core Web Vitals odaklı. SEO + hız optimize. Her projede standart.
       </div>
     </div>
   </div>
@@ -1431,50 +1653,9 @@ export default function PricingPage() {
   />
 </div>
 
-          <div className="mt-20 max-w-3xl mx-auto">
-            <h2 className="text-center text-[28px]/[34px] font-550 -tracking-[0.02em] text-ln-gray-900 mb-8">
-              Frequently asked questions
-            </h2>
-            <div className="space-y-4">
-              {[
-                {
-                  question: "Bu gerçekten tek seferlik bir ödeme mi?",
-                  answer: "Evet. Bir kez ödeyip sonsuza kadar kullanıyorsunuz — yıllık abonelik yok, gizli ücret yok. Planınız kapsamındaki tüm güncellemeler de ömür boyu ücretsiz."
-                },
-                {
-                  question: "Planlar arasındaki fark nedir?",
-                  answer: "Personal plan bireysel projeler için; Startup plan büyüyen ekipler ve ticari projeler için; Enterprise plan ise çok sayıda proje ve kurumsal ihtiyaçlar için tasarlanmıştır. Her planın sağ tarafındaki özellik listesinden detaylı karşılaştırmayı görebilirsiniz."
-                },
-                {
-                  question: "Hangi ödeme yöntemlerini kabul ediyorsunuz?",
-                  answer: "Visa, Mastercard ve American Express başta olmak üzere tüm büyük kredi/banka kartlarını kabul ediyoruz. Ödemeler Stripe altyapısıyla güvenli şekilde işleniyor."
-                },
-                {
-                  question: "Satın aldıktan sonra gelecek güncellemeler ücretli mi?",
-                  answer: "Hayır. Sahip olduğunuz plan için yayınlanan tüm güncellemeler ve yeni özellikler ek ücret olmaksızın hesabınıza eklenir."
-                },
-                {
-                  question: "Kaç projede kullanabilirim?",
-                  answer: "Personal planda tek proje, Startup ve Enterprise planlarda sınırsız proje kullanımı mevcuttur. Proje limitleri satın alma ekranında her plan için açıkça belirtilmiştir."
-                },
-                {
-                  question: "İade politikanız nedir?",
-                  answer: "Satın alma tarihinden itibaren 14 gün içinde herhangi bir neden göstermeksizin tam iade talep edebilirsiniz. İade için info@moyduz.com adresine mail göndermeniz yeterlidir."
-                },
-              ].map((faq, idx) => (
-                <details
-                  key={idx}
-                  className="rounded-xl border border-ln-gray-200 dark:border-ln-gray-800 bg-ln-gray-0 dark:bg-ln-gray-900 p-4"
-                >
-                  <summary className="cursor-pointer font-medium text-ln-gray-900 dark:text-ln-gray-0">
-                    {faq.question}
-                  </summary>
-                  <p className="mt-2 text-sm text-ln-gray-600 dark:text-ln-gray-400 leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </details>
-              ))}
-            </div>
+          <div className="mt-0 max-w-3xl mx-auto">
+           
+            <FaqsPricing />
           </div>
 
         <div className="mx-auto flex h-8 w-full max-w-[596px] items-center gap-6 px-4 my-12 md:my-24">
@@ -1521,7 +1702,7 @@ export default function PricingPage() {
 
         
         
-          <div className="container pt-10 bleed-ln-gray-200 bleed-border-t md:pt-14 xl:pt-[70px] xl:bleed-none">
+          <div className="container pt-0 md:pt-0 xl:pt-0 xl:bleed-none">
             <div className="flex flex-col items-start md:items-center">
     <div className="flex h-7 items-center gap-1.5 rounded-[9px] bg-ln-gray-0 pl-1.5 pr-2.5 text-ln-label-sm text-ln-gray-700 shadow-ln-subheading xl:h-8 xl:pl-2 xl:pr-3">
       <svg
@@ -1538,17 +1719,15 @@ export default function PricingPage() {
           d="m9.5 4.735-5.111-1.14A1.5 1.5 0 0 0 2.562 5.06v7.755a1.5 1.5 0 0 0 1.174 1.464L9.5 15.563m0-10.828 5.111-1.14a1.5 1.5 0 0 1 1.826 1.464v7.755a1.5 1.5 0 0 1-1.173 1.464L9.5 15.563m0-10.828v10.828"
         />
       </svg>
-      Stay Informed
+      Moyduz
     </div>
     <h4 className="mt-4 text-[28px]/[36px] font-550 -tracking-[0.02em] text-ln-gray-900 md:text-center md:text-ln-title-h4 xl:text-[32px]/[40px] xl:-tracking-[0.028em]">
-      Subscribe to our newsletter
+      Güncellemelerden haberdar olun
     </h4>
     <p className="mt-2 text-ln-paragraph-md text-ln-gray-600 md:text-center xl:text-ln-paragraph-lg">
-      Get the{/* */}{" "}
-      <span className="font-medium text-ln-gray-800">latest updates</span>,
-      {/* */} <span className="font-medium text-ln-gray-800">tips</span>, and
-      {/* */} <span className="font-medium text-ln-gray-800">exclusive</span>{" "}
-      offers from AlignUI.
+      <span className="font-medium text-ln-gray-800">Yeni projeler</span>, dijital trendler
+      {/* */} ve <span className="font-medium text-ln-gray-800">özel</span>{" "}
+      içerikler.
     </p>
     <form className="mt-5 flex w-full flex-col gap-2 md:w-auto xl:mt-8 xl:gap-3">
       <div className="group relative flex h-12 w-full items-center gap-2 rounded-[13px] bg-ln-gray-25 px-3 shadow-[0_4px_8px_-1.5px_rgba(51,51,51,.06)] ring-1 transition md:w-[416px] ring-ln-gray-200 focus-within:ring-[1.5px] focus-within:ring-ln-orange">
@@ -1571,12 +1750,12 @@ export default function PricingPage() {
             type="email"
             required
             className="w-full bg-transparent bg-none text-ln-label-md text-ln-gray-925 caret-ln-orange placeholder:text-ln-paragraph-md placeholder:text-ln-gray-500 focus:outline-none"
-            placeholder="Enter your email..."
+            placeholder="E-posta adresinizi girin..."
             defaultValue=""
           />
           <button
             type="submit"
-            aria-label="Submit form"
+            aria-label="Formu gönder"
             className="relative isolate flex h-5 w-8 shrink-0 items-center justify-center rounded-[5px] transition before:absolute before:inset-0 before:-z-10 before:rounded-[inherit] before:opacity-0 before:shadow-ln-button-orange before:transition bg-ln-gray-0 text-[#bbb] shadow-ln-button-white"
             disabled
           >
@@ -1598,7 +1777,7 @@ export default function PricingPage() {
         </div>
       </div>
       <p className="text-ln-paragraph-sm text-ln-gray-450 md:text-center">
-        We respect your privacy
+        Gizliliğinize saygı duyuyoruz
       </p>
     </form>
     <div className="mt-5 flex flex-wrap gap-4 md:justify-center xl:mt-8 xl:gap-7">
@@ -1617,7 +1796,7 @@ export default function PricingPage() {
             d="M11.75 7.125 8.375 11.25l-1.5-1.5M16.438 9A6.937 6.937 0 1 1 2.563 9a6.937 6.937 0 0 1 13.874 0Z"
           />
         </svg>
-        Weekly updates
+        Proje haberleri
       </div>
       <div className="flex items-center gap-2 text-ln-label-sm text-ln-gray-600 xl:text-ln-paragraph-sm xl:text-ln-gray-800">
         <svg
@@ -1634,7 +1813,7 @@ export default function PricingPage() {
             d="M11.75 7.125 8.375 11.25l-1.5-1.5M16.438 9A6.937 6.937 0 1 1 2.563 9a6.937 6.937 0 0 1 13.874 0Z"
           />
         </svg>
-        Exclusive content
+        Dijital trendler
       </div>
       <div className="flex items-center gap-2 text-ln-label-sm text-ln-gray-600 xl:text-ln-paragraph-sm xl:text-ln-gray-800">
         <svg
@@ -1651,7 +1830,7 @@ export default function PricingPage() {
             d="M11.75 7.125 8.375 11.25l-1.5-1.5M16.438 9A6.937 6.937 0 1 1 2.563 9a6.937 6.937 0 0 1 13.874 0Z"
           />
         </svg>
-        Early access for features
+        Özel teklifler
       </div>
     </div>
     </div>
