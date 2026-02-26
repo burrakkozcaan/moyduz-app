@@ -7,36 +7,26 @@ import { cn } from '@/utils/cn';
 import FlickeringFooter from './flickering-footer';
 
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/#about' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Pricing', href: '/pricing' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Ana Sayfa', href: '/' },
+  { label: 'Hakkımızda', href: '/about' },
+  { label: 'Hizmetler', href: '/services' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Rehberler', href: '/rehber' },
+  { label: 'Fiyatlandırma', href: '/pricing' },
+  { label: 'İletişim', href: '/contact' },
 ] as const;
 
 const solutionLinks = [
-  {
-    label: 'Appointment management system',
-    href: '/solutions/appointment-management-system',
-  },
-  {
-    label: 'Clinic management system',
-    href: '/solutions/clinic-management-system',
-  },
-  {
-    label: 'Employee management system',
-    href: '/solutions/employee-management-system',
-  },
-  {
-    label: 'Scholarship management system',
-    href: '/solutions/scholarship-management-system',
-  },
+  { label: 'E-Ticaret Geliştirme', href: '/services/ecommerce-website-development' },
+  { label: 'Web Tasarım', href: '/services/web-design' },
+  { label: 'Yazılım Şirketi', href: '/services/software-company' },
+  { label: 'Araçlar', href: '/tools' },
 ] as const;
 
 const socialLinks = [
-  { label: 'Twitter', href: 'https://x.com/kreativnik_' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
-  { label: 'Instagram', href: 'https://www.instagram.com/' },
+  { label: 'Twitter / X', href: 'https://x.com/moyduz' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/moyduz' },
+  { label: 'Facebook', href: 'https://www.facebook.com/moyduz' },
 ] as const;
 
 const legalLinks = [
@@ -61,7 +51,7 @@ export default function Footer() {
                 <div className='relative size-9'>
                   <img
                     src='/images/logo.svg'
-                    alt='Moydus Logo'
+                    alt='Moyduz Logo'
                     className='absolute -top-0.5 left-1/2 max-w-none -translate-x-1/2 object-contain'
                     width={42}
                     height={42}
@@ -146,9 +136,10 @@ export default function Footer() {
               </p>
               <div className='flex items-center gap-2'>
                 <a
-                  href='https://x.com/alignui'
+                  href='https://x.com/moyduz'
                   target='_blank'
-                  rel='noopener nofollow'
+                  rel='noopener noreferrer'
+                  aria-label='Moyduz Twitter / X'
                   className='shadow-ln-button-white flex size-8 items-center justify-center rounded-[9px] bg-ln-gray-0 text-ln-gray-400 transition duration-200 ease-linear hover:bg-ln-gray-25 hover:text-ln-gray-500 hover:shadow-none'
                 >
                   <svg
@@ -164,9 +155,10 @@ export default function Footer() {
                   </svg>
                 </a>
                 <a
-                  href='https://github.com/alignui'
+                  href='https://www.linkedin.com/company/moyduz'
                   target='_blank'
-                  rel='noopener nofollow'
+                  rel='noopener noreferrer'
+                  aria-label='Moyduz LinkedIn'
                   className='shadow-ln-button-white flex size-8 items-center justify-center rounded-[9px] bg-ln-gray-0 text-ln-gray-400 transition duration-200 ease-linear hover:bg-ln-gray-25 hover:text-ln-gray-500 hover:shadow-none'
                 >
                   <svg
@@ -177,14 +169,15 @@ export default function Footer() {
                   >
                     <path
                       fill='currentColor'
-                      d='M9 1.463c4.144 0 7.5 3.356 7.5 7.5a7.51 7.51 0 0 1-5.11 7.116c-.374.075-.515-.16-.515-.357 0-.253.01-1.059.01-2.062 0-.703-.235-1.153-.507-1.388 1.669-.187 3.422-.825 3.422-3.703 0-.825-.29-1.49-.769-2.015.075-.188.338-.957-.075-1.988 0 0-.628-.206-2.062.769a7 7 0 0 0-1.875-.253 7 7 0 0 0-1.875.253c-1.435-.966-2.063-.769-2.063-.769-.412 1.031-.15 1.8-.075 1.988a2.92 2.92 0 0 0-.769 2.015c0 2.869 1.744 3.516 3.413 3.703-.216.188-.413.516-.478 1.003-.431.197-1.51.516-2.184-.618-.141-.225-.563-.778-1.154-.769-.628.01-.253.356.01.497.318.178.684.844.768 1.06.15.421.638 1.227 2.522.88 0 .629.01 1.22.01 1.397 0 .197-.14.422-.516.357A7.5 7.5 0 0 1 1.5 8.963c0-4.144 3.356-7.5 7.5-7.5'
+                      d='M4.5 6.75H2.25v9H4.5v-9Zm-1.125-3.375a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM15.75 9.9c0-2.025-1.35-3.15-3.15-3.15-1.125 0-1.8.45-2.25 1.125V6.75H8.1v9h2.25v-4.95c0-.9.675-1.575 1.575-1.575s1.575.675 1.575 1.575V15.75h2.25V9.9Z'
                     />
                   </svg>
                 </a>
                 <a
-                  href='https://discord.gg/alignui'
+                  href='https://www.facebook.com/moyduz'
                   target='_blank'
-                  rel='noopener nofollow'
+                  rel='noopener noreferrer'
+                  aria-label='Moyduz Facebook'
                   className='shadow-ln-button-white flex size-8 items-center justify-center rounded-[9px] bg-ln-gray-0 text-ln-gray-400 transition duration-200 ease-linear hover:bg-ln-gray-25 hover:text-ln-gray-500 hover:shadow-none'
                 >
                   <svg
@@ -195,7 +188,7 @@ export default function Footer() {
                   >
                     <path
                       fill='currentColor'
-                      d='M14.727 3.767a13.6 13.6 0 0 0-3.404-1.053q-.24.435-.436.891a12.6 12.6 0 0 0-3.778 0 10 10 0 0 0-.436-.89A13.7 13.7 0 0 0 3.266 3.77C1.112 6.974.528 10.099.82 13.179a13.7 13.7 0 0 0 4.175 2.107q.508-.687.894-1.45a9 9 0 0 1-1.408-.675q.178-.13.345-.261a9.76 9.76 0 0 0 8.348 0q.17.14.345.26-.677.401-1.41.678.385.762.893 1.448a13.6 13.6 0 0 0 4.178-2.106c.343-3.572-.585-6.668-2.453-9.413M6.26 11.285c-.814 0-1.486-.743-1.486-1.656s.649-1.662 1.483-1.662 1.502.749 1.488 1.662-.656 1.655-1.485 1.655Zm5.482 0c-.815 0-1.485-.743-1.485-1.656s.65-1.662 1.485-1.662 1.498.749 1.483 1.662-.654 1.655-1.483 1.655Z'
+                      d='M9 1.5C4.86 1.5 1.5 4.86 1.5 9a7.5 7.5 0 0 0 6.328 7.395v-5.23H5.906V9H7.83V7.35c0-1.908 1.136-2.963 2.876-2.963.833 0 1.705.15 1.705.15v1.875h-.962c-.945 0-1.24.588-1.24 1.191V9h2.11l-.337 2.165H10.21v5.23A7.5 7.5 0 0 0 16.5 9c0-4.14-3.36-7.5-7.5-7.5Z'
                     />
                   </svg>
                 </a>
@@ -261,16 +254,13 @@ export default function Footer() {
 
           {/* Bottom row */}
           <div className='text-xs flex flex-col items-center justify-between gap-3 text-ln-gray-500 dark:text-ln-gray-400 md:flex-row'>
-            <p>© 2025 Panel Management Systems. All rights reserved.</p>
+            <p>© 2025 Moyduz. Tüm hakları saklıdır.</p>
             <div className='flex items-center gap-1.5'>
-              <span>Created by</span>
               <Link
-                href='https://moydus.com'
-                target='_blank'
-                rel='noopener noreferrer'
+                href='https://moyduz.com'
                 className='font-medium text-ln-gray-700 hover:text-ln-gray-900 dark:text-ln-gray-300 dark:hover:text-ln-gray-0'
               >
-                Moydus
+                moyduz.com
               </Link>
             </div>
           </div>

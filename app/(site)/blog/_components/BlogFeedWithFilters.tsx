@@ -27,7 +27,7 @@ type BlogFeedWithFiltersProps = {
 }
 
 const GRID_CARD =
-  'group flex items-center justify-between rounded-2xl border border-ln-gray-200 bg-ln-gray-50 px-4 py-3 shadow-ln-badge-gray transition-all hover:-translate-y-1 hover:shadow-md hover:border-ln-gray-300 dark:border-ln-gray-800 dark:bg-ln-gray-900 dark:shadow-none dark:ring-1 dark:ring-ln-gray-800 dark:hover:border-ln-gray-700'
+  'group flex items-center justify-between rounded-2xl border border-ln-gray-200 bg-ln-gray-50 px-4 py-3 transition-all hover:-translate-y-1 hover:shadow-md hover:border-ln-gray-300 dark:border-ln-gray-800 dark:bg-ln-gray-900 dark:shadow-none dark:ring-1 dark:ring-ln-gray-800 dark:hover:border-ln-gray-700'
 
 export default function BlogFeedWithFilters({
   blogList,
@@ -47,11 +47,11 @@ export default function BlogFeedWithFilters({
   return (
     <main className="container mx-auto max-w-7xl px-4 py-20">
       {/* Hero */}
-      <section className="mb-10 rounded-3xl bg-ln-gray-50 p-10 shadow-ln-badge-gray dark:bg-ln-gray-900 dark:shadow-none dark:ring-1 dark:ring-ln-gray-800">
+      <section className="mb-10 rounded-3xl bg-ln-gray-50 p-5 shadow-ln-badge-gray dark:bg-ln-gray-900 dark:shadow-none dark:ring-1 dark:ring-ln-gray-800">
         <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.4em] text-ln-gray-600 dark:text-ln-gray-400">
-              Expert Insights
+              Moyduz Blog
             </p>
             <h1 className="mt-4 text-4xl font-bold text-ln-gray-900 md:text-5xl dark:text-ln-gray-100">
               {title}

@@ -8,11 +8,26 @@ export const metadata: Metadata = {
   title: 'Uygulama Rehberleri — E-Ticaret, SEO & Dijital İş | Moyduz',
   description:
     'E-ticaret altyapısı, teknik SEO, site performansı ve dijital iş kurma konularında adım adım uygulama rehberleri. Moyduz uzmanlarından.',
+  keywords: [
+    'e-ticaret rehberi',
+    'seo rehberi',
+    'teknik seo',
+    'site performansı',
+    'dijital büyüme',
+    'uygulama rehberleri',
+  ],
   alternates: { canonical: 'https://moyduz.com/rehber' },
   openGraph: {
     title: 'Uygulama Rehberleri | Moyduz',
     description: 'E-ticaret, SEO ve dijital iş kurma konularında adım adım rehberler.',
     url: 'https://moyduz.com/rehber',
+    locale: 'tr_TR',
+    siteName: 'Moyduz',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Uygulama Rehberleri — E-Ticaret, SEO & Dijital İş | Moyduz',
+    description: 'E-ticaret, SEO ve dijital iş kurma konularında adım adım rehberler.',
   },
 }
 
@@ -26,9 +41,24 @@ function formatDate(iso: string) {
 
 export default async function RehberIndexPage() {
   const posts = await getAllRehberPosts()
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Moyduz Rehberleri',
+    itemListElement: posts.map((post, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: post.frontmatter.title,
+      url: `https://moyduz.com/rehber/${post.frontmatter.slug}`,
+    })),
+  }
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       {/* Header */}
       <div className="mb-12">
         <p className="text-sm font-medium text-ln-orange">Rehberler</p>

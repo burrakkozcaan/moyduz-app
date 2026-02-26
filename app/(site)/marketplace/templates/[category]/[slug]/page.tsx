@@ -438,7 +438,7 @@ export default async function TemplateDetailPage({
                     <span>Contact Creator</span>
                   </Link>
                 )}
-                <Link href="/support" className="flex items-center gap-3 text-sm text-ln-gray-500 hover:text-ln-gray-900 transition-colors py-1 w-full text-left">
+                <Link href="/contact" className="flex items-center gap-3 text-sm text-ln-gray-500 hover:text-ln-gray-900 transition-colors py-1 w-full text-left">
                   <Megaphone className="w-4 h-4" />
                   <span>Report Template</span>
                 </Link>

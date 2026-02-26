@@ -547,7 +547,7 @@ export default function PricingPage() {
           </div>
         </div>
       </div>
-      <div className={`flex-col gap-4 px-2.5 py-7 min-[480px]:px-4 sm:gap-5 md:px-7 xl:!flex ${activeTab === 'personal' ? 'flex duration-300 animate-in fade-in-0 xl:animate-none' : 'hidden xl:flex'}`}>
+      <div className={`flex-col gap-4 px-2.5 py-7 min-[480px]:px-4 sm:gap-5 md:px-7 xl:!flex ${activeTab === 'personal' ? 'flex' : 'hidden xl:flex'}`}>
         <div
           className="flex w-full flex-col items-start pb-2 max-[768px]:!h-72"
           style={{ height: 244 }}
@@ -857,7 +857,7 @@ export default function PricingPage() {
           </div>
         </div>
       </div>
-      <div className={`relative flex-col gap-4 rounded-20 bg-ln-gray-925 px-2.5 py-7 shadow-ln-button-gray min-[480px]:px-4 sm:gap-5 md:rounded-2xl md:px-7 xl:!flex ${activeTab === 'startup' ? 'flex duration-300 animate-in fade-in-0 xl:animate-none' : 'hidden xl:flex'}`}>
+      <div className={`relative flex-col gap-4 rounded-20 bg-ln-gray-925 px-2.5 py-7 shadow-ln-button-gray min-[480px]:px-4 sm:gap-5 md:rounded-2xl md:px-7 xl:!flex ${activeTab === 'startup' ? 'flex' : 'hidden xl:flex'}`}>
       <DottedGlowBackground
         className="pointer-events-none mask-radial-at-center max-md:mask-radial-to-50 md:mask-radial-to-90"
         opacity={1}
@@ -1188,7 +1188,7 @@ export default function PricingPage() {
           </div>
         </div>
       </div>
-      <div className={`flex-col gap-4 px-2.5 py-7 min-[480px]:px-4 sm:gap-5 md:px-7 xl:!flex ${activeTab === 'enterprise' ? 'flex duration-300 animate-in fade-in-0 xl:animate-none' : 'hidden xl:flex'}`}>
+      <div className={`flex-col gap-4 px-2.5 py-7 min-[480px]:px-4 sm:gap-5 md:px-7 xl:!flex ${activeTab === 'enterprise' ? 'flex' : 'hidden xl:flex'}`}>
         <div
           className="flex w-full flex-col items-start pb-2 max-[768px]:!h-72"
           style={{ height: 244 }}

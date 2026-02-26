@@ -4,6 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Basında Biz | Moyduz',
   description: 'Moyduz hakkında basında çıkan haberler ve referanslar.',
+  alternates: { canonical: 'https://moyduz.com/basinda-biz' },
 };
 
 export default function BasindaBizPage() {

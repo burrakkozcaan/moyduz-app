@@ -854,7 +854,7 @@
   }
   html {
     @apply antialiased;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     color: rgb(var(--text-strong-950));
     background-color: rgb(var(--bg-white-0));
   }

@@ -25,10 +25,17 @@ export async function generateMetadata({
 
   const title = post.frontmatter.meta_title || post.frontmatter.title
   const description = post.frontmatter.meta_description || post.frontmatter.snippet
+  const keywords = [
+    post.frontmatter.title,
+    'karşılaştırma',
+    'e-ticaret altyapı karşılaştırma',
+    ...(post.frontmatter.tags || []),
+  ]
 
   return {
     title: `${title} | Karşılaştır | Moyduz`,
     description,
+    keywords,
     alternates: {
       canonical: `https://moyduz.com/compare/${slug}`,
     },
@@ -37,6 +44,8 @@ export async function generateMetadata({
       description,
       url: `https://moyduz.com/compare/${slug}`,
       type: 'article',
+      locale: 'tr_TR',
+      siteName: 'Moyduz',
       publishedTime: post.frontmatter.published_at,
       modifiedTime: post.frontmatter.updated_at || post.frontmatter.published_at,
       ...(post.frontmatter.author_name
@@ -57,11 +66,12 @@ export default async function CompareSlugPage({
   params: Promise<PageParams>
 }) {
   const { slug } = await params
-  const post = await getComparePost(slug)
+  const [post, allPosts] = await Promise.all([
+    getComparePost(slug),
+    getAllComparePosts(),
+  ])
 
   if (!post) notFound()
-
-  const allPosts = await getAllComparePosts()
   const relatedPosts = allPosts
     .filter((p) => p.frontmatter.slug !== slug)
     .slice(0, 4)

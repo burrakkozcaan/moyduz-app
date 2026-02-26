@@ -35,13 +35,8 @@ const BRAND = "Moyduz";
 const LEGAL_NAME = "Moyduz";
 const LOGO_URL = `${SITE_URL}/logo.png`;
 
-export const MOYDUZ_RATING = {
-  "@type": "AggregateRating" as const,
-  ratingValue: "4.9",
-  ratingCount: "850",
-  bestRating: "5",
-  worstRating: "1",
-};
+// AggregateRating: Gerçek kullanıcı yorumlarına dayalı değer eklendiğinde buraya eklenecek.
+// Google politikası gereği uydurma değer kullanılmamalıdır.
 
 /* -------------------------
  * ORGANIZATION
@@ -90,9 +85,9 @@ export function buildOrganizationSchema() {
       description: "Serving businesses globally across 150+ countries",
     },
     sameAs: [
-      "https://www.linkedin.com/company/moydus",
-      "https://x.com/moydus",
-      "https://www.facebook.com/moydus",
+      "https://www.linkedin.com/company/moyduz",
+      "https://x.com/moyduz",
+      "https://www.facebook.com/moyduz",
     ],
     contactPoint: {
       "@type": "ContactPoint",
@@ -123,6 +118,14 @@ export function buildWebsiteSchema() {
     "@type": "WebSite",
     name: BRAND,
     url: `${SITE_URL}/`,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/blog?category={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
   };
 }
 
@@ -149,7 +152,7 @@ export function buildWebPageSchema(params: {
     name: title,
     headline: title,
     description,
-    inLanguage: "en-US",
+    inLanguage: "tr-TR",
     isPartOf: { "@type": "WebSite", name: BRAND, url: SITE_URL },
     publisher: {
       "@type": "Organization",
@@ -317,7 +320,6 @@ export function buildServiceSchema(params: {
       serviceUrl: url,
       serviceType: category,
     },
-    aggregateRating: MOYDUZ_RATING,
   };
 
   if (image) {
@@ -369,7 +371,6 @@ export function buildSoftwareApplicationSchema() {
       url: SITE_URL,
       logo: { "@type": "ImageObject", url: LOGO_URL, width: 512, height: 512 },
     },
-    aggregateRating: MOYDUZ_RATING,
   };
 }
 
@@ -410,11 +411,10 @@ export function buildLocalBusinessSchema() {
       "https://maps.app.goo.gl/vG6rKsrURLD7ZfN99",
     ],
     sameAs: [
-      "https://www.linkedin.com/company/moydus",
-      "https://x.com/moydus",
-      "https://www.facebook.com/moydus",
+      "https://www.linkedin.com/company/moyduz",
+      "https://x.com/moyduz",
+      "https://www.facebook.com/moyduz",
     ],
-    aggregateRating: MOYDUZ_RATING,
   };
 }
 
@@ -449,7 +449,7 @@ export function buildPersonSchema(params?: {
     name = "Moyduz Team",
     jobTitle = "Software Development & Web Design Agency",
     url = `${SITE_URL}/about`,
-    sameAs = ["https://www.linkedin.com/company/moydus"],
+    sameAs = ["https://www.linkedin.com/company/moyduz"],
   } = params || {};
 
   return {

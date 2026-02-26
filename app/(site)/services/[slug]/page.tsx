@@ -32,7 +32,7 @@ export async function generateMetadata({
   const { frontmatter } = page
   const title = frontmatter.title || `${slug} | Moyduz`
   const description =
-    (frontmatter.meta_description as string) || 'Professional digital services.'
+    (frontmatter.meta_description as string) || 'Profesyonel dijital hizmetler.'
   const url =
     (frontmatter.canonical_url as string) ||
     `https://moyduz.com/services/${slug}`
@@ -47,7 +47,7 @@ export async function generateMetadata({
       description,
       url,
       type: 'website',
-      locale: 'en_US',
+      locale: 'tr_TR',
       siteName: 'Moyduz',
     },
     twitter: {

@@ -24,6 +24,20 @@ export async function generateMetadata({
       : undefined
 
   const label = activeCategory ? formatLabel(activeCategory) : null
+  const keywords = label
+    ? [
+        `${label.toLowerCase()} rehberi`,
+        `${label.toLowerCase()} ipuçları`,
+        `${label.toLowerCase()} stratejileri`,
+        'moyduz blog',
+      ]
+    : [
+        'e-ticaret blog',
+        'seo rehberi',
+        'dijital pazarlama',
+        'dijital büyüme',
+        'moyduz blog',
+      ]
 
   return {
     title: label
@@ -33,9 +47,29 @@ export async function generateMetadata({
       ? `Moyduz uzmanlarından ${formatLabel(label).toLowerCase()} konusunda kapsamlı rehberler, stratejiler ve uygulama ipuçları.`
       : 'E-ticaret altyapısı, teknik SEO, dijital pazarlama ve iş kurma konularında Moyduz uzmanlarından kapsamlı rehberler ve stratejiler.',
     alternates: {
-      canonical: label
-        ? `https://moyduz.com/blog?category=${activeCategory}`
-        : 'https://moyduz.com/blog',
+      canonical: 'https://moyduz.com/blog',
+    },
+    keywords,
+    openGraph: {
+      title: label
+        ? `${label} Rehberleri & İçgörüler | Moyduz Blog`
+        : 'Moyduz Blog — E-Ticaret, SEO ve Dijital Büyüme Rehberleri',
+      description: label
+        ? `Moyduz uzmanlarından ${formatLabel(label).toLowerCase()} konusunda kapsamlı rehberler, stratejiler ve uygulama ipuçları.`
+        : 'E-ticaret altyapısı, teknik SEO, dijital pazarlama ve iş kurma konularında Moyduz uzmanlarından kapsamlı rehberler ve stratejiler.',
+      url: 'https://moyduz.com/blog',
+      locale: 'tr_TR',
+      siteName: 'Moyduz',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: label
+        ? `${label} Rehberleri & İçgörüler | Moyduz Blog`
+        : 'Moyduz Blog — E-Ticaret, SEO ve Dijital Büyüme Rehberleri',
+      description: label
+        ? `Moyduz uzmanlarından ${formatLabel(label).toLowerCase()} konusunda kapsamlı rehberler.`
+        : 'E-ticaret, teknik SEO ve dijital büyüme rehberleri.',
     },
   }
 }
@@ -92,21 +126,41 @@ export default async function BlogPage({
     .sort((a, b) => b.count - a.count)
 
   const heroTitle = activeCategory
-    ? `${formatLabel(activeCategory)} Insights`
+    ? `${formatLabel(activeCategory)} Rehberleri`
     : 'Blog'
 
   const heroDescription = activeCategory
     ? `${formatLabel(activeCategory).toLowerCase()} ile ilgili rehberler ve içgörüler.`
     : 'Moyduz uzman görüşleri, rehberler ve büyüme stratejileri.'
 
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: activeCategory
+      ? `${formatLabel(activeCategory)} Rehberleri`
+      : 'Moyduz Blog Yazıları',
+    itemListElement: posts.map((post, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: post.title,
+      url: `https://moyduz.com/blog/${post.slug}`,
+    })),
+  }
+
   return (
-    <BlogFeedWithFilters
-      blogList={posts}
-      title={heroTitle}
-      description={heroDescription}
-      categoryFilters={categoryItems}
-      showCategoryFilters={categoryItems.length > 0}
-      totalCount={posts.length}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+      <BlogFeedWithFilters
+        blogList={posts}
+        title={heroTitle}
+        description={heroDescription}
+        categoryFilters={categoryItems}
+        showCategoryFilters={categoryItems.length > 0}
+        totalCount={posts.length}
+      />
+    </>
   )
 }

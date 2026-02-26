@@ -1,4 +1,37 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Moyduz — E-Ticaret & Yazılım Geliştirme Şirketi',
+  description:
+    'Moyduz ile özel e-ticaret altyapısı, web tasarım ve yazılım geliştirme hizmetleri alın. Türkiye\'nin büyüyen işletmeleri için performans odaklı dijital çözümler.',
+  keywords: [
+    'e-ticaret yazılımı',
+    'özel e-ticaret altyapısı',
+    'web tasarım şirketi',
+    'yazılım geliştirme',
+    'e-ticaret sitesi yaptırma',
+    'dijital altyapı',
+    'moyduz',
+  ],
+  alternates: { canonical: 'https://moyduz.com' },
+  openGraph: {
+    title: 'Moyduz — E-Ticaret & Yazılım Geliştirme Şirketi',
+    description:
+      'Özel e-ticaret altyapısı, web tasarım ve yazılım geliştirme. Türkiye\'nin büyüyen işletmeleri için performans odaklı dijital çözümler.',
+    url: 'https://moyduz.com',
+    locale: 'tr_TR',
+    siteName: 'Moyduz',
+    type: 'website',
+    images: [{ url: 'https://moyduz.com/opengraph-image', width: 1200, height: 630, alt: 'Moyduz — E-Ticaret & Yazılım' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Moyduz — E-Ticaret & Yazılım Geliştirme Şirketi',
+    description: 'Özel e-ticaret altyapısı, web tasarım ve yazılım geliştirme. Türkiye\'nin büyüyen işletmeleri için performans odaklı dijital çözümler.',
+    images: ['https://moyduz.com/opengraph-image'],
+  },
+};
 import * as Button from '@/components/new-ui/button';
 import * as Card from '@/components/new-ui/card';
 import * as Modal from '@/components/new-ui/modal';
@@ -139,14 +172,14 @@ export default function Home() {
               </div>
               <div className='mac:flex pointer-events-none absolute -inset-x-8 inset-y-0 hidden justify-between'>
                 <div
-                  className='animate-spark h-[300px] w-px delay-1000'
+                  className='h-[300px] w-px delay-1000'
                   style={{
                     background:
                       'linear-gradient(rgba(240, 80, 35, 0), rgb(240, 80, 35))',
                   }}
                 />
                 <div
-                  className='animate-spark h-[300px] w-px'
+                  className='h-[300px] w-px'
                   style={{
                     background:
                       'linear-gradient(rgba(240, 80, 35, 0), rgb(240, 80, 35))',

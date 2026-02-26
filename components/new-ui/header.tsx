@@ -30,10 +30,10 @@ import {
 import * as Modal from '@/components/ui/modal';
 
 const menuItems = [
-  { name: 'Blocks', href: '/blocks' },
-  { name: 'Templates', href: '/templates' },
+  { name: 'Blocks', href: '/marketplace/templates/category' },
+  { name: 'Templates', href: '/marketplace/templates' },
   { name: 'Pricing', href: '/pricing' },
-  { name: 'Docs', href: 'https://alignui.com/docs/v1.2/introduction' },
+  { name: 'Docs', href: 'https://docs.moyduz.com' },
   { name: 'FAQ', href: '/faq' },
 ];
 
@@ -63,13 +63,20 @@ export default function Header() {
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+    if (!isMobileMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousPaddingRight = document.body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    document.body.style.overflow = 'hidden';
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
     }
+
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = previousOverflow;
+      document.body.style.paddingRight = previousPaddingRight;
     };
   }, [isMobileMenuOpen]);
 
@@ -130,7 +137,7 @@ export default function Header() {
                           <path stroke="currentColor" strokeLinecap="square" strokeWidth="1.25" d="M8.333 13.333 11.667 10 8.333 6.667" />
                         </svg>
                       </a>
-                      <a className="group/link flex items-center gap-3.5 rounded-xl px-3 py-2.5 transition ease-linear hover:bg-ln-gray-25 dark:hover:bg-ln-gray-800" href="/templates">
+                      <a className="group/link flex items-center gap-3.5 rounded-xl px-3 py-2.5 transition ease-linear hover:bg-ln-gray-25 dark:hover:bg-ln-gray-800" href="/marketplace/templates">
                         <div className="flex size-9 shrink-0 items-center justify-center rounded-[11px] bg-ln-gray-0 dark:bg-ln-gray-800 ring-1 ring-inset ring-ln-gray-100 dark:ring-ln-gray-700 transition ease-linear group-hover/link:shadow-ln-xs group-hover/link:ring-transparent">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-ln-gray-500 transition ease-linear group-hover/link:text-ln-orange">
                             <path fill="currentColor" d="M16.25 5.792v8.416h1.25V5.792zM14.208 16.25H5.792v1.25h8.416zM3.75 14.208V5.792H2.5v8.416zM5.792 3.75h8.416V2.5H5.792zm0 12.5c-.477 0-.798 0-1.044-.02-.24-.02-.354-.055-.43-.093l-.567 1.113c.281.143.579.2.895.225.31.025.69.025 1.146.025zM2.5 14.208c0 .457 0 .837.025 1.146.026.317.082.614.225.895l1.114-.568c-.039-.075-.074-.19-.093-.429-.02-.247-.021-.567-.021-1.044zm1.819 1.929a1.04 1.04 0 0 1-.455-.456l-1.114.568c.22.43.57.782 1.001 1.001zm11.931-1.929c0 .477 0 .797-.02 1.044-.02.24-.055.354-.093.43l1.113.567c.143-.281.2-.578.225-.895.025-.31.025-.69.025-1.146zM14.208 17.5c.457 0 .837 0 1.146-.025.317-.026.614-.082.895-.225l-.568-1.113c-.075.038-.19.073-.429.092-.247.02-.567.021-1.044.021zm1.929-1.819c-.1.196-.26.356-.456.456l.568 1.113c.43-.22.782-.57 1.001-1.001zm1.363-9.89c0-.456 0-.836-.025-1.145-.026-.316-.082-.614-.225-.895l-1.113.568c.038.075.073.19.092.429.02.246.021.567.021 1.044h1.25ZM14.208 3.75c.477 0 .797 0 1.044.02.24.02.354.055.43.094l.567-1.114c-.281-.143-.578-.2-.895-.225-.31-.025-.69-.025-1.146-.025zm3.042.001a2.3 2.3 0 0 0-1-1.001l-.568 1.114c.196.1.356.259.456.455l1.113-.568Zm-13.5  2.04c0-.476 0-.797.02-1.043.02-.24.055-.354.094-.43L2.75 3.752c-.143.281-.2.579-.225.895-.025.31-.025.69-.025 1.146h1.25ZM5.792 2.5c-.457 0-.837 0-1.146.025-.316.026-.614.082-.895.225l.568 1.114c.075-.039.19-.074.429-.093.246-.02.567-.021 1.044-.021zM3.864 4.319c.1-.196.259-.356.455-.455L3.75 2.75c-.43.22-.782.57-1.001 1.001z" />
@@ -165,16 +172,16 @@ export default function Header() {
                 </div>
               </div>
               <div className="flex items-center gap-5 whitespace-nowrap">
-                <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/blocks">
+                <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/marketplace/templates/category">
                   Blocks
                 </Link>
-                <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/templates">
+                <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/marketplace/templates">
                   Templates
                 </Link>
                 <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/pricing">
                   Pricing
                 </Link>
-                <Link target="_blank" className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="https://alignui.com/docs/v1.2/introduction">
+                <Link target="_blank" className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="https://docs.moyduz.com">
                   Docs
                 </Link>
                 <div className="group relative z-50">
@@ -469,7 +476,7 @@ export default function Header() {
                 <div className="my-6">
                   <div className="flex gap-2 items-stretch h-32">
                     <Link
-                      href="/templates"
+                      href="/marketplace/templates"
                       className="w-1/2"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
@@ -487,7 +494,7 @@ export default function Header() {
                       </div>
                     </Link>
                     <Link
-                      href="/templates"
+                      href="/marketplace/templates"
                       className="w-1/2"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
@@ -571,7 +578,7 @@ export default function Header() {
                       </div>
                     </Link>
                     <Link
-                      href="/stories"
+                      href="/customers"
                       className="h-1/2"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
@@ -684,7 +691,7 @@ export default function Header() {
                 </button>
                 <div className="my-6">
                   <Link
-                    href="/support"
+                    href="/faq"
                     className="w-full"
                   onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -699,7 +706,7 @@ export default function Header() {
                   </Link>
                 </div>
                 <Link
-                  href="/support"
+                  href="/faq"
                   className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -749,7 +756,7 @@ export default function Header() {
                 </button>
                 <div className="my-6">
                   <Link
-                    href="https://docs.moydus.com"
+                    href="https://docs.moyduz.com"
                     target="_blank"
                     className="w-full"
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -769,7 +776,7 @@ export default function Header() {
                   </Link>
                 </div>
                 <Link
-                  href="https://docs.moydus.com"
+                  href="https://docs.moyduz.com"
                   target="_blank"
                   className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -778,7 +785,7 @@ export default function Header() {
                   Documentation
                 </Link>
                 <Link
-                  href="https://docs.moydus.com/docs/packages"
+                  href="https://docs.moyduz.com/docs/packages"
                   target="_blank"
                   className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}

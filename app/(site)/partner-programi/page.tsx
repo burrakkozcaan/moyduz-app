@@ -4,6 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Partner Programı | Moyduz',
   description: 'Moyduz partner programı hakkında bilgi alın. Birlikte büyüyelim.',
+  alternates: { canonical: 'https://moyduz.com/partner-programi' },
 };
 
 export default function PartnerProgramiPage() {

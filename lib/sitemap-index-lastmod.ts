@@ -1,8 +1,7 @@
 import { getAllBlogPosts } from '@/lib/mdx'
 import { getPage, SERVICE_SLUGS } from '@/lib/mdx-pages'
 import { getAllRehberPosts } from '@/lib/rehber'
-import fs from 'fs'
-import path from 'path'
+import { getAllComparePosts } from '@/lib/compare'
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || 'https://moyduz.com'
@@ -14,6 +13,7 @@ export const SITEMAP_SECTIONS = [
   'services',
   'rehber',
   'tools',
+  'compare',
 ] as const
 
 export type SitemapSectionId = (typeof SITEMAP_SECTIONS)[number]
@@ -77,6 +77,8 @@ export async function getSegmentLastMod(
             return latest ? new Date(latest).toISOString() : new Date().toISOString()
           }
           case 'tools':
+            return new Date().toISOString()
+          case 'compare':
             return new Date().toISOString()
           default:
             return new Date().toISOString()

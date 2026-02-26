@@ -5,6 +5,14 @@ export const metadata: Metadata = {
   title: 'Ücretsiz E-Ticaret Hesaplama Araçları | Moyduz',
   description:
     'E-ticaret maliyet hesaplama, ROI analizi, pazaryeri komisyon hesaplama ve site sağlık skoru. Ücretsiz araçlarla kararınızı güçlendirin.',
+  keywords: [
+    'e-ticaret hesaplama araçları',
+    'maliyet hesaplama',
+    'roi hesaplama',
+    'komisyon hesaplama',
+    'sanal pos hesaplama',
+    'ücretsiz e-ticaret araçları',
+  ],
   alternates: { canonical: 'https://moyduz.com/tools' },
   openGraph: {
     title: 'Ücretsiz E-Ticaret Hesaplama Araçları | Moyduz',
@@ -14,6 +22,12 @@ export const metadata: Metadata = {
     locale: 'tr_TR',
     siteName: 'Moyduz',
     images: [{ url: 'https://moyduz.com/opengraph-image', width: 1200, height: 630, alt: 'Moyduz Araçları' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ücretsiz E-Ticaret Hesaplama Araçları | Moyduz',
+    description: 'Maliyet, ROI ve komisyon hesaplayıcılar.',
+    images: ['https://moyduz.com/opengraph-image'],
   },
 }
 
@@ -90,8 +104,24 @@ function ToolIcon({ name }: { name: string }) {
 }
 
 export default function ToolsIndexPage() {
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Moyduz E-Ticaret Araçları',
+    itemListElement: TOOLS.map((tool, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: tool.title,
+      url: `https://moyduz.com/tools/${tool.slug}`,
+    })),
+  }
+
   return (
     <main className="flex-1 bg-ln-gray-0 rounded-xl dark:bg-ln-gray-950">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       <div className="container mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16">
         <div className="mb-12 text-center">
           <div className="inline-flex h-7 items-center gap-1.5 rounded-[9px] bg-ln-gray-0 pl-1.5 pr-2.5 text-ln-label-sm text-ln-gray-700 shadow-ln-subheading dark:bg-ln-gray-900 dark:text-ln-gray-300 dark:ring-1 dark:ring-ln-gray-800 md:mb-4">

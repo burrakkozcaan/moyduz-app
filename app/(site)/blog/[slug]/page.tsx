@@ -351,67 +351,21 @@ export default async function BlogSlugPage({
         </nav>
 
         {/* Featured Image */}
-        <div
-          className="w-full rounded-2xl overflow-hidden bg-ln-gray-200 dark:bg-ln-gray-800 mb-8 flex items-center justify-center"
-          style={{ aspectRatio: "16 / 9" }}
-        >
-          {featuredImage ? (
-            <>
-              <img
-                src={featuredImage}
-                alt={post.frontmatter.title}
-                className="block h-full w-full object-cover"
-                loading="eager"
-                decoding="async"
-                onError={(e) => {
-                  // Fallback: if image fails, try og_image or show placeholder
-                  const target = e.target as HTMLImageElement;
-                  if (rawFeaturedImage && rawFeaturedImage !== post.frontmatter.og_image && post.frontmatter.og_image) {
-                    target.src = post.frontmatter.og_image;
-                  } else {
-                    // Show placeholder
-                    target.style.display = 'none';
-                    const placeholder = target.parentElement?.querySelector('.placeholder');
-                    if (placeholder) {
-                      (placeholder as HTMLElement).style.display = 'flex';
-                    }
-                  }
-                }}
-              />
-              <div className="placeholder hidden items-center justify-center w-full h-full text-ln-gray-400 dark:text-ln-gray-600 absolute inset-0">
-                <svg
-                  className="w-24 h-24"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-            </>
-          ) : (
-            <div className="flex items-center justify-center w-full h-full text-ln-gray-400 dark:text-ln-gray-600">
-              <svg
-                className="w-24 h-24"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
-          )}
-        </div>
+        {featuredImage && (
+          <div
+            className="relative w-full rounded-2xl overflow-hidden bg-ln-gray-200 dark:bg-ln-gray-800 mb-8"
+            style={{ aspectRatio: "16 / 9" }}
+          >
+            <Image
+              src={featuredImage}
+              alt={post.frontmatter.title}
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
+            />
+          </div>
+        )}
 
         <article>
           {/* Header */}
@@ -447,10 +401,10 @@ export default async function BlogSlugPage({
                       d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                     />
                   </svg>
-                  Posted{' '}
-                  {new Date(post.frontmatter.published_at).toLocaleDateString('en-US', {
+                  Yayınlandı:{' '}
+                  {new Date(post.frontmatter.published_at).toLocaleDateString('tr-TR', {
                     year: 'numeric',
-                    month: 'short',
+                    month: 'long',
                     day: 'numeric',
                   })}
                 </span>
@@ -470,10 +424,10 @@ export default async function BlogSlugPage({
                       d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                     />
                   </svg>
-                  Updated{' '}
-                  {new Date(post.frontmatter.updated_at).toLocaleDateString('en-US', {
+                  Güncellendi:{' '}
+                  {new Date(post.frontmatter.updated_at).toLocaleDateString('tr-TR', {
                     year: 'numeric',
-                    month: 'short',
+                    month: 'long',
                     day: 'numeric',
                   })}
                 </span>

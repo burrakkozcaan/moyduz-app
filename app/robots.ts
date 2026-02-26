@@ -122,9 +122,7 @@ export default function robots(): MetadataRoute.Robots {
     ],
     sitemap: [
       `${baseUrl}/sitemap.xml`,
-      `${baseUrl}/ai-index.json`,
-      `${baseUrl}/knowledge-graph.json`,
-      `${baseUrl}/vector-sitemap.json`,
     ],
+    host: baseUrl,
   }
 }

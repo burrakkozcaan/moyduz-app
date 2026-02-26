@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 // import { cdn } from "@/lib/cdn";
 
@@ -119,21 +119,9 @@ export default function Testimional() {
     target: sectionRef,
     offset: ["start 80%", "end 20%"],
   });
-  const yLeftRaw = useTransform(scrollYProgress, [0, 1], [60, -60]);
-  const yRightRaw = useTransform(scrollYProgress, [0, 1], [-60, 60]);
-  const yLeft = useSpring(yLeftRaw, { stiffness: 80, damping: 20, mass: 0.5 });
-  const yRight = useSpring(yRightRaw, {
-    stiffness: 80,
-    damping: 20,
-    mass: 0.5,
-  });
-
-  const xGradientRaw = useTransform(scrollYProgress, [0, 1], [-100, 100]);
-  const xGradient = useSpring(xGradientRaw, {
-    stiffness: 80,
-    damping: 20,
-    mass: 0.5,
-  });
+  const yLeft = useTransform(scrollYProgress, [0, 1], [24, -24]);
+  const yRight = useTransform(scrollYProgress, [0, 1], [-24, 24]);
+  const xGradient = useTransform(scrollYProgress, [0, 1], [-40, 40]);
 
   return (
     <section
@@ -176,9 +164,9 @@ export default function Testimional() {
         <div className="flex-1 min-w-0">
           <div className="relative h-[845px] md:h-[845px] sm:h-[500px] overflow-hidden">
             {/* Top fade overlay - sayfa arka planı ile uyumlu gölge */}
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-ln-gray-25 via-ln-gray-25/80 to-transparent z-40" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-ln-gray-25/90 via-ln-gray-25/55 to-transparent z-40" />
             {/* Bottom fade overlay - sayfa arka planı ile uyumlu gölge */}
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-ln-gray-25 via-ln-gray-25/80 to-transparent z-40" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ln-gray-25/90 via-ln-gray-25/55 to-transparent z-40" />
             <div className="absolute inset-0 pointer-events-none" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 h-full">
               <motion.div

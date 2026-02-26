@@ -8,6 +8,29 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { TemplatesFilterClient } from './TemplatesFilterClient'
 import { TrendingUp } from 'lucide-react'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Şablonlar | Moyduz Marketplace',
+  description:
+    'Web sitesi, e-ticaret ve SaaS projeleri için profesyonel, üretime hazır UI şablonlarını keşfedin.',
+  keywords: [
+    'ui şablonları',
+    'hazır web şablonları',
+    'e-ticaret şablonları',
+    'saas şablonları',
+    'marketplace templates',
+  ],
+  alternates: { canonical: 'https://moyduz.com/marketplace/templates' },
+  openGraph: {
+    title: 'Şablonlar | Moyduz Marketplace',
+    description:
+      'Web sitesi, e-ticaret ve SaaS projeleri için profesyonel, üretime hazır UI şablonları.',
+    url: 'https://moyduz.com/marketplace/templates',
+    locale: 'tr_TR',
+    siteName: 'Moyduz',
+  },
+}
 
 export const revalidate = 60
 
@@ -114,18 +137,34 @@ export default async function MarketplaceTemplatesPage({
     return null
   }
 
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Moyduz Şablonları',
+    itemListElement: templates.map((template, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: template.title,
+      url: `https://moyduz.com/marketplace/templates/${template.primaryCategory?.slug || template.categories?.[0]?.slug || 'ai'}/${template.slug}`,
+    })),
+  }
+
   return (
     <main className="flex-1">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       <div className="container mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16">
         {/* Header */}
         <div className="mb-12">
           <h1 className="mb-4 text-[34px] font-550 leading-[40px] -tracking-[0.02em] text-ln-gray-800 md:text-5xl md:text-ln-title-h4 md:text-ln-gray-900 lg:text-6xl">
-            Templates
+            Şablonlar
           </h1>
           <p className="max-w-2xl text-ln-paragraph-md text-ln-gray-600 lg:text-ln-paragraph-lg">
-            Discover professionally designed templates for websites, e-commerce
-            stores, SaaS platforms. Launch faster with scalable, production-ready
-            UI systems.
+            Web sitesi, e-ticaret ve SaaS projeleri için profesyonel tasarlanmış
+            şablonları keşfedin. Ölçeklenebilir ve üretime hazır UI sistemleriyle
+            daha hızlı yayına çıkın.
           </p>
         </div>
 
@@ -133,12 +172,12 @@ export default async function MarketplaceTemplatesPage({
         {categories.length > 0 && (
           <div className="mb-16">
             <div className="mb-6 flex items-center justify-between">
-              <h2 className="text-xl font-550 text-ln-gray-900">Categories</h2>
+              <h2 className="text-xl font-550 text-ln-gray-900">Kategoriler</h2>
               <Link
                 href="/marketplace/templates/category"
                 className="text-ln-label-sm text-ln-gray-600 transition hover:text-ln-gray-800"
               >
-                See All →
+                Tümünü Gör →
               </Link>
             </div>
             <div className="grid grid-cols-2 gap-2.5 md:grid-cols-4 xl:grid-cols-5">
@@ -244,7 +283,7 @@ export default async function MarketplaceTemplatesPage({
                         const views = Number(cat.views) || 0
                         const count = Number(cat.templateCount) || 0
                         const value = views > 0 ? views : count
-                        const label = value >= 1000 ? 'views' : 'templates'
+                        const label = value >= 1000 ? 'görüntüleme' : 'şablon'
                         if (value >= 1000) {
                           const k = (value / 1000).toFixed(1)
                           const fmt = k.endsWith('.0')
@@ -266,15 +305,15 @@ export default async function MarketplaceTemplatesPage({
         <div className="mb-12">
           <div className="flex flex-wrap justify-between gap-3">
             <div className="flex flex-wrap gap-3">
-              <Link
-                href="/marketplace/templates"
-                className={`rounded-full px-5 py-1.5 text-ln-label-sm font-500 transition ${
+                <Link
+                  href="/marketplace/templates"
+                  className={`rounded-full px-5 py-1.5 text-ln-label-sm font-500 transition ${
                   selectedCategory === null && selectedPrice === null
                     ? 'bg-ln-gray-900 text-ln-gray-0 shadow-ln-button-gray'
                     : 'bg-ln-gray-50 text-ln-gray-600 hover:bg-ln-gray-100'
                 }`}
               >
-                All
+                Tümü
               </Link>
             </div>
             <TemplatesFilterClient
@@ -326,7 +365,7 @@ export default async function MarketplaceTemplatesPage({
                   </div>
                   {t.designer && (
                     <p className="text-ln-paragraph-xs text-ln-gray-600">
-                      by {t.designer}
+                      Tasarımcı: {t.designer}
                     </p>
                   )}
                   {t.tags && t.tags.length > 0 && (
@@ -348,7 +387,7 @@ export default async function MarketplaceTemplatesPage({
         ) : (
           <div className="py-16 text-center">
             <p className="text-ln-paragraph-md text-ln-gray-600">
-              No templates found in this category.
+              Bu filtrede şablon bulunamadı.
             </p>
           </div>
         )}

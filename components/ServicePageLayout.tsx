@@ -82,7 +82,7 @@ export function ServicePageLayout({
             {hero.cta_primary && (
               <Link
                 href={hero.cta_primary.href}
-                className="bg-ln-gray-900 dark:bg-ln-gray-0 text-ln-gray-0 dark:text-ln-gray-900 px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity inline-flex items-center justify-center gap-2"
+                className="bg-ln-orange text-white px-8 py-3 rounded-full font-semibold hover:bg-ln-orange/90 transition-colors inline-flex items-center justify-center gap-2"
               >
                 {hero.cta_primary.text}
                 <ArrowRight className="w-4 h-4" />
@@ -133,8 +133,8 @@ export function ServicePageLayout({
                   d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                 />
               </svg>
-              Posted{' '}
-              {new Date(frontmatter.datePublished).toLocaleDateString('en-US', {
+              Yayınlandı{' '}
+              {new Date(frontmatter.datePublished).toLocaleDateString('tr-TR', {
                 year: 'numeric',
                 month: 'short',
                 day: 'numeric',
@@ -156,8 +156,8 @@ export function ServicePageLayout({
                   d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                 />
               </svg>
-              Updated{' '}
-              {new Date(frontmatter.dateModified).toLocaleDateString('en-US', {
+              Güncellendi{' '}
+              {new Date(frontmatter.dateModified).toLocaleDateString('tr-TR', {
                 year: 'numeric',
                 month: 'short',
                 day: 'numeric',
@@ -178,7 +178,7 @@ export function ServicePageLayout({
                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
               />
             </svg>
-            By Moyduz Team
+            Moyduz Ekibi
           </span>
         </div>
 
@@ -205,7 +205,7 @@ export function ServicePageLayout({
                   />
                 </svg>
                 <p className="text-sm font-bold text-ln-gray-900 dark:text-ln-gray-0 uppercase tracking-wide">
-                  Summary
+                  Özet
                 </p>
               </div>
               <p className="text-base text-ln-gray-700 dark:text-ln-gray-300 leading-relaxed font-medium">
@@ -254,7 +254,7 @@ export function ServicePageLayout({
         {frontmatter.features && frontmatter.features.length > 0 && (
           <div id="features" className="mb-20">
             <h2 className="text-3xl md:text-4xl font-semibold mb-12 text-ln-gray-900 dark:text-ln-gray-0 text-center">
-              Why Choose Our Web Design Agency
+              Neden Bizi Tercih Etmelisiniz?
             </h2>
             <div className="grid gap-10 md:grid-cols-2 px-2">
               {frontmatter.features.map((feature, index) => {
@@ -285,7 +285,7 @@ export function ServicePageLayout({
                 id="faq"
                 className="text-2xl font-semibold text-ln-gray-900 dark:text-ln-gray-0"
               >
-                Frequently Asked Questions
+                Sık Sorulan Sorular
               </h2>
               <div className="space-y-4">
                 {frontmatter.faqs.map((faq, idx) => (
@@ -329,29 +329,29 @@ export function ServicePageLayout({
 
         {/* CTA Section */}
         <div className="rounded-2xl border border-ln-gray-200 dark:border-ln-gray-800 bg-ln-gray-0 dark:bg-ln-gray-900 p-8 md:p-12 text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-ln-gray-900 dark:text-ln-gray-0">
-            Ready to Get Started?
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-ln-gray-900 dark:text-ln-gray-0">
+            Projene Başlamaya Hazır mısın?
           </h2>
           <p className="text-ln-gray-600 dark:text-ln-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-            Partner with us to create solutions that drive results. Available for
-            businesses worldwide with clear timelines and measurable outcomes.
+            Ölçülebilir sonuç üreten çözümleri birlikte hayata geçirelim.
+            Net takvim ve şeffaf süreçle ilerleyelim.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
+              <Link
               href="/contact"
-              className="bg-ln-gray-900 dark:bg-ln-gray-0 text-ln-gray-0 dark:text-ln-gray-900 px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity inline-block"
+              className="bg-ln-orange text-white px-8 py-3 rounded-full font-semibold hover:bg-ln-orange/90 transition-colors inline-block"
             >
-              Start Your Project
+              Projeni Başlat
             </Link>
           </div>
         </div>
 
-        {/* Related Services */}
+        {/* İlgili Hizmetler */}
         {frontmatter.related_services &&
           frontmatter.related_services.length > 0 && (
             <div className="mb-20">
-              <h2 className="text-3xl md:text-4xl font-semibold mb-12 text-ln-gray-900 dark:text-ln-gray-0 text-center">
-                Related Services & Resources
+                <h2 className="text-3xl md:text-4xl font-semibold mb-12 text-ln-gray-900 dark:text-ln-gray-0 text-center">
+                İlgili Hizmetler ve Kaynaklar
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {frontmatter.related_services.map((item, index) => (

@@ -4,6 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'KVKK Aydınlatma Metni | Moyduz',
   description: 'Kişisel verilerin korunması ve işlenmesi hakkında aydınlatma metni.',
+  alternates: { canonical: 'https://moyduz.com/kvkk' },
 };
 
 export default function KvkkPage() {

@@ -74,6 +74,15 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
   },
 
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/site.webmanifest",
+
   openGraph: {
     title: "Moyduz – Software Company & Web Design Agency",
     description:
@@ -101,6 +110,10 @@ export const metadata: Metadata = {
 
   alternates: {
     canonical: "https://moyduz.com",
+    languages: {
+      "tr-TR": "https://moyduz.com",
+      "x-default": "https://moyduz.com",
+    },
   },
 
   robots: {
@@ -117,8 +130,8 @@ export const metadata: Metadata = {
   },
 
   other: {
-    "geo.region": "US-NM",
-    "geo.placename": "Albuquerque",
+    "geo.region": "TR-34",
+    "geo.placename": "Istanbul",
     areaServed: "Worldwide",
   },
 };
@@ -130,7 +143,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-    lang='en'
+    lang='tr'
     suppressHydrationWarning
     className={cn(
       inter.variable,

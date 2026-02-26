@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { DottedGlowBackground } from '@/components/ui/dotted-glow-background';
 
 export default function HomePricingCards() {
   const [includeMaintenance, setIncludeMaintenance] = useState(false);
@@ -28,7 +27,7 @@ export default function HomePricingCards() {
         <div className='flex items-center gap-2'>
           <span className='text-ln-label-sm text-ln-gray-700'>Aylık bakım paketi ekle</span>
           {includeMaintenance && (
-            <span className='inline-flex h-5 items-center rounded-[5px] bg-ln-orange/[.10] px-[7px] text-ln-subheading-xs text-ln-orange animate-in fade-in-0 duration-200'>
+            <span className='inline-flex h-5 items-center rounded-[5px] bg-ln-orange/[.10] px-[7px] text-ln-subheading-xs text-ln-orange'>
               $125–$450/ay
             </span>
           )}
@@ -57,7 +56,7 @@ export default function HomePricingCards() {
               Kurumsal siteler, portfolyolar ve landing page'ler için.
             </p>
             {includeMaintenance && (
-              <div className='flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.08] px-2.5 py-1.5 animate-in fade-in-0 slide-in-from-top-1 duration-200'>
+              <div className='flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.08] px-2.5 py-1.5'>
                 <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' className='size-3.5 shrink-0 text-ln-orange'>
                   <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='1.5' d='m5.625 10.886 2.625 2.656 6.125-7.083' />
                 </svg>
@@ -98,20 +97,6 @@ export default function HomePricingCards() {
                 'rgba(41, 41, 41, 0.04) 0px 12px 12px -6px, rgba(41, 41, 41, 0.04) 0px 24px 24px -12px, rgba(41, 41, 41, 0.04) 0px 48px 48px -24px, rgb(15, 15, 15) 0px 0px 0px 1px, rgba(255, 255, 255, 0.12) 0px 1px 2px inset',
             }}
           >
-            <DottedGlowBackground
-              className='pointer-events-none mask-radial-at-center max-md:mask-radial-to-50 md:mask-radial-to-90'
-              opacity={1}
-              gap={8}
-              radius={1.6}
-              colorLightVar='--color-ln-orange'
-              glowColorLightVar='--color-ln-orange'
-              colorDarkVar='--color-ln-orange'
-              glowColorDarkVar='--color-ln-orange'
-              backgroundOpacity={0}
-              speedMin={0.3}
-              speedMax={1.6}
-              speedScale={1}
-            />
             <div className='relative z-10 flex flex-col gap-4'>
               <div className='flex items-start justify-between'>
                 <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' className='size-5 text-ln-orange'>
@@ -133,7 +118,7 @@ export default function HomePricingCards() {
               </p>
             </div>
             {includeMaintenance && (
-              <div className='relative z-10 flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.15] px-2.5 py-1.5 animate-in fade-in-0 slide-in-from-top-1 duration-200'>
+              <div className='relative z-10 flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.15] px-2.5 py-1.5'>
                 <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' className='size-3.5 shrink-0 text-ln-orange'>
                   <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='1.5' d='m5.625 10.886 2.625 2.656 6.125-7.083' />
                 </svg>
@@ -183,7 +168,7 @@ export default function HomePricingCards() {
               Multi-vendor marketplace ve B2B platformları için.
             </p>
             {includeMaintenance && (
-              <div className='flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.08] px-2.5 py-1.5 animate-in fade-in-0 slide-in-from-top-1 duration-200'>
+              <div className='flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.08] px-2.5 py-1.5'>
                 <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' className='size-3.5 shrink-0 text-ln-orange'>
                   <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='1.5' d='m5.625 10.886 2.625 2.656 6.125-7.083' />
                 </svg>

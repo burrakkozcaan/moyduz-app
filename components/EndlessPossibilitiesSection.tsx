@@ -329,24 +329,24 @@ function EmailToClientsWorkflowCardContent() {
 function BulkEmailCardContent() {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-3 p-4">
-      <div className="flex w-full max-w-[13rem] items-center gap-2 rounded-xl  bg-blue-500/20 px-3 py-2 shadow-md dark:border-blue-800 dark:bg-blue-500/25">
-        <Send className="size-4 shrink-0 text-blue-600 dark:text-blue-400" />
-        <span className="text-xs font-medium text-blue-900 dark:text-blue-100">Toplu e-posta kampanyası</span>
+      <div className="flex w-full max-w-[13rem] items-center gap-2 rounded-xl border border-orange-200 bg-orange-500/20 px-3 py-2 shadow-md dark:border-orange-800 dark:bg-orange-500/25">
+        <Send className="size-4 shrink-0 text-orange-600 dark:text-orange-400" />
+        <span className="text-xs font-medium text-orange-900 dark:text-orange-100">Toplu e-posta kampanyası</span>
       </div>
-      <div className="w-full max-w-[14rem] rounded-xl  p-3 shadow-lg dark:border-blue-800/80 dark:bg-blue-950/50">
-        <div className="mb-2 flex items-center justify-between border-b-2 border-white/10 pb-2 text-[10px] dark:border-blue-800/60">
-          <span className="font-medium text-blue-900 dark:text-blue-100">Alıcı listesi</span>
-          <span className="rounded bg-blue-200/80 px-1.5 py-0.5 text-blue-800 dark:bg-blue-800/60 dark:text-blue-200">1.250</span>
+      <div className="w-full max-w-[14rem] rounded-xl border border-orange-200/80 bg-orange-50 p-3 shadow-lg dark:border-orange-800/80 dark:bg-orange-950/50">
+        <div className="mb-2 flex items-center justify-between border-b-2 border-white/10 pb-2 text-[10px] dark:border-orange-800/60">
+          <span className="font-medium text-orange-900 dark:text-orange-100">Alıcı listesi</span>
+          <span className="rounded bg-orange-200/80 px-1.5 py-0.5 text-orange-800 dark:bg-orange-800/60 dark:text-orange-200">1.250</span>
         </div>
         <div className="space-y-1.5">
           {["Bülten aboneleri", "Kampanya segmenti", "CRM listesi"].map((label) => (
-            <div key={label} className="flex items-center gap-2 rounded-md bg-white/80 px-2 py-1.5 text-[10px] dark:bg-blue-900/30">
-              <Mail className="size-3 shrink-0 text-blue-500" />
-              <span className="text-blue-900 dark:text-blue-100">{label}</span>
+            <div key={label} className="flex items-center gap-2 rounded-md bg-white/80 px-2 py-1.5 text-[10px] dark:bg-orange-900/30">
+              <Mail className="size-3 shrink-0 text-orange-500" />
+              <span className="text-orange-900 dark:text-orange-100">{label}</span>
             </div>
           ))}
         </div>
-        <p className="mt-2 text-center text-[9px] text-blue-700/80 dark:text-blue-300/80">Tek tıkla toplu mail gönderimi</p>
+        <p className="mt-2 text-center text-[9px] text-orange-700/80 dark:text-orange-300/80">Tek tıkla toplu mail gönderimi</p>
       </div>
     </div>
   );
@@ -654,7 +654,7 @@ type CardType = "default" | "ai-suggestions" | "workflow" | "tokens" | "spending
 const cards: { type: CardType; title: string; description: string; gradient: string }[] = [
   { type: "email-clients-workflow", title: "Tüm müşterilere e-posta", description: "Tek bir workflow ile tüm müşterilerinize e-posta gönderin; kişiselleştirilmiş mesajlarla iletişimi otomatikleştirin.", gradient: "from-orange-400/30 to-orange-600/20" },
   { type: "whatsapp-bulk", title: "Toplu WhatsApp mesajı", description: "200 kişiye veya daha fazlasına WhatsApp üzerinden tek seferde mesaj gönderin; şablon ve kişiselleştirmeyle kampanyalarınızı yönetin.", gradient: "from-emerald-400/30 to-emerald-600/20" },
-  { type: "bulk-email", title: "Toplu e-posta", description: "Binlerce alıcıya tek seferde kampanya maili gönderin; bülten, segment ve CRM listeleriyle toplu mail yönetimi.", gradient: "from-blue-400/30 to-blue-600/20" },
+  { type: "bulk-email", title: "Toplu e-posta", description: "Binlerce alıcıya tek seferde kampanya maili gönderin; bülten, segment ve CRM listeleriyle toplu mail yönetimi.", gradient: "from-orange-400/30 to-orange-600/20" },
   { type: "data-scrape", title: "Veri toplama & scrape", description: "Kategori ve markaya göre web’den veri elde edin; ürün, fiyat ve stok bilgilerini otomatik toplayın.", gradient: "from-violet-400/30 to-violet-600/20" },
   { type: "ai-suggestions", title: "Akıllı Öneriler", description: "Site iyileştirmeleri ve performans önerileriyle web sitenizi güçlendirin.", gradient: "from-indigo-500/20 to-emerald-500/10" },
   { type: "workflow", title: "Otomatik iş akışları", description: "Sürükle-bırak pipeline ve hazır entegrasyonlarla iş akışlarınızı otomatikleştirin.", gradient: "from-violet-500/20 to-blue-500/10" },
@@ -694,11 +694,11 @@ export function EndlessPossibilitiesSection() {
             <p className="text-2xl font-semibold tracking-tight text-ln-gray-950 md:text-3xl">Sınırsız olanaklar</p>
             <p className="mt-1 text-base text-ln-gray-600 md:text-lg">Sunduğumuz hizmetlerle. Sorunsuz iş akışları ve araçlar.</p>
           </div>
-          <div className="hidden items-center gap-3 md:flex">
-            <button type="button" onClick={() => scroll("left")} className="inline-flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-ln-gray-200 bg-ln-gray-50 text-ln-gray-950 transition-colors hover:border-ln-gray-300 hover:bg-ln-gray-100" aria-label="Önceki">
+          <div className="flex items-center gap-2 md:gap-3">
+            <button type="button" onClick={() => scroll("left")} className="inline-flex size-9 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-ln-gray-200 bg-ln-gray-50 text-ln-gray-950 transition-colors hover:border-ln-gray-300 hover:bg-ln-gray-100 md:size-10" aria-label="Önceki">
               <ChevronLeft />
             </button>
-            <button type="button" onClick={() => scroll("right")} className="inline-flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-ln-gray-200 bg-ln-gray-50 text-ln-gray-950 transition-colors hover:border-ln-gray-300 hover:bg-ln-gray-100" aria-label="Sonraki">
+            <button type="button" onClick={() => scroll("right")} className="inline-flex size-9 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-ln-gray-200 bg-ln-gray-50 text-ln-gray-950 transition-colors hover:border-ln-gray-300 hover:bg-ln-gray-100 md:size-10" aria-label="Sonraki">
               <ChevronRight />
             </button>
           </div>

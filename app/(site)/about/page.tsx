@@ -13,6 +13,12 @@ export const metadata: Metadata = {
     siteName: 'Moyduz',
     images: [{ url: 'https://moyduz.com/opengraph-image', width: 1200, height: 630, alt: 'Moyduz' }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hakkımızda | Moyduz — E-Ticaret & Dijital Altyapı Şirketi',
+    description: 'E-ticaret altyapısı, özel yazılım ve performans odaklı web çözümleri geliştiren dijital teknoloji şirketi.',
+    images: ['https://moyduz.com/opengraph-image'],
+  },
 }
 
 export default function AboutPage() {

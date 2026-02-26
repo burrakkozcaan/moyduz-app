@@ -1,9 +1,9 @@
 import { getAllBlogPosts } from '@/lib/mdx'
 import { getPage, SERVICE_SLUGS } from '@/lib/mdx-pages'
 import { getAllRehberPosts } from '@/lib/rehber'
+import { getAllComparePosts } from '@/lib/compare'
 import {
   SITE_URL,
-  getSegmentLastMod,
   SITEMAP_SECTIONS,
   type SitemapSectionId,
 } from '@/lib/sitemap-index-lastmod'
@@ -29,6 +29,12 @@ const STATIC_URLS: Array<{
   { path: '/compare', changefreq: 'monthly', priority: 0.6 },
   { path: '/alternatives', changefreq: 'monthly', priority: 0.6 },
   { path: '/changelog', changefreq: 'weekly', priority: 0.6 },
+  { path: '/ozel-e-ticaret', changefreq: 'monthly', priority: 0.7 },
+  { path: '/b2b-ecommerce', changefreq: 'monthly', priority: 0.7 },
+  { path: '/multi-vendor', changefreq: 'monthly', priority: 0.7 },
+  { path: '/ecommerce-migration', changefreq: 'monthly', priority: 0.7 },
+  { path: '/basinda-biz', changefreq: 'yearly', priority: 0.4 },
+  { path: '/partner-programi', changefreq: 'monthly', priority: 0.5 },
   { path: '/marketplace/templates', changefreq: 'weekly', priority: 0.8 },
   { path: '/privacy-policy', changefreq: 'yearly', priority: 0.3 },
   { path: '/terms-of-service', changefreq: 'yearly', priority: 0.3 },
@@ -136,12 +142,27 @@ export async function GET(
         '/tools/maliyet-hesaplama',
         '/tools/roi-hesaplama',
         '/tools/komisyon-hesaplama',
+        '/tools/sanal-pos-hesaplama',
         '/tools/site-saglik-skoru',
         '/tools',
       ]
       urls = toolPaths.map((p) =>
         urlEntry(`${SITE_URL}${p}`, now, 'monthly', 0.7)
       )
+      break
+    }
+    case 'compare': {
+      const comparePosts = await getAllComparePosts()
+      urls = comparePosts.map((p) => {
+        const d = p.frontmatter.updated_at || p.frontmatter.published_at
+        const lastmod = d ? new Date(d).toISOString() : now
+        return urlEntry(
+          `${SITE_URL}/compare/${p.frontmatter.slug}`,
+          lastmod,
+          'monthly',
+          0.7
+        )
+      })
       break
     }
     default:

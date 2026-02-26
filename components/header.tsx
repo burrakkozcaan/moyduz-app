@@ -28,7 +28,7 @@ const menuItems = [
   { name: 'Templates', href: '/marketplace/templates' },
   { name: 'Pricing', href: '/pricing' },
   { name: 'Changelog', href: '/changelog' },
-  { name: 'Docs', href: 'https://alignui.com/docs/v1.2/introduction' },
+  { name: 'Docs', href: 'https://docs.moyduz.com' },
   { name: 'FAQ', href: '/faq' },
 ];
 
@@ -43,6 +43,8 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const mobileNavIconShell =
+    'flex size-9 shrink-0 items-center justify-center rounded-[11px] bg-bg-weak-50 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:shadow-ln-xs group-hover:ring-transparent dark:bg-ln-gray-900 dark:ring-ln-gray-800';
 
   // Close mobile menu when window is resized to desktop
   useEffect(() => {
@@ -58,13 +60,20 @@ export default function Header() {
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+    if (!isMobileMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousPaddingRight = document.body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    document.body.style.overflow = 'hidden';
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
     }
+
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = previousOverflow;
+      document.body.style.paddingRight = previousPaddingRight;
     };
   }, [isMobileMenuOpen]);
 
@@ -277,7 +286,7 @@ export default function Header() {
             <Image src="/images/landing/dot.png" width={9} height={9} alt="Dot" className="absolute z-30 min-h-[9px] min-w-[9px] -top-1 -left-px" />
           </div>
         </div>
-        <Link target="_blank" className="relative z-30 block px-2 lg:z-10 lg:px-0" href="/pricing">
+        <Link className="relative z-30 block px-2 lg:z-10 lg:px-0" href="/pricing">
           <div className="flex h-9 items-center gap-1 rounded-[9px] border-ln-gray-200 bg-ln-orange px-1.5 shadow-ln-badge-gray min-[380px]:gap-3 min-[380px]:px-3 lg:h-11 lg:gap-2 lg:rounded-b-[18px] lg:rounded-t-none lg:border-x lg:border-b lg:bg-ln-orange lg:px-4 lg:shadow-none">
             <PackageIcon className="size-5 shrink-0 text-white" strokeWidth={2} />
             <span className="hidden text-ln-label-sm text-white lg:inline">Moyduz&apos;u deneyin</span>
@@ -340,7 +349,8 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/pricing"
-                  className="inline-flex items-center justify-center border select-none relative cursor-pointer disabled:cursor-not-allowed disabled:opacity-70 transition ease-in-out duration-200 bg-bg-strong-950 border-transparent text-text-white-0 not-disabled:hover:bg-bg-surface-800 focus-visible:bg-bg-surface-800 focus-visible:ring-bg-surface-800 focus-visible:ring-2 focus-visible:outline-hidden text-ln-label-sm h-10 px-4 rounded-xl gap-2 mb-4 w-full"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="inline-flex items-center justify-center border select-none relative cursor-pointer disabled:cursor-not-allowed disabled:opacity-70 transition ease-in-out duration-200 bg-ln-orange border-transparent text-white not-disabled:hover:bg-ln-orange/90 focus-visible:bg-ln-orange/90 focus-visible:ring-ln-orange/30 focus-visible:ring-2 focus-visible:outline-hidden text-ln-label-sm h-10 px-4 rounded-xl gap-2 mb-4 w-full"
                 >
                   Başla
                 </Link>
@@ -348,10 +358,12 @@ export default function Header() {
                 onClick={() => setActiveSubmenu("templates")}
                 className="group flex items-center justify-between text-ln-label-sm w-full border-b border-stroke-soft-200 dark:border-ln-gray-800 py-4 text-text-strong-950 dark:text-white transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
               >
-                <span className="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
-                    <path stroke="currentColor" strokeLinejoin="round" strokeWidth="1.5" d="m8.957 5.043 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0L8.957 6.457a1 1 0 0 1 0-1.414Zm0 12.5 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0l-2.336-2.336a1 1 0 0 1 0-1.414Zm-6.25-6.25 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0l-2.336-2.336a1 1 0 0 1 0-1.414Zm12.5 0 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0l-2.336-2.336a1 1 0 0 1 0-1.414Z" />
-                  </svg>
+                <span className="flex items-center gap-3">
+                  <span className={mobileNavIconShell}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="size-5 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
+                      <path stroke="currentColor" strokeLinejoin="round" strokeWidth="1.5" d="m8.957 5.043 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0L8.957 6.457a1 1 0 0 1 0-1.414Zm0 12.5 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0l-2.336-2.336a1 1 0 0 1 0-1.414Zm-6.25-6.25 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0l-2.336-2.336a1 1 0 0 1 0-1.414Zm12.5 0 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0l-2.336-2.336a1 1 0 0 1 0-1.414Z" />
+                    </svg>
+                  </span>
                   Şablonlar
                 </span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-soft-400">
@@ -362,10 +374,12 @@ export default function Header() {
                 onClick={() => setActiveSubmenu("company")}
                 className="group flex items-center justify-between text-ln-label-sm w-full border-b border-stroke-soft-200 dark:border-ln-gray-800 py-4 text-text-strong-950 dark:text-white transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
               >
-                <span className="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M9.999 13.542v3.333m0-3.333h-4.97c-.541 0-1.05-.263-1.361-.706l-1.324-1.875a1.67 1.67 0 0 1 0-1.922l1.324-1.875c.312-.443.82-.706 1.361-.706h4.137c.46 0 .833.373.833.834zm.833-10.417h4.137c.541 0 1.049.263 1.361.706l1.324 1.875a1.67 1.67 0 0 1 0 1.922L16.33 9.503c-.312.442-.82.705-1.361.705h-4.137A.833.833 0 0 1 10 9.375V3.958c0-.46.373-.833.833-.833Z" />
-                  </svg>
+                <span className="flex items-center gap-3">
+                  <span className={mobileNavIconShell}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
+                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M9.999 13.542v3.333m0-3.333h-4.97c-.541 0-1.05-.263-1.361-.706l-1.324-1.875a1.67 1.67 0 0 1 0-1.922l1.324-1.875c.312-.443.82-.706 1.361-.706h4.137c.46 0 .833.373.833.834zm.833-10.417h4.137c.541 0 1.049.263 1.361.706l1.324 1.875a1.67 1.67 0 0 1 0 1.922L16.33 9.503c-.312.442-.82.705-1.361.705h-4.137A.833.833 0 0 1 10 9.375V3.958c0-.46.373-.833.833-.833Z" />
+                    </svg>
+                  </span>
                   Şirket
                 </span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-soft-400">
@@ -376,10 +390,12 @@ export default function Header() {
                 onClick={() => setActiveSubmenu("resources")}
                 className="group flex items-center justify-between text-ln-label-sm w-full border-b border-stroke-soft-200 dark:border-ln-gray-800 py-4 text-text-strong-950 dark:text-white transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
               >
-                <span className="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M1.457 4.792h6.25m-6.25 3.333h3.75m12.572-2.314-1.092-1.09a1.667 1.667 0 0 0-2.357 0l-7.385 7.384a1.67 1.67 0 0 0-.488 1.179v2.758h2.758c.442 0 .866-.176 1.178-.489l7.386-7.385c.65-.65.65-1.706 0-2.357" />
-                  </svg>
+                <span className="flex items-center gap-3">
+                  <span className={mobileNavIconShell}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
+                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M1.457 4.792h6.25m-6.25 3.333h3.75m12.572-2.314-1.092-1.09a1.667 1.667 0 0 0-2.357 0l-7.385 7.384a1.67 1.67 0 0 0-.488 1.179v2.758h2.758c.442 0 .866-.176 1.178-.489l7.386-7.385c.65-.65.65-1.706 0-2.357" />
+                    </svg>
+                  </span>
                   Kaynaklar
                 </span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-soft-400">
@@ -390,11 +406,13 @@ export default function Header() {
                 onClick={() => setActiveSubmenu("help")}
                 className="group flex items-center justify-between text-ln-label-sm w-full border-b border-stroke-soft-200 dark:border-ln-gray-800 py-4 text-text-strong-950 dark:text-white transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
               >
-                <span className="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
-                    <path stroke="currentColor" strokeLinecap="round" strokeWidth="1.25" d="M10.018 9.928c.085-.564.4-.869.717-1.083.309-.21.618-.483.618-.989 0-.697-.56-1.262-1.25-1.262s-1.25.565-1.25 1.262m-1.108 7.547 1.721 1.443a.83.83 0 0 0 1.067.003l1.749-1.45a.83.83 0 0 1 .531-.19h2.395c.92 0 1.667-.747 1.667-1.667v-8.75c0-.92-.746-1.667-1.667-1.667H4.792c-.92 0-1.667.746-1.667 1.667v8.75c0 .92.746 1.666 1.667 1.666H7.21c.196 0 .385.07.535.195Z" />
-                    <path fill="currentColor" stroke="currentColor" strokeWidth="0.417" d="M9.375 11.875a.625.625 0 1 0 1.25 0 .625.625 0 0 0-1.25 0Z" />
-                  </svg>
+                <span className="flex items-center gap-3">
+                  <span className={mobileNavIconShell}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
+                      <path stroke="currentColor" strokeLinecap="round" strokeWidth="1.25" d="M10.018 9.928c.085-.564.4-.869.717-1.083.309-.21.618-.483.618-.989 0-.697-.56-1.262-1.25-1.262s-1.25.565-1.25 1.262m-1.108 7.547 1.721 1.443a.83.83 0 0 0 1.067.003l1.749-1.45a.83.83 0 0 1 .531-.19h2.395c.92 0 1.667-.747 1.667-1.667v-8.75c0-.92-.746-1.667-1.667-1.667H4.792c-.92 0-1.667.746-1.667 1.667v8.75c0 .92.746 1.666 1.667 1.666H7.21c.196 0 .385.07.535.195Z" />
+                      <path fill="currentColor" stroke="currentColor" strokeWidth="0.417" d="M9.375 11.875a.625.625 0 1 0 1.25 0 .625.625 0 0 0-1.25 0Z" />
+                    </svg>
+                  </span>
                   Yardım
                 </span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-soft-400">
@@ -405,10 +423,12 @@ export default function Header() {
                 onClick={() => setActiveSubmenu("docs")}
                 className="group flex items-center justify-between text-ln-label-sm w-full border-b border-stroke-soft-200 dark:border-ln-gray-800 py-4 text-text-strong-950 dark:text-white transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
               >
-                <span className="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M2.5 5.833c0-.92.746-1.667 1.667-1.667h11.666c.92 0 1.667.746 1.667 1.667v8.334c0 .92-.746 1.666-1.667 1.666H4.167c-.92 0-1.667-.746-1.667-1.666zm2.5.834v6.666l3.525-2.266a1.67 1.67 0 0 1 1.817 0l3.525 2.266V6.667zm11.075.758-4.492 2.892a1.67 1.67 0 0 1-1.816 0L5.758 6.425z" />
-                  </svg>
+                <span className="flex items-center gap-3">
+                  <span className={mobileNavIconShell}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-sub-600 transition ease-linear group-hover:text-ln-orange">
+                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M2.5 5.833c0-.92.746-1.667 1.667-1.667h11.666c.92 0 1.667.746 1.667 1.667v8.334c0 .92-.746 1.666-1.667 1.666H4.167c-.92 0-1.667-.746-1.667-1.666zm2.5.834v6.666l3.525-2.266a1.67 1.67 0 0 1 1.817 0l3.525 2.266V6.667zm11.075.758-4.492 2.892a1.67 1.67 0 0 1-1.816 0L5.758 6.425z" />
+                    </svg>
+                  </span>
                   Dokümantasyon
                 </span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-text-soft-400">
@@ -420,8 +440,10 @@ export default function Header() {
                 className="group flex items-center justify-between text-ln-label-sm w-full border-b border-stroke-soft-200 dark:border-ln-gray-800 py-4 text-text-strong-950 dark:text-white transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <span className="flex items-center gap-2">
-                  <CreditCard className="size-5 shrink-0 text-text-sub-600 transition ease-linear group-hover:text-ln-orange" />
+                <span className="flex items-center gap-3">
+                  <span className={mobileNavIconShell}>
+                    <CreditCard className="size-5 text-text-sub-600 transition ease-linear group-hover:text-ln-orange" />
+                  </span>
                   Fiyatlandırma
                 </span>
               </Link>
@@ -488,30 +510,30 @@ export default function Header() {
                 </div>
                 <Link
                   href="/marketplace/templates/category"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="size-4 text-text-sub-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800">
                   <path stroke="currentColor" strokeLinejoin="round" strokeWidth="1.5" d="m8.957 5.043 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0L8.957 6.457a1 1 0 0 1 0-1.414Zm0 12.5 2.336-2.336a1 1 0 0 1 1.414 0l2.336 2.336a1 1 0 0 1 0 1.414l-2.336 2.336a1 1 0 0 1-1.414 0l-2.336-2.336a1 1 0 0 1 0-1.414Z" />
                 </svg>
                   Şablon Kategorileri
                 </Link>
                 <Link
                   href="/blog"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-4 text-text-sub-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800">
                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M1.457 4.792h6.25m-6.25 3.333h3.75m12.572-2.314-1.092-1.09a1.667 1.667 0 0 0-2.357 0l-7.385 7.384a1.67 1.67 0 0 0-.488 1.179v2.758h2.758c.442 0 .866-.176 1.178-.489l7.386-7.385c.65-.65.65-1.706 0-2.357" />
                 </svg>
                   Blog
                 </Link>
                 <Link
                   href="/pricing"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <CreditCard className="size-4 text-text-sub-600" />
+                  <CreditCard className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800" />
                   Fiyatlandırma
                 </Link>
               </div>
@@ -543,7 +565,7 @@ export default function Header() {
                             
                             <div className="flex flex-col gap-0.5">
                               <span className="flex items-center gap-2 font-medium text-text-strong-950 group/nav-card:focus-visible:text-text-strong-950 text-ln-label-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-4 text-text-sub-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-6 shrink-0 rounded-[10px] bg-bg-weak-50 p-1.5 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M9.999 13.542v3.333m0-3.333h-4.97c-.541 0-1.05-.263-1.361-.706l-1.324-1.875a1.67 1.67 0 0 1 0-1.922l1.324-1.875c.312-.443.82-.706 1.361-.706h4.137c.46 0 .833.373.833.834zm.833-10.417h4.137c.541 0 1.049.263 1.361.706l1.324 1.875a1.67 1.67 0 0 1 0 1.922L16.33 9.503c-.312.442-.82.705-1.361.705h-4.137A.833.833 0 0 1 10 9.375V3.958c0-.46.373-.833.833-.833Z" />
                               </svg>
                                 Hakkımızda
@@ -557,7 +579,7 @@ export default function Header() {
                       </div>
                     </Link>
                     <Link
-                      href="/basari-hikayeleri"
+                      href="/customers"
                       className="h-1/2"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
@@ -566,7 +588,7 @@ export default function Header() {
                           <div className="relative flex gap-5 justify-start items-center px-3 h-full">
                             <div className="flex flex-col gap-0.5">
                               <span className="flex items-center gap-2 font-medium text-text-strong-950 group/nav-card:focus-visible:text-text-strong-950 text-ln-label-sm">
-                                <BookOpen className="size-4 text-text-sub-600" />
+                                <BookOpen className="size-6 shrink-0 rounded-[10px] bg-bg-weak-50 p-1.5 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800" />
                                 Başarı Hikayeleri
                               </span>
                               <span className="text-xs text-text-sub-600 font-normal pl-6">
@@ -581,34 +603,34 @@ export default function Header() {
                 </div>
                 <Link
                   href="/blog"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <FileText className="size-4 text-text-sub-600" />
+                  <FileText className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800" />
                   Blog
                 </Link>
                 <Link
                   href="/careers"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Rocket className="size-4 text-text-sub-600" />
+                  <Rocket className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800" />
                   Kariyer
                 </Link>
                 <Link
                   href="/partner-programi"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Smile className="size-4 text-text-sub-600" />
+                  <Smile className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800" />
                   Partner Programı
                 </Link>
                 <Link
                   href="/contact"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Mail className="size-4 text-text-sub-600" />
+                  <Mail className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800" />
                   İletişim
                 </Link>
               </div>
@@ -648,28 +670,28 @@ export default function Header() {
                 </div>
                 <Link
                   href="/services"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Settings className="size-4 text-text-sub-600" />
+                  <Settings className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800" />
                   Hizmet Merkezi
                 </Link>
                 <Link
                   href="/contact"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-4 text-text-sub-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M2.5 5.833c0-.92.746-1.667 1.667-1.667h11.666c.92 0 1.667.746 1.667 1.667v8.334c0 .92-.746 1.666-1.667 1.666H4.167c-.92 0-1.667-.746-1.667-1.666zm2.5.834v6.666l3.525-2.266a1.67 1.67 0 0 1 1.817 0l3.525 2.266V6.667zm11.075.758-4.492 2.892a1.67 1.67 0 0 1-1.816 0L5.758 6.425z" />
                   </svg>
                   İletişim
                 </Link>
                 <Link
                   href="/pricing"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <CreditCard className="size-4 text-text-sub-600" />
+                  <CreditCard className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800" />
                   Fiyatlandırma
                 </Link>
               </div>
@@ -690,7 +712,7 @@ export default function Header() {
                 </button>
                 <div className="my-6">
                   <Link
-                    href="/support"
+                    href="/faq"
                     className="w-full"
                   onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -708,11 +730,11 @@ export default function Header() {
                   </Link>
                 </div>
                 <Link
-                  href="/support"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  href="/faq"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-4 text-text-sub-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800">
                   <path stroke="currentColor" strokeLinecap="round" strokeWidth="1.25" d="M10.018 9.928c.085-.564.4-.869.717-1.083.309-.21.618-.483.618-.989 0-.697-.56-1.262-1.25-1.262s-1.25.565-1.25 1.262m-1.108 7.547 1.721 1.443a.83.83 0 0 0 1.067.003l1.749-1.45a.83.83 0 0 1 .531-.19h2.395c.92 0 1.667-.747 1.667-1.667v-8.75c0-.92-.746-1.667-1.667-1.667H4.792c-.92 0-1.667.746-1.667 1.667v8.75c0 .92.746 1.666 1.667 1.666H7.21c.196 0 .385.07.535.195Z" />
                   <path fill="currentColor" stroke="currentColor" strokeWidth="0.417" d="M9.375 11.875a.625.625 0 1 0 1.25 0 .625.625 0 0 0-1.25 0Z" />
                 </svg>
@@ -720,20 +742,20 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/contact"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-4 text-text-sub-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M2.5 5.833c0-.92.746-1.667 1.667-1.667h11.666c.92 0 1.667.746 1.667 1.667v8.334c0 .92-.746 1.666-1.667 1.666H4.167c-.92 0-1.667-.746-1.667-1.666zm2.5.834v6.666l3.525-2.266a1.67 1.67 0 0 1 1.817 0l3.525 2.266V6.667zm11.075.758-4.492 2.892a1.67 1.67 0 0 1-1.816 0L5.758 6.425z" />
                   </svg>
                   İletişim
                 </Link>
                 <Link
                   href="/blog"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-4 text-text-sub-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M1.457 4.792h6.25m-6.25 3.333h3.75m12.572-2.314-1.092-1.09a1.667 1.667 0 0 0-2.357 0l-7.385 7.384a1.67 1.67 0 0 0-.488 1.179v2.758h2.758c.442 0 .866-.176 1.178-.489l7.386-7.385c.65-.65.65-1.706 0-2.357" />
                   </svg>
                   Kılavuzlar
@@ -741,10 +763,10 @@ export default function Header() {
                 <Link
                   href="https://status.moydus.com"
                   target="_blank"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Activity className="size-4 text-text-sub-600" />
+                  <Activity className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800" />
                   Durum
                 </Link>
               </div>
@@ -765,7 +787,7 @@ export default function Header() {
                 </button>
                 <div className="my-6">
                   <Link
-                    href="https://docs.moydus.com"
+                    href="https://docs.moyduz.com"
                     target="_blank"
                     className="w-full"
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -785,30 +807,30 @@ export default function Header() {
                   </Link>
                 </div>
                 <Link
-                  href="https://docs.moydus.com"
+                  href="https://docs.moyduz.com"
                   target="_blank"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <FileText className="size-4 text-text-sub-600" />
+                  <FileText className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800" />
                   Dokümantasyon
                 </Link>
                 <Link
-                  href="https://docs.moydus.com/docs/packages"
+                  href="https://docs.moyduz.com/docs/packages"
                   target="_blank"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <HelpCircle className="size-4 text-text-sub-600" />
+                  <HelpCircle className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800" />
                   Paket Nasıl Seçilir
                 </Link>
                 <Link
                   href="https://app.moyduz.com"
                   target="_blank"
-                  className="flex items-center gap-2 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
+                  className="group flex items-center gap-3 text-ln-label-sm w-full border-b border-stroke-soft-200 py-4 font-medium text-text-strong-950 transition duration-200 ease-in-out last:border-none hover:text-text-sub-600"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Play className="size-4 text-text-sub-600" />
+                  <Play className="size-8 shrink-0 rounded-[11px] bg-bg-weak-50 p-2 text-text-sub-600 ring-1 ring-inset ring-stroke-soft-200 transition ease-linear group-hover:text-ln-orange dark:bg-ln-gray-900 dark:ring-ln-gray-800" />
                   Başla
                 </Link>
               </div>
