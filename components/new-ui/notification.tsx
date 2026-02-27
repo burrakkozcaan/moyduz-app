@@ -22,7 +22,7 @@ const NotificationViewport = React.forwardRef<
   <NotificationPrimitives.Viewport
     ref={forwardedRef}
     className={cn(
-      'fixed left-0 top-0 z-[100] flex max-h-screen w-full flex-col-reverse gap-5 p-4 sm:bottom-0 sm:left-auto sm:right-0 sm:top-auto sm:max-w-[438px] sm:flex-col sm:p-6',
+      'fixed bottom-4 right-4 z-[100] flex max-h-[calc(100vh-2rem)] w-[min(438px,calc(100vw-2rem))] flex-col gap-4',
       className,
     )}
     {...rest}
@@ -88,9 +88,9 @@ const Notification = React.forwardRef<
         ref={forwardedRef}
         className={cn(
           // open
-          'data-[state=open]:animate-in data-[state=open]:max-[639px]:slide-in-from-top-full data-[state=open]:sm:slide-in-from-right-full',
+          'data-[state=open]:animate-in data-[state=open]:max-[639px]:slide-in-from-bottom-full data-[state=open]:sm:slide-in-from-right-full',
           // close
-          'data-[state=closed]:animate-out data-[state=closed]:fade-out-80 data-[state=open]:max-[639px]:slide-out-to-top-full data-[state=closed]:sm:slide-out-to-right-full',
+          'data-[state=closed]:animate-out data-[state=closed]:fade-out-80 data-[state=closed]:max-[639px]:slide-out-to-bottom-full data-[state=closed]:sm:slide-out-to-right-full',
           // swipe
           'data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)] data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:transition-none data-[swipe=end]:animate-out',
           className,
