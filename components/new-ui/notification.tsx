@@ -22,7 +22,7 @@ const NotificationViewport = React.forwardRef<
   <NotificationPrimitives.Viewport
     ref={forwardedRef}
     className={cn(
-      'fixed bottom-4 right-4 z-[100] flex max-h-[calc(100vh-2rem)] w-[min(438px,calc(100vw-2rem))] flex-col gap-4',
+      'z-[100] flex max-h-[calc(100vh-2rem)] w-[min(438px,calc(100vw-2rem))] flex-col gap-4',
       className,
     )}
     {...rest}
