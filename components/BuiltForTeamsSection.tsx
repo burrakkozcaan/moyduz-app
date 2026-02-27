@@ -99,18 +99,20 @@ export function BuiltForTeamsSection() {
               key={c.name}
               className={`absolute z-10 ${c.positionClass}`}
               variants={cursorItem}
-              animate={{
-                y: [0, -6, 0],
-                transition: {
-                  y: {
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: c.floatDelay,
-                  },
-                },
-              }}
+              style={{ willChange: 'transform' }}
             >
+              <motion.div
+                animate={{
+                  y: [0, -6, 0],
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: c.floatDelay,
+                }}
+                style={{ willChange: 'transform' }}
+              >
               <div className="relative" style={{ color: c.color }}>
                 <CursorIcon />
                 <div
@@ -119,6 +121,7 @@ export function BuiltForTeamsSection() {
                   {c.name}
                 </div>
               </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
