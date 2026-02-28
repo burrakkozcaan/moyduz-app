@@ -186,24 +186,18 @@ export default function RootLayout({
       />
     </head>
     <body>
-      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-            strategy="afterInteractive"
-          />
-          <Script id="ga4-init" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
-                page_path: window.location.pathname,
-              });
-            `}
-          </Script>
-        </>
-      )}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-RS0YYVJ21H"
+        strategy="afterInteractive"
+      />
+      <Script id="ga4-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-RS0YYVJ21H');
+        `}
+      </Script>
       <div className='relative isolate flex min-h-screen flex-col overflow-x-hidden bg-ln-gray-25 dark:bg-ln-gray-900'>
         <ThemeProvider attribute='class' defaultTheme='light' enableSystem>
           <TooltipProvider>
