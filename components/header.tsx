@@ -24,12 +24,12 @@ import * as Modal from '@/components/new-ui/modal';
 import Image from 'next/image';
 
 const menuItems = [
-  { name: 'Blocks', href: '/blocks' },
-  { name: 'Templates', href: '/marketplace/templates' },
-  { name: 'Pricing', href: '/pricing' },
-  { name: 'Changelog', href: '/changelog' },
-  { name: 'Docs', href: 'https://docs.moyduz.com' },
-  { name: 'FAQ', href: '/faq' },
+  { name: 'Hizmetler', href: '/services' },
+  { name: 'Karşılaştır', href: '/compare' },
+  { name: 'Araçlar', href: '/tools' },
+  { name: 'Fiyatlandırma', href: '/pricing' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'İletişim', href: '/contact' },
 ];
 
 const cdn = (path: string, w: number, q: number) => `${path}`;
@@ -157,17 +157,20 @@ export default function Header() {
                 </div>
               </div>
               <div className="flex items-center gap-5 whitespace-nowrap">
-                <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/marketplace/templates/category">
-                  Kategoriler
+                <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/services">
+                  Hizmetler
                 </Link>
-                <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/marketplace/templates">
-                  Şablonlar
+                <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/compare">
+                  Karşılaştır
+                </Link>
+                <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/tools">
+                  Araçlar
                 </Link>
                 <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/pricing">
                   Fiyatlandırma
                 </Link>
-                <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/faq">
-                  S.S.S.
+                <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/blog">
+                  Blog
                 </Link>
                 <div className="group relative z-50">
                   <button type="button" className="flex items-center text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear group-hover:text-ln-gray-800 dark:group-hover:text-white">
@@ -273,8 +276,8 @@ export default function Header() {
               <Link href="https://app.moyduz.com" target="_blank" rel="noopener noreferrer" className="hidden px-2.5 py-2 text-ln-label-sm text-ln-gray-800 dark:text-white transition duration-200 ease-linear hover:text-ln-gray-950 dark:hover:text-ln-gray-200 lg:block">
                 Giriş Yap
               </Link>
-              <Link className="group relative items-center justify-center whitespace-nowrap transition duration-200 ease-out outline-none focus:outline-none disabled:pointer-events-none bg-ln-gray-0 dark:bg-white text-ln-gray-900 dark:text-ln-gray-950 shadow-ln-button-white hover:bg-ln-gray-50 hover:shadow-none disabled:opacity-50 h-9 gap-2.5 rounded-[11px] px-3.5 text-ln-label-sm hidden lg:flex" href="/pricing">
-                Tüm erişimi al
+              <Link className="group relative items-center justify-center whitespace-nowrap transition duration-200 ease-out outline-none focus:outline-none disabled:pointer-events-none bg-ln-orange text-white shadow-ln-button-white hover:bg-ln-orange/90 hover:shadow-none disabled:opacity-50 h-9 gap-2.5 rounded-[11px] px-3.5 text-ln-label-sm hidden lg:flex" href="/contact" data-cta-location="header">
+                Teklif Al
               </Link>
             </div>
             <div className="hidden lg:block ml-2">

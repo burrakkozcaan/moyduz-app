@@ -2,8 +2,11 @@ import { ImageResponse } from 'next/og'
 import { getRehberPost } from '@/lib/rehber'
 
 export const runtime = 'nodejs'
+export const alt = 'Moyduz Rehber'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
+
+const ORANGE = '#f94316'
 
 type Params = { slug: string }
 
@@ -27,7 +30,7 @@ export default async function Image({ params }: { params: Promise<Params> }) {
           position: 'relative',
         }}
       >
-        {/* Orange accent bar */}
+        {/* Orange accent bar - root/site ile aynı */}
         <div
           style={{
             position: 'absolute',
@@ -35,29 +38,29 @@ export default async function Image({ params }: { params: Promise<Params> }) {
             left: 0,
             width: '6px',
             height: '100%',
-            background: '#f97316',
+            background: ORANGE,
           }}
         />
-        {/* Rehber badge */}
+        {/* Rehber badge - blog [slug] ile aynı stil */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            background: 'rgba(249,115,22,0.15)',
-            border: '1px solid rgba(249,115,22,0.4)',
+            background: `${ORANGE}26`,
+            border: `1px solid ${ORANGE}66`,
             borderRadius: '8px',
             padding: '6px 16px',
             marginBottom: '24px',
           }}
         >
-          <div style={{ fontSize: '16px', color: '#f97316', fontWeight: 600 }}>
+          <div style={{ fontSize: '16px', color: ORANGE, fontWeight: 600 }}>
             REHBER
           </div>
         </div>
-        {/* Title */}
+        {/* Title - blog [slug] ile aynı font boyutu */}
         <div
           style={{
-            fontSize: title.length > 60 ? '38px' : '50px',
+            fontSize: title.length > 60 ? '40px' : '52px',
             fontWeight: 700,
             color: '#ffffff',
             lineHeight: 1.2,
@@ -66,7 +69,7 @@ export default async function Image({ params }: { params: Promise<Params> }) {
         >
           {title}
         </div>
-        {/* Footer */}
+        {/* Footer - blog ile aynı */}
         <div
           style={{
             display: 'flex',
@@ -75,8 +78,8 @@ export default async function Image({ params }: { params: Promise<Params> }) {
             gap: '12px',
           }}
         >
-          <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: '#f97316' }} />
-          <div style={{ fontSize: '20px', color: '#f97316', fontWeight: 600 }}>moyduz.com</div>
+          <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: ORANGE }} />
+          <div style={{ fontSize: '20px', color: ORANGE, fontWeight: 600 }}>moyduz.com</div>
         </div>
       </div>
     ),

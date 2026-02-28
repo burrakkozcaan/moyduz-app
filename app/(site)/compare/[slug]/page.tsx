@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { MDXComponents } from '@/lib/mdx-components'
+import { buildFAQPageSchema, buildWebPageSchema, type FaqItem } from '@/seo/json-ld/index'
 
 export async function generateStaticParams() {
   const posts = await getAllComparePosts()
@@ -72,6 +73,21 @@ export default async function CompareSlugPage({
   ])
 
   if (!post) notFound()
+
+  const faqs = (post.frontmatter.faqs as FaqItem[] | undefined) ?? []
+  const webPageSchema = buildWebPageSchema({
+    url: `https://moyduz.com/compare/${slug}`,
+    title: post.frontmatter.meta_title || post.frontmatter.title,
+    description: post.frontmatter.meta_description || post.frontmatter.snippet || '',
+    breadcrumbItems: [
+      { name: 'Ana Sayfa', url: 'https://moyduz.com' },
+      { name: 'Karşılaştır', url: 'https://moyduz.com/compare' },
+      { name: post.frontmatter.title },
+    ],
+    datePublished: post.frontmatter.published_at,
+    dateModified: post.frontmatter.updated_at || post.frontmatter.published_at,
+  })
+
   const relatedPosts = allPosts
     .filter((p) => p.frontmatter.slug !== slug)
     .slice(0, 4)
@@ -82,6 +98,10 @@ export default async function CompareSlugPage({
 
   return (
     <main className="flex-1">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
+      {faqs.length > 0 && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFAQPageSchema(faqs)) }} />
+      )}
       <div className="container mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16">
         {/* Breadcrumb */}
         <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-ln-gray-600 dark:text-ln-gray-400">

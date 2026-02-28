@@ -4,6 +4,13 @@ const nextConfig: NextConfig = {
   // Required for OpenNext Cloudflare Workers deployment
   output: "standalone",
 
+  // Vercel/Google /favicon.ico istediğinde logomuz (favicon.svg) gitsin
+  async rewrites() {
+    return [
+      { source: "/favicon.ico", destination: "/favicon.svg" },
+    ];
+  },
+
   // Source map'leri production'da kapat (reverse engineering zorlaşsın)
   productionBrowserSourceMaps: false,
 

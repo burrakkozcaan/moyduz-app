@@ -1,8 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Link from 'next/link'
 import { ToolsPageShell, TOOLS_CARD_CLASS, TOOLS_BTN_PRIMARY_CLASS, TOOLS_BTN_SECONDARY_CLASS } from '@/components/ToolsPageShell'
+
+function trackToolUsed(toolName: string) {
+  if (typeof window === 'undefined') return
+  if ((window as any).gtag) {
+    (window as any).gtag('event', 'tool_used', { tool_name: toolName })
+  }
+  if (Array.isArray((window as any).dataLayer)) {
+    (window as any).dataLayer.push({ event: 'tool_used', tool_name: toolName })
+  }
+}
 
 const PROVIDERS = [
   {
@@ -60,6 +70,14 @@ export default function SanalPosHesaplamaPage() {
   const [monthlyRevenue, setMonthlyRevenue] = useState(50000)
   const [transactionCount, setTransactionCount] = useState(100)
   const [avgBasket, setAvgBasket] = useState(500)
+  const tracked = useRef(false)
+
+  function onInteract() {
+    if (!tracked.current) {
+      tracked.current = true
+      trackToolUsed('sanal-pos-hesaplama')
+    }
+  }
 
   // Derived inputs (avgBasket × txCount ≈ revenue, but we let user control all 3)
   const costs = PROVIDERS.map((p) => {
@@ -111,7 +129,7 @@ export default function SanalPosHesaplamaPage() {
             <input
               type="range" min={5000} max={2000000} step={5000}
               value={monthlyRevenue}
-              onChange={(e) => setMonthlyRevenue(Number(e.target.value))}
+              onChange={(e) => { onInteract(); setMonthlyRevenue(Number(e.target.value)) }}
               className="w-full accent-orange-500"
             />
             <div className="flex justify-between text-xs text-ln-gray-400">

@@ -66,16 +66,13 @@ export function buildOrganizationSchema() {
       license: `${SITE_URL}/terms-of-service`,
     },
     description:
-      "Moyduz is a US-based web design, software development and AI-powered digital agency serving businesses worldwide.",
+      "Moyduz, Türkiye merkezli e-ticaret altyapısı ve yazılım geliştirme ajansıdır. Komisyonsuz mağazalar, B2B fiyatlandırma ve özel yazılım çözümleri.",
     email: "info@moyduz.com",
-    telephone: "+1-505-460-5392",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "1209 Mountain Road Place Northeast, Ste N",
-      addressLocality: "Albuquerque",
-      addressRegion: "New Mexico",
-      postalCode: "87110",
-      addressCountry: "US",
+      addressLocality: "İstanbul",
+      addressRegion: "İstanbul",
+      addressCountry: "TR",
     },
     foundingDate: "2020",
     numberOfEmployees: { "@type": "QuantitativeValue", value: "10-50" },
@@ -91,11 +88,10 @@ export function buildOrganizationSchema() {
     ],
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+1-505-460-5392",
       contactType: "Customer Service",
       email: "info@moyduz.com",
       areaServed: "Worldwide",
-      availableLanguage: ["English"],
+      availableLanguage: ["English", "Turkish"],
     },
     knowsAbout: [
       "Web Design",
@@ -306,13 +302,10 @@ export function buildServiceSchema(params: {
       logo: { "@type": "ImageObject", url: LOGO_URL, width: 512, height: 512 },
       address: {
         "@type": "PostalAddress",
-        streetAddress: "1209 Mountain Road Place Northeast, Ste N",
-        addressLocality: "Albuquerque",
-        addressRegion: "New Mexico",
-        postalCode: "87110",
-        addressCountry: "US",
+        addressLocality: "İstanbul",
+        addressRegion: "İstanbul",
+        addressCountry: "TR",
       },
-      telephone: "+1-505-460-5392",
       email: "info@moyduz.com",
     },
     availableChannel: {
@@ -385,31 +378,25 @@ export function buildLocalBusinessSchema() {
     legalName: LEGAL_NAME,
     url: SITE_URL,
     description:
-      "E-Commerce, Social, Web Design & SaaS Agency serving businesses worldwide across 150+ countries.",
+      "Türkiye merkezli e-ticaret altyapısı ve yazılım geliştirme ajansı. Komisyonsuz mağazalar, B2B fiyatlandırma ve özel yazılım çözümleri.",
     image: LOGO_URL,
-    telephone: "+1-505-460-5392",
     email: "info@moyduz.com",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "1209 Mountain Road Place Northeast, Ste N",
-      addressLocality: "Albuquerque",
-      addressRegion: "New Mexico",
-      postalCode: "87110",
-      addressCountry: "US",
+      addressLocality: "İstanbul",
+      addressRegion: "İstanbul",
+      addressCountry: "TR",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 35.091662,
-      longitude: -106.558042,
+      latitude: 41.0082,
+      longitude: 28.9784,
     },
     areaServed: {
       "@type": "Place",
       name: "Worldwide",
       description: "Serving businesses globally across 150+ countries",
     },
-    hasMap: [
-      "https://maps.app.goo.gl/vG6rKsrURLD7ZfN99",
-    ],
     sameAs: [
       "https://www.linkedin.com/company/moyduz",
       "https://x.com/moyduz",
@@ -433,6 +420,44 @@ export function buildFAQPageSchema(faqs: FaqItem[]) {
         text: f.answer,
       },
     })),
+  };
+}
+
+/* -------------------------
+ * WEB APPLICATION (TOOLS)
+ * ------------------------*/
+export function buildWebApplicationToolSchema(params: {
+  name: string;
+  description: string;
+  url: string;
+  applicationCategory?: string;
+}) {
+  return {
+    "@context": SCHEMA_CONTEXT,
+    "@type": "WebApplication",
+    name: params.name,
+    description: params.description,
+    url: params.url,
+    applicationCategory: params.applicationCategory ?? "FinanceApplication",
+    operatingSystem: "Web Browser",
+    inLanguage: "tr-TR",
+    isAccessibleForFree: true,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "TRY",
+    },
+    author: {
+      "@type": "Organization",
+      name: LEGAL_NAME,
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: LEGAL_NAME,
+      url: SITE_URL,
+      logo: { "@type": "ImageObject", url: LOGO_URL, width: 512, height: 512 },
+    },
   };
 }
 

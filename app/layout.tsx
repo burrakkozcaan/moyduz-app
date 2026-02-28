@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/utils/cn';
 import { Provider as TooltipProvider } from '@/components/new-ui/tooltip';
 import { NotificationProvider } from '@/components/new-ui/notification-provider';
+import Script from 'next/script';
 import {
   buildWebsiteSchema,
   buildOrganizationSchema,
@@ -76,7 +77,8 @@ export const metadata: Metadata = {
 
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
       { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
@@ -184,7 +186,25 @@ export default function RootLayout({
       />
     </head>
     <body>
-      <div className='relative isolate flex min-h-screen flex-col overflow-x-hidden bg-ln-gray-25'>
+      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+            strategy="afterInteractive"
+          />
+          <Script id="ga4-init" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
+                page_path: window.location.pathname,
+              });
+            `}
+          </Script>
+        </>
+      )}
+      <div className='relative isolate flex min-h-screen flex-col overflow-x-hidden bg-ln-gray-25 dark:bg-ln-gray-900'>
         <ThemeProvider attribute='class' defaultTheme='light' enableSystem>
           <TooltipProvider>
             {children}

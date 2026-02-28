@@ -10,9 +10,9 @@ const mode = "dark" as const;
 
 
 const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://www.moyduz.com"
-    : "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
+  (process.env.NODE_ENV === "production" ? "https://www.moyduz.com" : "http://localhost:3000");
 
 export default async function Image() {
 

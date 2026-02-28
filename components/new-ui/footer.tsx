@@ -254,7 +254,7 @@ export default function Footer() {
 
           {/* Bottom row */}
           <div className='text-xs flex flex-col items-center justify-between gap-3 text-ln-gray-500 dark:text-ln-gray-400 md:flex-row'>
-            <p>© 2025 Moyduz. Tüm hakları saklıdır.</p>
+            <p>© 2026 Moyduz. Tüm hakları saklıdır.</p>
             <div className='flex items-center gap-1.5'>
               <Link
                 href='https://moyduz.com'
