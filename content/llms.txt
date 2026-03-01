@@ -4,35 +4,82 @@
 
 ## About
 
-Moyduz is a software company and web design agency delivering custom e-commerce platforms, SaaS products, and AI automation tools. We serve businesses worldwide across 150+ countries.
+Moyduz is a Turkey-based software company and web design agency founded in 2020. We deliver custom e-commerce platforms, SaaS products, AI automation tools, and digital marketing solutions. We serve businesses worldwide across 150+ countries.
+
+- **Legal Name**: Moyduz
+- **Founded**: 2020
+- **Headquarters**: İstanbul, Turkey
+- **Email**: info@moyduz.com
+- **Language**: Turkish (primary), English
+- **License / Terms**: https://moyduz.com/terms-of-service
+- **Privacy**: https://moyduz.com/privacy-policy
 
 ## Key Pages
 
-- / - Homepage
-- /about - About Us
-- /services - Services
-- /compare - Karşılaştır (platform karşılaştırması)
-- /alternatives - Alternatifler (Shopify, ikas, Webflow vb. alternatifleri)
-- /careers - Careers
-- /customers - Customers
-- /marketplace/templates - Template marketplace
-- /pricing - Pricing
+- / - Ana Sayfa (Homepage)
+- /about - Hakkımızda (About Us)
+- /services - Hizmetler (Services)
+- /pricing - Fiyatlandırma (Pricing)
+- /contact - İletişim (Contact)
 - /blog - Blog
-- /faq - FAQ
-- /contact - Contact
-- /privacy-policy - Privacy Policy
-- /refund-policy - Refund Policy
-- /terms-of-service - Terms of Service
+- /rehber - Rehber (Guides)
+- /faq - Sıkça Sorulan Sorular (FAQ)
+- /careers - Kariyer (Careers)
+- /customers - Müşteriler (Customers)
+- /compare - Platform Karşılaştırma (Compare platforms)
+- /alternatives - Alternatifler (Shopify, ikas, Webflow vs. alternatives)
+- /marketplace/templates - Şablon marketplace (Template marketplace)
+- /changelog - Değişiklik geçmişi (Changelog)
+- /privacy-policy - Gizlilik Politikası
+- /refund-policy - İade Politikası
+- /terms-of-service - Kullanım Koşulları
 
 ## Products & Services
 
-- High-performing e-commerce websites
-- Custom web design and development
-- SaaS platforms and cloud infrastructure
-- AI-powered automation tools
-- Digital marketing and analytics
-- Template marketplace for blocks and designs
+- Yüksek performanslı e-ticaret web siteleri (High-performing e-commerce websites)
+- Özel web tasarımı ve geliştirme (Custom web design and development)
+- SaaS platformları ve bulut altyapısı (SaaS platforms and cloud infrastructure)
+- Yapay zeka destekli otomasyon araçları (AI-powered automation tools)
+- Dijital pazarlama ve analitik (Digital marketing and analytics)
+- Bloklar ve tasarımlar için şablon marketplace (Template marketplace for blocks and designs)
+- E-ticaret danışmanlığı (E-commerce consultancy)
+- B2B fiyatlandırma çözümleri (B2B pricing solutions)
+
+## Free Tools
+
+- /tools/e-ticaret-kar-hesaplama - E-Ticaret Kâr Hesaplama
+- /tools/komisyon-hesaplama - Komisyon Hesaplama
+- /tools/maliyet-hesaplama - Maliyet Hesaplama
+- /tools/roi-hesaplama - ROI Hesaplama
+- /tools/sanal-pos-hesaplama - Sanal POS Hesaplama
+- /tools/site-saglik-skoru - Site Sağlık Skoru
+
+## Technology Stack
+
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- Vercel (hosting)
+- Fumadocs (docs/guides)
+
+## Target Audience
+
+- E-ticaret girişimleri ve KOBİ'ler (E-commerce startups and SMBs)
+- SaaS kurucuları (SaaS founders)
+- Dijital pazarlama ajansları (Digital marketing agencies)
+- Türkiye ve dünya genelinde işletmeler
+
+## Social / Profiles
+
+- LinkedIn: https://www.linkedin.com/company/moyduz
+- X (Twitter): https://x.com/moyduz
+- Facebook: https://www.facebook.com/moyduz
 
 ## Contact
 
-For inquiries: /contact
+For inquiries: https://moyduz.com/contact
+Email: info@moyduz.com
+
+## AI Usage Policy
+
+This file is provided for AI/LLM indexing and summarization. Content may be used to answer questions about Moyduz. Do not reproduce full page text without attribution. Copyright © 2025 Moyduz. All rights reserved.

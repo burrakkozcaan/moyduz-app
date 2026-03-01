@@ -42,26 +42,26 @@ const kalam = Kalam({
 export const metadata: Metadata = {
   metadataBase: new URL("https://moyduz.com"),
 
-  title: "Software Company & Web Design Agency | Moyduz",
+  title: "Yazılım Şirketi & Web Tasarım Ajansı | Moyduz",
   description:
-    "Software company & web design agency delivering e-commerce platforms, SaaS products, and AI automation. Trusted by businesses worldwide.",
+    "E-ticaret platformları, SaaS ürünleri ve yapay zeka otomasyon çözümleri sunan yazılım şirketi ve web tasarım ajansı. Dünya genelinde işletmelerin güvendiği çözüm ortağı.",
 
   keywords: [
-    "software company",
-    "web design agency",
-    "web development company",
-    "e-commerce agency",
-    "e-commerce development",
-    "saas development",
-    "web designer",
-    "digital agency",
-    "web design company",
+    "yazılım şirketi",
+    "web tasarım ajansı",
+    "web geliştirme şirketi",
+    "e-ticaret ajansı",
+    "e-ticaret geliştirme",
+    "saas geliştirme",
+    "web tasarımcı",
+    "dijital ajans",
+    "web tasarım şirketi",
   ],
 
   authors: [{ name: "Moyduz Team", url: "https://moyduz.com" }],
   creator: "Moyduz",
   publisher: "Moyduz",
-  category: "Technology",
+  category: "Teknoloji",
 
   formatDetection: {
     email: false,
@@ -86,9 +86,9 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 
   openGraph: {
-    title: "Moyduz – Software Company & Web Design Agency",
+    title: "Moyduz – Yazılım Şirketi & Web Tasarım Ajansı",
     description:
-      "Custom e-commerce platforms, SaaS products and AI automation tools by a leading software company and web design agency.",
+      "Önde gelen yazılım şirketi ve web tasarım ajansı tarafından sunulan özel e-ticaret platformları, SaaS ürünleri ve yapay zeka otomasyon araçları.",
     url: "https://moyduz.com",
     siteName: "Moyduz",
     images: [
@@ -96,7 +96,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Moyduz – Software Company & Web Design Agency",
+        alt: "Moyduz – Yazılım Şirketi & Web Tasarım Ajansı",
       },
     ],
     locale: "tr_TR",
@@ -105,8 +105,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Moyduz – Software Company & Web Design Agency",
-    description: "E-Commerce, SaaS, AI Automation & Web Design",
+    title: "Moyduz – Yazılım Şirketi & Web Tasarım Ajansı",
+    description: "E-Ticaret, SaaS, Yapay Zeka Otomasyonu & Web Tasarımı",
     images: ["/opengraph-image"],
   },
 
@@ -145,68 +145,68 @@ export default function RootLayout({
 }>) {
   return (
     <html
-    lang='tr'
-    suppressHydrationWarning
-    className={cn(
-      inter.variable,
-      geistMono.variable,
-      kalam.variable,
-      'antialiased',
-    )}
-  >
-    <head>
-      <link rel="preconnect" href="https://cdn.moydus.com" />
-      <link rel="dns-prefetch" href="https://cdn.moydus.com" />
+      lang='tr'
+      suppressHydrationWarning
+      className={cn(
+        inter.variable,
+        geistMono.variable,
+        kalam.variable,
+        'antialiased',
+      )}
+    >
+      <head>
+        <link rel="preconnect" href="https://cdn.moydus.com" />
+        <link rel="dns-prefetch" href="https://cdn.moydus.com" />
 
-      <link
-        rel="alternate"
-        type="application/rss+xml"
-        title="Moyduz Blog RSS Feed"
-        href="https://moyduz.com/feed.xml"
-      />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Moyduz Blog RSS Feed"
+          href="https://moyduz.com/feed.xml"
+        />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            buildWebsiteSchema(),
-            buildOrganizationSchema(),
-            buildSoftwareApplicationSchema(),
-            buildServiceSchema({
-              url: "https://moyduz.com/services",
-              name: "Digital Services",
-              description:
-                "Comprehensive digital services including web design, web development, e-commerce development, custom software development, and digital marketing services.",
-              category: "Digital Services",
-              areaServed: "Worldwide",
-            }),
-            buildLocalBusinessSchema(),
-          ]),
-        }}
-      />
-    </head>
-    <body>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-RS0YYVJ21H"
-        strategy="afterInteractive"
-      />
-      <Script id="ga4-init" strategy="afterInteractive">
-        {`
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              buildWebsiteSchema(),
+              buildOrganizationSchema(),
+              buildSoftwareApplicationSchema(),
+              buildServiceSchema({
+                url: "https://moyduz.com/services",
+                name: "Digital Services",
+                description:
+                  "Comprehensive digital services including web design, web development, e-commerce development, custom software development, and digital marketing services.",
+                category: "Digital Services",
+                areaServed: "Worldwide",
+              }),
+              buildLocalBusinessSchema(),
+            ]),
+          }}
+        />
+      </head>
+      <body>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-RS0YYVJ21H"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-RS0YYVJ21H');
         `}
-      </Script>
-      <div className='relative isolate flex min-h-screen flex-col overflow-x-hidden bg-ln-gray-25 dark:bg-ln-gray-900'>
-        <ThemeProvider attribute='class' defaultTheme='light' enableSystem>
-          <TooltipProvider>
-            {children}
-          </TooltipProvider>
-        </ThemeProvider>
-      </div>
-      <NotificationProvider />
-    </body>
-  </html>
+        </Script>
+        <div className='relative isolate flex min-h-screen flex-col overflow-x-hidden bg-ln-gray-25 dark:bg-ln-gray-900'>
+          <ThemeProvider attribute='class' defaultTheme='light' enableSystem>
+            <TooltipProvider>
+              {children}
+            </TooltipProvider>
+          </ThemeProvider>
+        </div>
+        <NotificationProvider />
+      </body>
+    </html>
   );
 }

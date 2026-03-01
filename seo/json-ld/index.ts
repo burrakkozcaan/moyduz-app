@@ -13,6 +13,30 @@ export type MoyduzImage = {
   alt?: string;
 };
 
+/** Tüm ImageObject'lere standart telif/lisans meta verilerini ekler */
+function buildImageObject(params: {
+  url: string;
+  width?: number;
+  height?: number;
+  caption?: string;
+  creator?: object;
+  copyrightHolder?: object;
+}) {
+  return {
+    "@type": "ImageObject",
+    url: params.url,
+    ...(params.width ? { width: params.width } : {}),
+    ...(params.height ? { height: params.height } : {}),
+    ...(params.caption ? { caption: params.caption } : {}),
+    ...(params.creator ? { creator: params.creator } : {}),
+    ...(params.copyrightHolder ? { copyrightHolder: params.copyrightHolder } : {}),
+    copyrightNotice: `© ${new Date().getFullYear()} Moyduz. All rights reserved.`,
+    creditText: "Moyduz",
+    acquireLicensePage: `${SITE_URL}/terms-of-service`,
+    license: `${SITE_URL}/terms-of-service`,
+  };
+}
+
 export type MoyduzAuthor = {
   name: string;
   url?: string;
@@ -48,23 +72,22 @@ export function buildOrganizationSchema() {
     name: LEGAL_NAME,
     legalName: LEGAL_NAME,
     url: SITE_URL,
-    logo: {
-      "@type": "ImageObject",
-      url: LOGO_URL,
-      width: 512,
-      height: 512,
-      caption: `${BRAND} Logo`,
-    },
-    image: {
-      "@type": "ImageObject",
+    logo: buildImageObject({
       url: LOGO_URL,
       width: 512,
       height: 512,
       caption: `${BRAND} Logo`,
       creator: { "@type": "Organization", name: LEGAL_NAME },
       copyrightHolder: { "@type": "Organization", name: LEGAL_NAME },
-      license: `${SITE_URL}/terms-of-service`,
-    },
+    }),
+    image: buildImageObject({
+      url: LOGO_URL,
+      width: 512,
+      height: 512,
+      caption: `${BRAND} Logo`,
+      creator: { "@type": "Organization", name: LEGAL_NAME },
+      copyrightHolder: { "@type": "Organization", name: LEGAL_NAME },
+    }),
     description:
       "Moyduz, Türkiye merkezli e-ticaret altyapısı ve yazılım geliştirme ajansıdır. Komisyonsuz mağazalar, B2B fiyatlandırma ve özel yazılım çözümleri.",
     email: "info@moyduz.com",
@@ -78,8 +101,8 @@ export function buildOrganizationSchema() {
     numberOfEmployees: { "@type": "QuantitativeValue", value: "10-50" },
     areaServed: {
       "@type": "Place",
-      name: "Worldwide",
-      description: "Serving businesses globally across 150+ countries",
+      name: "Dünya Geneli",
+      description: "150'den fazla ülkede işletmelere hizmet veriyoruz",
     },
     sameAs: [
       "https://www.linkedin.com/company/moyduz",
@@ -88,19 +111,19 @@ export function buildOrganizationSchema() {
     ],
     contactPoint: {
       "@type": "ContactPoint",
-      contactType: "Customer Service",
+      contactType: "Müşteri Hizmetleri",
       email: "info@moyduz.com",
-      areaServed: "Worldwide",
-      availableLanguage: ["English", "Turkish"],
+      areaServed: "Dünya Geneli",
+      availableLanguage: ["Türkçe", "İngilizce"],
     },
     knowsAbout: [
-      "Web Design",
-      "Software Development",
-      "E-commerce Development",
-      "Search Engine Optimization",
-      "Artificial Intelligence",
-      "Digital Marketing",
-      "SaaS Development",
+      "Web Tasarımı",
+      "Yazılım Geliştirme",
+      "E-Ticaret Geliştirme",
+      "Arama Motoru Optimizasyonu",
+      "Yapay Zeka",
+      "Dijital Pazarlama",
+      "SaaS Geliştirme",
     ],
   };
 }
@@ -154,7 +177,7 @@ export function buildWebPageSchema(params: {
       "@type": "Organization",
       name: LEGAL_NAME,
       url: SITE_URL,
-      logo: { "@type": "ImageObject", url: LOGO_URL, width: 512, height: 512 },
+      logo: buildImageObject({ url: LOGO_URL, width: 512, height: 512, caption: `${BRAND} Logo`, creator: { "@type": "Organization", name: LEGAL_NAME }, copyrightHolder: { "@type": "Organization", name: LEGAL_NAME } }),
     },
   };
 
@@ -162,13 +185,14 @@ export function buildWebPageSchema(params: {
   if (params.dateModified) base.dateModified = params.dateModified;
 
   if (image) {
-    base.image = {
-      "@type": "ImageObject",
+    base.image = buildImageObject({
       url: image.url,
       width: image.width ?? 1200,
       height: image.height ?? 630,
       caption: image.alt || title,
-    };
+      creator: { "@type": "Organization", name: LEGAL_NAME },
+      copyrightHolder: { "@type": "Organization", name: LEGAL_NAME },
+    });
   }
 
   if (speakable) {
@@ -229,6 +253,7 @@ export function buildBlogPostingSchema(params: {
     headline: title,
     description,
     articleSection: "Blog",
+    inLanguage: "tr-TR",
     datePublished,
     dateModified: dateModified ?? datePublished,
     isAccessibleForFree: true,
@@ -245,12 +270,14 @@ export function buildBlogPostingSchema(params: {
   };
 
   if (image) {
-    data.image = {
-      "@type": "ImageObject",
+    data.image = buildImageObject({
       url: image.url,
       width: image.width ?? 1200,
       height: image.height ?? 630,
-    };
+      caption: title,
+      creator: { "@type": "Organization", name: LEGAL_NAME },
+      copyrightHolder: { "@type": "Organization", name: LEGAL_NAME },
+    });
   }
 
   if (geo?.city || geo?.country) {
@@ -316,13 +343,14 @@ export function buildServiceSchema(params: {
   };
 
   if (image) {
-    data.image = {
-      "@type": "ImageObject",
+    data.image = buildImageObject({
       url: image.url,
       width: image.width ?? 1200,
       height: image.height ?? 630,
       caption: image.alt || name,
-    };
+      creator: { "@type": "Organization", name: LEGAL_NAME },
+      copyrightHolder: { "@type": "Organization", name: LEGAL_NAME },
+    });
   }
 
   if (params.priceFrom && params.priceTo && params.currency) {
@@ -348,9 +376,10 @@ export function buildSoftwareApplicationSchema() {
     "@type": "SoftwareApplication",
     name: "Moyduz Platform",
     description:
-      "Full-service software development platform and web design agency delivering scalable e-commerce platforms, custom SaaS products, and AI automation solutions.",
+      "Ölçeklenebilir e-ticaret platformları, özel SaaS ürünleri ve yapay zeka otomasyon çözümleri sunan tam kapsamlı yazılım geliştirme platformu ve web tasarım ajansı.",
     applicationCategory: "WebApplication",
-    operatingSystem: ["Web Browser", "iOS", "Android"],
+    operatingSystem: ["Web Tarayıcı", "iOS", "Android"],
+    inLanguage: "tr-TR",
     url: SITE_URL,
     author: {
       "@type": "Organization",
@@ -394,8 +423,8 @@ export function buildLocalBusinessSchema() {
     },
     areaServed: {
       "@type": "Place",
-      name: "Worldwide",
-      description: "Serving businesses globally across 150+ countries",
+      name: "Dünya Geneli",
+      description: "150'den fazla ülkede işletmelere hizmet veriyoruz",
     },
     sameAs: [
       "https://www.linkedin.com/company/moyduz",
@@ -472,7 +501,7 @@ export function buildPersonSchema(params?: {
 }) {
   const {
     name = "Moyduz Team",
-    jobTitle = "Software Development & Web Design Agency",
+    jobTitle = "E-Ticaret & Yazılım Ajansı",
     url = `${SITE_URL}/about`,
     sameAs = ["https://www.linkedin.com/company/moyduz"],
   } = params || {};
