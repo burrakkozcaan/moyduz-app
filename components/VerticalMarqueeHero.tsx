@@ -54,7 +54,7 @@ const MarqueeColumn = memo(function MarqueeColumn({
   aspect = "normal",
 }: MarqueeColumnProps) {
   const normalized = useMemo(() => items.map(toMediaItem), [items]);
-  const content = useMemo(() => [...normalized, ...normalized, ...normalized, ...normalized], [normalized]);
+  const content = useMemo(() => [...normalized, ...normalized], [normalized]);
   const animationClass = direction === "up" ? "animate-marquee-up" : "animate-marquee-down";
   const duration = 1500 / speed;
   const aspectClass = aspect === "tall" ? "aspect-[4/6]" : "aspect-[4/5]";
@@ -97,7 +97,8 @@ const MarqueeColumn = memo(function MarqueeColumn({
                 src={item.src}
                 alt=""
                 className="w-full h-full object-cover"
-                loading="lazy"
+                loading={i < 3 ? "eager" : "lazy"}
+                fetchPriority={i === 0 ? "high" : "auto"}
               />
             )}
           </div>

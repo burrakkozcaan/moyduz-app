@@ -1534,28 +1534,28 @@ export default function PricingPage() {
 
 <div className="relative flex flex-col justify-center gap-6 md:flex-row md:py-7 xl:gap-8 before:absolute before:left-0 before:top-0 before:hidden before:h-px before:w-full before:bg-ln-gray-200 md:before:block after:absolute after:bottom-0 after:left-0 after:hidden after:h-px after:w-full after:bg-ln-gray-200 md:after:block mb-16 mt-10 md:mb-24 md:mt-20">
   <img
-    src="https://alignui.com/images/landing/dot.png"
+    src="/images/landing/dot.png"
     width={9}
     height={9}
     alt=""
     className="absolute z-30 min-h-[9px] min-w-[9px] -top-1 -left-px hidden md:block"
   />
   <img
-    src="https://alignui.com/images/landing/dot.png"
+    src="/images/landing/dot.png"
     width={9}
     height={9}
     alt=""
     className="absolute z-30 min-h-[9px] min-w-[9px] -right-px -top-1 hidden md:block"
   />
   <img
-    src="https://alignui.com/images/landing/dot.png"
+    src="/images/landing/dot.png"
     width={9}
     height={9}
     alt=""
     className="absolute z-30 min-h-[9px] min-w-[9px] -bottom-1 -left-px hidden md:block"
   />
   <img
-    src="https://alignui.com/images/landing/dot.png"
+    src="/images/landing/dot.png"
     width={9}
     height={9}
     alt=""
@@ -1661,14 +1661,14 @@ export default function PricingPage() {
         <div className="mx-auto flex h-8 w-full max-w-[596px] items-center gap-6 px-4 my-12 md:my-24">
   <div className="relative h-px w-full flex-1 bg-ln-gray-200">
     <img
-      src="https://alignui.com/images/landing/dot-gray-25.png"
+      src="/images/landing/dot-gray-25.png"
       width={9}
       height={9}
       alt=""
       className="absolute z-30 min-h-[9px] min-w-[9px] left-0 top-1/2 -translate-x-1/2 -translate-y-1/2"
     />
     <img
-      src="https://alignui.com/images/landing/dot-gray-25.png"
+      src="/images/landing/dot-gray-25.png"
       width={9}
       height={9}
       alt=""
@@ -1676,7 +1676,7 @@ export default function PricingPage() {
     />
   </div>
   <img
-    src="https://alignui.com/images/landing/section-separator-icon.png"
+    src="/images/landing/section-separator-icon.png"
     alt=""
     width={34}
     height={26}
@@ -1684,14 +1684,14 @@ export default function PricingPage() {
   />
   <div className="relative h-px w-full flex-1 bg-ln-gray-200">
     <img
-      src="https://alignui.com/images/landing/dot-gray-25.png"
+      src="/images/landing/dot-gray-25.png"
       width={9}
       height={9}
       alt=""
       className="absolute z-30 min-h-[9px] min-w-[9px] left-0 top-1/2 -translate-x-1/2 -translate-y-1/2"
     />
     <img
-      src="https://alignui.com/images/landing/dot-gray-25.png"
+      src="/images/landing/dot-gray-25.png"
       width={9}
       height={9}
       alt=""

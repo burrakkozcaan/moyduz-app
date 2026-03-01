@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Moyduz — E-Ticaret & Yazılım Geliştirme Şirketi',
@@ -32,35 +31,26 @@ export const metadata: Metadata = {
     images: ['https://moyduz.com/opengraph-image'],
   },
 };
-import * as Button from '@/components/new-ui/button';
-import * as Card from '@/components/new-ui/card';
-import * as Modal from '@/components/new-ui/modal';
-import * as Input from '@/components/new-ui/input';
-import { RiGithubFill } from '@remixicon/react';
-import Faqs from '@/components/Faqs';
 
+import Faqs from '@/components/Faqs';
 import Hero from '@/components/Hero';
 import RapidDevelopment from '@/components/RapidDevelopment';
 import { CTASectionNew } from '@/components/CTASectionNew';
 import SectorTemplates from '@/components/SectorTemplates';
-import { Gallery } from '@/components/Gallery';
 import Intro from '@/components/Intro';
-
-
 import FeaturesSection from '@/components/FeaturesSection';
-
 import { BuiltForTeamsSection } from '@/components/BuiltForTeamsSection';
 import { EndlessPossibilitiesSection } from '@/components/EndlessPossibilitiesSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
 import EffortlessSection from '@/components/EffortlessSection';
 import Stats from '@/components/Stats';
-import EcosystemMarqueeSection from '@/components/EcosystemMarqueeSection';
-import VerticalMarqueeHero from '@/components/VerticalMarqueeHero';
-import ElectronBento from '@/components/ElectronBento';
 import { BuildFasterSection } from '@/components/BuildFasterSection';
 import PlatformPillars from '@/components/PlatformPillars';
 import DeferredTestimonials from '@/components/DeferredTestimonials';
 import HomePricingCards from '@/components/HomePricingCards';
+
+import LazyVerticalMarqueeHero from '@/components/LazyVerticalMarqueeHero';
+import LazyElectronBento from '@/components/LazyElectronBento';
+import LazyEcosystemMarqueeSection from '@/components/LazyEcosystemMarqueeSection';
 
 export default function Home() {
   return (
@@ -72,7 +62,7 @@ export default function Home() {
         <Hero />
       </div>
       <div className='relative left-1/2 w-screen max-w-none -translate-x-1/2'>
-        <VerticalMarqueeHero />
+        <LazyVerticalMarqueeHero />
       </div>
       {/* <Gallery /> */}
       <div className='container mx-auto flex h-min w-full flex-col items-center justify-center text-center'>
@@ -87,7 +77,7 @@ export default function Home() {
      
 
 
-        <ElectronBento />
+        <LazyElectronBento />
 
 
         {/* Moyduz Engine: altyapı, performans, ticari, global, güvenlik */}
@@ -107,7 +97,7 @@ export default function Home() {
 
       
 
-          <EcosystemMarqueeSection />
+          <LazyEcosystemMarqueeSection />
           <PlatformPillars />
 
         {/* pricing */}
@@ -156,14 +146,14 @@ export default function Home() {
               </div>
               <div className='mac:flex pointer-events-none absolute -inset-x-16 top-24 hidden'>
                 <img
-                  src='https://alignui.com/images/landing/dot.png'
+                  src='/images/landing/dot.png'
                   width={9}
                   height={9}
                   alt=''
                   className='absolute left-8 top-1/2 z-30 min-h-[9px] min-w-[9px] -translate-x-1/2 -translate-y-1/2'
                 />
                 <img
-                  src='https://alignui.com/images/landing/dot.png'
+                  src='/images/landing/dot.png'
                   width={9}
                   height={9}
                   alt=''
@@ -190,7 +180,7 @@ export default function Home() {
                 <div className='relative flex items-center px-3.5 xl:px-6'>
                   <div className='bleed-bg-l bleed-ln-gray-100 relative -left-10 hidden h-px bg-ln-gray-100 xl:flex'>
                     <img
-                      src='https://alignui.com/images/landing/dot.png'
+                      src='/images/landing/dot.png'
                       width={9}
                       height={9}
                       alt=''
@@ -224,7 +214,7 @@ export default function Home() {
                   </div>
                   <div className='bleed-bg-r bleed-ln-gray-100 relative -right-10 hidden h-px flex-1 bg-ln-gray-100 xl:flex'>
                     <img
-                      src='https://alignui.com/images/landing/dot.png'
+                      src='/images/landing/dot.png'
                       width={9}
                       height={9}
                       alt=''
@@ -254,14 +244,14 @@ export default function Home() {
         <div className='mx-auto my-12 flex h-8 w-full max-w-[596px] items-center gap-6 px-4 md:my-24'>
           <div className='relative h-px w-full flex-1 bg-ln-gray-200'>
             <img
-              src='https://alignui.com/images/landing/dot-gray-25.png'
+              src='/images/landing/dot-gray-25.png'
               width={9}
               height={9}
               alt=''
               className='absolute left-0 top-1/2 z-30 min-h-[9px] min-w-[9px] -translate-x-1/2 -translate-y-1/2'
             />
             <img
-              src='https://alignui.com/images/landing/dot-gray-25.png'
+              src='/images/landing/dot-gray-25.png'
               width={9}
               height={9}
               alt=''
@@ -269,7 +259,7 @@ export default function Home() {
             />
           </div>
           <img
-            src='https://alignui.com/images/landing/section-separator-icon.png'
+            src='/images/landing/section-separator-icon.png'
             alt=''
             width={34}
             height={26}
@@ -277,14 +267,14 @@ export default function Home() {
           />
           <div className='relative h-px w-full flex-1 bg-ln-gray-200'>
             <img
-              src='https://alignui.com/images/landing/dot-gray-25.png'
+              src='/images/landing/dot-gray-25.png'
               width={9}
               height={9}
               alt=''
               className='absolute left-0 top-1/2 z-30 min-h-[9px] min-w-[9px] -translate-x-1/2 -translate-y-1/2'
             />
             <img
-              src='https://alignui.com/images/landing/dot-gray-25.png'
+              src='/images/landing/dot-gray-25.png'
               width={9}
               height={9}
               alt=''

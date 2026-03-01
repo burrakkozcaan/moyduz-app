@@ -19,9 +19,9 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
 
-  // Image optimization disabled - Cloudflare Images handles this
   images: {
-    unoptimized: true,
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 31536000,
     remotePatterns: [
       {
         protocol: "https",

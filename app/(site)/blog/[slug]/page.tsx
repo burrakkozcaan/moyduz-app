@@ -314,11 +314,38 @@ export default async function BlogSlugPage({
     },
   })
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.label,
+      item: `https://moyduz.com${item.href}`,
+    })),
+  }
+
+  const autoFaqs = Array.isArray(post.frontmatter.faqs)
+    ? post.frontmatter.faqs as Array<{ question: string; answer: string }>
+    : extractFaqFromContent(post.content)
+
+  const faqJsonLd = autoFaqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: autoFaqs.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  } : null
+
+  const allSchemas = [blogJsonLd, breadcrumbJsonLd, ...(faqJsonLd ? [faqJsonLd] : [])]
+
   return (
     <main className="flex-1">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(allSchemas) }}
       />
       <div className="container mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16">
         {/* Breadcrumb */}

@@ -1,21 +1,11 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-
-const HeroBackground = dynamic(() => import('@/components/HeroBackground'), {
-  ssr: false,
-});
-
 export default function Hero() {
   return (
     <>
       <div className='relative overflow-hidden'>
         <div className='relative flex min-h-[60vh] w-full flex-col items-start px-4 pt-11 md:items-center md:px-0 md:pt-20'>
-          {/* Arka planda sadece HeroBackground */}
-
-          <div className='pointer-events-none absolute inset-0 -z-10'>
-            <HeroBackground />
-          </div>
+          <div className='pointer-events-none absolute inset-0 -z-10 bg-[#f7f7f7]' />
 
           <div className='flex flex-col gap-3 rounded-full ring-ln-gray-200 md:flex-row md:items-center md:bg-ln-gray-25 md:px-2 md:py-1.5 md:ring-1'>
             <div className='flex shrink-0 -space-x-1'>

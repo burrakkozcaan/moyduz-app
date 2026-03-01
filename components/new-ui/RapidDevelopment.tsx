@@ -479,28 +479,28 @@ export default function RapidDevelopment() {
       </div>
       <div className='relative mt-10 flex flex-col justify-center gap-6 md:flex-row md:py-7 xl:gap-8 before:absolute before:left-0 before:top-0 before:hidden before:h-px before:w-full before:bg-ln-gray-200 md:before:block after:absolute after:bottom-0 after:left-0 after:hidden after:h-px after:w-full after:bg-ln-gray-200 md:after:block'>
         <img
-          src='https://alignui.com/images/landing/dot.png'
+          src='/images/landing/dot.png'
           width={9}
           height={9}
           alt=''
           className='absolute -left-px -top-1 z-30 hidden min-h-[9px] min-w-[9px] md:block'
         />
         <img
-          src='https://alignui.com/images/landing/dot.png'
+          src='/images/landing/dot.png'
           width={9}
           height={9}
           alt=''
           className='absolute -right-px -top-1 z-30 hidden min-h-[9px] min-w-[9px] md:block'
         />
         <img
-          src='https://alignui.com/images/landing/dot.png'
+          src='/images/landing/dot.png'
           width={9}
           height={9}
           alt=''
           className='absolute -bottom-1 -left-px z-30 hidden min-h-[9px] min-w-[9px] md:block'
         />
         <img
-          src='https://alignui.com/images/landing/dot.png'
+          src='/images/landing/dot.png'
           width={9}
           height={9}
           alt=''

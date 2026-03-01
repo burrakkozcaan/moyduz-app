@@ -29,6 +29,8 @@ const STATIC_URLS: Array<{
   { path: '/compare', changefreq: 'monthly', priority: 0.6 },
   { path: '/alternatives', changefreq: 'monthly', priority: 0.6 },
   { path: '/changelog', changefreq: 'weekly', priority: 0.6 },
+  { path: '/e-ticaret-nasil-yapilir-2026-rehberi', changefreq: 'monthly', priority: 0.9 },
+  { path: '/e-ticaret-paketleri', changefreq: 'weekly', priority: 0.9 },
   { path: '/ozel-e-ticaret', changefreq: 'monthly', priority: 0.7 },
   { path: '/b2b-ecommerce', changefreq: 'monthly', priority: 0.7 },
   { path: '/multi-vendor', changefreq: 'monthly', priority: 0.7 },

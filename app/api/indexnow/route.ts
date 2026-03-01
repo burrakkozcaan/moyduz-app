@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const INDEXNOW_KEY = process.env.INDEXNOW_KEY || "6379b7d735ae4e6383104ec22a1bfa0c";
+const INDEXNOW_KEY = process.env.INDEXNOW_KEY || "c63328e4571f4757b20f5e42079c7734";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.moyduz.com";
 
 export async function POST(request: NextRequest) {

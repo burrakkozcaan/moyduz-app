@@ -83,8 +83,8 @@ export default function Header() {
         <div className="relative z-20 flex w-full items-center justify-center gap-8 mac:justify-stretch">
           <div className="relative hidden h-px flex-1 bg-ln-gray-200 bleed-bg-l bleed-ln-gray-200 mac:block">
 
-            <Image src="https://alignui.com/images/landing/dot.png" width={9} height={9} alt="" className="absolute z-30 min-h-[9px] min-w-[9px] -top-1 -left-[37px]" />
-            <Image src="https://alignui.com/images/landing/dot.png" width={9} height={9} alt="" className="absolute z-30 min-h-[9px] min-w-[9px] -right-px -top-1" />
+            <Image src="/images/landing/dot.png" width={9} height={9} alt="" className="absolute z-30 min-h-[9px] min-w-[9px] -top-1 -left-[37px]" />
+            <Image src="/images/landing/dot.png" width={9} height={9} alt="" className="absolute z-30 min-h-[9px] min-w-[9px] -right-px -top-1" />
           </div>
           <header className="relative z-10 flex h-16 w-full items-center justify-between gap-4 bg-ln-gray-25 dark:bg-ln-gray-900 px-4 lg:h-auto lg:w-auto lg:justify-start lg:rounded-3xl lg:bg-ln-gray-0 dark:lg:bg-ln-gray-950 lg:p-[18px] lg:shadow-ln-xs dark:lg:shadow-none dark:lg:ring-1 dark:lg:ring-ln-gray-800">
             <div className="flex items-center gap-2.5 pr-3">
