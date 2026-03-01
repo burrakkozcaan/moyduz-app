@@ -1,0 +1,10 @@
+name = "moyduz-content-ai"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+[ai]
+binding = "AI"
+
+[[r2_buckets]]
+binding = "MOYDUZ_BUCKET"
+bucket_name = "moyduz"
