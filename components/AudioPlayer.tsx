@@ -1,9 +1,8 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 interface AudioPlayerProps {
-  /** Okunacak Türkçe metin içeriği */
   text?: string
   title?: string
 }
@@ -11,15 +10,35 @@ interface AudioPlayerProps {
 export function AudioPlayer({ text, title = 'Bu içeriği dinle' }: AudioPlayerProps) {
   const [playing, setPlaying] = useState(false)
   const [supported, setSupported] = useState(false)
-  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null)
+  const [voiceReady, setVoiceReady] = useState(false)
 
   useEffect(() => {
-    setSupported(typeof window !== 'undefined' && 'speechSynthesis' in window)
-    return () => {
-      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-        window.speechSynthesis.cancel()
-      }
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return
+    setSupported(true)
+
+    // Sesler asenkron yüklenir — hem anında hem onvoiceschanged'de kontrol
+    const check = () => {
+      const voices = window.speechSynthesis.getVoices()
+      if (voices.length > 0) setVoiceReady(true)
     }
+    check()
+    window.speechSynthesis.addEventListener('voiceschanged', check)
+
+    return () => {
+      window.speechSynthesis.removeEventListener('voiceschanged', check)
+      window.speechSynthesis.cancel()
+    }
+  }, [])
+
+  const getBestTurkishVoice = useCallback(() => {
+    const voices = window.speechSynthesis.getVoices()
+    // Önce gerçek Türkçe ses, yoksa herhangi tr ses
+    return (
+      voices.find(v => v.lang === 'tr-TR' && !v.localService) ||
+      voices.find(v => v.lang === 'tr-TR') ||
+      voices.find(v => v.lang.startsWith('tr')) ||
+      null
+    )
   }, [])
 
   function toggle() {
@@ -33,31 +52,33 @@ export function AudioPlayer({ text, title = 'Bu içeriği dinle' }: AudioPlayerP
     }
 
     synth.cancel()
+
+    // Uzun içeriklerde 4000 karakter ile sınırla
     const utterance = new SpeechSynthesisUtterance(text.slice(0, 4000))
     utterance.lang = 'tr-TR'
-    utterance.rate = 0.95
-    utteranceRef.current = utterance
+    utterance.rate = 0.88    // biraz yavaş → daha doğal
+    utterance.pitch = 1.0
+    utterance.volume = 1.0
+
+    const voice = getBestTurkishVoice()
+    if (voice) utterance.voice = voice
 
     utterance.onend = () => setPlaying(false)
     utterance.onerror = () => setPlaying(false)
-
-    // Turkish voice seç (varsa)
-    const voices = synth.getVoices()
-    const trVoice = voices.find(v => v.lang.startsWith('tr'))
-    if (trVoice) utterance.voice = trVoice
 
     synth.speak(utterance)
     setPlaying(true)
   }
 
-  if (!supported || !text) return null
+  if (!supported) return null
 
   return (
     <div className="not-prose my-6 flex items-center gap-4 rounded-xl border border-ln-gray-200 bg-ln-gray-0 px-4 py-3 dark:border-ln-gray-800 dark:bg-ln-gray-950">
       <button
         onClick={toggle}
-        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ln-orange text-white transition-opacity hover:opacity-90"
-        aria-label={playing ? 'Duraklat' : 'Dinle'}
+        disabled={!text}
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ln-orange text-white transition-opacity hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
+        aria-label={playing ? 'Durdur' : 'Dinle'}
       >
         {playing ? (
           <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -74,7 +95,7 @@ export function AudioPlayer({ text, title = 'Bu içeriği dinle' }: AudioPlayerP
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">{title}</p>
         <p className="mt-0.5 text-xs text-ln-gray-400 dark:text-ln-gray-500">
-          {playing ? 'Okunuyor...' : 'Türkçe sesli okuma'}
+          {playing ? 'Okunuyor…' : voiceReady ? 'Türkçe sesli okuma' : 'Ses yükleniyor…'}
         </p>
       </div>
     </div>

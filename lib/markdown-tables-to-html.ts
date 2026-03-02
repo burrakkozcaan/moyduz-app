@@ -40,11 +40,11 @@ function processCell(c: string): string {
 
 function buildHtmlTable(rows: string[][]): string {
   const [headerRow, ...bodyRows] = rows
-  const ths = headerRow.map((c) => `<th>${processCell(c)}</th>`).join("")
+  const ths = headerRow.map((c) => `<th class="px-4 py-3 font-semibold text-left whitespace-nowrap">${processCell(c)}</th>`).join("")
   const trs = bodyRows
-    .map((row) => `<tr>${row.map((c) => `<td>${processCell(c)}</td>`).join("")}</tr>`)
+    .map((row) => `<tr class="border-b border-ln-gray-100 dark:border-ln-gray-800/60 last:border-0">${row.map((c) => `<td class="px-4 py-3">${processCell(c)}</td>`).join("")}</tr>`)
     .join("\n")
-  return `<table>\n<thead><tr>${ths}</tr></thead>\n<tbody>\n${trs}\n</tbody>\n</table>`
+  return `<div class="not-prose my-6 w-full overflow-x-auto rounded-xl border border-ln-gray-200 dark:border-ln-gray-800 shadow-sm">\n<table class="w-full min-w-[320px] border-collapse text-left text-sm">\n<thead class="border-b border-ln-gray-200 dark:border-ln-gray-800 bg-ln-gray-50 dark:bg-ln-gray-800/80"><tr>${ths}</tr></thead>\n<tbody>\n${trs}\n</tbody>\n</table>\n</div>`
 }
 
 export function markdownTablesToHtml(content: string): string {
