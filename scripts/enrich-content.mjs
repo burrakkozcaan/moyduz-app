@@ -4,8 +4,11 @@
  *           node scripts/enrich-content.mjs --no-audio
  *           node scripts/enrich-content.mjs --no-image
  *           node scripts/enrich-content.mjs --limit=10
- *           node scripts/enrich-content.mjs --regen-image       # var olan resimleri de yeniden üret
- *           node scripts/enrich-content.mjs --slug=iyzico-nedir # sadece tek bir slug işle
+ *           node scripts/enrich-content.mjs --regen-image             # var olan resimleri de yeniden üret
+ *           node scripts/enrich-content.mjs --slug=iyzico-nedir       # sadece tek bir slug işle
+ *           node scripts/enrich-content.mjs --quality=blog            # flux-2-klein-9b (varsayılan)
+ *           node scripts/enrich-content.mjs --quality=landing         # flux-2-dev (en iyi kalite)
+ *           node scripts/enrich-content.mjs --quality=fast            # flux-1-schnell num_steps:8
  */
 
 import fs from "node:fs";
@@ -38,6 +41,10 @@ const slugArg   = args.find(a => a.startsWith("--slug="));
 const ONLY_SLUG = slugArg ? slugArg.split("=")[1] : null;
 const limArg    = args.find(a => a.startsWith("--limit="));
 const LIMIT     = limArg ? parseInt(limArg.split("=")[1]) : Infinity;
+const offArg    = args.find(a => a.startsWith("--offset="));
+const OFFSET    = offArg ? parseInt(offArg.split("=")[1]) : 0;
+const qualArg   = args.find(a => a.startsWith("--quality="));
+const QUALITY   = qualArg ? qualArg.split("=")[1] : "blog"; // blog | landing | fast
 
 const DIRS = [
   ["content/blog",    "/blog"],
@@ -82,24 +89,24 @@ function headers() {
 }
 
 async function imagePromptFor(title, slug, contentSnippet = "") {
-  // Ask LLM for a good flux prompt — include content snippet for relevance
-  const context = contentSnippet ? `Content excerpt: "${contentSnippet.slice(0, 300)}"` : "";
+  // Ask LLM for a highly specific flux prompt — include content snippet for relevance
+  const context = contentSnippet ? `İçerik özeti (Türkçe): "${contentSnippet.slice(0, 400)}"` : "";
   const res  = await fetch(`${CONTENT_WORKER}/content`, {
     method: "POST", headers: headers(),
     body: JSON.stringify({
-      prompt: `For the article titled "${title}" (slug: ${slug}). ${context}\n\nWrite a specific English image generation prompt for a professional hero image that visually represents THIS specific topic. Be concrete and specific, not generic. Style: clean, modern, SaaS/tech, soft lighting, no text, no words. Max 25 words. Reply with only the prompt.`,
+      prompt: `You are writing an image generation prompt for a Turkish e-commerce/tech article.\n\nTitle: "${title}"\nSlug: ${slug}\n${context}\n\nWrite a SPECIFIC, VIVID English prompt for a professional hero image. Rules:\n- Visually represent THIS exact topic (not generic tech)\n- photorealistic, cinematic lighting, clean composition\n- Turkish context where relevant (Turkish UI, Turkish text NOT visible, local setting)\n- NO text, NO words, NO letters, NO watermarks in the image\n- Max 30 words\n\nReply with ONLY the image prompt, nothing else.`,
       max_tokens: 80,
     }),
   });
   if (!res.ok) throw new Error(`LLM ${res.status}`);
   const d = await res.json();
-  return d.text?.trim() ?? `Professional hero image for ${title}, modern tech style, clean composition`;
+  return d.text?.trim() ?? `Professional hero image for ${title}, modern tech, clean composition, no text`;
 }
 
-async function generateImage(prompt, slug) {
+async function generateImage(prompt, slug, quality = "blog") {
   const res  = await fetch(`${CONTENT_WORKER}/image`, {
     method: "POST", headers: headers(),
-    body: JSON.stringify({ prompt, slug, type: "hero" }),
+    body: JSON.stringify({ prompt, slug, type: "hero", quality }),
   });
   if (!res.ok) { const t = await res.text(); throw new Error(`Image ${res.status}: ${t}`); }
   const d = await res.json();
@@ -137,7 +144,7 @@ function extractText(mdxContent) {
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
-let processed = 0, imgDone = 0, audDone = 0, errors = 0;
+let processed = 0, skipped = 0, imgDone = 0, audDone = 0, errors = 0;
 
 for (const [dir, prefix] of DIRS) {
   const abs = path.join(ROOT, dir);
@@ -146,6 +153,7 @@ for (const [dir, prefix] of DIRS) {
   for (const f of fs.readdirSync(abs).sort()) {
     if (!f.endsWith(".mdx")) continue;
     if (processed >= LIMIT) break;
+    if (skipped < OFFSET) { skipped++; continue; }
 
     const fullPath = path.join(abs, f);
     let raw = fs.readFileSync(fullPath, "utf8");
@@ -170,7 +178,8 @@ for (const [dir, prefix] of DIRS) {
         process.stdout.write("  🖼  Resim üretiliyor... ");
         const contentSnippet = extractText(raw).slice(0, 400);
         const prompt = await imagePromptFor(title, slug, contentSnippet);
-        const url    = await generateImage(prompt, slug);
+        console.log(`     prompt: ${prompt}`);
+        const url    = await generateImage(prompt, slug, QUALITY);
         raw = setFMField(raw, "hero_image", url);
         changed = true;
         imgDone++;

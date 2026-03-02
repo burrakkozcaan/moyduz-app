@@ -72,21 +72,58 @@ async function handleContent(body: Record<string, unknown>, env: Env): Promise<R
 }
 
 // ─── /image — Flux → R2 ──────────────────────────────────────────────────────
+// Supported models:
+//   "blog"    → @cf/black-forest-labs/flux-2-klein-9b  (fast, high quality)
+//   "landing" → @cf/black-forest-labs/flux-2-dev       (best quality)
+//   "fast"    → @cf/black-forest-labs/flux-1-schnell   (legacy fallback)
+
+const IMAGE_MODELS: Record<string, string> = {
+  blog:    "@cf/black-forest-labs/flux-2-klein-9b",
+  landing: "@cf/black-forest-labs/flux-2-dev",
+  fast:    "@cf/black-forest-labs/flux-1-schnell",
+};
+
+async function runFlux2(env: Env, model: string, prompt: string, width = 1200, height = 630): Promise<string> {
+  const form = new FormData();
+  form.append("prompt", prompt);
+  form.append("width", String(width));
+  form.append("height", String(height));
+
+  const formResponse = new Response(form);
+  const formStream   = formResponse.body!;
+  const formCT       = formResponse.headers.get("content-type")!;
+
+  // @ts-expect-error — CF AI types may lag behind new models
+  const result = await env.AI.run(model, { multipart: { body: formStream, contentType: formCT } });
+  return (result as { image: string }).image;
+}
+
+async function runFlux1Schnell(env: Env, prompt: string): Promise<string> {
+  // @ts-expect-error
+  const result = await env.AI.run("@cf/black-forest-labs/flux-1-schnell", { prompt, num_steps: 8 });
+  return (result as { image: string }).image;
+}
 
 async function handleImage(body: Record<string, unknown>, env: Env): Promise<Response> {
-  const prompt = body.prompt as string;
-  const slug   = body.slug as string;
-  const type   = (body.type as string) ?? "hero";
+  const prompt    = body.prompt as string;
+  const slug      = body.slug as string;
+  const type      = (body.type as string) ?? "hero";
+  const quality   = (body.quality as string) ?? "blog"; // blog | landing | fast
 
   if (!prompt || !slug) {
     return Response.json({ error: "prompt and slug required" }, { status: 400 });
   }
 
   try {
-    // @ts-expect-error
-    const result = await env.AI.run("@cf/black-forest-labs/flux-1-schnell", { prompt, num_steps: 4 });
+    let base64: string;
+    const model = IMAGE_MODELS[quality] ?? IMAGE_MODELS.blog;
 
-    const base64 = (result as { image: string }).image;
+    if (quality === "fast") {
+      base64 = await runFlux1Schnell(env, prompt);
+    } else {
+      base64 = await runFlux2(env, model, prompt);
+    }
+
     const binary = atob(base64);
     const bytes  = new Uint8Array(binary.length);
     for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
@@ -94,7 +131,7 @@ async function handleImage(body: Record<string, unknown>, env: Env): Promise<Res
     const key = `images/blog/${slug}-${type}.jpg`;
     await env.MOYDUZ_BUCKET.put(key, bytes, { httpMetadata: { contentType: "image/jpeg" } });
 
-    return Response.json({ success: true, url: `${CDN_BASE}/${key}` });
+    return Response.json({ success: true, url: `${CDN_BASE}/${key}`, model });
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     return Response.json({ error: msg }, { status: 503 });
