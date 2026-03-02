@@ -110,7 +110,7 @@ async function processFile(mdxPath) {
   const res = await fetch(WORKER_URL, {
     method: "POST",
     headers,
-    body: JSON.stringify({ text, slug, lang: "tr" }),
+    body: JSON.stringify({ text, slug, lang: "TR" }),
   });
 
   const data = await res.json();
