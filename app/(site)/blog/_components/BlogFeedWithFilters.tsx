@@ -45,7 +45,7 @@ export default function BlogFeedWithFilters({
         : 0
 
   return (
-    <main className="container mx-auto max-w-7xl px-4 py-20">
+    <main className="container mx-auto max-w-7xl px-4 py-20 ld:px-0 ">
       {/* Hero */}
       <section className="mb-10 rounded-3xl bg-ln-gray-50 p-5 shadow-ln-badge-gray dark:bg-ln-gray-900 dark:shadow-none dark:ring-1 dark:ring-ln-gray-800">
         <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">

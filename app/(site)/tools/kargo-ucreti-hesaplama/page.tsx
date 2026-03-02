@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ToolsPageShell, TOOLS_CARD_CLASS, TOOLS_BTN_PRIMARY_CLASS, TOOLS_BTN_SECONDARY_CLASS } from '@/components/ToolsPageShell'
+import { ToolAIAnalysis } from '@/components/ToolAIAnalysis'
 
 // Approximate 2026 rates per desi for major Turkish cargo companies (standard commercial)
 const CARGO_COMPANIES: Array<{
@@ -213,6 +214,15 @@ export default function KargoUcretiHesaplamaPage() {
               </div>
             </div>
           )}
+
+          {/* AI Analysis */}
+          <div className={TOOLS_CARD_CLASS}>
+            <h4 className="font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-2">AI Değerlendirme</h4>
+            <ToolAIAnalysis
+              tool="kargo"
+              buildContext={() => `Paket: ${length}x${width}x${height} cm, Gerçek ağırlık: ${weight}kg, Faturalanacak ağırlık: ${billedWeight.toFixed(2)}kg, En ucuz kargo: ${cheapest.name} (${cheapest.cost.toFixed(0)}₺/gönderi), En pahalı: ${mostExpensive.name} (${mostExpensive.cost.toFixed(0)}₺/gönderi), Aylık gönderi: ${monthlySales}, Doğru seçimle aylık tasarruf: ${maxMonthlySavings.toFixed(0)}₺, Yıllık tasarruf: ${maxYearlySavings.toFixed(0)}₺${selectedCompany ? `, Seçilen firma: ${selectedCompany}` : ''}`}
+            />
+          </div>
 
           {/* CTA */}
           <div className={TOOLS_CARD_CLASS}>

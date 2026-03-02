@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react'
 import Link from 'next/link'
 import { ToolsPageShell, TOOLS_CARD_CLASS, TOOLS_BTN_PRIMARY_CLASS, TOOLS_BTN_SECONDARY_CLASS } from '@/components/ToolsPageShell'
+import { ToolAIAnalysis } from '@/components/ToolAIAnalysis'
 
 function trackToolUsed(toolName: string) {
   if (typeof window === 'undefined') return
@@ -260,6 +261,15 @@ export default function SanalPosHesaplamaPage() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* AI Analysis */}
+          <div className={TOOLS_CARD_CLASS}>
+            <h4 className="font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-2">AI Değerlendirme</h4>
+            <ToolAIAnalysis
+              tool="sanal-pos"
+              buildContext={() => `Aylık ciro: ${fmt(monthlyRevenue)}₺, İşlem adedi: ${transactionCount}, Ortalama sepet: ${fmt(avgBasket)}₺, En ucuz sağlayıcı: ${cheapest.name} (${fmt(cheapest.total)}₺/ay — %${cheapest.ratePercent}), En pahalı: ${mostExpensive.name} (${fmt(mostExpensive.total)}₺/ay), Yıllık tasarruf potansiyeli: ${fmt(annualSaving)}₺`}
+            />
           </div>
 
           {/* CTA */}

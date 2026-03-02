@@ -60,14 +60,16 @@ export default function Hero() {
             <div className="relative shrink-0 p-2 before:pointer-events-none before:absolute before:-inset-x-3 before:inset-y-0 before:border-y before:border-foreground/10 after:pointer-events-none after:absolute after:-inset-y-2 after:inset-x-0 after:border-x after:border-foreground/10 bg-foreground/[0.03] md:before:-inset-x-6 md:after:-inset-y-3">
               <div className="relative mx-auto flex h-fit w-fit min-w-0 items-center gap-3 rounded-full border border-border bg-card/80 px-5 py-2.5 shadow-md ring-1 ring-border md:gap-2 md:px-4 md:py-2">
                 <span className="whitespace-nowrap text-sm font-medium text-foreground">
-                  Türkiye'nin büyüyen işletmeleri için
+                  Türkiye&apos;nin büyüyen işletmeleri için
                 </span>
                 <span className="block h-4 w-px shrink-0 bg-foreground/10" />
                 <Link
-                  href="/#nasil-calisir"
+                  href="https://app.moyduz.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="shrink-0 text-sm text-ln-orange hover:underline"
                 >
-                  Nasıl Çalışır?
+                  Şimdi Başla 🚀
                 </Link>
               </div>
             </div>
@@ -92,15 +94,15 @@ export default function Hero() {
 
           <div className="mx-auto mb-0 mt-6 max-w-lg md:mb-0 md:mt-8">
             <p className="mb-6 text-balance text-base text-muted-foreground lg:text-lg xl:text-xl">
-              Özel e-ticaret altyapısı. Komisyonsuz, hızlı, Türkiye'ye özel.
+              Özel e-ticaret altyapısı. Komisyonsuz, hızlı, Türkiye&apos;ye özel.
             </p>
             <div className="mx-auto flex w-fit flex-wrap items-center justify-center gap-3">
               <Link
-                href="/#nasil-calisir"
+                href="/pricing"
                 data-cta-location="hero-secondary"
                 className="inline-flex h-9 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-ln-gray-200 bg-transparent px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-ln-gray-100 hover:border-ln-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ln-gray-300 focus-visible:ring-offset-2 dark:border-ln-gray-700 dark:hover:bg-ln-gray-800"
               >
-                Nasıl Çalışır?
+                Fiyatları Gör
               </Link>
               <Link
                 href="/contact"

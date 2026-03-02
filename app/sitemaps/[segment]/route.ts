@@ -33,7 +33,7 @@ const STATIC_URLS: Array<{
   { path: '/e-ticaret-paketleri', changefreq: 'weekly', priority: 0.9 },
   { path: '/ozel-e-ticaret', changefreq: 'monthly', priority: 0.7 },
   { path: '/b2b-ecommerce', changefreq: 'monthly', priority: 0.7 },
-  { path: '/multi-vendor', changefreq: 'monthly', priority: 0.7 },
+  { path: '/cok-saticili-e-ticaret-altyapisi', changefreq: 'monthly', priority: 0.7 },
   { path: '/ecommerce-migration', changefreq: 'monthly', priority: 0.7 },
   { path: '/basinda-biz', changefreq: 'yearly', priority: 0.4 },
   { path: '/partner-programi', changefreq: 'monthly', priority: 0.5 },

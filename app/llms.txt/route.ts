@@ -53,7 +53,7 @@ export async function GET() {
 - [E-Ticaret Geliştirme](https://moyduz.com/services/ecommerce-website-development): B2C/B2B e-ticaret yetenekleriyle online mağaza ve marketplace geliştirme.
 - [Özel E-Ticaret Altyapısı](https://moyduz.com/ozel-e-ticaret): Komisyonsuz, tam özelleştirilebilir, Türkiye'ye özel e-ticaret platformu.
 - [B2B E-Ticaret](https://moyduz.com/b2b-ecommerce): Kurumsal satış için B2B e-ticaret çözümleri.
-- [Multi-Vendor Marketplace](https://moyduz.com/multi-vendor): Çok satıcılı pazaryeri platformu geliştirme.
+- [Çok Satıcılı E-Ticaret Altyapısı](https://moyduz.com/cok-saticili-e-ticaret-altyapisi): Çok satıcılı pazaryeri platformu geliştirme.
 - [E-Ticaret Migration](https://moyduz.com/ecommerce-migration): Mevcut e-ticaret sitenizi Moyduz altyapısına taşıma.
 - [Yazılım Şirketi](https://moyduz.com/services/software-company): Karmaşık iş gereksinimleri için özel yazılım geliştirme.
 

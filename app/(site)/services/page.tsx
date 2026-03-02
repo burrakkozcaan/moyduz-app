@@ -39,6 +39,7 @@ type ServiceListItem = {
   title: string
   description: string
   keyword: string
+  category: string
   updatedAt?: string
 }
 
@@ -48,6 +49,7 @@ const SERVICE_COPY: Record<
     title: string
     description: string
     keyword: string
+    category: string
   }
 > = {
   'web-design': {
@@ -55,36 +57,42 @@ const SERVICE_COPY: Record<
     description:
       'Marka kimliğinize uygun, dönüşüm odaklı ve modern web arayüzleri tasarlıyoruz.',
     keyword: 'web tasarım hizmeti',
+    category: 'Web Tasarım',
   },
   'web-design-agency': {
     title: 'Web Tasarım Ajansı',
     description:
       'Strateji, UX ve görsel tasarımı birleştirerek uçtan uca ajans hizmeti sunuyoruz.',
     keyword: 'web tasarım ajansı',
+    category: 'Web Tasarım',
   },
   'web-design-company': {
     title: 'Web Tasarım Şirketi',
     description:
       'Kurumsal siteler ve büyüme odaklı dijital deneyimler için profesyonel tasarım çözümleri.',
     keyword: 'web tasarım şirketi',
+    category: 'Web Tasarım',
   },
   'web-development-company': {
     title: 'Web Geliştirme Şirketi',
     description:
       'Yüksek performanslı, ölçeklenebilir ve güvenli web uygulamaları geliştiriyoruz.',
     keyword: 'web geliştirme şirketi',
+    category: 'Web Geliştirme',
   },
   'ecommerce-website-development': {
     title: 'E-Ticaret Site Geliştirme',
     description:
       'Satış artıran e-ticaret altyapıları, ödeme-kargo entegrasyonları ve operasyon çözümleri.',
     keyword: 'e-ticaret sitesi yapımı',
+    category: 'E-Ticaret',
   },
   'software-company': {
     title: 'Yazılım Şirketi',
     description:
       'İş süreçlerinize özel SaaS, otomasyon ve özel yazılım çözümleri geliştiriyoruz.',
     keyword: 'özel yazılım geliştirme',
+    category: 'Yazılım',
   },
 }
 
@@ -110,6 +118,7 @@ export default async function ServicesPage() {
           title: copy.title,
           description: copy.description,
           keyword: copy.keyword,
+          category: copy.category,
           updatedAt:
             (frontmatter.dateModified as string | undefined) ||
             (frontmatter.datePublished as string | undefined),
@@ -153,6 +162,14 @@ export default async function ServicesPage() {
             href={`/services/${service.slug}`}
             className="group flex flex-col rounded-2xl border border-ln-gray-200 bg-white p-6 transition-all hover:border-ln-gray-300 hover:shadow-md dark:border-ln-gray-800 dark:bg-ln-gray-950 dark:hover:border-ln-gray-700"
           >
+            <div className="flex flex-wrap gap-2 mb-3">
+              <span className="inline-flex items-center rounded-md bg-ln-orange/10 px-2.5 py-1 text-xs font-medium text-ln-orange ring-1 ring-inset ring-ln-orange/20">
+                {service.category}
+              </span>
+              <span className="inline-flex items-center rounded-md bg-ln-gray-100 px-2.5 py-1 text-xs font-medium text-ln-gray-600 dark:bg-ln-gray-800 dark:text-ln-gray-400 ring-1 ring-inset ring-ln-gray-200/50 dark:ring-ln-gray-700">
+                {service.keyword}
+              </span>
+            </div>
             <h2 className="text-lg font-semibold leading-snug text-ln-gray-900 group-hover:text-ln-orange dark:text-white dark:group-hover:text-ln-orange">
               {service.title}
             </h2>

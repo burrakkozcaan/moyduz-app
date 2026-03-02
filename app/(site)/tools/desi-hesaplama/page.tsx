@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ToolsPageShell, TOOLS_CARD_CLASS, TOOLS_BTN_PRIMARY_CLASS, TOOLS_BTN_SECONDARY_CLASS } from '@/components/ToolsPageShell'
+import { ToolAIAnalysis } from '@/components/ToolAIAnalysis'
 
 // Approximate 2026 desi rates for major Turkish cargo companies (per desi, standard)
 const CARGO_RATES: Array<{ name: string; pricePerDesi: number; minCharge: number }> = [
@@ -206,6 +207,15 @@ export default function DesiHesaplamaPage() {
               </div>
             </div>
           )}
+
+          {/* AI Analysis */}
+          <div className={TOOLS_CARD_CLASS}>
+            <h4 className="font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-2">AI Değerlendirme</h4>
+            <ToolAIAnalysis
+              tool="desi"
+              buildContext={() => `Paket: ${length}x${width}x${height} cm, Gerçek ağırlık: ${weight}kg, Desi (hacimsel): ${volumetricWeight.toFixed(2)}kg, Faturalanacak: ${billedWeight.toFixed(2)}kg, ${isDesiHeavier ? 'Desi ağırlığı daha yüksek — fazla ödeme riski' : 'Gerçek ağırlık baz alınıyor — avantajlı'}, En ucuz kargo: ${cheapestCargo.name} (${cheapestCargo.cost.toFixed(0)}₺/gönderi), Aylık gönderi: ${monthlySales}, Aylık tasarruf potansiyeli: ${monthlyMaxSavings.toFixed(0)}₺`}
+            />
+          </div>
 
           {/* CTA */}
           <div className={TOOLS_CARD_CLASS}>

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   ShieldCheck,
@@ -43,15 +44,70 @@ export default function Intro() {
         className='flex flex-col items-center gap-[50px] px-4 py-8 md:gap-[120px] md:px-[100px] md:py-12'
         style={{ height: 'min-content' }}
       >
-        {/* Trusted by */}
+        {/* Nasıl Çalışır? anchor + Moyduz Nedir (GEO/SEO) */}
         <motion.section
-          className='flex w-full flex-col items-center gap-6'
+          id="nasil-calisir"
+          className='flex w-full flex-col items-center gap-6 scroll-mt-24'
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ type: 'spring', duration: 0.6, bounce: 0.05 }}
+          itemScope
+          itemType="https://schema.org/ProfessionalService"
         >
-          <h2 className='text-foreground md:text-xl text-center text-[20px] font-medium'>
+          <style dangerouslySetInnerHTML={{ __html: `#nasil-calisir a { text-decoration: none !important; }` }} />
+          <div className="prose prose-invert prose-lg max-w-none text-center [&_a]:no-underline [&_a]:text-ln-orange [&_a]:hover:opacity-90">
+            <h2 className="text-foreground text-center text-[20px] md:text-xl font-medium mb-4" itemProp="name">
+              Moyduz Nedir? Ne İşe Yarar?
+            </h2>
+            <p className="text-muted-foreground text-sm md:text-base text-center leading-relaxed mb-6 max-w-2xl mx-auto" itemProp="description">
+              <strong>Moyduz</strong>, Türkiye&apos;nin en çok tercih edilen{' '}
+              <Link href="/ozel-e-ticaret" className="text-ln-orange hover:opacity-90 no-underline">e-ticaret</Link>
+              {' '}ve{' '}
+              <Link href="/services" className="text-ln-orange hover:opacity-90 no-underline">yazılım geliştirme</Link>
+              {' '}şirketlerinden biridir. Özel e-ticaret altyapıları, kurumsal web siteleri, SaaS ürünleri ve dijital pazarlama çözümleri sunar; büyüyen işletmeler ve markalar için tek noktadan hizmet sağlar.
+            </p>
+            <div className="text-left max-w-2xl mx-auto space-y-4">
+              <div>
+                <h3 className="text-foreground text-base font-semibold mb-2">Moyduz Kimler İçin?</h3>
+                <ul className="text-muted-foreground text-sm space-y-1 list-disc list-inside" itemProp="audience">
+                  <li>E-ticaret yapmak veya mevcut mağazasını büyütmek isteyen işletmeler</li>
+                  <li>Kurumsal web sitesi ve marka deneyimi arayan şirketler</li>
+                  <li>SaaS veya abonelik tabanlı ürün geliştiren girişimler</li>
+                  <li>Operasyonlarını otomasyon ve yazılımla güçlendirmek isteyen ekipler</li>
+                  <li>Türkiye ve uluslararası pazarlara ölçeklenmek isteyen markalar</li>
+                </ul>
+                <p className="text-muted-foreground text-sm mt-2">
+                  <Link href="/services" className="text-ln-orange hover:opacity-90 no-underline">Tüm hizmetleri inceleyin →</Link>
+                </p>
+              </div>
+              <div itemProp="hasOfferCatalog" itemScope itemType="https://schema.org/OfferCatalog">
+                <h3 className="text-foreground text-base font-semibold mb-2">Moyduz Hangi Hizmetleri Sunar?</h3>
+                <ul className="text-muted-foreground text-sm space-y-1 list-disc list-inside">
+                  <li itemProp="itemListElement">Özel e-ticaret altyapısı ve mağaza kurulumu</li>
+                  <li itemProp="itemListElement">Web tasarım ve geliştirme (Next.js, React, TypeScript)</li>
+                  <li itemProp="itemListElement">B2B e-ticaret ve çok satıcılı pazar yeri (multi-vendor)</li>
+                  <li itemProp="itemListElement">SaaS ürün geliştirme, MVP&apos;den canlıya</li>
+                  <li itemProp="itemListElement">Mevcut site geçişi ve performans optimizasyonu</li>
+                  <li itemProp="itemListElement">Teknik SEO, Core Web Vitals ve GEO (AI aramaları) optimizasyonu</li>
+                  <li itemProp="itemListElement">API entegrasyonları ve üçüncü taraf bağlantıları</li>
+                </ul>
+                <p className="text-muted-foreground text-sm mt-2">
+                  <Link href="/services" className="text-ln-orange hover:opacity-90 no-underline">Hizmetler sayfası →</Link>
+                </p>
+              </div>
+              <div>
+                <h3 className="text-foreground text-base font-semibold mb-2">Neden Moyduz?</h3>
+                <p className="text-muted-foreground text-sm">
+                  Türkiye&apos;de en hızlı büyüyen dijital markaların tercihi. Komisyonsuz altyapı,{' '}
+                  <Link href="/pricing" className="text-ln-orange hover:opacity-90 no-underline">şeffaf fiyatlandırma</Link>
+                  {' '}ve tam kod sahipliği sunuyoruz; modern teknoloji ile ölçeklenebilir yazılım üretiyoruz. Küresel markalar, ölçeklenebilir web siteleri, SaaS platformları ve otomasyon sistemleri kurmak için Moyduz&apos;a güveniyor.{' '}
+                  <Link href="/contact" className="text-ln-orange hover:opacity-90 no-underline font-medium">Ücretsiz teklif alın →</Link>
+                </p>
+              </div>
+            </div>
+          </div>
+          <h2 className='text-foreground md:text-xl text-center text-[20px] font-medium mt-10'>
             Hızla Büyüyen Dijital Markaların Tercihi{' '}
           </h2>
           <p className='text-muted-foreground md:text-lg m-2 w-full px-6 text-center text-[14px] leading-[1.5] md:max-w-[700px] md:px-0 md:leading-relaxed'>

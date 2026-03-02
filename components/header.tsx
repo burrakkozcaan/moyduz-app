@@ -169,8 +169,8 @@ export default function Header() {
                 <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/pricing">
                   Fiyatlandırma
                 </Link>
-                <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/blog">
-                  Blog
+                <Link className="text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear hover:text-ln-gray-800 dark:hover:text-white" href="/rehber">
+                  Rehber
                 </Link>
                 <div className="group relative z-50">
                   <button type="button" className="flex items-center text-ln-label-sm text-ln-gray-600 dark:text-ln-gray-400 transition duration-200 ease-linear group-hover:text-ln-gray-800 dark:group-hover:text-white">

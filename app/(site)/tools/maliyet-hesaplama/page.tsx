@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ToolsPageShell, TOOLS_CARD_CLASS, TOOLS_BTN_PRIMARY_CLASS, TOOLS_BTN_SECONDARY_CLASS } from '@/components/ToolsPageShell'
+import { ToolAIAnalysis } from '@/components/ToolAIAnalysis'
 
 const PLATFORM_COSTS: Record<string, { monthly: number; commission: number; label: string }> = {
   shopify_basic: { monthly: 899, commission: 2.0, label: 'Shopify Basic' },
@@ -213,6 +214,15 @@ export default function MaliyetHesaplamaPage() {
                 <div className="text-sm opacity-80">({savingsPerMonth.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺/ay)</div>
               </div>
             )}
+
+            {/* AI Analysis */}
+            <div className={TOOLS_CARD_CLASS}>
+              <h4 className="font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-2">AI Değerlendirme</h4>
+              <ToolAIAnalysis
+                tool="maliyet"
+                buildContext={() => `Platform: ${PLATFORM_COSTS[platform].label}, Aylık ciro: ${monthlySales.toLocaleString('tr-TR')}₺, Ürün sayısı: ${products}, Eklenti: ${plugins} adet, ${years} yıllık platform maliyeti: ${totalOverYears.toLocaleString('tr-TR')}₺, Moyduz özel yazılım ${years} yıllık: ${customTotalOverYears.toLocaleString('tr-TR')}₺, ${savings > 0 && platform !== 'custom' ? `Özel yazılımla tasarruf: ${savings.toLocaleString('tr-TR')}₺ (${savingsPerMonth.toFixed(0)}₺/ay)` : 'Zaten özel yazılım seçilmiş'}`}
+              />
+            </div>
 
             {/* CTA */}
             <div className={TOOLS_CARD_CLASS}>

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ToolsPageShell, TOOLS_CARD_CLASS, TOOLS_BTN_PRIMARY_CLASS, TOOLS_BTN_SECONDARY_CLASS } from '@/components/ToolsPageShell'
+import { ToolAIAnalysis } from '@/components/ToolAIAnalysis'
 
 export default function ROIHesaplamaPage() {
   const [investment, setInvestment] = useState(30000)
@@ -197,6 +198,15 @@ export default function ROIHesaplamaPage() {
                 <span className="text-ln-gray-600 dark:text-ln-gray-400">Geri ödeme süresi</span>
                 <span className="font-semibold text-ln-gray-900 dark:text-ln-gray-0">{paybackMonths} ay</span>
               </div>
+            </div>
+
+            {/* AI Analysis */}
+            <div className={TOOLS_CARD_CLASS}>
+              <h4 className="font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-2">AI Değerlendirme</h4>
+              <ToolAIAnalysis
+                tool="roi"
+                buildContext={() => `Yatırım: ${investment.toLocaleString('tr-TR')}₺, Mevcut aylık ciro: ${currentMonthlyRevenue.toLocaleString('tr-TR')}₺, Beklenen büyüme: %${expectedGrowth}, Dönüşüm artışı beklentisi: %${conversionImprovement}, Hesaplama dönemi: ${months} ay, Aylık ek kazanç: ${totalMonthlyGain.toFixed(0)}₺, Net kazanç: ${netGain.toFixed(0)}₺, ROI: %${Math.round(roi)}, Geri ödeme süresi: ${paybackMonths} ay`}
+              />
             </div>
 
             {/* CTA */}

@@ -5,6 +5,7 @@ import { getPage } from '@/lib/mdx-pages'
 import { MDXComponents } from '@/lib/mdx-components'
 import { mdxRemoteOptions } from '@/lib/mdx-remote-options'
 import { ServicePageLayout } from '@/components/ServicePageLayout'
+import { buildFAQPageSchema } from '@/seo/json-ld/index'
 
 export const dynamic = 'force-static'
 
@@ -54,12 +55,20 @@ export default async function EcommerceMigrationPage() {
   const mdxContent = <MDXRemote source={content} components={MDXComponents} options={mdxRemoteOptions} />
 
   return (
-    <ServicePageLayout
-      frontmatter={
-        frontmatter as Parameters<typeof ServicePageLayout>[0]['frontmatter']
-      }
-      mdxContent={mdxContent}
-      moneyPagePath="/ecommerce-migration"
-    />
+    <>
+      {frontmatter.faqs && frontmatter.faqs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFAQPageSchema(frontmatter.faqs)) }}
+        />
+      )}
+      <ServicePageLayout
+        frontmatter={
+          frontmatter as Parameters<typeof ServicePageLayout>[0]['frontmatter']
+        }
+        mdxContent={mdxContent}
+        moneyPagePath="/ecommerce-migration"
+      />
+    </>
   )
 }

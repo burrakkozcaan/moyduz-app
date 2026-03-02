@@ -15,7 +15,7 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     try {
       if (request.method === "GET") {
-        return Response.json({ status: "ok", service: "moyduz-content-ai", routes: ["/content", "/image", "/embed", "/social", "/translate", "/transcribe"] });
+        return Response.json({ status: "ok", service: "moyduz-content-ai", routes: ["/content", "/image", "/embed", "/social", "/translate", "/transcribe", "/summarize"] });
       }
 
       if (request.method !== "POST") {
@@ -42,6 +42,7 @@ export default {
       if (route === "social")     return handleSocial(body, env);
       if (route === "translate")  return handleTranslate(body, env);
       if (route === "transcribe") return handleTranscribe(body, env);
+      if (route === "summarize")  return handleSummarize(body, env);
 
       return Response.json({ error: `Unknown route: /${route}` }, { status: 404 });
     } catch (err) {
@@ -275,6 +276,51 @@ async function handleTranscribe(body: Record<string, unknown>, env: Env): Promis
     const r = result as { text: string; word_count?: number };
 
     return Response.json({ success: true, text: r.text, word_count: r.word_count });
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    return Response.json({ error: msg }, { status: 503 });
+  }
+}
+
+// ─── /summarize — Llama 3 Türkçe özetleme ────────────────────────────────────
+// Input:  { text: string, mode?: "short" | "bullets" | "long", lang?: string }
+// Output: { summary: string, mode: string }
+// Modes:
+//   "short"   → 2-3 cümle, 80-120 kelime
+//   "bullets" → 5 madde, her biri 1 cümle (default)
+//   "long"    → 4-6 paragraf, 300-400 kelime
+
+async function handleSummarize(body: Record<string, unknown>, env: Env): Promise<Response> {
+  const text = body.text as string;
+  const mode = (body.mode as string) ?? "bullets";
+  const lang = (body.lang as string) ?? "tr";
+
+  if (!text) return Response.json({ error: "text required" }, { status: 400 });
+
+  // Llama token penceresi; çok uzun içerikleri kırp
+  const MAX_CHARS = 4000;
+  const truncated = text.slice(0, MAX_CHARS);
+
+  const modeInstructions: Record<string, string> = {
+    short:   "2-3 cümlelik kısa bir özet yaz (80-120 kelime). Sadece özeti döndür, başka hiçbir şey yazma.",
+    bullets: "En önemli 5 noktayı madde listesi olarak yaz. Her madde 1 cümle olsun. Format: '• Madde metni'. Başka hiçbir şey yazma.",
+    long:    "4-6 paragraftan oluşan kapsamlı bir özet yaz (300-400 kelime). Sadece özeti döndür, başka hiçbir şey yazma.",
+  };
+
+  const instruction = modeInstructions[mode] ?? modeInstructions.bullets;
+  const langNote = lang === "tr" ? "Türkçe yaz." : `Write in ${lang}.`;
+
+  const prompt = `Aşağıdaki metni özetle. ${langNote}\n\n${instruction}\n\nMetin:\n${truncated}`;
+
+  try {
+    // @ts-expect-error
+    const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+      messages: [{ role: "user", content: prompt }],
+      max_tokens: mode === "long" ? 600 : mode === "short" ? 200 : 350,
+    });
+
+    const summary = (result as { response: string }).response.trim();
+    return Response.json({ success: true, summary, mode });
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     return Response.json({ error: msg }, { status: 503 });

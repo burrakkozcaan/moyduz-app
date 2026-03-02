@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ToolsPageShell, TOOLS_CARD_CLASS, TOOLS_BTN_PRIMARY_CLASS, TOOLS_BTN_SECONDARY_CLASS } from '@/components/ToolsPageShell'
+import { ToolAIAnalysis } from '@/components/ToolAIAnalysis'
 
 const KDV_RATES = [1, 10, 20] as const
 
@@ -230,6 +231,15 @@ export default function KdvHesaplamaPage() {
                 </span>
               </div>
             </div>
+          </div>
+
+          {/* AI Analysis */}
+          <div className={TOOLS_CARD_CLASS}>
+            <h4 className="font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-2">AI Değerlendirme</h4>
+            <ToolAIAnalysis
+              tool="kdv"
+              buildContext={() => `KDV oranı: %${kdvRate}, Fiyat girişi: ${price}₺ (${mode === 'dahil' ? 'KDV dahil' : 'KDV hariç'}), KDV hariç fiyat: ${priceHaric.toFixed(2)}₺, KDV tutarı: ${kdvAmount.toFixed(2)}₺, KDV dahil fiyat: ${priceDahil.toFixed(2)}₺, Aylık satış: ${monthlySales} adet, Aylık toplam KDV: ${monthlyKdv.toFixed(0)}₺, Yıllık toplam KDV: ${yearlyKdv.toFixed(0)}₺`}
+            />
           </div>
 
           {/* CTA */}

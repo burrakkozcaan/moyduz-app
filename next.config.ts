@@ -20,6 +20,8 @@ const nextConfig: NextConfig = {
   },
 
   images: {
+    // Cloudflare Workers'da /_next/image endpoint çalışmıyor — CDN zaten optimize ediyor
+    unoptimized: true,
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 31536000,
     remotePatterns: [
@@ -32,6 +34,11 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "cdn.moydus.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.moyduz.com",
+        pathname: "/**",
       },
       {
         protocol: "https",
@@ -100,6 +107,13 @@ const nextConfig: NextConfig = {
 
   // Turbopack için boş config (Next.js 16 uyumluluğu)
   turbopack: {},
+
+  // SERP: keyword-rich URL ana, /multi-vendor kalıcı yönlendirme
+  async redirects() {
+    return [
+      { source: '/multi-vendor', destination: '/cok-saticili-e-ticaret-altyapisi', permanent: true },
+    ]
+  },
 };
 
 export default nextConfig;

@@ -453,7 +453,7 @@ export default function ETicaretPaketleriPage() {
               { href: '/e-ticaret-nasil-yapilir-2026-rehberi', label: 'E-Ticaret Nasıl Yapılır? Rehber' },
               { href: '/ozel-e-ticaret', label: 'Özel E-Ticaret Altyapısı' },
               { href: '/b2b-ecommerce', label: 'B2B E-Ticaret' },
-              { href: '/multi-vendor', label: 'Multi-Vendor Marketplace' },
+              { href: '/cok-saticili-e-ticaret-altyapisi', label: 'Çok Satıcılı E-Ticaret Altyapısı' },
               { href: '/ecommerce-migration', label: 'E-Ticaret Migration' },
               { href: '/services', label: 'Tüm Hizmetler' },
               { href: '/contact', label: 'İletişim' },

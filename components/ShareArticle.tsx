@@ -62,7 +62,7 @@ export function ShareArticle({ title, url }: ShareArticleProps) {
     <div className="flex flex-wrap items-center gap-3 py-6 border-y border-ln-gray-200 dark:border-ln-gray-800 my-8">
       <div className="flex items-center gap-2 text-ln-gray-600 dark:text-ln-gray-400 text-sm font-medium mr-2">
         <Share2 className="w-4 h-4" />
-        <span>Share this page</span>
+        <span>Bu sayfayı paylaş</span>
       </div>
 
       <div className="flex items-center gap-2">

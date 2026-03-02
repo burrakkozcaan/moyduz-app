@@ -7,32 +7,32 @@ import { mdxRemoteOptions } from '@/lib/mdx-remote-options'
 import { ServicePageLayout } from '@/components/ServicePageLayout'
 import { buildFAQPageSchema } from '@/seo/json-ld/index'
 
+const CANONICAL_URL = 'https://moyduz.com/cok-saticili-e-ticaret-altyapisi'
+
 export const dynamic = 'force-static'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const page = await getPage('b2b-ecommerce')
+  const page = await getPage('multi-vendor')
 
   if (!page) {
-    return { title: 'B2B E-Ticaret | Moyduz', robots: { index: false } }
+    return { title: 'Çok Satıcılı E-Ticaret Altyapısı | Moyduz', robots: { index: false } }
   }
 
   const { frontmatter } = page
-  const title = frontmatter.title || 'B2B E-Ticaret | Moyduz'
+  const title = frontmatter.title || 'Çok Satıcılı E-Ticaret Altyapısı | Moyduz'
   const description =
     (frontmatter.meta_description as string) ||
-    'B2B e-ticaret platformu ile kurumsal satışlarınızı dijitalleştirin.'
-  const url =
-    (frontmatter.canonical_url as string) || 'https://moyduz.com/b2b-ecommerce'
+    'Çok satıcılı e-ticaret altyapısı ile kendi pazaryerinizi kurun. Komisyonlu sistem, satıcı yönetimi. Moyduz.'
 
   return {
     title,
     description,
     keywords: frontmatter.keywords as string[] | undefined,
-    alternates: { canonical: url },
+    alternates: { canonical: CANONICAL_URL },
     openGraph: {
       title,
       description,
-      url,
+      url: CANONICAL_URL,
       type: 'website',
       locale: 'tr_TR',
       siteName: 'Moyduz',
@@ -45,28 +45,30 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function B2BEcommercePage() {
-  const page = await getPage('b2b-ecommerce')
+export default async function CokSaticiliETicaretAltyapisiPage() {
+  const page = await getPage('multi-vendor')
 
   if (!page) notFound()
 
   const { frontmatter, content } = page
+  const mergedFrontmatter = {
+    ...frontmatter,
+    canonical_url: CANONICAL_URL,
+  }
   const mdxContent = <MDXRemote source={content} components={MDXComponents} options={mdxRemoteOptions} />
 
   return (
     <>
-      {frontmatter.faqs && frontmatter.faqs.length > 0 && (
+      {mergedFrontmatter.faqs && mergedFrontmatter.faqs.length > 0 && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFAQPageSchema(frontmatter.faqs)) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFAQPageSchema(mergedFrontmatter.faqs)) }}
         />
       )}
       <ServicePageLayout
-        frontmatter={
-          frontmatter as Parameters<typeof ServicePageLayout>[0]['frontmatter']
-        }
+        frontmatter={mergedFrontmatter as Parameters<typeof ServicePageLayout>[0]['frontmatter']}
         mdxContent={mdxContent}
-        moneyPagePath="/b2b-ecommerce"
+        moneyPagePath="/cok-saticili-e-ticaret-altyapisi"
       />
     </>
   )

@@ -478,7 +478,7 @@ export default function ETicaretNasilYapilirPage() {
               { href: '/e-ticaret-paketleri', label: 'E-Ticaret Paketleri' },
               { href: '/ozel-e-ticaret', label: 'Özel E-Ticaret Altyapısı' },
               { href: '/b2b-ecommerce', label: 'B2B E-Ticaret' },
-              { href: '/multi-vendor', label: 'Multi-Vendor Marketplace' },
+              { href: '/cok-saticili-e-ticaret-altyapisi', label: 'Çok Satıcılı E-Ticaret Altyapısı' },
               { href: '/tools/e-ticaret-kar-hesaplama', label: 'E-Ticaret Kâr Hesaplama' },
               { href: '/tools/maliyet-hesaplama', label: 'Maliyet Hesaplama' },
               { href: '/rehber', label: 'Tüm Rehberler' },

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ToolsPageShell, TOOLS_CARD_CLASS, TOOLS_BTN_PRIMARY_CLASS, TOOLS_BTN_SECONDARY_CLASS } from '@/components/ToolsPageShell'
+import { ToolAIAnalysis } from '@/components/ToolAIAnalysis'
 
 const MARKETPLACE_RATES: Array<{ name: string; rate: number }> = [
   { name: 'Trendyol', rate: 12 },
@@ -231,13 +232,22 @@ export default function KomisyonHesaplamaPage() {
               </div>
             )}
 
+            {/* AI Analysis */}
+            <div className={TOOLS_CARD_CLASS}>
+              <h4 className="font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-2">AI Değerlendirme</h4>
+              <ToolAIAnalysis
+                tool="komisyon"
+                buildContext={() => `Marketplace: ${selectedMarketplace}, Komisyon oranı: %${commissionRate}, Satış fiyatı: ${salePrice}₺, Maliyet: ${costPrice}₺, Kargo: ${shippingCost}₺, Net kar: ${grossProfit.toFixed(0)}₺, Kar marjı: %${profitMargin.toFixed(1)}, Aylık satış: ${monthlySales} adet, Aylık net kar: ${monthlyProfit.toFixed(0)}₺`}
+              />
+            </div>
+
             {/* CTA */}
             <div className={TOOLS_CARD_CLASS}>
               <p className="text-ln-paragraph-sm text-ln-gray-600 dark:text-ln-gray-400 mb-3">
                 Kendi pazaryerinizi kurarak komisyon ödemekten kurtulun
               </p>
               <div className="flex flex-col gap-2 sm:flex-row">
-                <Link href="/multi-vendor" className={`flex-1 justify-center ${TOOLS_BTN_PRIMARY_CLASS}`}>
+                <Link href="/cok-saticili-e-ticaret-altyapisi" className={`flex-1 justify-center ${TOOLS_BTN_PRIMARY_CLASS}`}>
                   Multi-Vendor Çözümü
                 </Link>
                 <Link href="/ozel-e-ticaret" className={`flex-1 justify-center ${TOOLS_BTN_SECONDARY_CLASS}`}>
@@ -259,7 +269,7 @@ export default function KomisyonHesaplamaPage() {
             Daha detaylı bilgi için{' '}
             <Link href="/blog/komisyon-hesaplama-rehberi">Komisyon Hesaplama Rehberimizi</Link> okuyabilir,
             kendi marketplace'inizi kurmak için{' '}
-            <Link href="/multi-vendor">Multi-Vendor Marketplace</Link> çözümümüzü inceleyebilirsiniz.
+            <Link href="/cok-saticili-e-ticaret-altyapisi">Çok Satıcılı E-Ticaret Altyapısı</Link> çözümümüzü inceleyebilirsiniz.
           </p>
           <p>
             Genel kar marjı hesabı için{' '}
