@@ -38,6 +38,7 @@ const DIRS = [
   ["content/blog",    "/blog"],
   ["content/rehber",  "/rehber"],
   ["content/compare", "/compare"],
+  ["content/pages",   "/services"],
 ];
 
 // ─── Frontmatter helpers ──────────────────────────────────────────────────────
@@ -75,13 +76,14 @@ function headers() {
   return h;
 }
 
-async function imagePromptFor(title, slug) {
-  // Ask LLM for a good flux prompt
+async function imagePromptFor(title, slug, contentSnippet = "") {
+  // Ask LLM for a good flux prompt — include content snippet for relevance
+  const context = contentSnippet ? `Content excerpt: "${contentSnippet.slice(0, 300)}"` : "";
   const res  = await fetch(`${CONTENT_WORKER}/content`, {
     method: "POST", headers: headers(),
     body: JSON.stringify({
-      prompt: `For the article titled "${title}", write a short English image generation prompt for a professional hero image. Style: clean, modern, SaaS/tech, soft lighting, no text. Max 20 words. Reply with only the prompt.`,
-      max_tokens: 60,
+      prompt: `For the article titled "${title}" (slug: ${slug}). ${context}\n\nWrite a specific English image generation prompt for a professional hero image that visually represents THIS specific topic. Be concrete and specific, not generic. Style: clean, modern, SaaS/tech, soft lighting, no text, no words. Max 25 words. Reply with only the prompt.`,
+      max_tokens: 80,
     }),
   });
   if (!res.ok) throw new Error(`LLM ${res.status}`);
@@ -105,7 +107,7 @@ async function generateAudio(text, slug, retries = 3) {
   for (let i = 0; i < retries; i++) {
     const res  = await fetch(AUDIO_WORKER, {
       method: "POST", headers: headers(),
-      body: JSON.stringify({ text: trimmed, slug, lang: "tr" }),
+      body: JSON.stringify({ text: trimmed, slug, lang: "TR" }),
     });
     const d = await res.json();
     if (res.ok && d.success) return d.url;
@@ -160,7 +162,8 @@ for (const [dir, prefix] of DIRS) {
     if (!hasImage && !NO_IMG && CONTENT_WORKER) {
       try {
         process.stdout.write("  🖼  Resim üretiliyor... ");
-        const prompt = await imagePromptFor(title, slug);
+        const contentSnippet = extractText(raw).slice(0, 400);
+        const prompt = await imagePromptFor(title, slug, contentSnippet);
         const url    = await generateImage(prompt, slug);
         raw = setFMField(raw, "hero_image", url);
         changed = true;

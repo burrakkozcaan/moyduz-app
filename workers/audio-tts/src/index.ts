@@ -44,7 +44,7 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     return Response.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { text, slug, lang = "tr" } = body;
+  const { text, slug, lang = "TR" } = body;
 
   if (!text || !slug) {
     return Response.json({ error: "text and slug are required" }, { status: 400 });

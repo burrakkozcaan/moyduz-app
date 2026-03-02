@@ -2,7 +2,34 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Code, Award, Globe, Clock, Palette, Smartphone, Zap, Shield, TrendingUp, BookOpen } from 'lucide-react'
+import {
+  ArrowRight,
+  Code,
+  Award,
+  Globe,
+  Clock,
+  Palette,
+  Smartphone,
+  Zap,
+  Shield,
+  TrendingUp,
+  BookOpen,
+  BarChart3,
+  Cpu,
+  Database,
+  FileCode,
+  Layers,
+  Lock,
+  Mail,
+  MessageSquare,
+  Server,
+  Settings,
+  Target,
+  Rocket,
+  Headphones,
+  CheckCircle2,
+  Sparkles,
+} from 'lucide-react'
 import { TableOfContents } from '@/components/TableOfContents'
 import { ShareArticle } from '@/components/ShareArticle'
 import { getRehberlerForMoneyPage } from '@/lib/seo/internal-link-graph'
@@ -17,12 +44,53 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Zap,
   Shield,
   TrendingUp,
+  BookOpen,
+  BarChart3,
+  Cpu,
+  Database,
+  FileCode,
+  Layers,
+  Lock,
+  Mail,
+  MessageSquare,
+  Server,
+  Settings,
+  Target,
+  Rocket,
+  Headphones,
+  CheckCircle2,
+  Sparkles,
 }
+
+const relatedServiceIcons = [
+  ArrowRight,
+  FileCode,
+  Globe,
+  Rocket,
+  Target,
+  Zap,
+  Layers,
+  Server,
+]
+
+const fallbackIcons = [
+  Code,
+  Zap,
+  Shield,
+  Rocket,
+  Target,
+  Cpu,
+  Sparkles,
+  Layers,
+  BarChart3,
+  CheckCircle2,
+]
 
 interface ServicePageLayoutProps {
   frontmatter: {
     title: string
     meta_description?: string
+    hero_image?: string
     hero?: {
       title: string
       subtitle: string
@@ -101,10 +169,10 @@ export function ServicePageLayout({
         </div>
 
         {/* Featured Image */}
-        {hero.image && (
+        {(hero.image || frontmatter.hero_image) && (
           <div className="w-full aspect-video rounded-2xl overflow-hidden bg-ln-gray-200 dark:bg-ln-gray-800 mb-8 md:mb-12">
             <Image
-              src={hero.image}
+              src={(hero.image || frontmatter.hero_image) as string}
               alt={frontmatter.title}
               width={1920}
               height={1080}
@@ -117,7 +185,7 @@ export function ServicePageLayout({
         )}
 
         {/* Article Metadata */}
-        <div className="flex flex-wrap items-center gap-4 text-sm text-ln-gray-500 dark:text-ln-gray-400 mb-12 border-b border-ln-gray-200 dark:border-ln-gray-800 pb-8">
+        <div className="flex flex-wrap container  max-w-4xl mx-auto items-center gap-4 text-sm text-ln-gray-500 dark:text-ln-gray-400 mb-12 border-b border-ln-gray-200 dark:border-ln-gray-800 pb-8">
           {frontmatter.datePublished && (
             <span className="flex items-center gap-2">
               <svg
@@ -189,7 +257,7 @@ export function ServicePageLayout({
           )}
 
           {frontmatter.summary && (
-            <div className="relative overflow-hidden rounded-xl border border-ln-gray-200 dark:border-ln-gray-800 bg-ln-gray-0 dark:bg-ln-gray-900 p-6 shadow-sm my-8">
+            <div className="relative overflow-hidden rounded-xl border border-ln-gray-200 dark:border-ln-gray-800 bg-ln-gray-0 dark:bg-ln-gray-900 p-6  my-8">
               <div className="flex items-center gap-2 mb-3">
                 <svg
                   className="h-5 w-5 text-ln-gray-900 dark:text-ln-gray-0"
@@ -258,7 +326,8 @@ export function ServicePageLayout({
             </h2>
             <div className="grid gap-10 md:grid-cols-2 px-2">
               {frontmatter.features.map((feature, index) => {
-                const Icon = iconMap[feature.icon] || Code
+                const Icon =
+                  (feature.icon && iconMap[feature.icon]) || fallbackIcons[index % fallbackIcons.length]
                 return (
                   <div key={index} className="flex flex-col">
                     <div className="mb-5 flex size-12 items-center justify-center rounded-2xl bg-ln-gray-900 dark:bg-ln-gray-0 text-ln-gray-0 dark:text-ln-gray-900">
@@ -354,12 +423,17 @@ export function ServicePageLayout({
                 İlgili Hizmetler ve Kaynaklar
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {frontmatter.related_services.map((item, index) => (
+                {frontmatter.related_services.map((item, index) => {
+                  const RelatedIcon = relatedServiceIcons[index % relatedServiceIcons.length]
+                  return (
                   <Link
                     key={index}
                     href={item.href}
                     className="rounded-xl border border-ln-gray-200 dark:border-ln-gray-800 bg-ln-gray-0 dark:bg-ln-gray-900 p-6 hover:border-ln-gray-300 dark:hover:border-ln-gray-700 transition-colors block"
                   >
+                    <div className="flex items-center gap-2 text-ln-orange mb-2">
+                      <RelatedIcon className="size-5" />
+                    </div>
                     <h3 className="text-lg font-semibold mb-2 text-ln-gray-900 dark:text-ln-gray-0">
                       {item.title}
                     </h3>
@@ -367,7 +441,8 @@ export function ServicePageLayout({
                       {item.description}
                     </p>
                   </Link>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}

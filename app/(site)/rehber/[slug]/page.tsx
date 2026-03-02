@@ -4,6 +4,7 @@ import { mdxRemoteOptions } from '@/lib/mdx-remote-options'
 import { MDXComponents } from '@/lib/mdx-components'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Metadata } from 'next'
 import { AiSummaryButtons } from '@/components/AiSummaryButtons'
 import { ToolCTA } from '@/components/ToolCTA'
@@ -44,6 +45,7 @@ export async function generateMetadata({
   const title = post.frontmatter.title
   const metaTitle = (post.frontmatter.meta_title as string | undefined) || title
   const description = post.frontmatter.meta_description
+  const ogImage = post.frontmatter.hero_image as string | undefined
 
   return {
     title: `${metaTitle} | Moyduz`,
@@ -59,6 +61,7 @@ export async function generateMetadata({
       publishedTime: post.frontmatter.published_at,
       modifiedTime: post.frontmatter.updated_at || post.frontmatter.published_at,
       authors: ['Moyduz Team'],
+      ...(ogImage ? { images: [{ url: ogImage, width: 1200, height: 630, alt: title }] } : {}),
     },
     twitter: { card: 'summary_large_image', title, description },
   }
@@ -197,6 +200,22 @@ export default async function RehberSlugPage({
             )}
           </div>
         </header>
+
+        {/* Hero image */}
+        {frontmatter.hero_image && (
+          <div className="not-prose mb-8 w-full overflow-hidden rounded-2xl">
+            <Image
+              src={frontmatter.hero_image as string}
+              alt={frontmatter.title}
+              width={1200}
+              height={630}
+              className="w-full h-auto object-cover"
+              priority
+              quality={85}
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+          </div>
+        )}
 
         {/* Summary card */}
         {(frontmatter.meta_description || (frontmatter.key_points && frontmatter.key_points.length > 0)) && (

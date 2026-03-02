@@ -124,7 +124,7 @@ export async function generateMetadata({
   const title = post.frontmatter.meta_title || post.frontmatter.title
   const description = post.frontmatter.meta_description
 
-  const ogImage = post.frontmatter.featured_image || post.frontmatter.og_image
+  const ogImage = post.frontmatter.featured_image || post.frontmatter.og_image || (post.frontmatter.hero_image as string | undefined)
 
   return {
     title: `${title} | Moyduz`,
@@ -245,7 +245,7 @@ export default async function BlogSlugPage({
   const tocItems = extractTOC(post.content)
   
   // Get featured_image (same as moydus)
-  const rawFeaturedImage = post.frontmatter.featured_image || post.frontmatter.og_image
+  const rawFeaturedImage = post.frontmatter.featured_image || post.frontmatter.og_image || (post.frontmatter.hero_image as string | undefined)
   const featuredImage = rawFeaturedImage
 
   // Build breadcrumb items (same as moydus)
@@ -671,7 +671,7 @@ export default async function BlogSlugPage({
               </h2>
               <div className="grid gap-6 md:grid-cols-2">
                 {relatedPosts.map((relatedPost) => {
-                  const relatedImage = relatedPost.frontmatter.featured_image || relatedPost.frontmatter.og_image
+                  const relatedImage = relatedPost.frontmatter.featured_image || relatedPost.frontmatter.og_image || (relatedPost.frontmatter.hero_image as string | undefined)
                   return (
                     <Link
                       key={relatedPost.frontmatter.slug}
