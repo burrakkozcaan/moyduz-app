@@ -135,20 +135,19 @@ export default async function RehberSlugPage({
     })),
   } : null
 
-  const audioSrc = frontmatter.audio_src ? String(frontmatter.audio_src) : ''
-  const audioSchema = audioSrc ? {
-    '@context': 'https://schema.org',
-    '@type': 'AudioObject',
-    name: `${frontmatter.title} — Sesli Versiyon`,
-    description: frontmatter.meta_description || frontmatter.title,
-    contentUrl: audioSrc,
-    encodingFormat: 'audio/mpeg',
-    inLanguage: 'tr-TR',
-    isAccessibleForFree: true,
-    publisher: { '@type': 'Organization', name: 'Moyduz', url: 'https://moyduz.com' },
-  } : null
+  // Plain text for browser TTS (Web Speech API)
+  const audioText = [frontmatter.title, content]
+    .join('\n\n')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/\*\*(.+?)\*\*/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/`[^`]+`/g, '')
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
 
-  const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : []), ...(audioSchema ? [audioSchema] : [])]
+  const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])]
 
   return (
     <main className="flex-1">
@@ -271,7 +270,7 @@ export default async function RehberSlugPage({
 
         {/* Audio player — dosya varsa çalar, yoksa "yakında" gösterir */}
         <AudioPlayer
-          src={audioSrc}
+          text={audioText}
           title={`Dinle: ${frontmatter.title}`}
         />
 

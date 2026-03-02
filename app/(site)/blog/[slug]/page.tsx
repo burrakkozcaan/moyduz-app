@@ -340,20 +340,20 @@ export default async function BlogSlugPage({
     })),
   } : null
 
-  const audioSrc = post.frontmatter.audio_src as string | undefined
-  const audioJsonLd = audioSrc ? {
-    '@context': 'https://schema.org',
-    '@type': 'AudioObject',
-    name: `${post.frontmatter.title} — Sesli Versiyon`,
-    description: post.frontmatter.meta_description || post.frontmatter.title,
-    contentUrl: audioSrc,
-    encodingFormat: 'audio/mpeg',
-    inLanguage: 'tr-TR',
-    isAccessibleForFree: true,
-    publisher: { '@type': 'Organization', name: 'Moyduz', url: 'https://moyduz.com' },
-  } : null
+  // Plain text for browser TTS (Web Speech API)
+  const audioText = [post.frontmatter.title, post.content]
+    .join('\n\n')
+    .replace(/^---[\s\S]*?---\n?/, '')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/\*\*(.+?)\*\*/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/`[^`]+`/g, '')
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
 
-  const allSchemas = [blogJsonLd, breadcrumbJsonLd, ...(faqJsonLd ? [faqJsonLd] : []), ...(audioJsonLd ? [audioJsonLd] : [])]
+  const allSchemas = [blogJsonLd, breadcrumbJsonLd, ...(faqJsonLd ? [faqJsonLd] : [])]
 
   return (
     <main className="flex-1">
@@ -519,12 +519,10 @@ export default async function BlogSlugPage({
             </div>
           )}
 
-          {/* Audio Player */}
-          {audioSrc && (
-            <div className="mb-8">
-              <AudioPlayer src={audioSrc} title={`Dinle: ${post.frontmatter.title}`} />
-            </div>
-          )}
+          {/* Audio Player — tarayıcı Web Speech API (Türkçe) */}
+          <div className="mb-8">
+            <AudioPlayer text={audioText} title={`Dinle: ${post.frontmatter.title}`} />
+          </div>
 
           {/* Summary */}
           {post.frontmatter.snippet && (
