@@ -37,6 +37,7 @@ const args      = process.argv.slice(2);
 const NO_IMG    = args.includes("--no-image");
 const NO_AUD    = args.includes("--no-audio");
 const REGEN_IMG = args.includes("--regen-image"); // force regenerate images even if already set
+const REGEN_AUD = args.includes("--regen-audio"); // force regenerate audio even if already set
 const slugArg   = args.find(a => a.startsWith("--slug="));
 const ONLY_SLUG = slugArg ? slugArg.split("=")[1] : null;
 const limArg    = args.find(a => a.startsWith("--limit="));
@@ -167,7 +168,7 @@ for (const [dir, prefix] of DIRS) {
     const hasAudio  = !!fm.audio_src;
 
     if (ONLY_SLUG && slug !== ONLY_SLUG) continue;
-    if (hasImage && hasAudio && !REGEN_IMG) continue;
+    if (hasImage && hasAudio && !REGEN_IMG && !REGEN_AUD) continue;
 
     console.log(`\n📄 ${prefix}/${slug}`);
     let changed = false;
@@ -191,7 +192,7 @@ for (const [dir, prefix] of DIRS) {
     }
 
     // Audio
-    if (!hasAudio && !NO_AUD && AUDIO_WORKER) {
+    if ((!hasAudio || REGEN_AUD) && !NO_AUD && AUDIO_WORKER) {
       try {
         process.stdout.write("  🔊 Audio üretiliyor... ");
         const text = extractText(raw);
