@@ -12,6 +12,7 @@ import { TableOfContents } from '@/components/TableOfContents'
 import { FeedbackWidget } from '@/components/FeedbackWidget'
 import { DocPagination } from '@/components/DocPagination'
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion'
+import { AudioPlayer } from '@/components/AudioPlayer'
 import { buildBlogPostingSchema } from '@/seo/json-ld/index'
 import BlogFeedWithFilters from '../_components/BlogFeedWithFilters'
 
@@ -339,7 +340,20 @@ export default async function BlogSlugPage({
     })),
   } : null
 
-  const allSchemas = [blogJsonLd, breadcrumbJsonLd, ...(faqJsonLd ? [faqJsonLd] : [])]
+  const audioSrc = post.frontmatter.audio_src as string | undefined
+  const audioJsonLd = audioSrc ? {
+    '@context': 'https://schema.org',
+    '@type': 'AudioObject',
+    name: `${post.frontmatter.title} — Sesli Versiyon`,
+    description: post.frontmatter.meta_description || post.frontmatter.title,
+    contentUrl: audioSrc,
+    encodingFormat: 'audio/mpeg',
+    inLanguage: 'tr-TR',
+    isAccessibleForFree: true,
+    publisher: { '@type': 'Organization', name: 'Moyduz', url: 'https://moyduz.com' },
+  } : null
+
+  const allSchemas = [blogJsonLd, breadcrumbJsonLd, ...(faqJsonLd ? [faqJsonLd] : []), ...(audioJsonLd ? [audioJsonLd] : [])]
 
   return (
     <main className="flex-1">
@@ -502,6 +516,13 @@ export default async function BlogSlugPage({
           {tocItems.length > 0 && (
             <div className="mb-8">
               <TableOfContents items={tocItems} title="Bu sayfada" />
+            </div>
+          )}
+
+          {/* Audio Player */}
+          {audioSrc && (
+            <div className="mb-8">
+              <AudioPlayer src={audioSrc} title={`Dinle: ${post.frontmatter.title}`} />
             </div>
           )}
 

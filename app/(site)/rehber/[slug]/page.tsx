@@ -132,7 +132,20 @@ export default async function RehberSlugPage({
     })),
   } : null
 
-  const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])]
+  const audioSrc = frontmatter.audio_src ? String(frontmatter.audio_src) : ''
+  const audioSchema = audioSrc ? {
+    '@context': 'https://schema.org',
+    '@type': 'AudioObject',
+    name: `${frontmatter.title} — Sesli Versiyon`,
+    description: frontmatter.meta_description || frontmatter.title,
+    contentUrl: audioSrc,
+    encodingFormat: 'audio/mpeg',
+    inLanguage: 'tr-TR',
+    isAccessibleForFree: true,
+    publisher: { '@type': 'Organization', name: 'Moyduz', url: 'https://moyduz.com' },
+  } : null
+
+  const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : []), ...(audioSchema ? [audioSchema] : [])]
 
   return (
     <main className="flex-1">
@@ -239,7 +252,7 @@ export default async function RehberSlugPage({
 
         {/* Audio player — dosya varsa çalar, yoksa "yakında" gösterir */}
         <AudioPlayer
-          src={frontmatter.audio_src ? String(frontmatter.audio_src) : ''}
+          src={audioSrc}
           title={`Dinle: ${frontmatter.title}`}
         />
 
