@@ -153,9 +153,6 @@ export default async function ServicesPage() {
             href={`/services/${service.slug}`}
             className="group flex flex-col rounded-2xl border border-ln-gray-200 bg-white p-6 transition-all hover:border-ln-gray-300 hover:shadow-md dark:border-ln-gray-800 dark:bg-ln-gray-950 dark:hover:border-ln-gray-700"
           >
-            <span className="inline-flex w-fit items-center rounded-full bg-ln-orange/10 px-2.5 py-1 text-xs font-medium text-ln-orange">
-              Anahtar Kelime: {service.keyword}
-            </span>
             <h2 className="text-lg font-semibold leading-snug text-ln-gray-900 group-hover:text-ln-orange dark:text-white dark:group-hover:text-ln-orange">
               {service.title}
             </h2>
