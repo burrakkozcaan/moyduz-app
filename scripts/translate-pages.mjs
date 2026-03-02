@@ -47,7 +47,7 @@ const LANGS     = langArg ? langArg.split("=")[1].split(",") : ["en"];
 const dirArg    = args.find(a => a.startsWith("--dir="));
 const ONLY_DIR  = dirArg ? dirArg.split("=")[1] : null; // blog | rehber | pages
 
-const LANG_NAMES: Record<string, string> = {
+const LANG_NAMES = {
   en: "İngilizce",
   es: "İspanyolca",
   de: "Almanca",
