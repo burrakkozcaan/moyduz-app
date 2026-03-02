@@ -211,7 +211,7 @@ export default async function TemplateDetailPage({
 
   return (
     <main className="flex-1">
-      <div className="container">
+      <div className="container mx-auto max-w-3xl px-4 py-12 md:px-6 md:py-16">
         {/* ── Breadcrumbs ── */}
         <div className="flex items-center gap-2 pt-8 text-ln-label-sm text-ln-gray-500">
           <Link href="/marketplace/templates" className="transition-colors hover:text-ln-gray-800">
@@ -261,7 +261,7 @@ export default async function TemplateDetailPage({
                 Live Preview
                 <ArrowIcon />
               </a>
-              <Link href="https://app.moydus.com/" target="_blank" className="group relative inline-flex h-10 items-center justify-center gap-2.5 whitespace-nowrap rounded-[11px] bg-ln-gray-900 px-4 text-ln-label-sm text-ln-gray-0 shadow-ln-button-gray transition duration-200 ease-linear focus:outline-none">
+              <Link href="https://app.moyduz.com/" target="_blank" className="group relative inline-flex h-10 items-center justify-center gap-2.5 whitespace-nowrap rounded-[11px] bg-ln-gray-900 px-4 text-ln-label-sm text-ln-gray-0 shadow-ln-button-gray transition duration-200 ease-linear focus:outline-none">
                 Get Template
                 <ArrowIcon light />
               </Link>

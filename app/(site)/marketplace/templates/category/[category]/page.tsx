@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import { ChevronRight } from 'lucide-react'
 
 const groupLabels: Record<string, string> = {
   business: 'Business Templates',
@@ -183,13 +184,13 @@ export default async function CategoryTemplatesPage({
 
     return (
       <main className="flex-1">
-        <div className="container">
+        <div className="container mx-auto max-w-3xl px-4 py-12 md:px-6 md:py-16">
           <div className="mb-8 flex items-center gap-2 text-sm text-ln-gray-600">
             <Link href="/marketplace/templates/category" className="transition hover:text-ln-gray-900">
               Categories
             </Link>
             <span className="flex items-center gap-2">
-              <Chevron />
+              <ChevronRight />
               <span className="text-ln-gray-900">{groupTitle}</span>
             </span>
           </div>
@@ -281,7 +282,7 @@ export default async function CategoryTemplatesPage({
 
   return (
     <main className="flex-1">
-      <div className="container">
+      <div className="container mx-auto max-w-3xl px-4 py-12 md:px-6 md:py-16">
         <div className="mb-8 flex items-center gap-2 text-sm text-ln-gray-600">
           <Link href="/marketplace/templates" className="transition hover:text-ln-gray-900">
             Templates

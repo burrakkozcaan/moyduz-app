@@ -35,8 +35,8 @@
       "page_type": "blog",
       "intent": "commercial",
       "priority": 5,
-      "status": "pending",
-      "last_generated_at": null,
+      "status": "done",
+      "last_generated_at": "2026-03-01T23:09:42.134Z",
       "notes": "Komisyon hesaplama aracına CTA ver"
     },
     {
@@ -46,8 +46,8 @@
       "page_type": "blog",
       "intent": "commercial",
       "priority": 5,
-      "status": "pending",
-      "last_generated_at": null,
+      "status": "done",
+      "last_generated_at": "2026-03-01T23:19:43.258Z",
       "notes": "Maliyet hesaplama aracına link"
     },
     {
@@ -78,8 +78,8 @@
       "page_type": "blog",
       "intent": "informational",
       "priority": 5,
-      "status": "pending",
-      "last_generated_at": null,
+      "status": "done",
+      "last_generated_at": "2026-03-01T23:23:10.291Z",
       "notes": "ikas trafik hijack — güncelle"
     },
     {
@@ -140,8 +140,8 @@
       "page_type": "rehber",
       "intent": "informational",
       "priority": 5,
-      "status": "pending",
-      "last_generated_at": null,
+      "status": "done",
+      "last_generated_at": "2026-03-01T23:27:18.126Z",
       "notes": "Moyduz b2b sayfasına bağla"
     },
     {

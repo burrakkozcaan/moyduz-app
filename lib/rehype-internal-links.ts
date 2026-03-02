@@ -19,6 +19,7 @@ const KEYWORD_MAP: Array<{ re: RegExp; url: string }> = [
   { re: /\bno-?code\b/i,                        url: '/blog/no-code-nedir' },
   { re: /\bSaaS\b/,                             url: '/blog/saas-nedir' },
   { re: /\bmarketplace\b/i,                     url: '/blog/marketplace-nedir' },
+  { re: /çok\s+satıcılı\s+e-ticaret\s+altyapısı/i, url: '/cok-saticili-e-ticaret-altyapisi' },
   { re: /multi-?vendor/i,                       url: '/blog/multi-vendor-nedir' },
   { re: /B2B\s+e-ticaret/i,                     url: '/blog/b2b-e-ticaret-sitesi-nasil-kurulur' },
   { re: /pasif\s+gelir/i,                       url: '/blog/pasif-gelir-nedir' },

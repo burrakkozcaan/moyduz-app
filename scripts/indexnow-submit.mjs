@@ -50,7 +50,7 @@ const STATIC_PATHS = [
   "/e-ticaret-paketleri",
   "/ozel-e-ticaret",
   "/b2b-ecommerce",
-  "/multi-vendor",
+  "/cok-saticili-e-ticaret-altyapisi",
   "/ecommerce-migration",
   "/partner-programi",
   "/tools",

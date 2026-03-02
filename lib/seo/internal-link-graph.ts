@@ -28,7 +28,7 @@ export interface MoneyPage {
 export const CORE_MONEY_PAGES: MoneyPage[] = [
   { path: '/ozel-e-ticaret', label: 'Özel E-Ticaret', shortLabel: 'Özel E-Ticaret' },
   { path: '/b2b-ecommerce', label: 'B2B E-Ticaret', shortLabel: 'B2B E-Ticaret' },
-  { path: '/multi-vendor', label: 'Multi Vendor', shortLabel: 'Multi Vendor' },
+  { path: '/cok-saticili-e-ticaret-altyapisi', label: 'Çok Satıcılı E-Ticaret Altyapısı', shortLabel: 'Pazaryeri' },
   { path: '/ecommerce-migration', label: 'E-Ticaret Geçişi', shortLabel: 'Geçiş & Migration' },
   { path: '/pricing', label: 'Fiyatlandırma', shortLabel: 'Pricing' },
   { path: '/marketplace/templates', label: 'Şablonlar', shortLabel: 'Şablonlar' },
@@ -81,7 +81,7 @@ export const BLOG_INTERNAL_GRAPH: BlogNode[] = [
     slug: 'multi-vendor-nedir',
     title: 'Multi Vendor Nedir?',
     cluster: 'nedir',
-    moneyLinks: ['/multi-vendor', '/pricing'],
+    moneyLinks: ['/cok-saticili-e-ticaret-altyapisi', '/pricing'],
     blogLinks: ['ozel-e-ticaret-nedir', 'e-ticaret-sitesi-nasil-kurulur', 'saas-nedir'],
   },
   {
@@ -153,7 +153,7 @@ const MONEY_PAGE_REHBERLER: Record<string, { slug: string; title: string }[]> = 
     { slug: 'multi-vendor-nedir', title: 'Multi Vendor ve B2B' },
     { slug: 'ozel-e-ticaret-nedir', title: 'Özel E-Ticaret Nedir?' },
   ],
-  '/multi-vendor': [
+  '/cok-saticili-e-ticaret-altyapisi': [
     { slug: 'multi-vendor-nedir', title: 'Multi Vendor Nedir?' },
     { slug: 'e-ticaret-sitesi-nasil-kurulur', title: 'E-Ticaret Sitesi Nasıl Kurulur?' },
   ],
