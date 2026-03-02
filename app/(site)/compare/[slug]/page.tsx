@@ -75,6 +75,7 @@ export default async function CompareSlugPage({
   if (!post) notFound()
 
   const faqs = (post.frontmatter.faqs as FaqItem[] | undefined) ?? []
+  const heroImage = post.frontmatter.hero_image as string | undefined
   const webPageSchema = buildWebPageSchema({
     url: `https://moyduz.com/compare/${slug}`,
     title: post.frontmatter.meta_title || post.frontmatter.title,
@@ -86,6 +87,7 @@ export default async function CompareSlugPage({
     ],
     datePublished: post.frontmatter.published_at,
     dateModified: post.frontmatter.updated_at || post.frontmatter.published_at,
+    ...(heroImage ? { image: { url: heroImage, width: 1200, height: 630, alt: post.frontmatter.title } } : {}),
   })
 
   const relatedPosts = allPosts

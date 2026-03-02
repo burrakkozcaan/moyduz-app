@@ -14,7 +14,7 @@ export type MoyduzImage = {
 };
 
 /** Tüm ImageObject'lere standart telif/lisans meta verilerini ekler */
-function buildImageObject(params: {
+export function buildImageObject(params: {
   url: string;
   width?: number;
   height?: number;

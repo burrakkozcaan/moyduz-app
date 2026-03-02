@@ -1,4 +1,5 @@
 import { getRehberPost, getAllRehberPosts } from '@/lib/rehber'
+import { buildImageObject } from '@/seo/json-ld'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { mdxRemoteOptions } from '@/lib/mdx-remote-options'
 import { MDXComponents } from '@/lib/mdx-components'
@@ -79,6 +80,7 @@ export default async function RehberSlugPage({
   const { frontmatter, content } = post
 
   // JSON-LD schemas
+  const heroImage = frontmatter.hero_image as string | undefined
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -89,6 +91,16 @@ export default async function RehberSlugPage({
     dateModified: frontmatter.updated_at || frontmatter.published_at,
     author: { '@type': 'Organization', name: 'Moyduz', url: 'https://moyduz.com' },
     publisher: { '@type': 'Organization', name: 'Moyduz', url: 'https://moyduz.com' },
+    ...(heroImage ? {
+      image: buildImageObject({
+        url: heroImage,
+        width: 1200,
+        height: 630,
+        caption: frontmatter.title as string,
+        creator: { '@type': 'Organization', name: 'Moyduz' },
+        copyrightHolder: { '@type': 'Organization', name: 'Moyduz' },
+      }),
+    } : {}),
   }
 
   const breadcrumbSchema = {
