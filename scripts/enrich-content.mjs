@@ -4,6 +4,8 @@
  *           node scripts/enrich-content.mjs --no-audio
  *           node scripts/enrich-content.mjs --no-image
  *           node scripts/enrich-content.mjs --limit=10
+ *           node scripts/enrich-content.mjs --regen-image       # var olan resimleri de yeniden üret
+ *           node scripts/enrich-content.mjs --slug=iyzico-nedir # sadece tek bir slug işle
  */
 
 import fs from "node:fs";
@@ -28,11 +30,14 @@ const CONTENT_WORKER = process.env.CONTENT_WORKER_URL;
 const AUDIO_WORKER   = process.env.AUDIO_WORKER_URL;
 const AUTH_SECRET    = process.env.AUTH_SECRET;
 
-const args    = process.argv.slice(2);
-const NO_IMG  = args.includes("--no-image");
-const NO_AUD  = args.includes("--no-audio");
-const limArg  = args.find(a => a.startsWith("--limit="));
-const LIMIT   = limArg ? parseInt(limArg.split("=")[1]) : Infinity;
+const args      = process.argv.slice(2);
+const NO_IMG    = args.includes("--no-image");
+const NO_AUD    = args.includes("--no-audio");
+const REGEN_IMG = args.includes("--regen-image"); // force regenerate images even if already set
+const slugArg   = args.find(a => a.startsWith("--slug="));
+const ONLY_SLUG = slugArg ? slugArg.split("=")[1] : null;
+const limArg    = args.find(a => a.startsWith("--limit="));
+const LIMIT     = limArg ? parseInt(limArg.split("=")[1]) : Infinity;
 
 const DIRS = [
   ["content/blog",    "/blog"],
@@ -153,13 +158,14 @@ for (const [dir, prefix] of DIRS) {
     const hasImage  = !!fm.hero_image;
     const hasAudio  = !!fm.audio_src;
 
-    if (hasImage && hasAudio) continue;
+    if (ONLY_SLUG && slug !== ONLY_SLUG) continue;
+    if (hasImage && hasAudio && !REGEN_IMG) continue;
 
     console.log(`\n📄 ${prefix}/${slug}`);
     let changed = false;
 
     // Image
-    if (!hasImage && !NO_IMG && CONTENT_WORKER) {
+    if ((!hasImage || REGEN_IMG) && !NO_IMG && CONTENT_WORKER) {
       try {
         process.stdout.write("  🖼  Resim üretiliyor... ");
         const contentSnippet = extractText(raw).slice(0, 400);
