@@ -2,32 +2,35 @@ import type { Metadata } from 'next'
 import { buildWebApplicationToolSchema } from '@/seo/json-ld/index'
 
 export const metadata: Metadata = {
-  title: 'Marketplace Komisyon Hesaplama | Moyduz Araçları',
+  title: 'Trendyol Komisyon Hesaplama — Pazaryeri Net Kâr Analizi | Moyduz',
   description:
-    'Trendyol, Hepsiburada, Amazon ve diğer pazaryerlerindeki gerçek kar marjınızı hesaplayın. Komisyon, KDV ve kargo dahil net kâr analizi.',
+    'Trendyol komisyon hesaplama aracı: satış fiyatı, maliyet ve kargo girerek net kârınızı anında görün. Hepsiburada, Amazon TR ve diğer pazaryerleri de dahil.',
   keywords: [
+    'trendyol komisyon hesaplama',
+    'trendyol komisyon oranı',
+    'trendyol kar hesaplama',
+    'pazaryeri komisyon hesaplama',
     'komisyon hesaplama',
-    'trendyol komisyon',
+    'trendyol net kar',
+    'hepsiburada komisyon',
     'marketplace komisyon',
-    'kar marjı hesaplama',
-    'pazaryeri komisyonu',
   ],
   alternates: {
     canonical: 'https://moyduz.com/tools/komisyon-hesaplama',
   },
   openGraph: {
-    title: 'Marketplace Komisyon Hesaplama | Moyduz',
-    description: 'Trendyol, Hepsiburada ve diğer pazaryerlerinde gerçek kar marjınızı hesaplayın.',
+    title: 'Trendyol Komisyon Hesaplama — Net Kâr Analizi | Moyduz',
+    description: 'Trendyol komisyon, KDV ve kargo dahil net kârınızı anında hesaplayın. Hepsiburada ve Amazon TR de dahil.',
     url: 'https://moyduz.com/tools/komisyon-hesaplama',
     type: 'website',
     locale: 'tr_TR',
     siteName: 'Moyduz',
-    images: [{ url: 'https://moyduz.com/opengraph-image', width: 1200, height: 630, alt: 'Marketplace Komisyon Hesaplama | Moyduz' }],
+    images: [{ url: 'https://moyduz.com/opengraph-image', width: 1200, height: 630, alt: 'Trendyol Komisyon Hesaplama | Moyduz' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Marketplace Komisyon Hesaplama | Moyduz',
-    description: 'Trendyol, Hepsiburada ve diğer pazaryerlerinde gerçek kar marjınızı hesaplayın.',
+    title: 'Trendyol Komisyon Hesaplama — Net Kâr Analizi | Moyduz',
+    description: 'Trendyol komisyon, KDV ve kargo dahil net kârınızı anında hesaplayın.',
     images: ['https://moyduz.com/opengraph-image'],
   },
 }
