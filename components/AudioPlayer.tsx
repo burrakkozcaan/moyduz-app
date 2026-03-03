@@ -3,36 +3,34 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 
 interface AudioPlayerProps {
+  /** ElevenLabs ile üretilmiş CDN MP3 URL'si (varsa önce bu çalınır) */
+  src?: string
+  /** Fallback: Browser Web Speech API için Türkçe metin */
   text?: string
   title?: string
 }
 
-export function AudioPlayer({ text, title = 'Bu içeriği dinle' }: AudioPlayerProps) {
+export function AudioPlayer({ src, text, title = 'Bu içeriği dinle' }: AudioPlayerProps) {
   const [playing, setPlaying] = useState(false)
-  const [supported, setSupported] = useState(false)
-  const [voiceReady, setVoiceReady] = useState(false)
+  const [ttsReady, setTtsReady] = useState(false)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const [progress, setProgress] = useState(0)
+  const [useTTS, setUseTTS] = useState(!src) // MP3 yoksa direkt TTS
 
+  // Web Speech API — sesler async yüklenir
   useEffect(() => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return
-    setSupported(true)
-
-    // Sesler asenkron yüklenir — hem anında hem onvoiceschanged'de kontrol
-    const check = () => {
-      const voices = window.speechSynthesis.getVoices()
-      if (voices.length > 0) setVoiceReady(true)
-    }
+    const check = () => { if (window.speechSynthesis.getVoices().length > 0) setTtsReady(true) }
     check()
     window.speechSynthesis.addEventListener('voiceschanged', check)
-
     return () => {
       window.speechSynthesis.removeEventListener('voiceschanged', check)
       window.speechSynthesis.cancel()
     }
   }, [])
 
-  const getBestTurkishVoice = useCallback(() => {
+  const getBestTrVoice = useCallback(() => {
     const voices = window.speechSynthesis.getVoices()
-    // Önce gerçek Türkçe ses, yoksa herhangi tr ses
     return (
       voices.find(v => v.lang === 'tr-TR' && !v.localService) ||
       voices.find(v => v.lang === 'tr-TR') ||
@@ -41,43 +39,71 @@ export function AudioPlayer({ text, title = 'Bu içeriği dinle' }: AudioPlayerP
     )
   }, [])
 
-  function toggle() {
-    if (!supported || !text) return
+  function toggleTTS() {
     const synth = window.speechSynthesis
-
-    if (playing) {
-      synth.cancel()
-      setPlaying(false)
-      return
-    }
-
+    if (playing) { synth.cancel(); setPlaying(false); return }
     synth.cancel()
-
-    // Uzun içeriklerde 4000 karakter ile sınırla
-    const utterance = new SpeechSynthesisUtterance(text.slice(0, 4000))
-    utterance.lang = 'tr-TR'
-    utterance.rate = 0.88    // biraz yavaş → daha doğal
-    utterance.pitch = 1.0
-    utterance.volume = 1.0
-
-    const voice = getBestTurkishVoice()
-    if (voice) utterance.voice = voice
-
-    utterance.onend = () => setPlaying(false)
-    utterance.onerror = () => setPlaying(false)
-
-    synth.speak(utterance)
+    const utt = new SpeechSynthesisUtterance((text ?? '').slice(0, 4000))
+    utt.lang = 'tr-TR'
+    utt.rate = 0.88
+    utt.pitch = 1.0
+    const voice = getBestTrVoice()
+    if (voice) utt.voice = voice
+    utt.onend = () => setPlaying(false)
+    utt.onerror = () => setPlaying(false)
+    synth.speak(utt)
     setPlaying(true)
   }
 
-  if (!supported) return null
+  function toggleAudio() {
+    const audio = audioRef.current
+    if (!audio) return
+    if (playing) { audio.pause(); setPlaying(false) }
+    else { audio.play(); setPlaying(true) }
+  }
+
+  function toggle() {
+    if (useTTS) return toggleTTS()
+    return toggleAudio()
+  }
+
+  function seek(e: React.MouseEvent<HTMLDivElement>) {
+    const audio = audioRef.current
+    if (!audio?.duration) return
+    const rect = e.currentTarget.getBoundingClientRect()
+    audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration
+  }
+
+  // MP3 yüklenemezse TTS'e geç
+  function onAudioError() {
+    setUseTTS(true)
+    setPlaying(false)
+  }
+
+  const hasTTS = typeof window !== 'undefined' && 'speechSynthesis' in window && !!text
+  if (!src && !hasTTS) return null
+
+  const showProgress = !useTTS && src
 
   return (
     <div className="not-prose my-6 flex items-center gap-4 rounded-xl border border-ln-gray-200 bg-ln-gray-0 px-4 py-3 dark:border-ln-gray-800 dark:bg-ln-gray-950">
+      {/* Gizli audio element */}
+      {src && !useTTS && (
+        <audio
+          ref={audioRef}
+          src={src}
+          onTimeUpdate={() => {
+            const a = audioRef.current
+            if (a?.duration) setProgress((a.currentTime / a.duration) * 100)
+          }}
+          onEnded={() => { setPlaying(false); setProgress(0) }}
+          onError={onAudioError}
+        />
+      )}
+
       <button
         onClick={toggle}
-        disabled={!text}
-        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ln-orange text-white transition-opacity hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ln-orange text-white transition-opacity hover:opacity-90"
         aria-label={playing ? 'Durdur' : 'Dinle'}
       >
         {playing ? (
@@ -94,9 +120,22 @@ export function AudioPlayer({ text, title = 'Bu içeriği dinle' }: AudioPlayerP
 
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">{title}</p>
-        <p className="mt-0.5 text-xs text-ln-gray-400 dark:text-ln-gray-500">
-          {playing ? 'Okunuyor…' : voiceReady ? 'Türkçe sesli okuma' : 'Ses yükleniyor…'}
-        </p>
+        {showProgress ? (
+          <div
+            className="mt-1.5 h-1 cursor-pointer rounded-full bg-ln-gray-200 dark:bg-ln-gray-700"
+            onClick={seek}
+            role="slider"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={Math.round(progress)}
+          >
+            <div className="h-full rounded-full bg-ln-orange transition-all" style={{ width: `${progress}%` }} />
+          </div>
+        ) : (
+          <p className="mt-0.5 text-xs text-ln-gray-400 dark:text-ln-gray-500">
+            {playing ? 'Okunuyor…' : useTTS ? (ttsReady ? 'Türkçe sesli okuma' : 'Yükleniyor…') : 'ElevenLabs · Türkçe'}
+          </p>
+        )}
       </div>
     </div>
   )

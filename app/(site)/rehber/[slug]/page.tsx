@@ -147,7 +147,8 @@ export default async function RehberSlugPage({
     })),
   } : null
 
-  // Plain text for browser TTS (Web Speech API)
+  const audioSrc = frontmatter.audio_src as string | undefined
+  // Plain text for browser TTS fallback
   const audioText = [frontmatter.title, content]
     .join('\n\n')
     .replace(/^#{1,6}\s+/gm, '')
@@ -282,6 +283,7 @@ export default async function RehberSlugPage({
 
         {/* Audio player — dosya varsa çalar, yoksa "yakında" gösterir */}
         <AudioPlayer
+          src={audioSrc}
           text={audioText}
           title={`Dinle: ${frontmatter.title}`}
         />

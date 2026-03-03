@@ -340,7 +340,9 @@ export default async function BlogSlugPage({
     })),
   } : null
 
-  // Plain text for browser TTS (Web Speech API)
+  // MP3 varsa CDN'den çal (ElevenLabs), yoksa browser TTS
+  const audioSrc = post.frontmatter.audio_src as string | undefined
+  // Plain text for browser TTS fallback
   const audioText = [post.frontmatter.title, post.content]
     .join('\n\n')
     .replace(/^---[\s\S]*?---\n?/, '')
@@ -521,7 +523,7 @@ export default async function BlogSlugPage({
 
           {/* Audio Player — tarayıcı Web Speech API (Türkçe) */}
           <div className="mb-8">
-            <AudioPlayer text={audioText} title={`Dinle: ${post.frontmatter.title}`} />
+            <AudioPlayer src={audioSrc} text={audioText} title={`Dinle: ${post.frontmatter.title}`} />
           </div>
 
           {/* Summary */}
