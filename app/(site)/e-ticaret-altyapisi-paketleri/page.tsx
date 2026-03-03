@@ -13,14 +13,21 @@ export async function generateMetadata(): Promise<Metadata> {
   const page = await getPage('e-ticaret-altyapisi-paketleri')
 
   if (!page) {
-    return { title: 'En İyi E-Ticaret Altyapısı | Moyduz', robots: { index: false } }
+    return {
+      title: 'En İyi E-Ticaret Altyapısı: Moyduz ile Satışlarınızı Katlayın',
+      description:
+        'E-ticaret sitesi kurmak veya mevcut altyapınızı değiştirmek mi istiyorsunuz? Gizli maliyetler ve komisyonlar olmadan, %100 SEO uyumlu Moyduz e-ticaret paketlerini keşfedin.',
+      robots: { index: false },
+    }
   }
 
   const { frontmatter } = page
-  const title = frontmatter.title || 'En İyi E-Ticaret Altyapısı (2026) | Moyduz'
+  const title =
+    frontmatter.title ||
+    'En İyi E-Ticaret Altyapısı: Moyduz ile Satışlarınızı Katlayın'
   const description =
     (frontmatter.meta_description as string) ||
-    'Gizli yenileme ücretleri ve komisyonlara veda edin. %100 SEO uyumlu e-ticaret altyapısı.'
+    'E-ticaret sitesi kurmak veya mevcut altyapınızı değiştirmek mi istiyorsunuz? Gizli maliyetler ve komisyonlar olmadan, %100 SEO uyumlu Moyduz e-ticaret paketlerini keşfedin.'
   const url =
     (frontmatter.canonical_url as string) ||
     'https://moyduz.com/e-ticaret-altyapisi-paketleri'

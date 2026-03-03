@@ -4,12 +4,12 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Moyduz',
-  description: 'Terms and conditions for using Moyduz services.',
+  title: 'Kullanım Koşulları | Moyduz',
+  description: 'Moyduz hizmetlerini kullanıma dair şartlar ve koşullar.',
   alternates: { canonical: 'https://moyduz.com/terms-of-service' },
   openGraph: {
-    title: 'Terms of Service | Moyduz',
-    description: 'Terms and conditions for using Moyduz services.',
+    title: 'Kullanım Koşulları | Moyduz',
+    description: 'Moyduz hizmetlerini kullanıma dair şartlar ve koşullar.',
     url: 'https://moyduz.com/terms-of-service',
   },
 }

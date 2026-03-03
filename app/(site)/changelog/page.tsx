@@ -5,7 +5,7 @@ const DOT_IMG = '/images/landing/dot-gray-25.svg';
 
 export default function ChangelogPage() {
   return (
-    <div className="container">
+    <div className="container px-6 md:px-0">
       <div className="flex flex-col items-start pt-11 md:items-center md:pt-[72px]">
         <div className="hidden size-10 items-center justify-center rounded-[13px] bg-ln-gray-50 shadow-ln-badge-gray md:flex">
           <svg
@@ -27,10 +27,10 @@ export default function ChangelogPage() {
           </svg>
         </div>
         <h1 className="mt-3 text-[28px]/[36px] font-550 -tracking-[0.02em] text-ln-gray-900 md:mt-6 md:text-center xl:text-[40px]/[48px]">
-          Changelog
+          Güncellemeler
         </h1>
         <p className="mt-3 text-pretty text-ln-paragraph-md text-ln-gray-600 md:mt-2 md:max-w-md md:px-4 md:text-center xl:text-ln-paragraph-lg">
-          Get the latest news, tips, and tutorials on design and development.
+          Moyduz özellikleri, yeni ürünler ve güncellemeler hakkında en son duyuruları takip edin.
         </p>
       </div>
 
@@ -53,15 +53,14 @@ function ChangelogEntry({
   isFirst,
   isLast,
 }: {
-  entry: (typeof CHANGELOG_ENTRIES)[0];
+  entry: (typeof CHANGELOG_ENTRIES)[number];
   isFirst: boolean;
   isLast: boolean;
 }) {
   return (
     <div
-      className={`relative flex flex-col xl:flex-row border-ln-gray-200 ${
-        isFirst ? 'xl:border-t' : ''
-      } ${isLast ? 'xl:!border-b' : ''}`}
+      className={`relative flex flex-col xl:flex-row border-ln-gray-200 ${isFirst ? 'xl:border-t' : ''
+        } ${isLast ? 'xl:!border-b' : ''}`}
     >
       {/* Corner dots - top right */}
       <img
@@ -142,7 +141,7 @@ function ChangelogEntry({
                 d="M11.163 3h1.687L9.165 7.236 13.5 13h-3.394L7.447 9.504 4.405 13H2.717L6.66 8.47 2.5 3h3.48l2.404 3.195zm-.592 8.985h.935L5.473 3.962H4.47z"
               />
             </svg>
-            Follow
+            Takip et
           </a>
         </div>
       </div>
@@ -210,7 +209,7 @@ function ChangelogEntry({
                 href={`/changelog/${entry.id}`}
                 className="group relative flex h-9 items-center gap-1 whitespace-nowrap rounded-[11px] bg-ln-gray-0 pl-3.5 pr-2 text-ln-label-sm text-ln-gray-700 shadow-ln-button-white focus:outline-none"
               >
-                Read changelog
+                Güncellemeyi oku
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

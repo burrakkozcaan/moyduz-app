@@ -193,6 +193,8 @@ export function getFooterLinkGroups(): FooterLinkGroup[] {
         { label: 'Hizmetler', href: '/services' },
         { label: 'Şablonlar', href: '/marketplace/templates' },
         { label: 'Fiyatlandırma', href: '/pricing' },
+        { label: 'Platform Karşılaştır', href: '/compare' },
+        { label: 'Alternatifler', href: '/alternatives' },
         { label: 'Referanslar', href: '/customers' },
         { label: 'İletişim', href: '/contact' },
       ],

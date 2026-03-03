@@ -4,13 +4,13 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Customers | Moyduz',
+  title: 'Müşteriler | Moyduz',
   description:
-    'Trusted by companies worldwide. See customer success stories and testimonials.',
+    'Dünya çapında şirketlerin güvendiği altyapı. Müşteri başarı hikayelerini ve yorumlarını inceleyin.',
   alternates: { canonical: 'https://moyduz.com/customers' },
   openGraph: {
-    title: 'Customers | Moyduz',
-    description: 'Trusted by companies worldwide. See customer success stories and testimonials.',
+    title: 'Müşteriler | Moyduz',
+    description: 'Dünya çapında şirketlerin güvendiği altyapı. Müşteri başarı hikayelerini ve yorumlarını inceleyin.',
     url: 'https://moyduz.com/customers',
   },
 }

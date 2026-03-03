@@ -1,110 +1,105 @@
 export const CHANGELOG_ENTRIES = [
   {
     id: '2025-11-24',
-    date: 'Nov 24, 2025',
-    readTime: '2 min read',
+    date: '24 Kas 2025',
+    readTime: '2 dk okuma',
     image: '/images/changelog/2025-11-24.svg',
-    title: '150+ Landing sections, AI & Crypto templates, and AlignUI 2.0',
+    title: 'Moyduz 2.0: B2B Yetenekleri ve Gelişmiş Pazar Yeri Altyapısı',
     description:
-      'Exciting update: AlignUI 2.0 introduces AI & Crypto Templates, 150+ landing sections, improved variables, and new visual refinements.',
+      'Moyduz 2.0 ile B2B yeteneklerini, yeni pazar yeri entegrasyonlarını ve performans iyileştirmelerini kullanıma sunduk.',
     content: `
-## 150+ Landing sections, AI & Crypto templates, and AlignUI 2.0
+## Moyduz 2.0: B2B Yetenekleri ve Gelişmiş Pazar Yeri Altyapısı
 
-We're excited to announce AlignUI 2.0! This major update brings significant improvements to help you build beautiful, professional interfaces faster.
+Moyduz 2.0 sürümünü duyurmaktan heyecan duyuyoruz! Bu büyük güncellemeyle işinizi daha da büyütecek güçlü araçlar sunuyoruz.
 
-### New in this release
+### Neler Yeni?
 
-**150+ Landing Sections**
-- Expanded collection of pre-built landing sections
-- Covering diverse use cases from SaaS to e-commerce
-- All components fully customizable
+**B2B Özellikleri**
+- Toptan satış fiyatlandırmaları ve özel müşteri grupları kurma
+- Gelişmiş sipariş onay mekanizmaları
+- Kurumsal firmalara özel ödeme seçenekleri sağlama
 
-**AI & Crypto Templates**
-- New AI-focused template designs
-- Crypto and blockchain industry templates
-- Ready-to-use layouts for modern applications
+**Gelişmiş Pazar Yeri Entegrasyonları**
+- Amazon, Trendyol ve Hepsiburada için yeni nesil çift yönlü senkronizasyon
+- Toplu ürün yükleme ve kategori eşleştirme sistemleri
+- Detaylı kargo ve sipariş karşılama süreçleri
 
-**Improved Variables**
-- Enhanced design token system
-- Better consistency across components
-- Easier theming and customization
+**Performans Arayüz İyileştirmeleri**
+- Yönetim panelinde 2x daha hızlı yükleme süreleri
+- Yenilenmiş tek sayfamlı sipariş detay ekranı
+- Daha kapsamlı ve kişiselleştirilebilir raporlama
 
-**Visual Refinements**
-- Polished component aesthetics
-- Improved spacing and typography
-- Better dark mode support
+**Daha Fazlası**
+- Yeni dil destekleri ve çoklu para birimi geliştirmeleri eklendi
+- Pazarlama otomasyonları altyapısı güçlendirildi
     `,
   },
   {
     id: '2025-03-24',
-    date: 'Mar 24, 2025',
-    readTime: '2 min read',
+    date: '24 Mar 2025',
+    readTime: '2 dk okuma',
     image: '/images/changelog/2025-03-24.svg',
-    title: 'Neutral Gray, Marketing & Sales Template, and AlignUI 1.1',
+    title: 'Yeni Vitrin Temaları, SEO İyileştirmeleri ve Güçlü Tasarım Editörü',
     description:
-      'Exciting news: AlignUI brings Neutral Gray, synchronized Figma-React integration, new blocks, Marketing & Sales Template, and enhanced components.',
+      'Moyduz mağazanızın görünümünü özelleştirmenizi sağlayan yeni vitrin temaları eklendi, SEO ve tasarım editörü özellikleri zenginleştirildi.',
     content: `
-## Neutral Gray, Marketing & Sales Template, and AlignUI 1.1
+## Yeni Vitrin Temaları, SEO İyileştirmeleri ve Güçlü Tasarım Editörü
 
-AlignUI 1.1 is here with powerful new features for design and development teams.
+Müşterilerinizin alışveriş deneyimini en üst seviyeye çıkaracak özellikler ve arama motorlarında kolay bulunmanızı sağlayacak SEO geliştirmeleri yayında.
 
-### Highlights
+### Öne Çıkanlar
 
-**Neutral Gray Palette**
-- New neutral gray color system
-- Improved accessibility and contrast
-- Consistent across all components
+**Yeni Vitrin Temaları**
+- Farklı sektörler için optimize edilmiş 5 yeni ve modern tema
+- Tamamen mobil uyumlu, performans odaklı tasarımlar
+- Genişletilmiş renk, font ve stil seçenekleri
 
-**Figma-React Integration**
-- Synchronized design and code
-- Seamless handoff between teams
-- Reduced development time
+**SEO Geliştirmeleri**
+- Tüm sayfalar için detaylı meta etiket yönetimi
+- Yapılandırılmış veri (Schema.org) geliştirmeleri
+- Hızlı Google indexlemesi için IndexNow API entegrasyonu
 
-**Marketing & Sales Template**
-- Complete template for marketing teams
-- Sales-focused sections and layouts
-- Conversion-optimized components
+**Tasarım Editörü**
+- Sezgisel sürükle ve bırak sayfa oluşturucu yapısı
+- Daha pratik ve akıcı bileşen düzenleme özellikleri eklendi
+- Önceden tanımlanmış pazarlama ve satış blokları oluşturuldu
 
-**Enhanced Components**
-- New blocks and patterns
-- Improved documentation
-- Better developer experience
+**Geliştirici Odaklı**
+- Mevcut API limitleri genişletildi
+- Yeni dokümantasyon portalımız kullanıma açıldı
     `,
   },
   {
     id: '2024-04-01',
-    date: 'Apr 01, 2024',
-    readTime: '3 min read',
+    date: '01 Nis 2024',
+    readTime: '3 dk okuma',
     image: '/images/changelog/2024-04-01.svg',
-    title: 'Dark Mode, Variable, and AlignUI 1.0',
+    title: 'Moyduz 1.0 Yayında: E-ticaret Altyapısında Yeni Dönem',
     description:
-      "Exciting news: AlignUI now has 500+ users! We're working on new features, including dark mode and sector-specific products.",
+      "Moyduz ile e-ticaret işinizi kolayca kurun, yönetin ve hızla büyütün. İlk kararlı sürümümüz heyecanla yayına alındı.",
     content: `
-## Dark Mode, Variable, and AlignUI 1.0
+## Moyduz 1.0 Yayında: E-ticaret Altyapısında Yeni Dönem
 
-Welcome to AlignUI 1.0! We're thrilled to reach 500+ users and want to thank our community for the amazing support.
+Moyduz 1.0 nihayet kullanıcılarla buluştu! İşletmelerin dijitalleşmesine rehberlik edecek güçlü e-ticaret altyapımızı kullanıma sunmaktan gurur duyuyoruz.
 
-### What's New
+### Başlıca Özellikler
 
-**Dark Mode**
-- Full dark mode support across all components
-- Smooth theme transitions
-- Optimized for low-light environments
+**Kapsamlı Yönetim Paneli**
+- Gelişmiş ürün, kategori yapısı ve akıllı stok yönetimi
+- Siparişlerin tek noktadan rahatlıkla takibi ve kargo işlemleri
+- Kupon, indirim ve kampanyalarla müşteri ilişkileri yönetimi
 
-**Design Variables**
-- CSS custom properties for easy theming
-- Consistent design tokens
-- Flexible customization options
+**Çoklu Satış Kanalları**
+- Popüler pazar yeri entegrasyonlarının temelleri atıldı
+- Sosyal medya mağazalarıyla hızlı veri akışı
 
-**Sector-Specific Products**
-- Templates for different industries
-- Tailored components for specific use cases
-- More coming soon!
+**Ödeme Çözümleri**
+- İyzico, PayTR, Stripe gibi yerel ve global entegrasyonlar
+- Gelişmiş güvenlik standartları (PCI-DSS) ve risk değerlendirmesi
 
-**Thank You**
-- 500+ users and growing
-- Your feedback shapes our roadmap
-- Join our community to stay updated
+**Sonsuz Teşekkürler**
+- İlk test kullanıcılarımıza ve bizimle yola çıkan markalara sonsuz teşekkürler
+- Sağladığınız değerli geri bildirimlerle büyümeye devam edeceğiz
     `,
   },
 ] as const;
