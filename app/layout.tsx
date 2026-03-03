@@ -42,20 +42,18 @@ const kalam = Kalam({
 export const metadata: Metadata = {
   metadataBase: new URL("https://moyduz.com"),
 
-  title: "Yazılım Şirketi & Web Tasarım Ajansı | Moyduz",
+  title: "Moyduz | Esnek E-Ticaret Paketleri ve Kurumsal Çözümler",
   description:
-    "E-ticaret platformları, SaaS ürünleri ve yapay zeka otomasyon çözümleri sunan yazılım şirketi ve web tasarım ajansı. Dünya genelinde işletmelerin güvendiği çözüm ortağı.",
+    "Gizli maliyetlere son! İster dakikalar içinde hazır e-ticaret paketleriyle satışa başlayın, ister ihtiyacınıza özel kurumsal web sitenizi tasarlayalım.",
 
   keywords: [
-    "yazılım şirketi",
-    "web tasarım ajansı",
-    "web geliştirme şirketi",
-    "e-ticaret ajansı",
-    "e-ticaret geliştirme",
-    "saas geliştirme",
-    "web tasarımcı",
+    "esnek e-ticaret paketleri",
+    "e-ticaret altyapısı",
+    "kurumsal çözüm",
+    "kurumsal web tasarım",
+    "özel e-ticaret altyapısı",
+    "yazılım şirketleri",
     "dijital ajans",
-    "web tasarım şirketi",
   ],
 
   authors: [{ name: "Moyduz Team", url: "https://moyduz.com" }],
@@ -86,9 +84,9 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 
   openGraph: {
-    title: "Moyduz – Yazılım Şirketi & Web Tasarım Ajansı",
+    title: "Moyduz | Esnek E-Ticaret Paketleri ve Kurumsal Çözümler",
     description:
-      "Önde gelen yazılım şirketi ve web tasarım ajansı tarafından sunulan özel e-ticaret platformları, SaaS ürünleri ve yapay zeka otomasyon araçları.",
+      "Gizli maliyetlere son! İster dakikalar içinde hazır e-ticaret paketleriyle satışa başlayın, ister ihtiyacınıza özel kurumsal web sitenizi tasarlayalım.",
     url: "https://moyduz.com",
     siteName: "Moyduz",
     images: [
@@ -96,7 +94,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Moyduz – Yazılım Şirketi & Web Tasarım Ajansı",
+        alt: "Moyduz | Esnek E-Ticaret Paketleri ve Kurumsal Çözümler",
       },
     ],
     locale: "tr_TR",
@@ -105,8 +103,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Moyduz – Yazılım Şirketi & Web Tasarım Ajansı",
-    description: "E-Ticaret, SaaS, Yapay Zeka Otomasyonu & Web Tasarımı",
+    title: "Moyduz | Esnek E-Ticaret Paketleri ve Kurumsal Çözümler",
+    description: "Gizli maliyetlere son! İster dakikalar içinde hazır e-ticaret paketleriyle satışa başlayın, ister ihtiyacınıza özel kurumsal web sitenizi tasarlayalım.",
     images: ["/opengraph-image"],
   },
 
