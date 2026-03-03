@@ -66,7 +66,7 @@ async function handleContent(body: Record<string, unknown>, env: Env): Promise<R
   messages.push({ role: "user", content: prompt });
 
   try {
-    // @ts-expect-error — CF AI types may lag
+    // @ts-ignore — CF AI types may lag
     const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", { messages, max_tokens });
     return Response.json({ text: (result as { response: string }).response });
   } catch (err) {
@@ -75,67 +75,164 @@ async function handleContent(body: Record<string, unknown>, env: Env): Promise<R
   }
 }
 
-// ─── /image — Flux → R2 ──────────────────────────────────────────────────────
-// Supported models:
-//   "blog"    → @cf/black-forest-labs/flux-2-klein-9b  (fast, high quality)
-//   "landing" → @cf/black-forest-labs/flux-2-dev       (best quality)
-//   "fast"    → @cf/black-forest-labs/flux-1-schnell   (legacy fallback)
+// ─── /image — LLM-enhanced Flux cascade → R2 ─────────────────────────────────
+//
+// Pipeline:
+//   1. getSceneHint()         — topic keywords → cinematic base scene
+//   2. buildCinematicPrompt() — Llama enhances prompt + adds camera style
+//   3. generateWithCascade()  — flux-2-klein-9b → flux-1-schnell → SDXL fallback
+//   4. Upload to R2, return CDN URL
 
-const IMAGE_MODELS: Record<string, string> = {
-  blog:    "@cf/black-forest-labs/flux-2-klein-9b",
-  landing: "@cf/black-forest-labs/flux-2-dev",
-  fast:    "@cf/black-forest-labs/flux-1-schnell",
-};
+// Turkish e-commerce topic → cinematic scene hint
+const SCENE_HINTS: Array<[string[], string]> = [
+  [["e-ticaret sitesi", "online mağaza", "e-commerce store", "kendi siteni"], "a Turkish entrepreneur's modern home office with a laptop showing a beautiful ecommerce dashboard, product boxes stacked neatly on the desk, warm studio lighting, clean minimalist workspace"],
+  [["pazaryeri", "marketplace", "trendyol", "hepsiburada", "çok satıcı", "multi-vendor"], "a vibrant Turkish bazaar transformed into a modern digital marketplace — products arranged on illuminated white display shelves with digital price tags, cinematic wide-angle shot"],
+  [["seo", "teknik seo", "arama motoru", "keyword", "search ranking", "backlink"], "a digital strategist's command center at night, multiple curved monitors showing real-time Turkish search ranking dashboards and analytics charts, moody blue ambient lighting"],
+  [["dropshipping", "stoksuz satış"], "a clean minimal home office with product samples, shipping boxes, and a laptop showing an order management system, soft warm golden lighting"],
+  [["ödeme", "sanal pos", "iyzico", "paytr", "ödeme sistemi", "kargo"], "a secure digital payment terminal with credit cards and smartphone tap-to-pay, clean white minimalist background, professional banking aesthetic, macro photography"],
+  [["b2b", "toptan", "bayi", "tedarik", "wholesale"], "two Turkish business professionals shaking hands across a conference table with laptops and product catalogs, modern glass office with Bosphorus view, corporate photography"],
+  [["dropshipping", "komisyon", "kâr hesaplama", "gelir", "maliyet"], "a financial dashboard on a laptop screen with colorful profit charts and KPI widgets, clean office desk with coffee and notebook, golden hour side lighting"],
+  [["ai", "yapay zeka", "llm", "chatgpt", "automation"], "a neural network data flow visualization in holographic blue and orange light against a dark background, server racks with LED strips, futuristic data center aesthetic"],
+  [["e-ihracat", "ihracat", "global", "uluslararası"], "cargo containers at Istanbul port at sunset with container ships and Turkish landmarks, cinematic golden hour photography, wide aerial perspective"],
+  [["iş kurma", "startup", "girişim", "business"], "a young Turkish entrepreneur working on a laptop in a bright modern co-working space, whiteboard with growth charts in background, natural daylight"],
+  [["abonelik", "subscription", "saas", "platform"], "a SaaS product interface displayed on a MacBook Pro in a bright minimalist Scandinavian-style office, succulent plants and coffee cup on desk, golden hour light"],
+  [["sosyal medya", "instagram", "reklam", "dijital pazarlama"], "a content creator's workstation with ring light, multiple screens showing social media campaigns and ad metrics, colorful product flat lays, warm orange accent lighting"],
+];
 
-async function runFlux2(env: Env, model: string, prompt: string, width = 1200, height = 630): Promise<string> {
-  const form = new FormData();
-  form.append("prompt", prompt);
-  form.append("width", String(width));
-  form.append("height", String(height));
+const DEFAULT_SCENE = "a premium Turkish e-commerce workspace with laptop showing an online store, product boxes, smartphone, and coffee cup on a clean modern desk, warm natural lighting, professional editorial photography";
 
-  const formResponse = new Response(form);
-  const formStream   = formResponse.body!;
-  const formCT       = formResponse.headers.get("content-type")!;
-
-  // @ts-expect-error — CF AI types may lag behind new models
-  const result = await env.AI.run(model, { multipart: { body: formStream, contentType: formCT } });
-  return (result as { image: string }).image;
+function getSceneHint(topic: string): string {
+  const lower = topic.toLowerCase();
+  for (const [keywords, hint] of SCENE_HINTS) {
+    if (keywords.some((k) => lower.includes(k))) return hint;
+  }
+  return DEFAULT_SCENE;
 }
 
-async function runFlux1Schnell(env: Env, prompt: string): Promise<string> {
-  // @ts-expect-error
-  const result = await env.AI.run("@cf/black-forest-labs/flux-1-schnell", { prompt, num_steps: 8 });
-  return (result as { image: string }).image;
+async function buildCinematicPrompt(topic: string, type: string, env: Env): Promise<string> {
+  const sceneHint = getSceneHint(topic);
+  const isPremium = ["landing", "pages", "services"].includes(type);
+
+  // Use Llama to transform the topic into a vivid cinematic scene
+  let llamaScene = "";
+  try {
+    // @ts-ignore
+    const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+      messages: [
+        {
+          role: "system",
+          content: "You write cinematic image generation prompts. Output ONLY a 1-2 sentence scene description. No extra text. Photorealistic, specific, moody. No brand logos. No text in image. No distorted faces.",
+        },
+        {
+          role: "user",
+          content: `Topic: "${topic}"\nBase scene: ${sceneHint}\nWrite a specific cinematic scene for this topic. Include environment, lighting, mood.`,
+        },
+      ],
+      max_tokens: 80,
+    });
+    llamaScene = ((result as { response: string }).response ?? "").trim();
+  } catch { /* fall through to base scene */ }
+
+  const scene = llamaScene || `${sceneHint}, professional photography`;
+
+  const cameraStyle = isPremium
+    ? "shot on Sony A7R IV, 85mm lens, f/1.8 bokeh, cinematic color grading"
+    : "shot on Canon R5, 35mm lens, editorial photography style";
+
+  return `${scene}, ${cameraStyle}, ultra-detailed, photorealistic, 16:9 aspect ratio, no text overlays, no watermarks, no logos`;
+}
+
+function decodeImageBytes(result: unknown): Uint8Array | null {
+  if (result instanceof ArrayBuffer) return new Uint8Array(result);
+  const r = result as { image?: string };
+  if (r?.image) {
+    const base64 = r.image.replace(/^data:image\/\w+;base64,/, "");
+    const binary = atob(base64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return bytes;
+  }
+  return null;
+}
+
+const NEG_PROMPT = "blurry, low quality, stock photo, flat lighting, bad anatomy, extra fingers, distorted hands, oversaturated, watermark, text overlay, logo, banner, pixelated, cartoonish";
+
+async function generateWithCascade(fullPrompt: string, type: string, env: Env): Promise<Uint8Array | null> {
+  const isPremium = ["landing", "pages", "services"].includes(type);
+
+  // 1️⃣ flux-2-klein-9b (best quality, multipart FormData)
+  try {
+    const fd = new FormData();
+    fd.append("prompt", fullPrompt);
+    fd.append("negative_prompt", NEG_PROMPT);
+    fd.append("num_steps", isPremium ? "42" : "32");
+    fd.append("guidance", "7");
+    const formResp = new Response(fd);
+    const formStream = formResp.body!;
+    const formCT = formResp.headers.get("content-type")!;
+    // @ts-ignore
+    const raw = await env.AI.run("@cf/black-forest-labs/flux-2-klein-9b", { multipart: { body: formStream, contentType: formCT } });
+    const bytes = decodeImageBytes(raw);
+    if (bytes && bytes.byteLength > 150_000) return bytes; // quality gate: >150KB
+  } catch { /* fall through */ }
+
+  // 2️⃣ flux-1-schnell (higher steps)
+  try {
+    // @ts-ignore
+    const raw = await env.AI.run("@cf/black-forest-labs/flux-1-schnell", {
+      prompt: fullPrompt,
+      num_steps: isPremium ? 28 : 20,
+    });
+    const bytes = decodeImageBytes(raw);
+    if (bytes && bytes.byteLength > 100_000) return bytes;
+  } catch { /* fall through */ }
+
+  // 3️⃣ SDXL-Lightning (fast fallback)
+  try {
+    // @ts-ignore
+    const raw = await env.AI.run("@cf/bytedance/stable-diffusion-xl-lightning", {
+      prompt: fullPrompt,
+      negative_prompt: NEG_PROMPT,
+      num_steps: 6,
+      guidance: 2.0,
+    });
+    const bytes = decodeImageBytes(raw);
+    if (bytes) return bytes;
+  } catch { /* all models failed */ }
+
+  return null;
 }
 
 async function handleImage(body: Record<string, unknown>, env: Env): Promise<Response> {
-  const prompt    = body.prompt as string;
-  const slug      = body.slug as string;
-  const type      = (body.type as string) ?? "hero";
-  const quality   = (body.quality as string) ?? "blog"; // blog | landing | fast
+  const prompt  = body.prompt as string;
+  const slug    = body.slug as string;
+  const type    = (body.type as string) ?? "hero";
+  const quality = (body.quality as string) ?? "blog"; // blog | landing | fast
 
   if (!prompt || !slug) {
     return Response.json({ error: "prompt and slug required" }, { status: 400 });
   }
 
   try {
-    let base64: string;
-    const model = IMAGE_MODELS[quality] ?? IMAGE_MODELS.blog;
+    // Step 1: LLM builds cinematic scene from topic
+    const fullPrompt = await buildCinematicPrompt(prompt, quality, env);
 
-    if (quality === "fast") {
-      base64 = await runFlux1Schnell(env, prompt);
-    } else {
-      base64 = await runFlux2(env, model, prompt);
+    // Step 2: Multi-model cascade with quality gate
+    const imageBytes = await generateWithCascade(fullPrompt, quality, env);
+    if (!imageBytes) {
+      return Response.json({ error: "All image models failed" }, { status: 502 });
     }
 
-    const binary = atob(base64);
-    const bytes  = new Uint8Array(binary.length);
-    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
-
+    // Step 3: Upload to R2
     const key = `images/blog/${slug}-${type}.jpg`;
-    await env.MOYDUZ_BUCKET.put(key, bytes, { httpMetadata: { contentType: "image/jpeg" } });
+    await env.MOYDUZ_BUCKET.put(key, imageBytes, {
+      httpMetadata: {
+        contentType: "image/jpeg",
+        cacheControl: "public, max-age=31536000, immutable",
+      },
+    });
 
-    return Response.json({ success: true, url: `${CDN_BASE}/${key}`, model });
+    return Response.json({ success: true, url: `${CDN_BASE}/${key}` });
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     return Response.json({ error: msg }, { status: 503 });
@@ -159,7 +256,7 @@ async function handleEmbed(body: Record<string, unknown>, env: Env): Promise<Res
   try {
     for (let i = 0; i < texts.length; i += BATCH) {
       const chunk = texts.slice(i, i + BATCH);
-      // @ts-expect-error
+      // @ts-ignore
       const result = await env.AI.run("@cf/baai/bge-base-en-v1.5", { text: chunk });
       const data = (result as { data: number[][] }).data;
       allEmbeddings.push(...data);
@@ -198,7 +295,7 @@ Yanıtı SADECE aşağıdaki JSON formatında döndür (başka hiçbir metin ekl
 }`;
 
   try {
-    // @ts-expect-error
+    // @ts-ignore
     const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
       messages: [{ role: "user", content: prompt }],
       max_tokens: 700,
@@ -237,7 +334,7 @@ async function handleTranslate(body: Record<string, unknown>, env: Env): Promise
   const truncated = text.slice(0, MAX_CHARS);
 
   try {
-    // @ts-expect-error
+    // @ts-ignore
     const result = await env.AI.run("@cf/meta/m2m100-1.2b", {
       text: truncated,
       source_lang,
@@ -271,7 +368,7 @@ async function handleTranscribe(body: Record<string, unknown>, env: Env): Promis
     const audioBuffer = await audioResp.arrayBuffer();
     const audioArray  = [...new Uint8Array(audioBuffer)];
 
-    // @ts-expect-error
+    // @ts-ignore
     const result = await env.AI.run("@cf/openai/whisper", { audio: audioArray });
     const r = result as { text: string; word_count?: number };
 
@@ -313,7 +410,7 @@ async function handleSummarize(body: Record<string, unknown>, env: Env): Promise
   const prompt = `Aşağıdaki metni özetle. ${langNote}\n\n${instruction}\n\nMetin:\n${truncated}`;
 
   try {
-    // @ts-expect-error
+    // @ts-ignore
     const result = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
       messages: [{ role: "user", content: prompt }],
       max_tokens: mode === "long" ? 600 : mode === "short" ? 200 : 350,

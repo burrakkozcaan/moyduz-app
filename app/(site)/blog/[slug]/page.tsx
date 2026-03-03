@@ -13,6 +13,7 @@ import { FeedbackWidget } from '@/components/FeedbackWidget'
 import { DocPagination } from '@/components/DocPagination'
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion'
 import { AudioPlayer } from '@/components/AudioPlayer'
+import { AiSummaryButtons } from '@/components/AiSummaryButtons'
 import { buildBlogPostingSchema } from '@/seo/json-ld/index'
 import BlogFeedWithFilters from '../_components/BlogFeedWithFilters'
 
@@ -207,6 +208,8 @@ export default async function BlogSlugPage({
       category: post.frontmatter.category,
       author_name: post.frontmatter.author_name,
       excerpt: post.frontmatter.meta_description,
+      hero_image: post.frontmatter.hero_image as string | undefined,
+      featured_image: post.frontmatter.featured_image,
     }))
     const allPosts = await getAllBlogPosts()
     const categoryMap = new Map<string, { count: number; name?: string }>()
@@ -220,10 +223,9 @@ export default async function BlogSlugPage({
     })
     const categoryItems = Array.from(categoryMap.entries())
       .map(([catSlug, data]) => ({
+        slug: catSlug,
         title: data.name || formatCategoryLabel(catSlug),
-        href: `/blog/${catSlug}`,
         count: data.count,
-        badge: catSlug === slug ? 'Aktif' : 'Kategori',
       }))
       .sort((a, b) => b.count - a.count)
     const label = formatCategoryLabel(slug)
@@ -357,233 +359,148 @@ export default async function BlogSlugPage({
 
   const allSchemas = [blogJsonLd, breadcrumbJsonLd, ...(faqJsonLd ? [faqJsonLd] : [])]
 
+  const keyPoints = post.frontmatter.key_points as string[] | undefined
+
   return (
     <main className="flex-1">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(allSchemas) }}
       />
-      <div className="container mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16">
-        {/* Breadcrumb */}
-        <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-ln-gray-600 dark:text-ln-gray-400">
-          {breadcrumbItems.map((item, index) => (
-            <span key={index} className="flex items-center gap-2">
-              {index > 0 && (
-                <svg
-                  className="h-4 w-4 text-ln-gray-400 dark:text-ln-gray-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              )}
+      <div className="container mx-auto max-w-3xl px-4 py-12 md:px-6 md:py-16">
+        {/* Breadcrumb — / separator like rehber */}
+        <nav className="mb-8 flex items-center gap-2 text-sm text-ln-gray-500 dark:text-ln-gray-400">
+          <Link href="/" className="hover:text-ln-gray-900 dark:hover:text-white">Ana Sayfa</Link>
+          <span>/</span>
+          <Link href="/blog" className="hover:text-ln-gray-900 dark:hover:text-white">Blog</Link>
+          {categorySlug && (
+            <>
+              <span>/</span>
               <Link
-                href={item.href}
-                className="transition hover:text-ln-gray-900 dark:hover:text-ln-gray-0"
+                href={
+                  BLOG_PILLAR_CATEGORIES.includes(categorySlug as (typeof BLOG_PILLAR_CATEGORIES)[number])
+                    ? `/blog/${categorySlug}`
+                    : `/blog?category=${categorySlug}`
+                }
+                className="hover:text-ln-gray-900 dark:hover:text-white"
               >
-                {item.label}
+                {categoryName || formatCategoryLabel(categorySlug)}
               </Link>
-            </span>
-          ))}
+            </>
+          )}
+          <span>/</span>
+          <span className="text-ln-gray-700 dark:text-ln-gray-300 line-clamp-1">{post.frontmatter.title}</span>
         </nav>
 
-        {/* Featured Image */}
-        {featuredImage && (
-          <div
-            className="relative w-full rounded-2xl overflow-hidden bg-ln-gray-200 dark:bg-ln-gray-800 mb-8"
-            style={{ aspectRatio: "16 / 9" }}
-          >
-            <Image
-              src={featuredImage}
-              alt={post.frontmatter.title}
-              fill
-              priority
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
-            />
-          </div>
-        )}
-
         <article>
-          {/* Header */}
-          <header className="space-y-4 border-b border-ln-gray-200 dark:border-ln-gray-800 pb-8 mb-8">
-            {post.frontmatter.category && (
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="px-3 py-1 bg-ln-gray-900 dark:bg-ln-gray-0 text-ln-gray-0 dark:text-ln-gray-900 text-xs font-semibold uppercase tracking-wide rounded-full">
-                  {typeof post.frontmatter.category === 'object' 
-                    ? post.frontmatter.category.name 
-                    : post.frontmatter.category}
-                </span>
-              </div>
-            )}
-            
-            <h1 className="text-3xl md:text-4xl font-bold text-ln-gray-900 dark:text-ln-gray-0">
+          {/* Header — orange "Blog" badge + title + date (rehber style) */}
+          <header className="mb-8">
+            <div className="mb-3 text-sm font-medium text-ln-orange">
+              {categoryName || 'Blog'}
+            </div>
+            <h1 className="text-3xl font-bold leading-tight tracking-tight text-ln-gray-900 dark:text-white md:text-4xl">
               {post.frontmatter.title}
             </h1>
-
-            {/* Metadata */}
-            <div className="flex flex-wrap items-center gap-4 text-sm text-ln-gray-500 dark:text-ln-gray-400">
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-ln-gray-400 dark:text-ln-gray-500">
               {post.frontmatter.published_at && (
-                <span className="flex items-center gap-2">
-                  <svg
-                    className="h-4 w-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                  Yayınlandı:{' '}
+                <time dateTime={post.frontmatter.published_at}>
                   {new Date(post.frontmatter.published_at).toLocaleDateString('tr-TR', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
                   })}
-                </span>
+                </time>
               )}
               {post.frontmatter.updated_at && post.frontmatter.updated_at !== post.frontmatter.published_at && (
-                <span className="flex items-center gap-2">
-                  <svg
-                    className="h-4 w-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                    />
-                  </svg>
-                  Güncellendi:{' '}
-                  {new Date(post.frontmatter.updated_at).toLocaleDateString('tr-TR', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </span>
-              )}
-              {post.frontmatter.author_name && (
-                <span className="flex items-center gap-2">
-                  <svg
-                    className="h-4 w-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                  By {post.frontmatter.author_name}
-                </span>
+                <>
+                  <span>·</span>
+                  <span>
+                    Güncellendi:{' '}
+                    {new Date(post.frontmatter.updated_at).toLocaleDateString('tr-TR', {
+                      year: 'numeric',
+                      month: 'short',
+                    })}
+                  </span>
+                </>
               )}
               {post.frontmatter.reading_time && (
-                <span className="flex items-center gap-2">
-                  <svg
-                    className="h-4 w-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  {post.frontmatter.reading_time} min read
-                </span>
+                <>
+                  <span>·</span>
+                  <span>{post.frontmatter.reading_time} dk okuma</span>
+                </>
+              )}
+              {post.frontmatter.author_name && (
+                <>
+                  <span>·</span>
+                  <span>{post.frontmatter.author_name}</span>
+                </>
               )}
             </div>
           </header>
 
+          {/* Featured Image */}
+          {featuredImage && typeof featuredImage === 'string' && (
+            <div className="not-prose mb-8 w-full overflow-hidden rounded-2xl">
+              <Image
+                src={featuredImage}
+                alt={post.frontmatter.title}
+                width={1200}
+                height={630}
+                priority
+                className="w-full h-auto object-cover"
+                sizes="(max-width: 768px) 100vw, 768px"
+              />
+            </div>
+          )}
+
+          {/* Summary card — meta_description in quotes + key_points "Öne Çıkanlar" */}
+          {(post.frontmatter.meta_description || (keyPoints && keyPoints.length > 0)) && (
+            <div className="not-prose mb-6 rounded-2xl border border-ln-gray-200 bg-ln-gray-0 dark:border-ln-gray-800 dark:bg-ln-gray-950 overflow-hidden">
+              {post.frontmatter.meta_description && (
+                <div className="relative px-6 pt-6 pb-4 border-b border-ln-gray-100 dark:border-ln-gray-800/60">
+                  <span className="absolute top-4 left-4 text-5xl leading-none text-ln-orange/20 font-serif select-none" aria-hidden>&ldquo;</span>
+                  <p className="relative z-10 pl-5 text-base font-medium italic leading-relaxed text-ln-gray-800 dark:text-ln-gray-200">
+                    {post.frontmatter.meta_description}
+                  </p>
+                  <span className="absolute bottom-3 right-5 text-5xl leading-none text-ln-orange/20 font-serif select-none rotate-180" aria-hidden>&ldquo;</span>
+                </div>
+              )}
+              {keyPoints && keyPoints.length > 0 && (
+                <div className="px-6 py-4">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-ln-orange">Öne Çıkanlar</p>
+                  <ul className="space-y-2">
+                    {keyPoints.map((point, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-ln-gray-700 dark:text-ln-gray-300">
+                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-ln-orange" aria-hidden />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Table of Contents */}
           {tocItems.length > 0 && (
-            <div className="mb-8">
-              <TableOfContents items={tocItems} title="Bu sayfada" />
+            <div className="not-prose mb-6">
+              <TableOfContents items={tocItems} title="Bu Sayfada" />
             </div>
           )}
 
-          {/* Audio Player — tarayıcı Web Speech API (Türkçe) */}
-          <div className="mb-8">
-            <AudioPlayer src={audioSrc} text={audioText} title={`Dinle: ${post.frontmatter.title}`} />
-          </div>
+          {/* AI Summary Buttons */}
+          <AiSummaryButtons
+            title="Bu yazıyı AI ile özetle"
+            url={`https://moyduz.com/blog/${slug}`}
+            pageTitle={post.frontmatter.title}
+            sections={tocItems.filter(t => t.depth === 2).map(t => t.label)}
+          />
 
-          {/* Summary */}
-          {post.frontmatter.snippet && (
-            <div className="relative overflow-hidden rounded-xl border border-ln-gray-200 dark:border-ln-gray-800 bg-ln-gray-0 dark:bg-ln-gray-900 p-6  mb-8">
-              <div className="flex items-center gap-2 mb-3">
-                <svg
-                  className="h-5 w-5 text-ln-gray-900 dark:text-ln-gray-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
-                <p className="text-sm font-bold text-ln-gray-900 dark:text-ln-gray-0 uppercase tracking-wide">
-                  Özet
-                </p>
-              </div>
-              <p className="text-base text-ln-gray-700 dark:text-ln-gray-300 leading-relaxed font-medium">
-                {post.frontmatter.snippet}
-              </p>
-            </div>
-          )}
+          {/* Audio Player */}
+          <AudioPlayer src={audioSrc} text={audioText} title={`Dinle: ${post.frontmatter.title}`} />
 
           {/* Content */}
-          <div className="prose prose-lg max-w-none
-              prose-headings:text-ln-gray-900 dark:prose-headings:text-ln-gray-0 prose-headings:font-semibold prose-headings:tracking-tight
-              prose-h1:text-4xl prose-h1:mt-10 prose-h1:mb-6 prose-h1:border-b prose-h1:border-ln-gray-200 dark:prose-h1:border-ln-gray-800 prose-h1:pb-4 prose-h1:text-ln-gray-900 dark:prose-h1:text-ln-gray-0
-              prose-h2:text-3xl prose-h2:md:text-4xl prose-h2:mt-8 prose-h2:mb-6 prose-h2:text-ln-gray-900 dark:prose-h2:text-ln-gray-0 prose-h2:font-semibold
-              prose-h3:text-2xl prose-h3:md:text-3xl prose-h3:mt-12 prose-h3:mb-4 prose-h3:text-ln-gray-900 dark:prose-h3:text-ln-gray-0 prose-h3:font-semibold
-              prose-h4:text-xl prose-h4:md:text-2xl prose-h4:mt-8 prose-h4:mb-3 prose-h4:text-ln-gray-900 dark:prose-h4:text-ln-gray-0 prose-h4:font-semibold
-              prose-p:text-ln-gray-700 dark:prose-p:text-ln-gray-300 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-base prose-p:md:text-lg prose-p:mt-0
-              prose-a:text-ln-orange prose-a:no-underline hover:prose-a:underline prose-a:font-medium
-              prose-strong:text-ln-gray-900 dark:prose-strong:text-ln-gray-0 prose-strong:font-bold
-              prose-em:text-ln-gray-600 dark:prose-em:text-ln-gray-400 prose-em:italic
-              prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-6 prose-ul:mt-4 prose-ul:space-y-2
-              prose-ol:list-decimal prose-ol:pl-6 prose-ol:mb-6 prose-ol:mt-4 prose-ol:space-y-2
-              prose-li:text-ln-gray-700 dark:prose-li:text-ln-gray-300 prose-li:mb-2 prose-li:leading-relaxed prose-li:pl-1
-              prose-blockquote:border-l-4 prose-blockquote:border-ln-orange prose-blockquote:pl-6 prose-blockquote:pr-4 prose-blockquote:py-2 prose-blockquote:italic prose-blockquote:text-ln-gray-600 dark:prose-blockquote:text-ln-gray-400 prose-blockquote:rounded-r-lg prose-blockquote:my-6
-              prose-code:bg-ln-gray-100 dark:prose-code:bg-ln-gray-900 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:text-ln-gray-900 dark:prose-code:text-ln-gray-0 prose-code:before:content-[''] prose-code:after:content-['']
-              prose-pre:bg-ln-gray-900 dark:prose-pre:bg-ln-gray-950 prose-pre:text-ln-gray-100 prose-pre:p-5 prose-pre:rounded-xl prose-pre:overflow-x-auto prose-pre:my-6 prose-pre:border prose-pre:border-ln-gray-800
-              prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8 prose-img:border prose-img:border-ln-gray-200 dark:prose-img:border-ln-gray-800 prose-img:w-full prose-img:h-auto
-              prose-table:w-full prose-table:border-collapse prose-table:mb-0 prose-table:my-0
-              prose-th:bg-ln-gray-100 dark:prose-th:bg-ln-gray-900 prose-th:font-bold prose-th:text-left prose-th:p-4 prose-th:border-0 prose-th:text-ln-gray-900 dark:prose-th:text-ln-gray-0 prose-th:text-sm prose-th:uppercase prose-th:tracking-wide
-              prose-td:p-4 prose-td:border-0 prose-td:text-ln-gray-700 dark:prose-td:text-ln-gray-300
-              prose-tr:border-0 prose-tr:hover:bg-ln-gray-50 dark:prose-tr:hover:bg-ln-gray-900/50
-              prose-hr:border-ln-gray-200 dark:prose-hr:border-ln-gray-800 prose-hr:my-8
-              [&>p]:mb-6 [&>p]:mt-0
-              [&>p+p]:mt-0
-              [&>ul]:mb-6 [&>ul]:mt-4
-              [&>ol]:mb-6 [&>ol]:mt-4
-              [&>h2]:mb-6 [&>h2]:mt-8 [&>h2]:text-3xl [&>h2]:md:text-4xl [&>h2]:font-semibold
-              [&>h3]:mb-4 [&>h3]:mt-12 [&>h3]:text-2xl [&>h3]:md:text-3xl [&>h3]:font-semibold
-              [&>h4]:mb-3 [&>h4]:mt-8 [&>h4]:text-xl [&>h4]:md:text-2xl [&>h4]:font-semibold
-              [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+          <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-ln-orange prose-a:no-underline hover:prose-a:underline">
             <MDXRemote
               source={markdownTablesToHtml(post.content)}
               components={MDXComponents}
@@ -708,7 +625,7 @@ export default async function BlogSlugPage({
                         <div className="mt-4 flex items-center gap-3 text-xs text-ln-gray-500 dark:text-ln-gray-400">
                           {relatedPost.frontmatter.published_at && (
                             <span>
-                              {new Date(relatedPost.frontmatter.published_at).toLocaleDateString('en-US', {
+                              {new Date(relatedPost.frontmatter.published_at).toLocaleDateString('tr-TR', {
                                 year: 'numeric',
                                 month: 'short',
                                 day: 'numeric',
@@ -717,8 +634,8 @@ export default async function BlogSlugPage({
                           )}
                           {relatedPost.frontmatter.reading_time && (
                             <>
-                              <span>•</span>
-                              <span>{relatedPost.frontmatter.reading_time} min read</span>
+                              <span>·</span>
+                              <span>{relatedPost.frontmatter.reading_time} dk okuma</span>
                             </>
                           )}
                         </div>

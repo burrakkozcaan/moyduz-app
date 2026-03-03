@@ -109,11 +109,11 @@ export const MDXComponents: MDXComponents = {
     const id = slugify(text)
     return <h4 id={id} {...props}>{children}</h4>
   },
-  // Blockquote: Markdown ">" → Fumadocs Callout (info)
+  // Blockquote: Markdown ">" → MintlifyCallout (tip)
   blockquote: ({ children }) => (
-    <Callout type="info" className="[&_a]:text-ln-orange [&_a]:font-medium">
-      <CalloutDescription>{children as React.ReactNode}</CalloutDescription>
-    </Callout>
+    <MintlifyCallout type="tip">
+      {children as React.ReactNode}
+    </MintlifyCallout>
   ),
   Callout,
   CalloutContainer,

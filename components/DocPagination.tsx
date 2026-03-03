@@ -34,15 +34,15 @@ export function DocPagination({ prev, next, className }: DocPaginationProps) {
         {prev && (
           <Link
             href={prev.href}
-            className="group w-full border border-ln-gray-200 dark:border-ln-gray-800 flex items-center rounded-xl py-3 px-4 hover:border-ln-gray-300 dark:hover:border-ln-gray-700 justify-start"
+            className="group min-w-0 w-full border border-ln-gray-200 dark:border-ln-gray-800 flex items-center rounded-xl py-3 px-4 hover:border-ln-gray-300 dark:hover:border-ln-gray-700 justify-start"
             aria-label={`Önceki: ${prev.title}`}
           >
-            <div className="space-y-1">
-              <div className="pagination-title font-medium text-gray-900 dark:text-gray-200">
+            <div className="min-w-0 space-y-1">
+              <div className="pagination-title font-medium text-gray-900 dark:text-gray-200 line-clamp-2 break-words">
                 {prev.title}
               </div>
               {prev.description && (
-                <div className="hidden lg:block text-sm text-gray-500 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-400 truncate max-w-[theme(spacing.96)]">
+                <div className="hidden lg:block text-sm text-gray-500 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-400 line-clamp-1">
                   {prev.description}
                 </div>
               )}
@@ -56,15 +56,15 @@ export function DocPagination({ prev, next, className }: DocPaginationProps) {
         {next && (
           <Link
             href={next.href}
-            className="group w-full border border-ln-gray-200 dark:border-ln-gray-800 flex items-center rounded-xl py-3 px-4 hover:border-ln-gray-300 dark:hover:border-ln-gray-700 justify-end text-right"
+            className="group min-w-0 w-full border border-ln-gray-200 dark:border-ln-gray-800 flex items-center rounded-xl py-3 px-4 hover:border-ln-gray-300 dark:hover:border-ln-gray-700 justify-end text-right"
             aria-label={`Sonraki: ${next.title}`}
           >
-            <div className="space-y-1 w-full">
-              <div className="pagination-title font-medium text-gray-900 dark:text-gray-200 text-right">
+            <div className="min-w-0 space-y-1 w-full">
+              <div className="pagination-title font-medium text-gray-900 dark:text-gray-200 text-right line-clamp-2 break-words">
                 {next.title}
               </div>
               {next.description && (
-                <div className="hidden lg:block text-sm text-gray-500 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-400 truncate max-w-[theme(spacing.96)] ml-auto">
+                <div className="hidden lg:block text-sm text-gray-500 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-400 line-clamp-1 ml-auto">
                   {next.description}
                 </div>
               )}

@@ -1,24 +1,31 @@
+'use client'
+
+import { Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import BlogClient from './BlogClient'
+import Image from 'next/image'
 
 type CategoryFilter = {
   title: string
-  href: string
+  slug: string
   count: number
-  badge?: string
+}
+
+type BlogPost = {
+  slug?: string
+  title: string
+  meta_description?: string
+  excerpt?: string
+  published_at?: string
+  author_name?: string
+  reading_time?: number
+  category?: string | { slug?: string; name?: string } | null
+  hero_image?: string
+  featured_image?: string
 }
 
 type BlogFeedWithFiltersProps = {
-  blogList: Array<{
-    slug?: string
-    title: string
-    meta_description?: string
-    excerpt?: string
-    published_at?: string
-    author_name?: string
-    reading_time?: number
-    category?: string | { slug?: string; name?: string } | null
-  }>
+  blogList: BlogPost[]
   title: string
   description?: string
   categoryFilters?: CategoryFilter[]
@@ -26,136 +33,185 @@ type BlogFeedWithFiltersProps = {
   totalCount?: number
 }
 
-const GRID_CARD =
-  'group flex items-center justify-between rounded-2xl border border-ln-gray-200 bg-ln-gray-50 px-4 py-3 transition-all hover:-translate-y-1 hover:shadow-md hover:border-ln-gray-300 dark:border-ln-gray-800 dark:bg-ln-gray-900 dark:shadow-none dark:ring-1 dark:ring-ln-gray-800 dark:hover:border-ln-gray-700'
+function getCategorySlug(category?: string | { slug?: string; name?: string } | null): string {
+  if (!category) return ''
+  if (typeof category === 'string') return category
+  return category.slug || ''
+}
 
-export default function BlogFeedWithFilters({
+function getCategoryLabel(category?: string | { slug?: string; name?: string } | null): string {
+  if (!category) return ''
+  if (typeof category === 'string') {
+    return category.replace(/_/g, '-').split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+  }
+  if (category.name) return category.name
+  return (category.slug || '').replace(/_/g, '-').split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+}
+
+function BlogFeedContent({
   blogList,
   title,
   description,
   categoryFilters = [],
   showCategoryFilters = false,
-  totalCount,
 }: BlogFeedWithFiltersProps) {
-  const articleCount =
-    typeof totalCount === 'number'
-      ? totalCount
-      : Array.isArray(blogList)
-        ? blogList.length
-        : 0
+  const searchParams = useSearchParams()
+  const activeCategory = searchParams.get('category') || ''
+
+  const filteredPosts = activeCategory
+    ? blogList.filter((post) => getCategorySlug(post.category) === activeCategory)
+    : blogList
 
   return (
-    <main className="container mx-auto max-w-7xl px-4 py-20 ld:px-0 ">
-      {/* Hero */}
-      <section className="mb-10 rounded-3xl bg-ln-gray-50 p-5 shadow-ln-badge-gray dark:bg-ln-gray-900 dark:shadow-none dark:ring-1 dark:ring-ln-gray-800">
-        <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <p className="text-xs uppercase tracking-[0.4em] text-ln-gray-600 dark:text-ln-gray-400">
-              Moyduz Blog
-            </p>
-            <h1 className="mt-4 text-4xl font-bold text-ln-gray-900 md:text-5xl dark:text-ln-gray-100">
-              {title}
-            </h1>
-            {description && (
-              <p className="mt-4 max-w-3xl text-base text-ln-gray-600 md:text-lg dark:text-ln-gray-400">
-                {description}
-              </p>
-            )}
-          </div>
-          <div className="grid grid-cols-2 gap-4 text-center md:grid-cols-5 lg:text-right">
-            <div className="flex flex-col items-center justify-center rounded-2xl bg-ln-gray-0 p-4 shadow-ln-badge-gray dark:bg-ln-gray-800 dark:shadow-none">
-              <p className="text-2xl font-bold text-ln-gray-900 dark:text-ln-gray-100">
-                {articleCount.toLocaleString()}
-              </p>
-              <p className="text-xs uppercase tracking-wider text-ln-gray-600 dark:text-ln-gray-400">
-                Makale
-              </p>
-            </div>
-            {categoryFilters.length > 0 && (
-              <div className="flex flex-col items-center justify-center rounded-2xl bg-ln-gray-0 p-4 shadow-ln-badge-gray dark:bg-ln-gray-800 dark:shadow-none">
-                <p className="text-2xl font-bold text-ln-gray-900 dark:text-ln-gray-100">
-                  {categoryFilters.length.toLocaleString()}
-                </p>
-                <p className="text-xs uppercase tracking-wider text-ln-gray-600 dark:text-ln-gray-400">
-                  Kategori
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
+    <main className="mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-20">
+      {/* Header */}
+      <div className="mb-10">
+        <p className="text-sm font-medium text-ln-orange">Blog</p>
+        <h1 className="mt-2 text-3xl font-semibold tracking-tight text-ln-gray-900 dark:text-white md:text-4xl">
+          {activeCategory
+            ? categoryFilters.find((c) => c.slug === activeCategory)?.title || title
+            : title}
+        </h1>
+        {description && (
+          <p className="mt-4 text-lg text-ln-gray-600 dark:text-ln-gray-400 max-w-2xl">
+            {description}
+          </p>
+        )}
+        {/* SEO/GEO paragraph — static listing page */}
+        {!activeCategory && (
+          <p className="mt-3 text-sm text-ln-gray-500 dark:text-ln-gray-400 max-w-2xl leading-relaxed">
+            Moyduz ekibi; e-ticaret altyapısı, teknik SEO, dijital pazarlama ve iş kurma
+            konularında kapsamlı Türkçe rehberler yazar. Her yazı, arama motorları ve AI
+            asistanları (ChatGPT, Gemini, Perplexity) tarafından kolayca anlaşılabilecek
+            şekilde yapılandırılmıştır. Türkiye e-ticaret ekosistemi, pazaryeri komisyonları,
+            maliyet karşılaştırmaları ve büyüme stratejileri hakkında güncel bilgiye buradan
+            ulaşabilirsiniz.
+          </p>
+        )}
+      </div>
 
-        {showCategoryFilters && categoryFilters.length > 0 && (
-          <div className="flex flex-wrap gap-3">
-            {categoryFilters.slice(0, 8).map((item) => (
+      {/* Category filter chips */}
+      {showCategoryFilters && categoryFilters.length > 0 && (
+        <div className="mb-8 flex flex-wrap gap-2">
+          <Link
+            href="/blog"
+            className={`inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium transition-all ${
+              !activeCategory
+                ? 'border-ln-orange bg-ln-orange/5 text-ln-orange dark:bg-ln-orange/10'
+                : 'border-ln-gray-200 bg-white text-ln-gray-700 hover:border-ln-gray-300 dark:border-ln-gray-700 dark:bg-ln-gray-900 dark:text-ln-gray-300'
+            }`}
+          >
+            Tümü
+            <span className="ml-1.5 text-xs text-ln-gray-400 dark:text-ln-gray-500">{blogList.length}</span>
+          </Link>
+          {categoryFilters.map((item) => {
+            const isActive = activeCategory === item.slug
+            return (
               <Link
-                key={item.href}
-                href={item.href}
-                className="inline-flex items-center gap-2 rounded-full border border-ln-gray-200 bg-ln-gray-0 px-4 py-2 text-sm font-medium text-ln-gray-800 transition hover:bg-ln-gray-100 dark:border-ln-gray-700 dark:bg-ln-gray-800 dark:text-ln-gray-100 dark:hover:bg-ln-gray-700"
+                key={item.slug}
+                href={isActive ? '/blog' : `/blog?category=${item.slug}`}
+                className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-medium transition-all ${
+                  isActive
+                    ? 'border-ln-orange bg-ln-orange/5 text-ln-orange dark:bg-ln-orange/10'
+                    : 'border-ln-gray-200 bg-white text-ln-gray-700 hover:border-ln-gray-300 dark:border-ln-gray-700 dark:bg-ln-gray-900 dark:text-ln-gray-300 dark:hover:border-ln-gray-600'
+                }`}
               >
-                <span className="text-xs uppercase tracking-wider text-ln-gray-600 dark:text-ln-gray-400">
-                  {item.badge || 'Kategori'}
-                </span>
                 {item.title}
+                <span className="text-xs text-ln-gray-400 dark:text-ln-gray-500">{item.count}</span>
               </Link>
+            )
+          })}
+        </div>
+      )}
+
+      {/* Grid */}
+      {filteredPosts.length === 0 ? (
+        <p className="text-center text-ln-gray-500">Bu kategoride henüz yazı yok.</p>
+      ) : (
+        <div className="grid gap-6 sm:grid-cols-2">
+          {filteredPosts.map((post, index) => {
+            const href = post.slug ? `/blog/${post.slug}` : '/blog'
+            const categoryLabel = getCategoryLabel(post.category)
+            const image = post.featured_image || post.hero_image
+
+            return (
+              <Link
+                key={post.slug || index}
+                href={href}
+                className="group flex flex-col rounded-2xl border border-ln-gray-200 bg-white transition-all hover:border-ln-gray-300 hover:shadow-md dark:border-ln-gray-800 dark:bg-ln-gray-950 dark:hover:border-ln-gray-700 overflow-hidden"
+              >
+                {/* Card image */}
+                {image && (
+                  <div className="w-full aspect-video overflow-hidden bg-ln-gray-100 dark:bg-ln-gray-800">
+                    <Image
+                      src={image}
+                      alt={post.title}
+                      width={600}
+                      height={338}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                )}
+
+                <div className="flex flex-col flex-1 p-6">
+                  {categoryLabel && (
+                    <span className="mb-2 text-xs font-semibold uppercase tracking-wider text-ln-orange">
+                      {categoryLabel}
+                    </span>
+                  )}
+                  <h2 className="text-lg font-semibold leading-snug text-ln-gray-900 group-hover:text-ln-orange dark:text-white dark:group-hover:text-ln-orange">
+                    {post.title}
+                  </h2>
+                  {(post.meta_description || post.excerpt) && (
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-ln-gray-600 dark:text-ln-gray-400 line-clamp-3">
+                      {post.meta_description || post.excerpt}
+                    </p>
+                  )}
+                  <div className="mt-4 flex items-center justify-between">
+                    <div className="flex flex-wrap items-center gap-2 text-xs text-ln-gray-400 dark:text-ln-gray-500">
+                      {post.published_at && (
+                        <time dateTime={post.published_at}>
+                          {new Date(post.published_at).toLocaleDateString('tr-TR', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric',
+                          })}
+                        </time>
+                      )}
+                      {post.reading_time && (
+                        <>
+                          <span>·</span>
+                          <span>{post.reading_time} dk</span>
+                        </>
+                      )}
+                    </div>
+                    <span className="text-sm font-medium text-ln-orange">Oku →</span>
+                  </div>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
+      )}
+    </main>
+  )
+}
+
+export default function BlogFeedWithFilters(props: BlogFeedWithFiltersProps) {
+  return (
+    <Suspense
+      fallback={
+        <main className="mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-20">
+          <div className="mb-10 h-16 w-64 animate-pulse rounded-lg bg-ln-gray-100 dark:bg-ln-gray-800" />
+          <div className="grid gap-6 sm:grid-cols-2">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="rounded-2xl border border-ln-gray-200 dark:border-ln-gray-800 h-64 animate-pulse bg-ln-gray-50 dark:bg-ln-gray-900" />
             ))}
           </div>
-        )}
-      </section>
-
-      <section
-        className={
-          showCategoryFilters && categoryFilters.length > 0
-            ? 'grid gap-6 lg:grid-cols-[minmax(0,2.2fr)_minmax(280px,1fr)]'
-            : ''
-        }
-      >
-        <div className="space-y-12">
-          <div>
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="mb-2 p-2 text-2xl font-semibold text-ln-gray-900 dark:text-ln-gray-100">
-                Son Yazılar
-              </h2>
-            </div>
-            <BlogClient blogList={blogList} title="" description="" />
-          </div>
-        </div>
-
-        {showCategoryFilters && categoryFilters.length > 0 && (
-          <aside className="space-y-8">
-            <section className="rounded-3xl bg-ln-gray-50 p-6 shadow-ln-badge-gray dark:bg-ln-gray-900 dark:shadow-none dark:ring-1 dark:ring-ln-gray-800">
-              <h3 className="mb-4 text-lg font-semibold text-ln-gray-900 dark:text-ln-gray-100">
-                Kategorilere Göre Göz At
-              </h3>
-              <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                {categoryFilters.slice(0, 12).map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={GRID_CARD}
-                  >
-                    <div>
-                      <p className="text-xs uppercase tracking-wide text-ln-gray-600 dark:text-ln-gray-400">
-                        Kategori
-                      </p>
-                      <h4 className="text-base font-semibold text-ln-gray-900 dark:text-ln-gray-100">
-                        {item.title}
-                      </h4>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-lg font-bold text-ln-gray-900 dark:text-ln-gray-100">
-                        {item.count}
-                      </p>
-                      <p className="text-xs text-ln-gray-600 dark:text-ln-gray-400">
-                        makale
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          </aside>
-        )}
-      </section>
-    </main>
+        </main>
+      }
+    >
+      <BlogFeedContent {...props} />
+    </Suspense>
   )
 }

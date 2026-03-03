@@ -11,6 +11,9 @@ import { AiSummaryButtons } from '@/components/AiSummaryButtons'
 import { ToolCTA } from '@/components/ToolCTA'
 import { AudioPlayer } from '@/components/AudioPlayer'
 import { TableOfContents } from '@/components/TableOfContents'
+import { ShareArticle } from '@/components/ShareArticle'
+import { DocPagination } from '@/components/DocPagination'
+import { FeedbackWidget } from '@/components/FeedbackWidget'
 
 const TOOL_LABELS: Record<string, string> = {
   '/tools/maliyet-hesaplama': 'Maliyet Hesaplama',
@@ -146,6 +149,23 @@ export default async function RehberSlugPage({
       acceptedAnswer: { '@type': 'Answer', text: f.answer },
     })),
   } : null
+
+  // All posts for prev/next pagination + related posts
+  const allPosts = await getAllRehberPosts()
+  const currentIndex = allPosts.findIndex((p) => p.frontmatter.slug === slug)
+  const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : undefined
+  const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : undefined
+
+  // Related posts — same category
+  const postCategory = frontmatter.category as string | undefined
+  const relatedPosts = postCategory
+    ? allPosts
+        .filter((p) => {
+          if (p.frontmatter.slug === slug) return false
+          return (p.frontmatter.category as string | undefined)?.toLowerCase() === postCategory.toLowerCase()
+        })
+        .slice(0, 4)
+    : []
 
   const audioSrc = frontmatter.audio_src as string | undefined
   // Plain text for browser TTS fallback
@@ -320,8 +340,92 @@ export default async function RehberSlugPage({
           </aside>
         )}
 
+        {/* Share Article */}
+        <ShareArticle title={frontmatter.title} />
+
+        {/* Prev/Next Pagination */}
+        <div className="mt-10">
+          <DocPagination
+            prev={
+              prevPost
+                ? {
+                    title: prevPost.frontmatter.title,
+                    href: `/rehber/${prevPost.frontmatter.slug}`,
+                    description: prevPost.frontmatter.meta_description,
+                  }
+                : undefined
+            }
+            next={
+              nextPost
+                ? {
+                    title: nextPost.frontmatter.title,
+                    href: `/rehber/${nextPost.frontmatter.slug}`,
+                    description: nextPost.frontmatter.meta_description,
+                  }
+                : undefined
+            }
+          />
+        </div>
+
+        {/* Related Rehber Posts */}
+        {relatedPosts.length > 0 && (
+          <section className="mt-12 pt-8 border-t border-ln-gray-200 dark:border-ln-gray-800">
+            <h2 className="text-2xl font-semibold text-ln-gray-900 dark:text-white mb-6">
+              İlgili Rehberler
+            </h2>
+            <div className="grid gap-6 md:grid-cols-2">
+              {relatedPosts.map((relatedPost) => {
+                const relatedImage = relatedPost.frontmatter.hero_image as string | undefined
+                return (
+                  <Link
+                    key={relatedPost.frontmatter.slug}
+                    href={`/rehber/${relatedPost.frontmatter.slug}`}
+                    className="group rounded-xl border border-ln-gray-200 dark:border-ln-gray-800 bg-ln-gray-0 dark:bg-ln-gray-900 overflow-hidden hover:border-ln-gray-300 dark:hover:border-ln-gray-700 transition-all"
+                  >
+                    {relatedImage && (
+                      <div className="w-full aspect-video overflow-hidden bg-ln-gray-200 dark:bg-ln-gray-800">
+                        <Image
+                          src={relatedImage}
+                          alt={relatedPost.frontmatter.title}
+                          width={600}
+                          height={338}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    )}
+                    <div className="p-5">
+                      <h3 className="text-base font-semibold text-ln-gray-900 dark:text-white mb-2 group-hover:text-ln-orange transition-colors">
+                        {relatedPost.frontmatter.title}
+                      </h3>
+                      {relatedPost.frontmatter.meta_description && (
+                        <p className="text-sm text-ln-gray-600 dark:text-ln-gray-400 line-clamp-2">
+                          {relatedPost.frontmatter.meta_description}
+                        </p>
+                      )}
+                      {relatedPost.frontmatter.published_at && (
+                        <div className="mt-3 text-xs text-ln-gray-400 dark:text-ln-gray-500">
+                          {new Date(relatedPost.frontmatter.published_at).toLocaleDateString('tr-TR', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric',
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  </Link>
+                )
+              })}
+            </div>
+          </section>
+        )}
+
+        {/* Feedback */}
+        <div className="mt-8 pt-8 border-t border-ln-gray-200 dark:border-ln-gray-800">
+          <FeedbackWidget />
+        </div>
+
         {/* Back link */}
-        <div className="mt-12">
+        <div className="mt-8">
           <Link
             href="/rehber"
             className="text-sm font-medium text-ln-gray-600 hover:text-ln-gray-900 dark:text-ln-gray-400 dark:hover:text-white"

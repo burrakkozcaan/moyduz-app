@@ -1,0 +1,78 @@
+---
+title: "Mikro İhracat Rehberi 2026: ETGB, e-Fatura ve Yazılım Entegrasyonu"
+slug: "mikro-ihracat-ve-e-ihracat-rehberi"
+meta_title: "Mikro İhracat ve E-İhracat Rehberi | ETGB ve KDV İadesi"
+meta_description: "E-ihracata başlarken kafa karıştıran bürokratik süreçleri (ETGB, Gümrük, Yurt dışı e-Fatura) e-ticaret altyapısıyla nasıl otomatize edeceğinizi öğrenin."
+published_at: "2026-03-03T00:00:00Z"
+updated_at: "2026-03-03T00:00:00Z"
+author_name: "Moyduz Ekibi"
+reading_time: 10
+snippet: "E-ihracat sadece sitenizi İngilizce yapmak değildir. Asıl mesele; ETGB beyannamesi, %0 KDV'li e-Arşiv fatura ve gümrük süreçlerinin yazılımınızla kusursuz entegre olmasıdır."
+faqs:
+  - question: "Mikro ihracat limitleri (2026) nelerdir?"
+    answer: "Mikro ihracat kapsamında, 300 kilogramı ve 15.000 Euro değerini aşmayan ticari ürünlerinizi geleneksel gümrük müşaviri tutmadan, yetkili kargo firmaları (DHL, UPS, PTS, PTT vb.) aracılığıyla ETGB (Elektronik Ticaret Gümrük Beyannamesi) ile yurt dışına satabilirsiniz."
+  - question: "E-İhracat faturası (yurt dışına) nasıl kesilir?"
+    answer: "E-ihracat veya mikro ihracat yaparken KDV oranı %0 olarak kesilir. Eğer e-Fatura mükellefiyseniz, e-ihracat faturası senaryosu seçilerek gönderilmeli; mikro ihracatta ise İngilizce açıklamalı e-Arşiv fatura kesilerek kargo firmasına iletilmelidir."
+  - question: "Mikro ihracatta KDV iadesi nasıl alınır?"
+    answer: "Kestiğiniz %0 KDV'li e-Arşiv faturası ve kargo şirketinin size ilettiği ETGB (Elektronik Ticaret Gümrük Beyannamesi) evrakı ile mali müşaviriniz VEDOP sistemi üzerinden KDV iadenizi talep edebilir."
+hero_image: "https://cdn.moyduz.com/images/blog/mikro-ihracat-ve-e-ihracat-rehberi-hero-v2.jpg"
+audio_src: "https://cdn.moyduz.com/audio/micro-export.mp3"
+ai_related: "/blog/ozel-e-ticaret-nedir,/compare/ikas-vs-ticimax,/blog/e-ticaret-sitesi-mi-pazaryeri-mi"
+---
+
+<MintlifyCallout type="note" title="TL;DR">
+E-ticaret altyapı sağlayıcıları "E-İhracat Paketleri" satarken genellikle sadece "Çoklu Dil ve Çoklu Para Birimi" özelliklerini öne çıkarırlar. Oysa e-ihracat yapan bir işletmenin uykularını kaçıran asıl konu sitenin dili değil; **ETGB belgesi, gümrük prosedürleri, %0 KDV'li yurt dışı e-Arşiv faturası ve tüm bu bürokrasinin e-ticaret paneliyle nasıl otomatik haberleşeceğidir.** Bu rehberde e-ihracatın yasal operasyonlarını dijitalleştirmeyi anlatıyoruz.
+</MintlifyCallout>
+
+## Mikro İhracat ve Normal İhracat Arasındaki Fark
+
+Yurt dışına perakende, yani son tüketiciye yönelik (B2C) bir satış yaptığınızda, devlet sizi aylarca süren gümrük beyannameleri veya gümrük müşavirliği masraflarından kurtarmak için **Mikro İhracat** modelini geliştirmiştir.
+
+Eğer sattığınız ve tek seferde kargolayacağınız ürün;
+*   **300 Kilogramın altındaysa,**
+*   **Değeri 15.000 Euro'yu (veya muadili döviz) geçmiyorsa**
+
+Bu satışı doğrudan "Mikro İhracat" kapsamında ele alabilirsiniz. Klasik bir gümrükçü tutmanıza gerek kalmaz. PTS, UPS, DHL, PTT gibi yetkili kargo operatörleri sizin adınıza **ETGB (Elektronik Ticaret Gümrük Beyannamesi)** düzenleyerek malı gümrükten geçirir.
+
+### Mikro İhracat vs Klasik İhracat Karşılaştırması
+
+| Özellik | Mikro İhracat (B2C & Küçük B2B) | Klasik İhracat (B2B & Büyük Gönderiler) |
+| :--- | :--- | :--- |
+| **Ağırlık Limiti** | 300 Kilogram altı | Limit yok |
+| **Fatura Tutarı Limiti** | 15.000 Euro altı | Limit yok |
+| **Gümrük Müşaviri** | Gerekmez (Kargo firması halleder) | Zorunludur |
+| **Gümrük Beyannamesi** | ETGB (Elektronik Ticaret Gümrük Beyan.) | Normal Gümrük Beyannamesi |
+| **Süreç Hızı** | Çok hızlı (Saatler içinde) | Günler sürebilir |
+| **KDV İadesi** | ETGB belgesi ile alınabilir | Gümrük Beyannamesi ile alınır |
+| **İhracatçılar Birliği** | Kayıt şart değil (Önerilir) | Kayıt zorunludur |
+
+## Bürokratik Korkular ve Yazılım Çözümleri
+
+Pazardaki satıcıların büyük bir kısmı yabancı dil bilmemekten değil, e-fatura veya gümrükte hata yapmaktan korktuğu için (bürokratik bariyer) e-ihracata girmez. E-ticaret paketlerinin sadece "İngilizce tema" satmaktan öteye geçip, bu işlemleri nasıl otomatize etmesi gerektiğine bakalım:
+
+### 1. Yurtdışına %0 KDV'li e-Fatura (e-Arşiv) Kesimi
+Türkiye'den yurt dışına yapılan satışlar KDV'den muaftır. (KDV Oranı %0'dır). Fakat bir Alman müşteriniz kredi kartıyla sitenizden 100 Euro'luk alışveriş yaptığında, e-ticaret sitenizin arka yüzündeki (ERP/Muhasebe) fatura entegrasyonu bunu algılayabilmelidir.
+*   **Standart Bir Altyapının Eksiği:** Siparişi TR'deki gibi algılar ve mali müşavirinize %20 KDV'li bir belge atarsa, vergi dairesinde ceza veya iade alamama sorunu yaşarsınız.
+*   **İdeal Yazılımın Çözümü:** Müşterinin fatura ülkesi "Almanya" olarak girildiğinde, altyapınız para birimini Euro olarak okur, vergi oranını otomatik %0'a çeker ve fatura senaryosunu (Mikro ihracatta e-Arşiv, standart ihracatta e-İhracat faturası) **İngilizce ürün açıklamaları** (Gümrük (GTİP) kodu dahil) ile entegratöre (örn. Paraşüt, Logo) iletir.
+
+### 2. Kargo Firması Entegrasyonu ve ETGB Çıktısı
+Müşteri siparişi verdi, fatura kesildi. Şimdi konşimento (AWB) hazırlanmalıdır. 
+İyi bir e-ihracat platformu; DHL veya PTS entegrasyonu sayesinde sipariş bilgisini (Ağırlık, GTİP Kodu, Fatura tutarı) direkt kargo firmasının sistemine basar. Kargo firması bu veri ile sizin adınıza anında ETGB beyannamesini oluşturur. Sipariş panelinden "Kargo Etiketi Yazdır" dediğinizde üzerinde gümrük beyan verileri olan barkod çıkar. Kolinin üzerine yapıştırırsınız; manuel hiçbir evrak yazmazsınız.
+
+### 3. KDV İadesi ve Vedop Sorgulama (Muhasebe Uyumu)
+Türkiye'de içeride malı üretirken/alırken ödediğiniz KDV'yi, yurt dışına satıp ülkeye döviz soktuğunuz için devletten iade alabilirsiniz. 
+Mali müşavirinizin bu iadeyi alabilmesi için kargo partisinden dönen ETGB numarasına ve VEDOP belgesine ihtiyacı vardır. Gelişmiş ERP çift yönlü senkronizasyonu kurulan e-ticaret sistemlerinde, ETGB kapama bilgileri dijital olarak muhasebe sisteminize düşmeli veya rapor halinde dışa aktarılabilmelidir (Export).
+
+### 4. Gümrük Vergileri (DDP ve DDU Modelleri)
+Yurt dışına giden bir ürüne hedef ülke (Örn. Almanya veya İngiltere) gümrük vergisi çıkarabilir. 
+*   **DDU (Delivered Duty Unpaid):** Vergi çıkarsa alıcı/müşteri kapıda öder. Müşteri bunu bilmediği için sürpriz yaşayıp kargoyu reddedebilir.
+*   **DDP (Delivered Duty Paid):** Vergiyi doğrudan *satıcı olarak siz* karşılarsınız. 
+**Yazılım İhtiyacı:** Sepet/Ödeme ekranınızda, müşterinin lokasyonuna göre tahmini gümrük vergisini (Tax/Duties) API ile hesaplayıp sepet toplamına ekleyen ve bu sayede DDP statüsünde gönderim yapmanızı sağlayan dinamik bir yapı olmalıdır. Çoğu standart hazır e-ticaret paketi bu canlı gümrük vergi entegrasyonundan yoksundur.
+
+## E-İhracat İçin Sadece Web Sitesi Değil, Operasyon Ekosistemi Kurun
+
+E-ihracat pazar yeri paketlerine çok yüksek meblağlar ödeyebilirsiniz ancak işin sonunda muhasebecinizle fatura iptalleriyle ve ETGB krizleriyle boğuşabilirsiniz. Önemli olan yazılımın görünüşü değil, arka plandaki gümrük, GTİP, %0 KDV faturası ve lojistik şirketleriyle kurduğu tam entegrasyondur.
+
+<MintlifyCallout type="general" title="Tüm Bürokratik Entegrasyonları Bizimle Aşın">
+Gümrük, hesaplama hataları veya muhasebe senkronizasyon krizleri yaşamadan; tamamen işinizin doğasına (B2C veya B2B) ve yurt dışı operasyonlarınıza göre özel kurgulanmış bir [Özel E-Ticaret / E-İhracat Yazılımı](/blog/ozel-e-ticaret-nedir) geliştirmek istiyorsanız [Bize Ulaştığınızda](/contact), global lojistik ve finans mimarinizi birlikte inşa edelim.
+</MintlifyCallout>

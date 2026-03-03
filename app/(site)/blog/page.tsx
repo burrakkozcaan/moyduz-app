@@ -1,5 +1,5 @@
 import BlogFeedWithFilters from '@/app/(site)/blog/_components/BlogFeedWithFilters'
-import { getBlogPostsByCategory } from '@/lib/mdx'
+import { getAllBlogPosts } from '@/lib/mdx'
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-static'
@@ -7,85 +7,46 @@ export const dynamic = 'force-static'
 function formatLabel(slug?: string | null) {
   if (!slug) return ''
   return slug
+    .replace(/_/g, '-')
     .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
 }
 
-export async function generateMetadata({
-  searchParams,
-}: {
-  searchParams?: { category?: string }
-}): Promise<Metadata> {
-  const activeCategory =
-    typeof searchParams?.category === 'string' &&
-    searchParams.category.length > 0
-      ? searchParams.category
-      : undefined
-
-  const label = activeCategory ? formatLabel(activeCategory) : null
-  const keywords = label
-    ? [
-        `${label.toLowerCase()} rehberi`,
-        `${label.toLowerCase()} ipuçları`,
-        `${label.toLowerCase()} stratejileri`,
-        'moyduz blog',
-      ]
-    : [
-        'e-ticaret blog',
-        'seo rehberi',
-        'dijital pazarlama',
-        'dijital büyüme',
-        'moyduz blog',
-      ]
-
-  return {
-    title: label
-      ? `${label} Rehberleri & İçgörüler | Moyduz Blog`
-      : 'Moyduz Blog — E-Ticaret, SEO ve Dijital Büyüme Rehberleri',
-    description: label
-      ? `Moyduz uzmanlarından ${formatLabel(label).toLowerCase()} konusunda kapsamlı rehberler, stratejiler ve uygulama ipuçları.`
-      : 'E-ticaret altyapısı, teknik SEO, dijital pazarlama ve iş kurma konularında Moyduz uzmanlarından kapsamlı rehberler ve stratejiler.',
-    alternates: {
-      canonical: 'https://moyduz.com/blog',
-    },
-    keywords,
-    openGraph: {
-      title: label
-        ? `${label} Rehberleri & İçgörüler | Moyduz Blog`
-        : 'Moyduz Blog — E-Ticaret, SEO ve Dijital Büyüme Rehberleri',
-      description: label
-        ? `Moyduz uzmanlarından ${formatLabel(label).toLowerCase()} konusunda kapsamlı rehberler, stratejiler ve uygulama ipuçları.`
-        : 'E-ticaret altyapısı, teknik SEO, dijital pazarlama ve iş kurma konularında Moyduz uzmanlarından kapsamlı rehberler ve stratejiler.',
-      url: 'https://moyduz.com/blog',
-      locale: 'tr_TR',
-      siteName: 'Moyduz',
-      type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: label
-        ? `${label} Rehberleri & İçgörüler | Moyduz Blog`
-        : 'Moyduz Blog — E-Ticaret, SEO ve Dijital Büyüme Rehberleri',
-      description: label
-        ? `Moyduz uzmanlarından ${formatLabel(label).toLowerCase()} konusunda kapsamlı rehberler.`
-        : 'E-ticaret, teknik SEO ve dijital büyüme rehberleri.',
-    },
-  }
+export const metadata: Metadata = {
+  title: 'Moyduz Blog — E-Ticaret, SEO ve Dijital Büyüme Rehberleri',
+  description:
+    'E-ticaret altyapısı, teknik SEO, dijital pazarlama ve iş kurma konularında Moyduz uzmanlarından kapsamlı Türkçe rehberler. Pazaryeri komisyon analizleri, maliyet karşılaştırmaları ve büyüme stratejileri.',
+  alternates: {
+    canonical: 'https://moyduz.com/blog',
+  },
+  keywords: [
+    'e-ticaret blog',
+    'seo rehberi',
+    'dijital pazarlama',
+    'e-ticaret altyapı karşılaştırması',
+    'pazaryeri komisyon',
+    'dijital büyüme',
+    'moyduz blog',
+  ],
+  openGraph: {
+    title: 'Moyduz Blog — E-Ticaret, SEO ve Dijital Büyüme Rehberleri',
+    description:
+      'Türkiye e-ticaret ekosistemi, teknik SEO, dijital pazarlama ve iş kurma konularında kapsamlı Türkçe rehberler.',
+    url: 'https://moyduz.com/blog',
+    locale: 'tr_TR',
+    siteName: 'Moyduz',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Moyduz Blog — E-Ticaret, SEO ve Dijital Büyüme Rehberleri',
+    description: 'E-ticaret, teknik SEO ve dijital büyüme rehberleri.',
+  },
 }
 
-export default async function BlogPage({
-  searchParams,
-}: {
-  searchParams?: { category?: string }
-}) {
-  const activeCategory =
-    typeof searchParams?.category === 'string' &&
-    searchParams.category.length > 0
-      ? searchParams.category
-      : undefined
-
-  const allPosts = await getBlogPostsByCategory(activeCategory)
+export default async function BlogPage() {
+  const allPosts = await getAllBlogPosts()
 
   const posts = allPosts.map((post) => ({
     slug: post.frontmatter.slug,
@@ -96,9 +57,12 @@ export default async function BlogPage({
     category: post.frontmatter.category,
     author_name: post.frontmatter.author_name,
     excerpt: post.frontmatter.meta_description,
+    hero_image: post.frontmatter.hero_image as string | undefined,
+    featured_image: post.frontmatter.featured_image as string | undefined,
   }))
 
-  const categoryMap = new Map<string, { count: number; name?: string }>()
+  // Build category list from all posts
+  const categoryMap = new Map<string, { count: number; name: string }>()
   posts.forEach((post) => {
     const categorySlug =
       typeof post.category === 'object' ? post.category?.slug : post.category
@@ -108,37 +72,28 @@ export default async function BlogPage({
         : post.category
 
     if (categorySlug) {
-      const existing = categoryMap.get(categorySlug) || { count: 0 }
+      const existing = categoryMap.get(categorySlug) || { count: 0, name: '' }
       categoryMap.set(categorySlug, {
         count: existing.count + 1,
-        name: categoryName,
+        name: categoryName || formatLabel(categorySlug),
       })
     }
   })
 
-  const categoryItems = Array.from(categoryMap.entries())
+  const categoryFilters = Array.from(categoryMap.entries())
     .map(([slug, data]) => ({
+      slug,
       title: data.name || formatLabel(slug),
-      href: activeCategory === slug ? '/blog' : `/blog?category=${slug}`,
       count: data.count,
-      badge: activeCategory === slug ? 'Aktif' : 'Kategori',
     }))
     .sort((a, b) => b.count - a.count)
-
-  const heroTitle = activeCategory
-    ? `${formatLabel(activeCategory)} Rehberleri`
-    : 'Blog'
-
-  const heroDescription = activeCategory
-    ? `${formatLabel(activeCategory).toLowerCase()} ile ilgili rehberler ve içgörüler.`
-    : 'Moyduz uzman görüşleri, rehberler ve büyüme stratejileri.'
 
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: activeCategory
-      ? `${formatLabel(activeCategory)} Rehberleri`
-      : 'Moyduz Blog Yazıları',
+    name: 'Moyduz Blog Yazıları',
+    description:
+      'E-ticaret, SEO ve dijital büyüme konularında Türkçe rehberler',
     itemListElement: posts.map((post, index) => ({
       '@type': 'ListItem',
       position: index + 1,
@@ -155,10 +110,10 @@ export default async function BlogPage({
       />
       <BlogFeedWithFilters
         blogList={posts}
-        title={heroTitle}
-        description={heroDescription}
-        categoryFilters={categoryItems}
-        showCategoryFilters={categoryItems.length > 0}
+        title="Blog"
+        description="Moyduz uzman görüşleri, rehberler ve büyüme stratejileri."
+        categoryFilters={categoryFilters}
+        showCategoryFilters={categoryFilters.length > 0}
         totalCount={posts.length}
       />
     </>
