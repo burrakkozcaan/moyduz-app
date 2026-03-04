@@ -10,7 +10,7 @@ import { DottedGlowBackground } from '@/components/ui/dotted-glow-background';
 import FaqsPricing from '@/components/Faqs-pricing';
 
 export default function PricingPage() {
-  const [activeTab, setActiveTab] = useState<'personal' | 'startup' | 'enterprise'>('startup');
+  const [activeTab, setActiveTab] = useState<'personal' | 'business' | 'startup' | 'enterprise'>('startup');
   const [includeFigma, setIncludeFigma] = useState(false);
   const [showSaveBadge, setShowSaveBadge] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,6 +18,7 @@ export default function PricingPage() {
   const tabBtnPersonalRef = React.useRef<HTMLButtonElement>(null);
   const tabBtnStartupRef = React.useRef<HTMLButtonElement>(null);
   const tabBtnEnterpriseRef = React.useRef<HTMLButtonElement>(null);
+  const tabBtnBusinessRef = React.useRef<HTMLButtonElement>(null);
   const tabListDivRef = React.useRef<HTMLDivElement>(null);
   const [indicatorStyle, setIndicatorStyle] = React.useState<React.CSSProperties>({ transform: 'translate3d(0px,0px,0px)', width: '0px', transitionTimingFunction: 'cubic-bezier(0.65, 0, 0.35, 1)' });
   React.useEffect(() => {
@@ -25,7 +26,7 @@ export default function PricingPage() {
   }, []);
 
   React.useEffect(() => {
-    const btn = activeTab === 'personal' ? tabBtnPersonalRef.current : activeTab === 'startup' ? tabBtnStartupRef.current : tabBtnEnterpriseRef.current;
+    const btn = activeTab === 'personal' ? tabBtnPersonalRef.current : activeTab === 'business' ? tabBtnBusinessRef.current : activeTab === 'startup' ? tabBtnStartupRef.current : tabBtnEnterpriseRef.current;
     const list = tabListDivRef.current;
     if (btn && list) {
       const btnRect = btn.getBoundingClientRect();
@@ -98,7 +99,10 @@ export default function PricingPage() {
                 <button ref={tabBtnPersonalRef} type="button" role="tab" aria-selected={activeTab === 'personal'} onClick={() => setActiveTab('personal')} data-state={activeTab === 'personal' ? 'active' : 'inactive'} className="group/tab-item h-8 rounded-[9px] pl-2 pr-2.5 text-ln-label-sm text-ln-gray-600 flex items-center justify-center gap-1.5 transition duration-200 ease-out focus:outline-none data-[state=active]:text-ln-gray-800 data-[state=active]:shadow-ln-badge-orange flex-1 data-[state=active]:bg-ln-gray-0">
                   Başlangıç
                 </button>
-              
+                <button ref={tabBtnBusinessRef} type="button" role="tab" aria-selected={activeTab === 'business'} onClick={() => setActiveTab('business')} data-state={activeTab === 'business' ? 'active' : 'inactive'} className="group/tab-item h-8 rounded-[9px] pl-2 pr-2.5 text-ln-label-sm text-ln-gray-600 flex items-center justify-center gap-1.5 transition duration-200 ease-out focus:outline-none data-[state=active]:text-ln-gray-800 data-[state=active]:shadow-ln-badge-orange flex-1 data-[state=active]:bg-ln-gray-0">
+                  Business
+                </button>
+
 {/* <Link
   href="/faq"
   className="group relative inline-flex items-center justify-center whitespace-nowrap transition duration-200 ease-out outline-none focus:outline-none disabled:pointer-events-none bg-ln-gray-900 text-ln-gray-0 shadow-ln-button-gray hover:bg-ln-gray-800 disabled:bg-ln-gray-25 disabled:text-ln-gray-450 disabled:shadow-none h-11 gap-3.5 rounded-[13px] px-[18px] text-ln-label-sm"
@@ -117,7 +121,7 @@ export default function PricingPage() {
           </div>
           <div className="relative -mx-4 w-auto pt-20 md:mx-0 md:w-full xl:pt-16">
   <div className="w-full rounded-[32px] bg-ln-gray-50 p-1 !pb-0 ring-1 ring-inset ring-ln-gray-100 md:p-2.5">
-    <div className="grid grid-cols-[minmax(160px,1fr)_minmax(0,1fr)] rounded-[28px] bg-ln-gray-0 p-1 shadow-ln-xs md:gap-2 md:rounded-3xl md:p-2 xl:grid-cols-4">
+    <div className="grid grid-cols-[minmax(160px,1fr)_minmax(0,1fr)] rounded-[28px] bg-ln-gray-0 p-1 shadow-ln-xs md:gap-2 md:rounded-3xl md:p-2 xl:grid-cols-5">
       <div className="relative flex flex-col gap-4 px-2.5 py-7 before:absolute before:inset-y-0 before:right-0 before:w-px before:bg-ln-gray-100 min-[480px]:pl-4 min-[480px]:pr-4 sm:gap-5 md:pl-5 md:pr-7">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -578,7 +582,7 @@ export default function PricingPage() {
                   $
                   <div className="grid overflow-hidden">
                     <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '0ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>3</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '0ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>2</div>
                       <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)'  }}>,</div>
                       <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>2</div>
                       <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
@@ -596,7 +600,7 @@ export default function PricingPage() {
                   KDV hariç
                 </div>
                 <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-400">
-                  ≈ ₺109.000+
+                  ≈ ₺75.000+
                 </div>
               </div>
             </div>
@@ -606,7 +610,7 @@ export default function PricingPage() {
                   $
                   <div className="grid overflow-hidden">
                     <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '0ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>3</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '0ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>2</div>
                       <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
                       <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>2</div>
                       <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
@@ -624,7 +628,7 @@ export default function PricingPage() {
                   KDV hariç
                 </div>
                 <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-400">
-                  ≈ ₺109.000+
+                  ≈ ₺75.000+
                 </div>
               </div>
             </div>
@@ -857,6 +861,129 @@ export default function PricingPage() {
           </div>
         </div>
       </div>
+      <div className={`flex-col gap-4 px-2.5 py-7 min-[480px]:px-4 sm:gap-5 md:px-7 xl:!flex ${activeTab === 'business' ? 'flex' : 'hidden xl:flex'}`}>
+        <div
+          className="flex w-full flex-col items-start pb-2 max-[768px]:!h-72"
+          style={{ height: 244 }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-6 shrink-0 text-ln-orange">
+            <path stroke="currentColor" strokeLinejoin="round" strokeWidth="1.25" d="M3.333 10h13.334M3.333 6.667h13.334M3.333 13.333h8" />
+          </svg>
+          <div className="mt-4">
+            <div className="text-ln-label-lg text-ln-gray-900">Business</div>
+            <div className="mt-1 h-10 max-w-44 text-ln-paragraph-xs text-ln-gray-600 sm:text-ln-paragraph-sm">
+              Büyüyen işletmeler ve B2B projeler için.
+            </div>
+          </div>
+          <div className="my-6 flex flex-col items-start">
+            <div className="hidden items-center gap-2.5 xl:flex">
+              <div className="text-[36px]/[40px] font-550 text-ln-gray-800">
+                <div className="relative flex">
+                  $
+                  <div className="grid overflow-hidden">
+                    <div className="flex [grid-area:1/1]">
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>3</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>7</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '250ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
+                    </div>
+                  </div>
+                  +
+                </div>
+              </div>
+              <div>
+                <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-700">başlangıç fiyatı</div>
+                <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-500">KDV hariç</div>
+                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-400">≈ ₺125.000+</div>
+              </div>
+            </div>
+            <div className="flex flex-col items-start gap-1 xl:hidden">
+              <div className="text-[36px]/[40px] font-550 text-ln-gray-800">
+                <div className="relative flex">
+                  $
+                  <div className="grid overflow-hidden">
+                    <div className="flex [grid-area:1/1]">
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>3</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>7</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '250ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
+                    </div>
+                  </div>
+                  +
+                </div>
+              </div>
+              <div>
+                <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-700">başlangıç fiyatı</div>
+                <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-500">KDV hariç</div>
+                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-400">≈ ₺125.000+</div>
+              </div>
+            </div>
+          </div>
+          <a href="/contact" className="flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-10 bg-ln-gray-50 text-ln-label-sm text-ln-gray-800">
+            Teklif Al
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-gray-500">
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M14.5 12.204V6m0 0H8.296M14.5 6l-8 8" />
+            </svg>
+          </a>
+        </div>
+        {includeFigma && (
+          <div className="flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.08] px-2 py-1 -mt-1">
+            <span className="text-[11px]/[14px] font-medium text-ln-orange">+ $150–225/ay bakım</span>
+          </div>
+        )}
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">Sınırsız ürün ve sayfa</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">6–8 hafta</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">B2B + kampanya motoru</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">Özel UI/UX tasarım</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">E-posta + WhatsApp otomasyon</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">48 saat</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">AWS VPS dahil</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">GEO temelleri</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">Gelişmiş güvenlik</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">CDN + hız opt.</span>
+        </div>
+      </div>
       <div className={`relative flex-col gap-4 rounded-20 bg-ln-gray-925 px-2.5 py-7 shadow-ln-button-gray min-[480px]:px-4 sm:gap-5 md:rounded-2xl md:px-7 xl:!flex ${activeTab === 'startup' ? 'flex' : 'hidden xl:flex'}`}>
       <DottedGlowBackground
         className="pointer-events-none mask-radial-at-center max-md:mask-radial-to-50 md:mask-radial-to-90"
@@ -905,9 +1032,9 @@ export default function PricingPage() {
                   $
                   <div className="grid overflow-hidden">
                     <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>4</div>
                       <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '250ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>9</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '250ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>7</div>
                       <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '300ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
                       <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '350ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
                     </div>
@@ -923,7 +1050,7 @@ export default function PricingPage() {
                   KDV hariç
                 </div>
                 <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-500">
-                  ≈ ₺199.000+
+                  ≈ ₺159.000+
                 </div>
               </div>
             </div>
@@ -933,9 +1060,9 @@ export default function PricingPage() {
                   $
                   <div className="grid overflow-hidden">
                     <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>4</div>
                       <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '250ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>9</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '250ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>7</div>
                       <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '300ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
                       <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '350ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
                     </div>
@@ -951,7 +1078,7 @@ export default function PricingPage() {
                   KDV hariç
                 </div>
                 <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-500">
-                  ≈ ₺199.000+
+                  ≈ ₺159.000+
                 </div>
               </div>
             </div>
@@ -1211,6 +1338,52 @@ export default function PricingPage() {
             <div className="text-ln-label-lg text-ln-gray-900">Pazar Yeri</div>
             <div className="mt-1 h-10 max-w-44 text-ln-paragraph-xs text-ln-gray-600 sm:text-ln-paragraph-sm">
               Multi-vendor marketplace ve B2B platformları için.
+            </div>
+          </div>
+          <div className="my-6 flex flex-col items-start">
+            <div className="hidden items-center gap-2.5 xl:flex">
+              <div className="text-[36px]/[40px] font-550 text-ln-gray-800">
+                <div className="relative flex">
+                  $
+                  <div className="grid overflow-hidden">
+                    <div className="flex [grid-area:1/1]">
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '0ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>8</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
+                    </div>
+                  </div>
+                  +
+                </div>
+              </div>
+              <div>
+                <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-700">başlangıç fiyatı</div>
+                <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-500">KDV hariç</div>
+                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-400">≈ ₺285.000+</div>
+              </div>
+            </div>
+            <div className="flex flex-col items-start gap-1 xl:hidden">
+              <div className="text-[36px]/[40px] font-550 text-ln-gray-800">
+                <div className="relative flex">
+                  $
+                  <div className="grid overflow-hidden">
+                    <div className="flex [grid-area:1/1]">
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '0ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>8</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
+                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
+                    </div>
+                  </div>
+                  +
+                </div>
+              </div>
+              <div>
+                <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-700">başlangıç fiyatı</div>
+                <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-500">KDV hariç</div>
+                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-400">≈ ₺285.000+</div>
+              </div>
             </div>
           </div>
           <a

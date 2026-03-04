@@ -6,7 +6,7 @@ export const dynamic = 'force-static'
 export const metadata: Metadata = {
   title: 'E-Ticaret Paketleri & Fiyatları 2026 | Moyduz',
   description:
-    'Türkiye\'ye özel özel e-ticaret paketleri. Komisyonsuz, hızlı teslim, tam özelleştirme. Başlangıç, Büyüme ve Kurumsal paket seçenekleri ve fiyatları.',
+    'Türkiye\'ye özel e-ticaret paketleri. Komisyonsuz, hızlı teslim, tam özelleştirme. Başlangıç, Business, Commerce ve Marketplace paket seçenekleri ve fiyatları.',
   keywords: [
     'e-ticaret paketleri',
     'e-ticaret fiyatları',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'E-Ticaret Paketleri & Fiyatları 2026 | Moyduz',
     description:
-      'Komisyonsuz, Türkiye\'ye özel e-ticaret paketleri. Başlangıç\'tan Kurumsal\'a fiyat ve özellik karşılaştırması.',
+      'Komisyonsuz, Türkiye\'ye özel e-ticaret paketleri. Başlangıç\'tan Marketplace\'e fiyat ve özellik karşılaştırması.',
     url: 'https://moyduz.com/e-ticaret-paketleri',
     type: 'website',
     locale: 'tr_TR',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'E-Ticaret Paketleri & Fiyatları 2026',
-    description: 'Komisyonsuz, Türkiye\'ye özel e-ticaret paketleri. Başlangıç\'tan Kurumsal\'a.',
+    description: 'Komisyonsuz, Türkiye\'ye özel e-ticaret paketleri. Başlangıç\'tan Marketplace\'e.',
   },
 }
 
@@ -40,9 +40,9 @@ const packages = [
   {
     name: 'Başlangıç',
     subtitle: 'Yeni işletmeler için',
-    price: '$3,250+',
-    priceTry: '≈ ₺109.000+',
-    delivery: '6–8 hafta',
+    price: '$2,250+',
+    priceTry: '≈ ₺75.000+',
+    delivery: '4–6 hafta',
     highlight: false,
     features: [
       'Özel tasarım (Mobile-first)',
@@ -51,50 +51,72 @@ const packages = [
       'Kargo entegrasyonu (MNG, Yurtiçi, Aras)',
       'Stok ve sipariş yönetimi',
       'Temel SEO altyapısı',
+      'Google Analytics 4 (GA4) Altyapısı',
       'SSL, KVKK metinleri',
       '3 ay ücretsiz teknik destek',
       'e-Fatura entegrasyonu',
     ],
-    notIncluded: ['Çoklu satıcı', 'B2B modülü', 'Abonelik sistemi'],
+    notIncluded: ['Çoklu satıcı', 'B2B modülü', 'Abonelik sistemi', 'Meta Pixel & Dönüşüm API'],
     cta: 'Teklif Al',
     ctaHref: '/contact',
   },
   {
-    name: 'Büyüme',
+    name: 'Business',
+    subtitle: 'Büyüyen işletmeler için',
+    price: '$3,750+',
+    priceTry: '≈ ₺125.000+',
+    delivery: '6–8 hafta',
+    highlight: false,
+    features: [
+      'Başlangıç paketi özellikleri +',
+      'Kupon, kampanya ve indirim motoru',
+      'Terk edilen sepet e-posta otomasyonu',
+      'Sadakat & puan sistemi',
+      'B2B / toptan satış modülü',
+      'Bayi paneli ve cari hesap yönetimi',
+      'Gelişmiş analitik dashboard',
+      '6 ay ücretsiz teknik destek',
+      'Performans optimizasyonu (Core Web Vitals)',
+      'WhatsApp Business entegrasyonu',
+    ],
+    notIncluded: ['Çoklu satıcı marketplace', 'Meta Pixel & Dönüşüm API', 'Çoklu dil'],
+    cta: 'Teklif Al',
+    ctaHref: '/contact',
+  },
+  {
+    name: 'Commerce',
     subtitle: 'Hızla ölçeklenmek isteyenler için',
-    price: '$7,500+',
-    priceTry: '≈ ₺252.000+',
+    price: '$4,750+',
+    priceTry: '≈ ₺159.000+',
     delivery: '8–12 hafta',
     highlight: true,
     features: [
-      'Başlangıç paketi özellikleri +',
+      'Business paketi özellikleri +',
       'Gelişmiş ürün filtreleme & arama',
-      'Kupon, kampanya ve indirim motoru',
-      'Sadakat & puan sistemi',
+      'Meta (Facebook) Pixel & Dönüşüm API',
       'Çoklu dil & para birimi',
-      'Gelişmiş analitik dashboard',
-      'Terk edilen sepet e-posta otomasyonu',
-      'WhatsApp Business entegrasyonu',
-      '6 ay ücretsiz teknik destek',
-      'Performans optimizasyonu (Core Web Vitals)',
+      'E-ihracat & mikro ihracat desteği',
+      'Stripe & PayPal entegrasyonu',
+      'Özel raporlama & BI dashboard',
+      '9 ay ücretsiz teknik destek',
     ],
-    notIncluded: ['Çoklu satıcı marketplace'],
+    notIncluded: ['Çoklu satıcı marketplace', 'Özel ERP entegrasyonu'],
     cta: 'Teklif Al',
     ctaHref: '/contact',
   },
   {
-    name: 'Kurumsal',
-    subtitle: 'Yüksek hacimli ve karmaşık modeller için',
-    price: 'Özel Fiyat',
-    priceTry: '₺300.000+',
+    name: 'Marketplace',
+    subtitle: 'Çok satıcılı platformlar için',
+    price: '$8,500+',
+    priceTry: '≈ ₺285.000+',
     delivery: '12–20 hafta',
     highlight: false,
     features: [
-      'Büyüme paketi özellikleri +',
+      'Commerce paketi özellikleri +',
       'Çoklu satıcı (Multi-vendor) marketplace',
-      'B2B / toptan satış modülü',
+      'Komisyon motoru ve otomatik ödeme dağıtımı',
+      'Satıcı onboarding & bayi paneli',
       'Abonelik ve tekrarlayan ödeme sistemi',
-      'Özel raporlama & BI entegrasyonu',
       'ERP / CRM entegrasyonu',
       'Headless mimari seçeneği',
       'SLA garantili destek',
@@ -108,18 +130,20 @@ const packages = [
 ]
 
 const comparison = [
-  { feature: 'Özel Tasarım', baslangic: true, buyume: true, kurumsal: true },
-  { feature: 'Sınırsız Ürün', baslangic: true, buyume: true, kurumsal: true },
-  { feature: 'Komisyon', baslangic: 'Yok', buyume: 'Yok', kurumsal: 'Yok' },
-  { feature: 'Sanal POS Entegrasyonu', baslangic: true, buyume: true, kurumsal: true },
-  { feature: 'Kargo Entegrasyonu', baslangic: true, buyume: true, kurumsal: true },
-  { feature: 'SEO Altyapısı', baslangic: 'Temel', buyume: 'Gelişmiş', kurumsal: 'Tam' },
-  { feature: 'Kampanya Motoru', baslangic: false, buyume: true, kurumsal: true },
-  { feature: 'Çoklu Dil/Para Birimi', baslangic: false, buyume: true, kurumsal: true },
-  { feature: 'B2B Modülü', baslangic: false, buyume: false, kurumsal: true },
-  { feature: 'Multi-vendor Marketplace', baslangic: false, buyume: false, kurumsal: true },
-  { feature: 'Abonelik Sistemi', baslangic: false, buyume: false, kurumsal: true },
-  { feature: 'Teknik Destek', baslangic: '3 ay', buyume: '6 ay', kurumsal: '12 ay' },
+  { feature: 'Özel Tasarım', baslangic: true, business: true, commerce: true, marketplace: true },
+  { feature: 'Sınırsız Ürün', baslangic: true, business: true, commerce: true, marketplace: true },
+  { feature: 'Komisyon', baslangic: 'Yok', business: 'Yok', commerce: 'Yok', marketplace: 'Yok' },
+  { feature: 'Sanal POS Entegrasyonu', baslangic: true, business: true, commerce: true, marketplace: true },
+  { feature: 'Kargo Entegrasyonu', baslangic: true, business: true, commerce: true, marketplace: true },
+  { feature: 'SEO Altyapısı', baslangic: 'Temel', business: 'Gelişmiş', commerce: 'Tam', marketplace: 'Tam' },
+  { feature: 'Kampanya Motoru', baslangic: false, business: true, commerce: true, marketplace: true },
+  { feature: 'Google Analytics 4 (GA4)', baslangic: true, business: true, commerce: true, marketplace: true },
+  { feature: 'Meta Pixel Dönüşüm API', baslangic: false, business: false, commerce: true, marketplace: true },
+  { feature: 'Çoklu Dil/Para Birimi', baslangic: false, business: false, commerce: true, marketplace: true },
+  { feature: 'B2B Modülü', baslangic: false, business: true, commerce: false, marketplace: true },
+  { feature: 'Multi-vendor Marketplace', baslangic: false, business: false, commerce: false, marketplace: true },
+  { feature: 'Abonelik Sistemi', baslangic: false, business: false, commerce: false, marketplace: true },
+  { feature: 'Teknik Destek', baslangic: '3 ay', business: '6 ay', commerce: '9 ay', marketplace: '12 ay' },
 ]
 
 const faqs = [
@@ -244,15 +268,14 @@ export default function ETicaretPaketleriPage() {
       {/* Packages */}
       <section className="py-16 md:py-20">
         <div className="container mx-auto max-w-6xl px-4">
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {packages.map((pkg) => (
               <div
                 key={pkg.name}
-                className={`relative flex flex-col rounded-2xl border p-8 ${
-                  pkg.highlight
+                className={`relative flex flex-col rounded-2xl border p-8 ${pkg.highlight
                     ? 'border-ln-orange bg-ln-gray-900 text-white shadow-xl'
                     : 'border-ln-gray-100 bg-ln-gray-0'
-                }`}
+                  }`}
               >
                 {pkg.highlight && (
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-ln-orange px-4 py-1 text-xs font-bold text-white">
@@ -297,11 +320,10 @@ export default function ETicaretPaketleriPage() {
 
                 <Link
                   href={pkg.ctaHref}
-                  className={`inline-flex h-11 w-full items-center justify-center rounded-xl text-sm font-semibold transition-colors ${
-                    pkg.highlight
+                  className={`inline-flex h-11 w-full items-center justify-center rounded-xl text-sm font-semibold transition-colors ${pkg.highlight
                       ? 'bg-ln-orange text-white hover:bg-ln-orange/90'
                       : 'border border-ln-gray-200 bg-ln-gray-0 text-ln-gray-900 hover:bg-ln-gray-50'
-                  }`}
+                    }`}
                 >
                   {pkg.cta}
                 </Link>
@@ -310,6 +332,23 @@ export default function ETicaretPaketleriPage() {
           </div>
           <p className="mt-6 text-center text-sm text-ln-gray-400">
             Tüm fiyatlar USD bazlıdır, TL karşılıkları güncel kura göre değişir. KDV dahil değildir.
+          </p>
+        </div>
+      </section>
+
+      {/* Conversion Banner Section */}
+      <section className="border-t border-ln-gray-100 py-12 bg-orange-50/50 dark:bg-orange-900/10">
+        <div className="container mx-auto max-w-4xl px-4 text-center">
+          <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 text-orange-600 mb-4">
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold tracking-tight text-ln-gray-900 mb-2">
+            Google Analytics 4 (GA4) ve Facebook Pixel Dönüşüm API'si Tek Tıkla Hazır
+          </h2>
+          <p className="text-ln-gray-600 max-w-2xl mx-auto">
+            Satışlarınızı kör uçuşu yaparak yönetemezsiniz. Moyduz E-ticaret Paketlerinde, veri odaklı pazarlama (Performance Marketing) yapabilmeniz için gerekli tüm dönüşüm ayarlarınızı tek dokunuşla tamamlayın.
           </p>
         </div>
       </section>
@@ -326,15 +365,16 @@ export default function ETicaretPaketleriPage() {
                 <tr className="border-b border-ln-gray-100 bg-ln-gray-50">
                   <th className="px-4 py-3 text-left font-semibold text-ln-gray-700">Özellik</th>
                   <th className="px-4 py-3 text-center font-semibold text-ln-gray-700">Başlangıç</th>
-                  <th className="px-4 py-3 text-center font-semibold text-ln-orange">Büyüme</th>
-                  <th className="px-4 py-3 text-center font-semibold text-ln-gray-700">Kurumsal</th>
+                  <th className="px-4 py-3 text-center font-semibold text-ln-gray-700">Business</th>
+                  <th className="px-4 py-3 text-center font-semibold text-ln-orange">Commerce</th>
+                  <th className="px-4 py-3 text-center font-semibold text-ln-gray-700">Marketplace</th>
                 </tr>
               </thead>
               <tbody>
                 {comparison.map((row) => (
                   <tr key={row.feature} className="border-b border-ln-gray-50 hover:bg-ln-gray-25">
                     <td className="px-4 py-3 font-medium text-ln-gray-700">{row.feature}</td>
-                    {(['baslangic', 'buyume', 'kurumsal'] as const).map((col) => (
+                    {(['baslangic', 'business', 'commerce', 'marketplace'] as const).map((col) => (
                       <td key={col} className="px-4 py-3 text-center">
                         {row[col] === true ? (
                           <svg className="mx-auto h-4 w-4 text-ln-orange" fill="none" viewBox="0 0 16 16">
