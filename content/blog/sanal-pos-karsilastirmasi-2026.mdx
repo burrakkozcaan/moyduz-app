@@ -1,0 +1,104 @@
+---
+title: "2026 Sanal POS Karşılaştırması: PayTR, iyzico, Param ve Banka POS Komisyon Oranları"
+slug: "sanal-pos-karsilastirmasi-2026"
+meta_description: "2026 güncel sanal POS komisyon oranları tek tabloda: PayTR ≈%1.99, iyzico ≈%2.99+₺0.25/işlem, Param ≈%2.20. E-ticaret siteniz için hangisi kazandırır?"
+published_at: "2026-03-04T00:00:00Z"
+updated_at: "2026-03-04T00:00:00Z"
+author_name: "Moyduz Ekibi"
+reading_time: 9
+category:
+  name: "Ödeme Sistemleri"
+  slug: "odeme-sistemleri"
+snippet: "PayTR, iyzico, Param ve Banka POS komisyon oranlarını yan yana karşılaştırın. Hangi sanal POS sizin cironuz için gerçekten kazandırır?"
+hero_image: "https://cdn.moyduz.com/images/blog/sanal-pos-karsilastirmasi-hero.jpg"
+audio_src: "https://cdn.moyduz.com/audio/sanal-pos-karsilastirmasi-2026.mp3"
+ai_related: "/blog/paytr-vs-iyzico,/blog/paytr-nedir,/blog/iyzico-nedir,/blog/en-iyi-sanal-pos,/tools/sanal-pos-hesaplama"
+---
+
+E-ticarette en sık göz ardı edilen maliyet kalemi platformun aylık paketi değil, sanal POS komisyonudur. Yılda 1 milyon TL ciro yapan bir işletme, seçtiği ödeme sağlayıcısına bağlı olarak **₺10.000 ile ₺30.000 arasında komisyon** ödeyebilir. Fark; doğru sistemi seçmek ya da seçmemekten ibarettir.
+
+2026 itibarıyla Türkiye'de en çok kullanılan sanal POS sağlayıcıları PayTR, iyzico ve Param; yüksek cirolu işletmeler için ise banka sanal POS'larıdır. Bu rehberde tüm komisyon oranlarını, gizli maliyetleri ve hangi profil için hangi sağlayıcının daha mantıklı olduğunu net biçimde ele alıyoruz.
+
+---
+
+## 2026 Güncel Sanal POS Komisyon Karşılaştırma Tablosu
+
+Aşağıdaki tablo, 2026 itibarıyla sağlayıcıların ortalama başlangıç koşullarını göstermektedir. Oranlar cirop, sektör ve pazarlık gücüne göre değişebilir.
+
+| Sağlayıcı | Tek Çekim Komisyon | İşlem Başı Sabit | Aylık/Yıllık Ücret | Başvuru/Kurulum | Entegrasyon | Uluslararası Kart |
+|---|---|---|---|---|---|---|
+| **PayTR** | ≈%1.99 | Yok | Yok | 3–7 iş günü | Kolay (iFrame API) | Sınırlı |
+| **iyzico** | ≈%2.99 | ₺0.25/işlem | ₺0 / ₺199 (Premium) | 2–5 iş günü | Çok kolay (SDK+doc) | Var |
+| **Param** | ≈%2.20 | Yok | Yok | 5–10 iş günü | Orta | Sınırlı |
+| **Banka POS** (Garanti, Akbank vb.) | ≈%1.50–2.50 | Yok | Yok | **25–35 iş günü** | Zor (banka API) | Banka bağımlı |
+
+> **Notlar:**
+> - iyzico Premium (₺199/ay) işlem başı sabit ücreti kaldırır; yüksek işlem hacminde karlı olabilir.
+> - Banka POS komisyonu yüksek ciro müzakeresiyle %1.50'ye inebilir ancak onay süreci uzundur.
+> - Uluslararası kart desteği için Stripe ya da PayTR/iyzico'nun yabancı kart ek ücreti kontrol edilmelidir.
+
+---
+
+## PayTR ve iyzico Taksit Vade Farkı Oranları 2026
+
+Taksitli satışlarda vade farkı oranları kart programına (Bonus, Maximum, World, Axess) göre değişir. Aşağıdaki değerler 2026 ortalamasıdır.
+
+| Taksit Sayısı | PayTR (≈) | iyzico (≈) |
+|---|---|---|
+| 2 Taksit | %3–4 | %3–5 |
+| 3 Taksit | %5–7 | %6–8 |
+| 6 Taksit | %9–12 | %10–13 |
+| 9 Taksit | %14–18 | %15–19 |
+| 12 Taksit | %19–24 | %20–25 |
+
+**İpucu:** "Peşin Fiyatına Taksit" kampanyasıyla vade farkını kâr marjınızdan karşılayabilir, dönüşüm oranınızı artırabilirsiniz.
+
+---
+
+## Örnek Maliyet Hesabı (Aylık 100.000 TL, 200 İşlem)
+
+| Sağlayıcı | Komisyon Tutarı | Sabit Ücret | Aylık Toplam Kesinti |
+|---|---|---|---|
+| PayTR | ₺1.990 | — | **₺1.990** |
+| iyzico (Standart) | ₺2.990 | ₺50 (200×₺0.25) | **₺3.040** |
+| iyzico (Premium) | ₺2.990 | ₺199 (plan) | **₺3.189** |
+| Param | ₺2.200 | — | **₺2.200** |
+| Banka POS (%2 ile) | ₺2.000 | — | **₺2.000** |
+
+**Yıllık fark (PayTR vs iyzico Standart):** ≈₺12.600. Yani doğru sağlayıcı seçimi, yılda bir çalışanın maaşını kurtarabilir.
+
+---
+
+## Hangi Durumda Hangisi?
+
+| Profil | Önerimiz | Neden? |
+|---|---|---|
+| Yeni başlayan KOBİ (ciro < 100K TL) | **PayTR** | Sabit ücret yok, düşük komisyon, hızlı kurulum |
+| Multi-vendor / Marketplace kuran | **iyzico** | Marketplace para bölme özelliği rakipsiz |
+| Yüksek ciro (500K TL+) | **Banka POS + PayTR/iyzico** | Banka komisyon avantajı + güvenilirlik |
+| E-ihracat ağırlıklı | **Stripe + PayTR** | Yabancı kart desteği için Stripe zorunlu |
+| Hız öncelikli geliştirici | **iyzico** | Dokümantasyon, SDK ve test ortamı üstün |
+
+---
+
+## Moyduz ile Ödeme Sistemleriyle Uğraşmayı Bırakın
+
+> Hangi sanal POS'u seçerseniz seçin, Moyduz e-ticaret altyapısında **PayTR, iyzico ve Param önceden entegre** geliyor. API anahtarlarınızı girin, dakikalar içinde ödeme almaya başlayın. Üstelik **%0 altyapı komisyonu** — her kuruş size kalır.
+>
+> **[E-ticaret paketlerimizi inceleyin](/e-ticaret-paketleri)** veya **[ücretsiz danışmanlık alın](/contact)**.
+
+---
+
+## Sık Sorulan Sorular
+
+**Sanal POS başvurusu ne kadar sürer?**
+PayTR ve iyzico için ortalama 3–7 iş günü. Banka POS başvuruları vergi levhası, imza sirküleri ve finansal belgeler istediğinden 25–35 iş gününe uzayabilir.
+
+**3D Secure zorunlu mu?**
+Türkiye'de PCI-DSS düzenlemeleri gereği 3D Secure tüm sağlayıcılarda varsayılan olarak aktiftir. Satıcı tarafında ek ayar gerektirmez.
+
+**Entegrasyon için yazılım bilgisi şart mı?**
+iyzico ve PayTR'ın hazır eklentileri WooCommerce, OpenCart ve benzeri platformlarda sıfır kod ile çalışır. Özel altyapı için iFrame API ve REST API belgeleri kapsamlıdır.
+
+**Komisyon oranlarını müzakere edebilir miyim?**
+Aylık cironuz 200.000 TL üzerindeyse tüm sağlayıcılarla komisyon müzakeresi yapılabilir. İyzico ve PayTR'da hesap yöneticinize doğrudan başvurabilirsiniz.
