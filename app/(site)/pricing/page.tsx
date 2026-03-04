@@ -79,7 +79,7 @@ export default function PricingPage() {
                   <path stroke="currentColor" strokeLinejoin="round" strokeWidth="1.125" d="M6.188 5.625a.563.563 0 1 1-1.126 0 .563.563 0 0 1 1.125 0Z" />
                 </svg>
                 Fiyatlandırma
-                <div className="rounded-[5px] bg-ln-orange/[.12] px-[5px] py-[3px] text-ln-subheading-xs text-ln-orange shadow-ln-badge-orange">PRO</div>
+                <div className="rounded-[5px] bg-ln-orange/[.12] px-[5px] py-[3px] text-ln-subheading-xs text-ln-orange shadow-ln-badge-orange">Özel</div>
               </div>
             </div>
             <div className="flex items-center gap-1.5 text-ln-label-md text-ln-gray-700 md:hidden">
