@@ -125,7 +125,7 @@ export default function PricingPage() {
       <div className="relative flex flex-col gap-4 px-2.5 py-7 before:absolute before:inset-y-0 before:right-0 before:w-px before:bg-ln-gray-100 min-[480px]:pl-4 min-[480px]:pr-4 sm:gap-5 md:pl-5 md:pr-7">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width={74}
+          width={64}
           height={66}
           fill="none"
           viewBox="0 0 74 66"
@@ -141,7 +141,7 @@ export default function PricingPage() {
             strokeDasharray="1px 1px"
           />
         </svg>
-        <div className="absolute -top-[45px] left-[95px] flex whitespace-nowrap font-kalam text-[20px]/[24px] -tracking-[0.01em] text-ln-orange">
+        <div className="absolute -top-[55px] left-[95px] flex whitespace-nowrap font-kalam text-[20px]/[24px] -tracking-[0.01em] text-ln-orange">
           {['B','a','k','ı','m','\u00A0','d','a','h','i','l','!'].map((char, i) => (
             <span 
               key={i} 
@@ -1644,10 +1644,10 @@ export default function PricingPage() {
         <p className="mt-1 text-ln-paragraph-xs text-ln-gray-600 sm:text-ln-paragraph-sm">
           Kapsama özel teklif almak için bize yazın:{/* */}{" "}
           <a
-            href="mailto:hi@moyduz.com"
+            href="mailto:info@moyduz.com"
             className="font-medium text-ln-orange"
           >
-            hi@moyduz.com
+            info@moyduz.com
           </a>
         </p>
       </div>

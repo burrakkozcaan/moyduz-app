@@ -82,7 +82,7 @@ export default function ETicaretPaketleriPage() {
       {/* Commerce Card — Dijital Pazarlama Paketi style */}
       <div className="relative mt-8 w-full overflow-hidden rounded-[32px] bg-ln-gray-925 p-5 ring-1 ring-inset ring-ln-gray-800 md:mt-10 md:p-8">
         <DottedGlowBackground
-          className="pointer-events-none mask-radial-at-center md:mask-radial-to-70"
+          className="pointer-events-none mask-radial-at-center md:mask-radial-to-70 opacity-40 md:opacity-100"
           opacity={0.8}
           gap={8}
           radius={1.6}
