@@ -26,6 +26,46 @@ const TOOL_LABELS: Record<string, string> = {
   '/tools/sanal-pos-hesaplama': 'Sanal POS Maliyet Hesaplayıcı',
 }
 
+function sanitizeFaqText(input: string): string {
+  return input
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/\*\*(.+?)\*\*/g, '$1')
+    .replace(/\*(.+?)\*/g, '$1')
+    .replace(/^#+\s*/gm, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function normalizeFaqItems(
+  items: Array<{ question: string; answer: string }>,
+  maxFaqs = 8,
+): Array<{ question: string; answer: string }> {
+  const out: Array<{ question: string; answer: string }> = []
+  const seen = new Set<string>()
+
+  for (const item of items) {
+    if (out.length >= maxFaqs) break
+    const question = sanitizeFaqText(item.question)
+    const answer = sanitizeFaqText(item.answer)
+    if (question.length < 5 || answer.length < 20) continue
+
+    const normalizedQuestion = question.endsWith('?') ? question : `${question}?`
+    const key = normalizedQuestion.toLocaleLowerCase('tr-TR')
+    if (seen.has(key)) continue
+
+    seen.add(key)
+    out.push({
+      question: normalizedQuestion,
+      answer: answer.length > 320 ? `${answer.slice(0, 320)}…` : answer,
+    })
+  }
+
+  return out
+}
+
 export const dynamic = 'force-static'
 
 export async function generateStaticParams() {
@@ -117,10 +157,10 @@ export default async function RehberSlugPage({
   }
 
   // Auto-extract FAQs from ## headings + first paragraph
-  const faqItems: Array<{ question: string; answer: string }> = []
+  const rawFaqItems: Array<{ question: string; answer: string }> = []
   if (frontmatter.faqs && Array.isArray(frontmatter.faqs)) {
     frontmatter.faqs.forEach((f: { question: string; answer: string }) => {
-      faqItems.push(f)
+      rawFaqItems.push(f)
     })
   } else {
     const lines = content.split('\n')
@@ -132,13 +172,14 @@ export default async function RehberSlugPage({
         for (let j = i + 1; j < Math.min(i + 6, lines.length); j++) {
           const line = lines[j].trim()
           if (line && !line.startsWith('#') && !line.startsWith('|') && !line.startsWith('-')) {
-            faqItems.push({ question, answer: line.replace(/\*\*/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') })
+            rawFaqItems.push({ question, answer: line.replace(/\*\*/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') })
             break
           }
         }
       }
     }
   }
+  const faqItems = normalizeFaqItems(rawFaqItems, 8)
 
   const faqSchema = faqItems.length > 0 ? {
     '@context': 'https://schema.org',

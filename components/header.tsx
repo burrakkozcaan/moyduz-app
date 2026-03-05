@@ -211,6 +211,7 @@ export default function Header() {
                             <path stroke="currentColor" strokeLinecap="square" strokeWidth="1.25" d="M8.333 13.333 11.667 10 8.333 6.667" />
                           </svg>
                         </Link>
+                        
                         <Link className="group/link flex items-center gap-3.5 rounded-xl px-3 py-2.5 transition ease-linear hover:bg-ln-gray-25 dark:hover:bg-ln-gray-800" href="/blog">
                           <div className="flex size-9 shrink-0 items-center justify-center rounded-[11px] bg-ln-gray-0 dark:bg-ln-gray-800 ring-1 ring-inset ring-ln-gray-100 dark:ring-ln-gray-700 transition ease-linear group-hover/link:shadow-ln-xs group-hover/link:ring-transparent">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 text-ln-gray-500 transition ease-linear group-hover/link:text-ln-orange">

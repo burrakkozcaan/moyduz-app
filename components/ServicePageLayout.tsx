@@ -119,6 +119,18 @@ export function ServicePageLayout({
   moneyPagePath,
 }: ServicePageLayoutProps) {
   const rehberler = moneyPagePath ? getRehberlerForMoneyPage(moneyPagePath) : []
+  const baseFooterLinks = Array.isArray(frontmatter.footer_links)
+    ? frontmatter.footer_links
+    : []
+  const footerLinks =
+    baseFooterLinks.length > 0 &&
+    !baseFooterLinks.some(
+      (link) =>
+        link.href?.replace(/\/+$/, '') === 'https://docs.moyduz.com' ||
+        link.text?.toLowerCase() === 'dokümantasyon'
+    )
+      ? [...baseFooterLinks, { text: 'Dokümantasyon', href: 'https://docs.moyduz.com' }]
+      : baseFooterLinks
   const hero = frontmatter.hero || {
     title: frontmatter.title,
     subtitle: '',
@@ -448,10 +460,9 @@ export function ServicePageLayout({
           )}
 
         {/* Footer Links */}
-        {frontmatter.footer_links &&
-          frontmatter.footer_links.length > 0 && (
+        {footerLinks.length > 0 && (
             <div className="mt-16 pt-8 border-t border-ln-gray-200 dark:border-ln-gray-800 flex flex-wrap gap-4 text-sm justify-center">
-              {frontmatter.footer_links.map((link, idx) => (
+              {footerLinks.map((link, idx) => (
                 <span key={idx} className="flex items-center gap-4">
                   {idx > 0 && (
                     <span className="text-ln-gray-400 dark:text-ln-gray-500">

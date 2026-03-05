@@ -15,6 +15,7 @@ const companyLinks = [
   { label: 'Kariyer', href: '/careers' },
   { label: 'Partner Programı', href: '/partner-programi' },
   { label: 'İletişim', href: '/contact' },
+  { label: 'Dokümantasyon', href: 'https://docs.moyduz.com' },
   { label: 'Sizi Arayalım', href: '/sizi-arayalim' },
   { label: 'Basında Biz', href: '/basinda-biz' },
   { label: 'Gizlilik Politikası', href: '/privacy-policy' },

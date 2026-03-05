@@ -1,113 +1,126 @@
 ---
-title: "PayTR Nedir? 2026 Komisyon Oranları, Kurulum ve İyzico Karşılaştırması"
+title: "PayTR Nedir? (2026) Komisyon, Bloke Süresi ve Chargeback Gerçekleri"
 slug: "paytr-nedir"
-meta_description: "PayTR komisyon oranı 2026: ≈%1.99'dan başlıyor. iFrame API kurulumu kaç gün sürer, iyzico'dan farkı ne? Tüm detaylar + hangi platformlar destekleniyor."
+meta_description: "PayTR 2026 rehberi: komisyon oranları, geçici bloke senaryoları, chargeback süreci ve PayTR-iyzico maliyet farkını TL bazlı örneklerle inceleyin."
 published_at: "2026-02-24T00:00:00Z"
-updated_at: "2026-02-24T00:00:00Z"
+updated_at: "2026-03-05T00:00:00Z"
 author_name: "Moyduz Ekibi"
-reading_time: 6
+reading_time: 8
 category:
   name: "Ödeme Sistemleri"
   slug: "odeme-sistemleri"
-snippet: "PayTR 2009'dan bu yana Türkiye'de KOBİ'lerin tercih ettiği ödeme altyapısı. Komisyon oranları iyzico'dan düşük — ama farkı ne?"
+snippet: "PayTR sadece düşük komisyonla değil, hız ve operasyon kolaylığıyla öne çıkar. Bu rehberde PayTR'nin gerçek maliyetini, bloke riskini ve chargeback etkisini netleştiriyoruz."
+key_points:
+  - "PayTR, maliyet odaklı KOBİ senaryolarında çoğunlukla düşük toplam kesinti sağlar."
+  - "Geçici bloke riski sadece yeni şirketlerde değil, ani ciro artışlarında da görülebilir."
+  - "Chargeback yükü yüksek kategorilerde operasyon disiplini komisyon kadar kritiktir."
+faqs:
+  - question: "PayTR 2026'da hangi işletmeler için daha avantajlı?"
+    answer: "Düşük marjlı, Türk pazarına odaklı ve maliyet hassas KOBİ'lerde PayTR çoğu zaman avantaj sağlar."
+  - question: "PayTR'de bloke riski neden oluşur?"
+    answer: "Yeni şirket profili, ani ciro artışı ve riskli ürün kategorilerinde geçici bloke riski artabilir."
+  - question: "PayTR'de chargeback süreci nasıl yönetilir?"
+    answer: "İtiraz durumunda sipariş/teslimat kanıtlarıyla savunma yapılır. Operasyon kalitesi sonucu doğrudan etkiler."
 hero_image: "https://cdn.moyduz.com/images/blog/paytr-nedir-hero.jpg"
 audio_src: "https://cdn.moyduz.com/audio/paytr-nedir.mp3"
-ai_related: "/blog/iyzico-nedir,/blog/paytr-vs-iyzico,/blog/en-iyi-sanal-pos,/blog/e-ticaret-odeme-yontemleri,/rehber/odeme-sistemleri"
-title_en: "What is PayTR? Commission, Integration and Comparison (2026)"
-meta_description_en: "What is PayTR, how does it work? Commission rates, iFrame API, advantages and iyzico comparison."
-title_es: "Comisiones, integración y comparación (2026)"
-meta_description_es: "¿Qué es PayTR, cómo funciona? tasas de comisión, API iFrame, ventajas y comparación de iyzico."
-title_de: "Was ist PayTR? Kommission, Integration und Vergleich (2026)"
-meta_description_de: "Was ist PayTR, wie funktioniert es? Provisionssätze, iFrame API, Vorteile und Vergleiche von iyzico."
+ai_related: "/blog/paytr-vs-iyzico,/blog/iyzico-nedir,/blog/sanal-pos-karsilastirmasi-2026,/blog/en-iyi-sanal-pos,/tools/sanal-pos-hesaplama,/rehber/odeme-sistemleri"
+title_en: "What is PayTR? Commission, Hold Risk and Chargeback Guide (2026)"
+meta_description_en: "PayTR in 2026: real commission costs, temporary hold scenarios, chargeback process and comparison with iyzico."
+title_es: "¿Qué es PayTR? Guía 2026"
+meta_description_es: "Comisiones reales, bloqueos temporales y proceso de chargeback de PayTR con ejemplos en TL."
+title_de: "Was ist PayTR? Leitfaden 2026"
+meta_description_de: "PayTR 2026: reale Provisionen, temporäre Hold-Risiken und Chargeback-Prozess mit TL-Beispielen."
 ---
 
 ## PayTR Nedir?
 
-**PayTR**, 2009'da kurulan ve BDDK lisanslı Türk ödeme kuruluşudur. Özellikle KOBİ ve orta ölçekli e-ticaret sitelerinde yaygın olarak kullanılır. Türkiye'de iyzico'dan sonra en fazla pazar payına sahip bağımsız ödeme sağlayıcısıdır.
+**PayTR**, Türkiye'de yaygın kullanılan, **TCMB lisanslı** ödeme kuruluşlarından biridir. Özellikle KOBİ'lerde tercih edilme nedeni çoğunlukla düşük maliyetli başlangıç oranları ve hızlı canlıya alma sürecidir.
 
----
+Ancak PayTR değerlendirilirken sadece "% kaç komisyon" sorusuna bakmak yeterli olmaz. Gerçek karar için şu 4 başlık birlikte analiz edilmelidir:
 
-## PayTR Ürünleri
+1. Toplam kesinti (tek çekim + taksit etkisi)
+2. Ödeme vadesi ve nakit akışı
+3. Geçici bloke riski
+4. Chargeback operasyonu
 
-- **Sanal POS (iFrame)** — en popüler, sitenize gömülü form
-- **PayTR Link** — ödeme linki, sosyal medya için
-- **API entegrasyonu** — tam kontrol isteyenler için
-- **Abonelik** — tekrar eden ödemeler
-- **Çoklu para birimi** — dolar, euro kabulü
+## 2026 Komisyon Çerçevesi
 
----
-
-## Komisyon Oranları (2026)
-
-| Ürün | Oran |
+| Ürün | Görülen Aralık (2026) |
 |---|---|
-| iFrame Sanal POS | %1.99–%2.69 |
-| API Sanal POS | %1.79–%2.49 |
-| PayTR Link | %2.49 |
-| Yabancı kart | %3.5–%4.5 |
+| iFrame / Sanal POS | %1.99–%2.69 |
+| API odaklı kurgu | %1.79–%2.49 |
+| Yabancı kart işlemleri | Daha yüksek bant |
 
-**Not:** Oranlar aylık ciro ve sektöre göre pazarlık edilebilir. 100K TL+ ciro için müşteri temsilcisiyle görüşün.
+> Oranlar sektör, iade profili ve aylık ciroya göre değişir. 100K+ hacimde pazarlık şansı belirgin şekilde artar.
 
----
+## PayTR'nin Gerçek Maliyeti: TL Bazlı Mini Simülasyon
 
-## Avantajları
+Aşağıdaki örnek, PayTR'nin "düşük oran" avantajını pratikte nasıl etkilediğini gösterir.
 
-- iyzico'ya göre genellikle %0.3–0.5 daha düşük oran
-- iFrame entegrasyonu çok hızlı (birkaç satır kod)
-- OpenCart, WooCommerce, PrestaShop eklentileri mevcut
-- BDDK lisanslı, PCI DSS uyumlu
-- Türk lirası + döviz kabul
+| Aylık Ciro | PayTR (örnek toplam kesinti) | iyzico (örnek toplam kesinti) | Fark |
+|---|---:|---:|---:|
+| 50.000 TL | 1.545 TL | 1.865 TL | 320 TL |
+| 250.000 TL | 7.725 TL | 9.325 TL | 1.600 TL |
 
----
+Detaylı karşılaştırma: [PayTR vs iyzico](/blog/paytr-vs-iyzico)
 
-## Dezavantajları
+## Bloke Süresi Gerçeği
 
-- Geliştirici dokümantasyonu iyzico kadar kapsamlı değil
-- Sandbox/test ortamı daha sınırlı
-- Müşteri paneli arayüzü eski tasarım
-- Uluslararası kart başarı oranı iyzico'dan düşük
+PayTR dahil tüm ödeme kuruluşlarında risk politikası bulunur. Bu normaldir ve kalıcı kapatma anlamına gelmez.
 
----
-
-## iyzico ile Karşılaştırma
-
-| Kriter | PayTR | iyzico |
+| Senaryo | Risk Düzeyi | Görülen Süre |
 |---|---|---|
-| Komisyon | ✅ Daha düşük | ❌ Daha yüksek |
-| Dokümantasyon | ❌ Orta | ✅ Mükemmel |
-| Sandbox | ❌ Sınırlı | ✅ Tam |
-| Uluslararası kart | ❌ Sınırlı | ✅ Daha geniş |
-| Entegrasyon hızı | ✅ Çok hızlı (iFrame) | ✅ Hızlı |
+| Yeni şirket (3 aydan yeni) | Orta | 7–14 gün |
+| Ani ciro sıçraması | Yüksek | 7–21 gün |
+| Dijital ürün / yüksek itiraz profili | Orta-Yüksek | 7–14 gün |
 
-→ Detaylı analiz: [PayTR vs iyzico karşılaştırması](/blog/paytr-vs-iyzico)
+<MintlifyCallout type="note" title="Operasyon notu">
+  Bloke riskini düşürmek için sipariş belgeleri, kargo teslim kayıtları ve iade politikası netliği kritik rol oynar.
+</MintlifyCallout>
 
----
+## Chargeback Sürecinde PayTR
 
-## PayTR Kimler için Doğru?
+Chargeback, kart sahibinin bankaya itirazı sonrası başlar. Süreçte satıcıdan kanıt talep edilir.
 
-**PayTR seçin:**
-- Yüksek ciro, düşük komisyon önceliğinizse
-- Hızlı entegrasyon istiyorsanız (iFrame)
-- Türk müşteri ağırlıklı işlem yapıyorsanız
+| Kriter | PayTR Durumu |
+|---|---|
+| 3D Secure | Var |
+| İtiraz/savunma akışı | Var |
+| Fraud analitiği | Standart seviye |
+
+PayTR'de maliyet avantajı güçlüdür; ancak yüksek fraud baskılı kategorilerde itiraz operasyonunu süreç disiplinine göre kurmak gerekir.
+
+## Kimler PayTR Seçmeli?
+
+**PayTR daha mantıklı olur:**
+- Düşük marjlı ürün satıyorsanız
+- Ciro büyüdükçe komisyon maliyetini sıkı yönetmek istiyorsanız
+- Hızlı entegrasyon ve hızlı başlangıç önceliğinizse
 
 **Alternatif düşünün:**
-- Geliştirici ekibiniz geniş API desteği istiyorsa → iyzico
-- Yabancı kart ağırlıklı → Stripe
-- No-code başlangıç → Shopier
-
----
+- Çok satıcılı dağıtım/pay-out modeliniz varsa
+- Fraud yönetimi tarafında çok detaylı panel ve akış bekliyorsanız
 
 ## Sık Sorulan Sorular
 
-**PayTR başvurusu ne kadar sürer?**
-Genellikle 3–7 iş günü. Vergi levhası, imza sirküleri, banka hesabı gerekir.
+**PayTR başvurusu kaç gün sürer?**
+Belge setine göre değişir; çoğu işletmede birkaç iş günü ile 1 hafta aralığında tamamlanır.
 
 **PayTR'de taksit var mı?**
-Evet. Bankaya göre 2–12 taksit sunulabilir. Taksit farkı satıcıya yansıtılabilir veya siz karşılarsınız.
+Evet. Kart programına göre farklı taksit seçenekleri sunulur.
 
-**PayTR ile abonelik sistemi kurulabilir mi?**
-Evet, tekrar eden ödeme (recurring payment) özelliği mevcut. API ile entegre edilir.
+**PayTR ile iyzico arasındaki temel fark nedir?**
+Genel olarak PayTR maliyet odaklı güçlüdür; iyzico dokümantasyon/fraud/operasyon tarafında daha kapsamlıdır.
+
+---
+
+## İlgili Kaynaklar
+
+- [PayTR vs iyzico karşılaştırması](/blog/paytr-vs-iyzico)
+- [Sanal POS karşılaştırması 2026](/blog/sanal-pos-karsilastirmasi-2026)
+- [Sanal POS hesaplayıcı](/tools/sanal-pos-hesaplama)
+- [Ödeme sistemleri rehberi](/rehber/odeme-sistemleri)
 
 <MintlifyCallout type="prompt" title="Moyduz ile Büyütün">
-  E-ticaret altyapınızı optimize etmek, doğru pazaryerini seçmek veya kendi sitenizi kurmak için [Moyduz uzmanlarıyla ücretsiz görüşün →](/contact)
+  Ödeme altyapınızı doğru kurup komisyon maliyetinizi düşürmek için [Moyduz uzmanlarıyla ücretsiz görüşün →](/contact)
 </MintlifyCallout>

@@ -1,118 +1,133 @@
 ---
-title: "iyzico Nedir? Komisyon, Entegrasyon ve Alternatifler (2026)"
+title: "iyzico Nedir? (2026) Komisyon, Chargeback ve Gerçek Maliyet Rehberi"
 slug: "iyzico-nedir"
-meta_description: "iyzico nedir, nasıl çalışır? Komisyon oranları, avantajlar, dezavantajlar ve alternatif ödeme sistemleri karşılaştırması."
+meta_description: "iyzico 2026 rehberi: komisyon yapısı, chargeback yönetimi, bloke senaryoları ve PayTR farkını TL bazlı örneklerle karşılaştırın."
 published_at: "2026-02-24T00:00:00Z"
-updated_at: "2026-02-24T00:00:00Z"
+updated_at: "2026-03-05T00:00:00Z"
 author_name: "Moyduz Ekibi"
-reading_time: 7
+reading_time: 9
 category:
   name: "Ödeme Sistemleri"
   slug: "odeme-sistemleri"
-snippet: "iyzico Türkiye'nin en büyük bağımsız ödeme kuruluşu. Ama doğru mu? Bu rehberde komisyon gerçeği, gizli maliyetler ve ne zaman alternatif aramanız gerektiğini bulacaksınız."
+snippet: "iyzico güçlü dokümantasyon ve fraud/itiraz yönetimiyle öne çıkar; ancak toplam maliyet tarafı işletme profiline göre değişir. Bu yazıda net karar için kritik metrikleri topladık."
+key_points:
+  - "iyzico, fraud ve chargeback operasyonu güçlü olan işletmelerde operasyonel avantaj sunar."
+  - "Toplam maliyet analizi yapılmadan yalnızca oran kıyaslamak yanıltıcıdır."
+  - "Güçlü marka güveni olmayan mağazalarda güven sinyalleri dönüşümü destekleyebilir."
+faqs:
+  - question: "iyzico hangi senaryolarda PayTR'ye göre daha mantıklıdır?"
+    answer: "Chargeback/fraud yönetimi kritikse, detaylı operasyon paneli nedeniyle iyzico daha mantıklı olabilir."
+  - question: "iyzico'da komisyon dışında hangi maliyetler önemlidir?"
+    answer: "İşlem bazlı ücret, taksit etkisi, vade davranışı ve itiraz operasyon maliyeti birlikte değerlendirilmelidir."
+  - question: "iyzico Korumalı Alışveriş her mağazada aynı etkiyi üretir mi?"
+    answer: "Hayır. Güven bariyeri yüksek mağazalarda daha etkili, güçlü marka güveni olan sitelerde etkisi daha sınırlı olabilir."
 hero_image: "https://cdn.moyduz.com/images/blog/iyzico-nedir-hero.jpg"
 audio_src: "https://cdn.moyduz.com/audio/iyzico-nedir.mp3"
-ai_related: "/blog/paytr-nedir,/blog/paytr-vs-iyzico,/blog/en-iyi-sanal-pos,/rehber/odeme-sistemleri,/compare/shopify-alternatifleri"
-title_en: "Commission, Integration and Alternatives (2026)"
-meta_description_en: "What is iyzico, how does it work? Commission rates, advantages, disadvantages and comparison of alternative payment systems."
-title_es: "Comisiones, integración y alternativas (2026)"
-meta_description_es: "¿Qué es y cómo funciona iyzico? tasas de comisión, ventajas, desventajas y comparación de sistemas de pago alternativos."
-title_de: "Kommission, Integration und Alternativen (2026)"
-meta_description_de: "Wie funktioniert iyzico? Kommissionsraten, Vorteile, Nachteile und Vergleich alternativer Zahlungssysteme."
+ai_related: "/blog/paytr-vs-iyzico,/blog/paytr-nedir,/blog/sanal-pos-karsilastirmasi-2026,/blog/en-iyi-sanal-pos,/tools/sanal-pos-hesaplama,/rehber/odeme-sistemleri"
+title_en: "What is iyzico? Cost, Chargeback and Risk Guide (2026)"
+meta_description_en: "Understand iyzico in 2026: pricing model, chargeback workflow, temporary hold scenarios and comparison with PayTR."
+title_es: "¿Qué es iyzico? Guía 2026"
+meta_description_es: "Comisiones, chargeback y escenarios de bloqueo temporal de iyzico con comparación real frente a PayTR."
+title_de: "Was ist iyzico? Leitfaden 2026"
+meta_description_de: "iyzico 2026: Kostenmodell, Chargeback-Ablauf, temporäre Hold-Szenarien und Vergleich mit PayTR."
 ---
 
 ## iyzico Nedir?
 
-**iyzico**, Türkiye merkezli bir ödeme kuruluşudur. 2013'te kurulmuş, 2019'da küresel fintech grubu PayU tarafından satın alınmıştır. 200.000+ aktif satıcıyla Türkiye'nin en yaygın e-ticaret ödeme altyapısı konumundadır.
+**iyzico**, Türkiye'de yaygın kullanılan ve **TCMB lisanslı** ödeme kuruluşlarından biridir. Özellikle teknik ekipler için güçlü API dokümantasyonu, detaylı test ortamı ve kapsamlı ödeme özellikleri nedeniyle tercih edilir.
 
-BDDK (Bankacılık Düzenleme ve Denetleme Kurumu) lisanslı çalışır. Bu, kart verilerinin güvenliğini bankalarla eşdeğer düzeyde sağlar.
+iyzico'yu değerlendirirken tek başına komisyon oranına bakmak yanıltıcı olabilir. Doğru karar için şu başlıkları birlikte değerlendirmek gerekir:
 
----
+- Toplam kesinti (oran + işlem bazlı maliyet + taksit etkisi)
+- Nakit akışı (vade ve tahsilat alışkanlığı)
+- Geçici bloke riski
+- Chargeback/fraud operasyonu
 
-## iyzico Nasıl Çalışır?
+## 2026 Komisyon Yapısı (Özet)
 
-1. Müşteri sitenizde ödeme formunu doldurur
-2. iyzico kart bilgilerini şifreli iletir
-3. Banka 3D Secure onayı ister
-4. Ödeme onaylanır → iyzico bakiyenize işlenir
-5. Bakiyeyi banka hesabınıza çekersiniz (T+1 veya T+2)
-
-**Entegrasyon seçenekleri:**
-- Checkout Form (iframe) — en kolay
-- API (REST) — tam kontrol
-- Link ile Ödeme — sosyal medya satıcıları için
-
----
-
-## Komisyon Oranları (2026)
-
-| Plan | İşlem Ücreti | Aylık Ücret | Kim için |
-|---|---|---|---|
-| Başlangıç | %2.9 + ₺0.25/işlem | ₺0 | Yeni başlayanlar |
-| Büyüme | %2.5 + ₺0.25/işlem | ₺199/ay | Büyüyen mağazalar |
-| Kurumsal | Görüşmeyle | Görüşmeyle | 1M+ TL/ay ciro |
-
-**Dikkat:** Yabancı kart işlemleri ek ücrete tabi. Taksit için banka farkı uygulanır.
-
----
-
-## Avantajları
-
-- Türkiye'nin en kapsamlı geliştirici dokümantasyonu
-- Sandbox (test ortamı) — ücretsiz ve detaylı
-- 3D Secure, taksit, abonelik, link ile ödeme desteği
-- Shopify, WooCommerce, OpenCart eklentileri hazır
-- BDDK lisanslı — güvenilir altyapı
-
----
-
-## Dezavantajları
-
-- Başlangıç planında işlem başı sabit ücret düşük ciroda pahalı
-- Yabancı kart kabulü PayPal veya Stripe kadar geniş değil
-- Müşteri desteği yanıt süresi yoğun dönemlerde uzuyor
-- Chargeback sürecinde satıcı aleyhine kararlar
-
----
-
-## Alternatifler
-
-| Alternatif | Avantaj | Dezavantaj |
+| Plan | Örnek Yapı | Kimler İçin |
 |---|---|---|
-| PayTR | Daha düşük oran | Daha az destek |
-| Shopier | Çok kolay kurulum | Sınırlı özellik |
-| Stripe | Uluslararası | TR kart desteği sınırlı |
-| Banka POS | En düşük oran | Yüksek ciro şartı |
+| Başlangıç | %2.9 + işlem başı ücret | Yeni başlayanlar |
+| Büyüme | Daha düşük oran + plan ücreti | Orta segment |
+| Kurumsal | Görüşmeye bağlı | Yüksek hacim |
 
-→ Detaylı karşılaştırma: [iyzico vs PayTR](/blog/paytr-vs-iyzico)
+Bu yapı, düşük işlem adedinde ve yüksek ortalama sepette farklı; yüksek işlem adedinde farklı maliyet davranışı üretir.
 
----
+## iyzico'nun Güçlü Olduğu Alanlar
 
-## iyzico Kimler için Doğru?
+| Kriter | iyzico |
+|---|---|
+| Dokümantasyon | Çok güçlü |
+| Sandbox / test kurgusu | Güçlü |
+| Fraud ve risk analitiği | Gelişmiş |
+| Chargeback operasyon paneli | Detaylı |
+| Marketplace/pay-out senaryoları | Güçlü |
 
-**Evet, iyzico seçin:**
-- Türkiye pazarına odaklı e-ticaret
-- Teknik ekibiniz var, API entegrasyonu yapacaksınız
-- Taksit ve 3D Secure zorunlu
+Bu nedenle iyzico, sadece "ödeme al" değil "riskli ödeme operasyonunu yönet" ihtiyacı olan ekiplerde öne çıkar.
 
-**Hayır, alternatif düşünün:**
-- Aylık 10K TL altı ciro → sabit ücret yük oluşturur
-- Yabancı müşteri ağırlıklı → Stripe daha uygun
-- No-code çözüm istiyorsanız → Shopier daha hızlı
+## TL Bazlı Gerçek Maliyet: PayTR ile Mini Karşılaştırma
 
----
+| Aylık Ciro | iyzico (örnek toplam) | PayTR (örnek toplam) | Fark |
+|---|---:|---:|---:|
+| 50.000 TL | 1.865 TL | 1.545 TL | +320 TL |
+| 250.000 TL | 9.325 TL | 7.725 TL | +1.600 TL |
+
+**Yorum:** iyzico çoğu maliyet odaklı senaryoda daha pahalı görünebilir. Ancak itiraz/fraud yükünüz yüksekse operasyonel kazanç maliyet farkını azaltabilir.
+
+## Bloke Riski: iyzico'da Durum Ne?
+
+Geçici bloke uygulaması iyzico'ya özgü değildir; tüm lisanslı kuruluşlarda risk temelli olarak uygulanabilir.
+
+| Senaryo | Olası Risk | Görülen Süre |
+|---|---|---|
+| Yeni şirket | Orta | 7–14 gün |
+| Ani ciro artışı | Yüksek | 7–21 gün |
+| Yüksek itiraz profili | Orta-Yüksek | 7–14 gün |
+
+Net operasyon politikası ve doğru evrak akışı, bloke süresini yönetmede kritik rol oynar.
+
+## Chargeback Sürecinde iyzico'nun Avantajı
+
+| Başlık | iyzico Durumu |
+|---|---|
+| 3D Secure | Var |
+| Fraud skorlama | Gelişmiş |
+| İtiraz paneli | Detaylı |
+| Savunma dokümantasyon akışı | Güçlü |
+
+Özellikle chargeback oranı yüksek kategorilerde bu avantaj pratikte önemlidir.
+
+## Kimler iyzico Seçmeli?
+
+**iyzico daha mantıklı olur:**
+- Teknik ekip güçlü ve API odaklı çalışıyorsanız
+- Chargeback/fraud yönetimine operasyonel önem veriyorsanız
+- Marketplace veya karma ödeme akışı kurguluyorsanız
+
+**Alternatif düşünün:**
+- Birincil önceliğiniz en düşük toplam kesintiyse
+- Düşük marjla rekabet edip her baz puanı korumak istiyorsanız
 
 ## Sık Sorulan Sorular
 
 **iyzico güvenli mi?**
-Evet. BDDK lisanslı ve PCI DSS uyumlu. Kart verisi iyzico'nun şifreli altyapısında tutulur, sitenize gelmez.
+Lisanslı bir ödeme kuruluşu olarak regülasyon ve güvenlik standartlarına uygun çalışır.
 
-**iyzico ne kadar sürede başvurusu onaylanır?**
-Genellikle 2–5 iş günü. Belge eksiği olursa uzayabilir. Vergi levhası + banka ekstresi + kimlik gerekir.
+**iyzico pahalı mı?**
+Cevap işletme modeline göre değişir. Düşük marjlı segmentte maliyet yüksek görünebilir; risk yönetiminde ise değer üretir.
 
 **iyzico'dan PayTR'ye geçiş zor mu?**
-API yapıları benzer. Next.js veya custom altyapıda yaklaşık 1–2 günlük geliştirme ile geçiş yapılabilir.
+Altyapıya göre değişir. İyi planlanan bir entegrasyon geçişinde süreç teknik olarak yönetilebilir.
+
+---
+
+## İlgili Kaynaklar
+
+- [PayTR vs iyzico karşılaştırması](/blog/paytr-vs-iyzico)
+- [Sanal POS karşılaştırması 2026](/blog/sanal-pos-karsilastirmasi-2026)
+- [Sanal POS hesaplayıcı](/tools/sanal-pos-hesaplama)
+- [Ödeme sistemleri rehberi](/rehber/odeme-sistemleri)
 
 <MintlifyCallout type="prompt" title="Moyduz ile Büyütün">
-  E-ticaret altyapınızı optimize etmek, doğru pazaryerini seçmek veya kendi sitenizi kurmak için [Moyduz uzmanlarıyla ücretsiz görüşün →](/contact)
+  Ödeme altyapınızı kârlılık ve risk dengesine göre kurgulamak için [Moyduz uzmanlarıyla ücretsiz görüşün →](/contact)
 </MintlifyCallout>

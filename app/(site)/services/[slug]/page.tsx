@@ -159,6 +159,18 @@ export default async function ServiceSlugPage({
     subtitle: '',
     description: frontmatter.meta_description || '',
   }
+  const baseFooterLinks = Array.isArray(frontmatter.footer_links)
+    ? (frontmatter.footer_links as Array<{ text: string; href: string }>)
+    : []
+  const footerLinks =
+    baseFooterLinks.length > 0 &&
+    !baseFooterLinks.some(
+      (link) =>
+        link.href?.replace(/\/+$/, '') === 'https://docs.moyduz.com' ||
+        link.text?.toLowerCase() === 'dokümantasyon'
+    )
+      ? [...baseFooterLinks, { text: 'Dokümantasyon', href: 'https://docs.moyduz.com' }]
+      : baseFooterLinks
   const pagePath = `/services/${slug}` // If needed for internal link graph / Rehberler
   const rehberler = getRehberlerForMoneyPage(pagePath)
 
@@ -608,9 +620,9 @@ export default async function ServiceSlugPage({
         </div>
 
         {/* Footer Links (Extra related links) */}
-        {frontmatter.footer_links && (frontmatter.footer_links as any[]).length > 0 && (
+        {footerLinks.length > 0 && (
           <div className="mt-12 flex flex-wrap gap-4 text-sm justify-center">
-            {(frontmatter.footer_links as any[]).map((link, idx) => (
+            {footerLinks.map((link, idx) => (
               <span key={idx} className="flex items-center gap-4">
                 {idx > 0 && (
                   <span className="text-ln-gray-400 dark:text-ln-gray-500">

@@ -1,0 +1,145 @@
+---
+title: "Sanal POS Komisyon Hesaplama (2026): Gerçek Maliyet Tablosu ve Karar Rehberi"
+slug: "sanal-pos-komisyon-hesaplama-2026"
+meta_title: "Sanal POS Komisyon Hesaplama 2026 | TL Bazlı Gerçek Maliyet"
+meta_description: "Sanal POS komisyonunu 2026 için TL bazlı hesaplayın. Komisyon, işlem başı ücret, taksit etkisi, bloke süresi ve nakit akışı farklarını tek tabloda görün."
+snippet: "Sanal POS seçerken yüzde oranı değil TL bazlı gerçek kesintiyi hesaplamak gerekir. Bu rehberde komisyon, işlem ücreti, taksit ve bloke etkisini net tablolarla gösteriyoruz."
+published_at: "2026-03-05T00:00:00Z"
+updated_at: "2026-03-05T00:00:00Z"
+author_name: "Moyduz Ekibi"
+reading_time: 10
+category:
+  name: "Ödeme Sistemleri"
+  slug: "odeme-sistemleri"
+tags: ["sanal pos", "komisyon", "e-ticaret", "nakit akışı", "maliyet"]
+draft: false
+ai_related: "/blog/paytr-vs-iyzico,/blog/paytr-komisyon-oranlari-2026,/blog/iyzico-komisyon-oranlari-2026,/blog/sanal-pos-bloke-suresi-ve-nakit-akisi,/rehber/odeme-sistemleri"
+key_points:
+  - "Sanal POS maliyetinde asıl karar metriği komisyon yüzdesi değil, aylık toplam kesintinin TL karşılığıdır."
+  - "İşlem başı sabit ücret, düşük sepetli mağazalarda komisyon farkından daha kritik hale gelebilir."
+  - "15 gün bloke, düşük komisyon avantajını nakit akışında tersine çevirebilir."
+  - "En doğru seçim için komisyon + taksit + işlem ücreti + bloke etkisi birlikte hesaplanmalıdır."
+faqs:
+  - question: "Sanal POS komisyonu nasıl hesaplanır?"
+    answer: "Aylık maliyet için toplam ciro x komisyon oranı formülüne işlem başı ücret, taksit ek kesintisi ve varsa bloke kaynaklı finansman maliyeti eklenmelidir."
+  - question: "Düşük komisyon her zaman daha mı avantajlıdır?"
+    answer: "Hayır. Bloke süresi, taksitli satış oranı ve chargeback riski yüksekse düşük komisyon avantajı pratikte kaybolabilir."
+  - question: "İşlem başı ücret hangi durumda kritik olur?"
+    answer: "Ortalama sepet tutarı düşük, işlem adedi yüksek işlerde işlem başı ücret toplam maliyeti belirgin şekilde artırır."
+  - question: "Hangi metrikle karar vermeliyim?"
+    answer: "Aylık net tahsilat, bloke gün etkisi ve risk kaynaklı ek maliyetleri içeren toplam sahip olma maliyeti yaklaşımıyla karar verilmelidir."
+---
+
+Sanal POS komisyon hesaplama sürecinde en sık yapılan hata, yalnızca yüzdelik oranlara bakmaktır. Doğru yöntem, **aylık toplam kesintiyi TL bazında** görmek ve buna taksit, işlem başı ücret, bloke ve risk etkisini eklemektir.
+
+Bu rehberin kısa cevabı: **Aynı ciroda komisyonu düşük görünen sağlayıcı, nakit akışı ve operasyon maliyeti nedeniyle daha pahalıya gelebilir.**
+
+## Hızlı Cevap
+
+- **50.000 TL altı ciro + düşük sepet:** işlem başı ücret farkı kritik
+- **200.000 TL üzeri ciro:** oran pazarlığıyla yıllık maliyet ciddi düşebilir
+- **Taksitli satış oranı %30+ ise:** taksit maliyeti ayrı hesaplanmalı
+- **Nakit akışı sıkışıksa:** bloke süresi komisyon farkından daha önemli olabilir
+
+## Sanal POS Komisyonu Nasıl Hesaplanır?
+
+### Temel Formül
+
+Toplam aylık maliyet için şu iskeleti kullanın:
+
+`Toplam Kesinti = (Ciro x Komisyon) + (İşlem Sayısı x Sabit Ücret) + Taksit Ek Maliyeti + Nakit Akışı Maliyeti`
+
+### Örnek Senaryo (Temsilidir)
+
+- Aylık Ciro: **100.000 TL**
+- İşlem Sayısı: **220**
+- Ortalama Sepet: **455 TL**
+- Taksitli satış oranı: **%35**
+
+| Kalem | Sağlayıcı A | Sağlayıcı B |
+|---|---:|---:|
+| Komisyon oranı | %2,59 | %2,99 |
+| İşlem başı ücret | 0 TL | 0,25 TL |
+| Komisyon kesintisi | 2.590 TL | 2.990 TL |
+| İşlem ücreti | 0 TL | 55 TL |
+| Taksit ek maliyeti (varsayım) | 650 TL | 650 TL |
+| Toplam kesinti | **3.240 TL** | **3.695 TL** |
+
+Aylık fark: **455 TL**  
+Yıllık fark: **5.460 TL**
+
+## 3 Ciro Bandında Gerçek Maliyet Karşılaştırması
+
+| Aylık Ciro | İşlem Sayısı | Sağlayıcı A Toplam | Sağlayıcı B Toplam | Aylık Fark |
+|---|---:|---:|---:|---:|
+| 50.000 TL | 120 | 1.820 TL | 2.095 TL | **275 TL** |
+| 200.000 TL | 420 | 7.030 TL | 8.105 TL | **1.075 TL** |
+| 500.000 TL | 950 | 17.410 TL | 20.005 TL | **2.595 TL** |
+
+Bu farklar, doğrudan kâra yansır. Düşük marjlı e-ticarette 1.000-2.000 TL/ay fark çoğu zaman reklam bütçesini belirler.
+
+## Nakit Akışı Etkisi: Bloke Süresi Ne Kadar Kritik?
+
+### 15 Gün Bloke Senaryosu
+
+Günlük 8.000 TL satış yapan bir mağazada, 15 gün bloke yaklaşık **120.000 TL** tahsilatın içeride beklemesi demektir.
+
+| Senaryo | Bekleyen Tutar | Olası Sonuç |
+|---|---:|---|
+| 7 gün bloke | 56.000 TL | Yönetilebilir nakit baskısı |
+| 15 gün bloke | 120.000 TL | Stok/reklam döngüsünde yavaşlama |
+| Ertesi gün ödeme | 8.000 TL | Sürekli nakit devir avantajı |
+
+**Sonuç:** Düşük komisyon tek başına avantaj değildir. Bloke uzunsa işletme sermayesi kilitlenebilir.
+
+## Taksitli Satışlarda Komisyon Analizi
+
+Taksitli sipariş oranı arttıkça ödeme maliyeti büyür. Bu yüzden taksit oranını ana tablodan ayrı izlemek gerekir.
+
+### Taksit Payına Göre Etki (100.000 TL Ciro)
+
+| Taksitli Satış Oranı | Ek Maliyet (varsayım) | Toplam Kesintiye Etki |
+|---|---:|---|
+| %10 | 220 TL | Düşük |
+| %30 | 650 TL | Orta |
+| %50 | 1.100 TL | Yüksek |
+
+Taksit yoğun sektörlerde yalnızca "düz komisyon" kıyası hatalı karar üretir.
+
+## Karar Matrisi: Hangi Durumda Hangi Model?
+
+| İşletme Profili | Öncelik | Öneri |
+|---|---|---|
+| Yeni KOBİ, düşük işlem hacmi | Maliyet kontrolü | Düşük toplam kesinti + hızlı aktivasyon |
+| Yüksek işlem adedi, düşük sepet | Sabit ücret etkisi | İşlem başı ücreti düşük model |
+| Taksit oranı yüksek mağaza | Nakit ve taksit maliyeti | Taksit tablosu güçlü sağlayıcı |
+| Hızlı büyüyen mağaza | Nakit akışı | Kısa vade/ertesi gün ödeme opsiyonu |
+
+## Riskler ve Dikkat Edilecek Noktalar
+
+### 1) Chargeback ve itiraz süreçleri
+
+Chargeback oranı %1'i geçtiğinde operasyon maliyeti görünenden daha hızlı artar. İtiraz belgeleri, zaman ve ekip maliyeti doğurur.
+
+### 2) Fraud kaynaklı geçici bekletmeler
+
+Ani ciro artışı veya riskli ürün kategorisi, geçici bloke ve ek teyit süreçlerini tetikleyebilir.
+
+### 3) Sözleşme detayları
+
+Sabit ücret, iade komisyonu, alt limitler ve kampanya koşulları toplam maliyeti değiştirir. Tek satır oran üzerinden karar vermeyin.
+
+## Uygulama Adımı: 10 Dakikada Kendi Hesabınızı Çıkarın
+
+1. Son 3 ay ciro ortalamasını alın.
+2. İşlem sayısı ve ortalama sepeti yazın.
+3. Taksitli satış oranını ekleyin.
+4. Bloke gününü ve vade tipini işleyin.
+5. Toplam kesintiyi TL bazında karşılaştırın.
+
+## İlgili İçerikler
+
+- [PayTR vs iyzico Karşılaştırması](/blog/paytr-vs-iyzico)
+- [Ödeme Sistemleri Rehberi](/rehber/odeme-sistemleri)
+- [Komisyon Hesaplama Rehberi](/blog/komisyon-hesaplama-rehberi)
+- [Sanal POS Karşılaştırması 2026](/blog/sanal-pos-karsilastirmasi-2026)

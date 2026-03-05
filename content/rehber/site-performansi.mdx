@@ -8,25 +8,98 @@ published_at: '2026-02-24T00:00:00Z'
 updated_at: '2026-02-24T00:00:00Z'
 draft: false
 key_points:
-  - "LCP < 2.5s, INP < 200ms, CLS < 0.1 — Google'ın 2026 Core Web Vitals eşikleri."
-  - "100ms gecikme geliri %1 düşürüyor (Amazon verisi) — hız doğrudan satışı etkiler."
-  - "Hero görsel optimizasyonu en hızlı kazanım; WebP/AVIF + priority ile başlayın."
-  - "Edge hosting (Vercel/Cloudflare) shared hosting'e göre 4× daha düşük TTFB sağlar."
+  - >-
+    LCP < 2.5s, INP < 200ms, CLS < 0.1 — Google'ın 2026 Core Web Vitals
+    eşikleri.
+  - >-
+    100ms gecikme geliri %1 düşürüyor (Amazon verisi) — hız doğrudan satışı
+    etkiler.
+  - >-
+    Hero görsel optimizasyonu en hızlı kazanım; WebP/AVIF + priority ile
+    başlayın.
+  - >-
+    Edge hosting (Vercel/Cloudflare) shared hosting'e göre 4× daha düşük TTFB
+    sağlar.
 related_tools:
   - /tools/site-saglik-skoru
 related_blogs:
   - core-web-vitals-nedir
   - site-hizi-satislari-nasil-etkiler
   - e-ticaret-seo-rehberi
-audio_src: "https://cdn.moyduz.com/audio/site-performansi.mp3"
-hero_image: "https://cdn.moyduz.com/images/blog/site-performansi-hero.jpg"
-ai_related: "/blog/core-web-vitals-nedir,/blog/site-hizi-satislari-nasil-etkiler,/blog/satis-yapmayan-site,/rehber/seo-teknik,/blog/e-ticaret-seo-rehberi"
-title_en: "Website Performance Guide: Core Web Vitals, LCP and Speed Optimization"
-meta_description_en: "> – –"
-title_es: "Guía de rendimiento del sitio: Core Web Vitals, LCP y Optimización de velocidad"
-meta_description_es: "> -"
-title_de: "Website Performance Guide: Core Web Vitals, LCP und Geschwindigkeitsoptimierung"
-meta_description_de: "> -"
+audio_src: 'https://cdn.moyduz.com/audio/site-performansi.mp3'
+hero_image: 'https://cdn.moyduz.com/images/blog/site-performansi-hero.jpg'
+ai_related: >-
+  /blog/core-web-vitals-nedir,/blog/site-hizi-satislari-nasil-etkiler,/blog/satis-yapmayan-site,/rehber/seo-teknik,/blog/e-ticaret-seo-rehberi
+title_en: 'Website Performance Guide: Core Web Vitals, LCP and Speed Optimization'
+meta_description_en: '> – –'
+title_es: >-
+  Guía de rendimiento del sitio: Core Web Vitals, LCP y Optimización de
+  velocidad
+meta_description_es: '> -'
+title_de: >-
+  Website Performance Guide: Core Web Vitals, LCP und
+  Geschwindigkeitsoptimierung
+meta_description_de: '> -'
+meta_title: 'Site Performansı Rehberi: Core Web Vitals, LCP ve Hız Optimizasyonu'
+faqs:
+  - question: >-
+      Site Performansı Rehberi: Core Web Vitals, LCP ve Hız Optimizasyonu neden
+      önemlidir?
+    answer: >-
+      Doğru uygulandığında maliyet, hız ve dönüşüm etkisi yaratır; yanlış
+      kurgulandığında ise operasyonel risk ve gelir kaybı doğurabilir.
+  - question: >-
+      Site Performansı Rehberi: Core Web Vitals, LCP ve Hız Optimizasyonu için
+      en sık yapılan hata nedir?
+    answer: >-
+      Sadece teorik bilgiye odaklanıp veri, senaryo ve karar kriteri
+      eklememektir. Bu da uygulama tarafında belirsizlik yaratır.
+  - question: Bu içerikteki yaklaşımı nasıl uygulamalıyım?
+    answer: >-
+      Önce hızlı cevap bölümünü okuyup kendi durumunuzu karar matrisiyle
+      eşleştirin, ardından risk ve kontrol listesindeki adımları sırayla
+      uygulayın.
+  - question: Sonuçları nasıl ölçebilirim?
+    answer: >-
+      KPI, dönüşüm oranı, maliyet ve operasyon metriklerini haftalık takip
+      ederek yaklaşımın etkisini düzenli olarak doğrulayabilirsiniz.
+---
+## Hızlı Cevap
+
+## Hızlı Cevap: Siteni Hızlandırmak İçin Ne Yapmalısın?
+
+- **LCP > 3s ise:** Hero görselini `priority` yap + WebP/AVIF'e geç → en hızlı kazanım, 1–2 haftada etki
+- **INP > 300ms ise:** Gereksiz JS temizle, ağır işlemleri web worker'a taşı
+- **CLS > 0.1 ise:** Görsellere `width`/`height` ekle, `font-display: swap` uygula
+- **Shared hosting kullanıyorsan:** TTFB genellikle 800ms+ — Vercel/Cloudflare'e geç, 4x fark görürsün
+- **PageSpeed 100 hedefliyorsan:** Gerek yok. Hedef eşik değerlerin altında olmak — LCP < 2.5s yeterli
+
+Türkiye e-ticaret sitelerinin **%74'ü LCP eşiğini geçemiyor.** Bu rakiplere karşı açık bir pencere.
+
+---
+
+## Kime Uygun? Performans Öncelik Profili
+
+| Durum | İlk Yapılacak |
+|---|---|
+| Yeni site açılıyor | next/image + CDN + font preload kur |
+| Hız skoru 50–70 arası | LCP öğesini tespit et, görsel optimize et |
+| Hız skoru 70–89 | INP + CLS düzeltmesi, JS bundle |
+| Hız skoru 90+ | TTFB + cache stratejisi ince ayarı |
+| Mobil yavaş, masaüstü iyi | Mobil görseller + responsive image |
+| Trafik var ama dönüşüm düşük | CLS + INP — kullanıcı deneyimi fix |
+
+---
+
+## Performans Sorununun Satış Etkisi (Risk)
+
+| Yavaşlık Seviyesi | Dönüşüm Etkisi |
+|---|---|
+| +100ms gecikme | -%1 gelir (Amazon verisi) |
+| LCP 4s vs LCP 2s | -%12 dönüşüm (Google/Chrome) |
+| Mobil 5s+ yüklenme | -%53 terk oranı |
+| CLS > 0.25 | -%15 etkileşim |
+
 ---
 
 ## Kısa Tanım
@@ -120,6 +193,21 @@ Kaynak: Moyduz Benchmark — 100 Türkiye e-ticaret sitesi örneklemi.
 
 ---
 
+## Karar Matrisi: Hangi Adımdan Başlamalısın?
+
+| Durumun | Önce Bunu Yap |
+|---|---|
+| PageSpeed < 50 | Görsel optimize (WebP + priority) + hosting değiştir |
+| PageSpeed 50–70 | LCP öğesini bul, CDN kur |
+| PageSpeed 70–89 | INP + CLS fix, JS bundle temizle |
+| PageSpeed 90+ | TTFB < 200ms, cache stratejisi |
+| Mobil < masaüstü | Responsive image + mobil JS kısalt |
+| Shared hosting | Vercel / Cloudflare geçişi — her şeyin önünde |
+
+*[Site Sağlık Skoru aracımızla puanınızı 1 dakikada görün →](/tools/site-saglik-skoru)*
+
+---
+
 ## Checklist
 
 - [ ] LCP < 2.5s (PageSpeed Insights)
@@ -150,3 +238,10 @@ Kaynak: Moyduz Benchmark — 100 Türkiye e-ticaret sitesi örneklemi.
     Zor. TTFB shared hosting'de genelde 800ms+. VPS veya edge hosting (Vercel/Cloudflare) çok daha iyi.
   </Accordion>
 </Accordions>
+
+
+## İlgili İçerikler
+
+- [E-Ticaret Maliyet Hesaplama](/blog/e-ticaret-maliyet-hesaplama)
+- [Komisyon Hesaplama Rehberi](/blog/komisyon-hesaplama-rehberi)
+- [Ödeme Sistemleri Rehberi](/rehber/odeme-sistemleri)

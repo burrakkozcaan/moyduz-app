@@ -215,6 +215,7 @@ export function getFooterLinkGroups(): FooterLinkGroup[] {
       links: [
         { label: 'Blog', href: '/blog' },
         { label: 'Rehber', href: '/rehber' },
+        { label: 'Dokümantasyon', href: 'https://docs.moyduz.com' },
         { label: 'SSS', href: '/faq' },
         { label: 'Referanslar', href: '/customers' },
         { label: 'Changelog', href: '/changelog' },

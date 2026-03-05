@@ -1,189 +1,154 @@
 ---
-title: "Türkiye'de Online Ödeme Sistemleri Rehberi"
-meta_description: "iyzico, PayTR, Shopier ve sanal POS karşılaştırması. Türkiye'de e-ticaret için doğru ödeme sistemini nasıl seçersiniz? Komisyon, entegrasyon ve maliyet rehberi."
+title: "Türkiye'de Online Ödeme Sistemleri Rehberi (2026): Komisyon, Bloke ve Chargeback"
+meta_description: "PayTR, iyzico, Param ve banka POS karşılaştırması: gerçek komisyon, ödeme vadesi, bloke riski ve chargeback yönetimiyle Türkiye için net seçim rehberi."
 slug: "odeme-sistemleri"
 published_at: "2026-02-24T00:00:00Z"
-updated_at: "2026-02-24T00:00:00Z"
+updated_at: "2026-03-05T00:00:00Z"
 draft: false
 audio_src: "https://cdn.moyduz.com/audio/odeme-sistemleri.mp3"
 key_points:
-  - "iyzico ve PayTR Türkiye'de en yaygın ödeme altyapıları — komisyon oranları %1.9–%2.9 arasında."
-  - "Sanal POS maliyeti aylık ciro ve işlem sayısına göre dramatik değişir — hesaplamadan seçmeyin."
-  - "Uluslararası satış için Stripe zorunlu; Türk bankalarıyla birlikte çift altyapı kurun."
-  - "Entegrasyon kolaylığı ve destek kalitesi uzun vadede komisyon kadar önemlidir."
+  - "Ödeme kuruluşu seçimini sadece komisyonla değil vade, bloke ve chargeback katmanlarıyla yapın."
+  - "50K-500K ciro aralığında yanlış sağlayıcı seçimi yıllık ciddi maliyet farkı üretir."
+  - "Geçici bloke, tek bir markaya özgü değil; lisanslı tüm kuruluşlarda risk politikası vardır."
+  - "100K+ hacimde oran pazarlığı, 250K+ hacimde ise hibrit model kritik avantaj sağlar."
+faqs:
+  - question: "PayTR mi iyzico mu daha ucuz?"
+    answer: "Maliyet odaklı senaryolarda PayTR çoğu zaman avantajlıdır; fraud/itiraz operasyonu kritikse iyzico daha güçlü olabilir."
+  - question: "Bloke riski hangi durumlarda artar?"
+    answer: "Yeni şirket, ani ciro artışı ve yüksek itiraz profilli ürün kategorilerinde geçici bloke riski artabilir."
+  - question: "Komisyon dışında en kritik gizli maliyet nedir?"
+    answer: "Ödeme vadesinin yarattığı nakit akışı maliyeti çoğu işletmede komisyon farkı kadar etkili olabilir."
 related_tools:
   - /tools/sanal-pos-hesaplama
   - /tools/komisyon-hesaplama
 related_blogs:
-  - iyzico-nedir
-  - paytr-nedir
   - paytr-vs-iyzico
+  - sanal-pos-karsilastirmasi-2026
   - en-iyi-sanal-pos
-  - e-ticaret-odeme-yontemleri
+  - paytr-nedir
+  - iyzico-nedir
 hero_image: "https://cdn.moyduz.com/images/blog/odeme-sistemleri-hero.jpg"
-ai_related: "/blog/e-ticaret-odeme-yontemleri,/rehber/e-ticaret-altyapisi,/blog/en-iyi-sanal-pos,/blog/checkout-nasil-optimize-edilir,/blog/iyzico-nedir"
-title_en: "Online Payment Systems in Turkey"
-meta_description_en: "Yizico, PayTR, Shopier and virtual POS comparison. How do you choose the right payment system for e-commerce in Turkey? Commission, integration and cost guide."
-title_es: "Guía de sistemas de pago en línea en Turquía"
-meta_description_es: "Comparación entre iyzico, PayTR, Shopier y POS virtual. ¿Cómo elegir el sistema de pago correcto para el comercio electrónico en Turquía? Comisiones, integración y guía de costes."
-title_de: "Online-Zahlungssysteme in der Türkei"
-meta_description_de: "iyzico, PayTR, Shopier und virtuellen POS Vergleich. Wie wählt man das richtige Zahlungssystem für E-Commerce in der Türkei? Provision, Integration und Kostenleitfaden."
+ai_related: "/blog/paytr-vs-iyzico,/blog/sanal-pos-karsilastirmasi-2026,/blog/en-iyi-sanal-pos,/tools/sanal-pos-hesaplama,/blog/checkout-nasil-optimize-edilir"
+title_en: "Online Payment Systems in Turkey (2026): Cost, Hold Risk and Chargeback"
+meta_description_en: "Turkey payment systems guide: compare PayTR, iyzico, Param and bank POS by real cost, payout speed, temporary holds and chargeback workflow."
+title_es: "Guía 2026 de sistemas de pago en Turquía"
+meta_description_es: "Comparativa de PayTR, iyzico, Param y POS bancario con coste real, bloqueos temporales y gestión de chargeback."
+title_de: "Leitfaden 2026 für Online-Zahlungssysteme in der Türkei"
+meta_description_de: "Vergleich von PayTR, iyzico, Param und Bank-POS nach realen Kosten, Auszahlungsverhalten, Hold-Risiko und Chargeback."
 ---
 
-## Kısa Tanım
+Online ödeme altyapısı seçimi, e-ticarette marjı doğrudan etkiler. En yaygın hata, yalnızca "komisyon oranı"na bakmaktır. Oysa gerçek maliyet 4 katmandan oluşur:
 
-**Online ödeme sistemi**, e-ticaret sitelerinin kredi kartı, havale ve dijital cüzdan ödemelerini güvenli biçimde işlemesini sağlayan teknik altyapıdır. Türkiye'de faaliyet göstermek için bankacılık lisansı ya da lisanslı bir aracı kurum (ödeme kuruluşu) gerekir.
+1. Toplam kesinti (tek çekim + taksit + işlem bazlı ücret)
+2. Ödeme vadesi (nakit akışı etkisi)
+3. Geçici bloke riski
+4. Chargeback/fraud operasyon maliyeti
 
----
+## 1) Türkiye Ekosistemi: Hangi Oyuncu Ne Sunuyor?
 
-## 1) Türkiye Ödeme Ekosistemi: Genel Bakış
+| Sağlayıcı | Komisyon Bandı | Güçlü Taraf | Sınırlama |
+|---|---|---|---|
+| PayTR | ≈%1.99–%2.69 | Düşük maliyet odağı | Fraud/itiraz paneli daha temel |
+| iyzico | ≈%2.5–%2.99 | Dokümantasyon + risk yönetimi | Toplam kesinti artabilir |
+| Param | ≈%2.2+ | Denge | Operasyon kalitesi değişken |
+| Banka POS | ≈%1.5–%2.5 | Yüksek hacimde düşük oran | Onboarding yavaş |
+| Stripe | %2.9 + sabit USD | Uluslararası kart | Yerel akışta ek kurgu gerekebilir |
 
-Türkiye'de e-ticaret ödemeleri üç katmandan oluşur:
+## 2) TL Bazlı Maliyet Simülasyonu (2026)
 
-1. **Bankalar** — doğrudan POS anlaşması (yüksek ciro gerektirir)
-2. **Ödeme kuruluşları** — iyzico, PayTR, Shopier (orta boy için ideal)
-3. **Uluslararası** — Stripe, PayPal (yabancı kart + çoklu döviz)
+| Aylık Ciro | PayTR | iyzico | Param | Banka POS (%2) |
+|---|---:|---:|---:|---:|
+| 50.000 TL | 1.545 TL | 1.865 TL | 1.650 TL | 1.000 TL |
+| 100.000 TL | 3.090 TL | 3.730 TL | 3.300 TL | 2.000 TL |
+| 250.000 TL | 7.725 TL | 9.325 TL | 8.250 TL | 5.000 TL |
+| 500.000 TL | 15.450 TL | 18.650 TL | 16.500 TL | 10.000 TL |
 
-**Pazar payı (2026):**
-- iyzico: ~%45
-- PayTR: ~%30
-- Diğer (Shopier, Paycell, Sipay): ~%15
-- Doğrudan banka POS: ~%10
+Bu tablo örnek sepet dağılımı ile hazırlanmıştır. Kendi oran ve işlem sayınız için: [Sanal POS Hesaplayıcı](/tools/sanal-pos-hesaplama).
 
----
+## 3) Vade Etkisi: Sessiz Maliyet
 
-## 2) İyzico
+| Senaryo | 6 Gün Ek Bekleme Nakit Tutarı | %3 Finansman Maliyeti |
+|---|---:|---:|
+| 100.000 TL ciro | 19.998 TL | ~600 TL |
+| 250.000 TL ciro | 49.998 TL | ~1.500 TL |
 
-<MintlifyCallout type="general" title="iyzico Genel Bilgi">
-  2013'te kurulan iyzico, 2019'da PayU tarafından satın alındı. Türkiye'nin en büyük bağımsız ödeme kuruluşu. 200.000+ aktif satıcı.
-</MintlifyCallout>
+Bu etki genellikle komisyon tablosunda görünmez ama büyüme döneminde ciddi baskı yaratır.
 
-**Komisyon oranları:**
-| Plan | Oran | Aylık ücret |
+## 4) Bloke Riski Gerçeği
+
+Geçici bloke tek bir firmaya özgü değildir. Lisanslı tüm kuruluşlarda risk politikası bulunur.
+
+| Senaryo | Risk | Görülen Süre |
 |---|---|---|
-| Başlangıç | %2.9 + ₺0.25/işlem | ₺0 |
-| Büyüme | %2.5 + ₺0.25/işlem | ₺199 |
-| Kurumsal | Özel | Özel |
+| Yeni şirket (3 aydan yeni) | Orta | 7–14 gün |
+| Ani ciro artışı | Yüksek | 7–21 gün |
+| Dijital ürün / yüksek itiraz | Orta-Yüksek | 7–14 gün |
+| Düşük iade fiziksel ürün | Düşük | Çoğu zaman blokeye girmez |
 
-**Güçlü yanları:**
-- Türkiye'nin en iyi dokümantasyonu
-- Sandbox test ortamı mükemmel
-- 3D Secure, taksit, link ile ödeme
-
-**Zayıf yanları:**
-- Küçük ciro için maliyetli
-- Destek yanıt süresi değişken
-
----
-
-## 3) PayTR
-
-<MintlifyCallout type="general" title="PayTR Genel Bilgi">
-  2009'da kurulan PayTR, Türkiye'nin en eski bağımsız ödeme kuruluşlarından. Özellikle KOBİ segmentinde güçlü.
+<MintlifyCallout type="note" title="Operasyon önerisi">
+  Bloke riskini azaltmak için teslimat kayıtları, açık iade politikası, fatura/irsaliye eşleşmesi ve düzenli işlem paterni kritik önem taşır.
 </MintlifyCallout>
 
-**Komisyon oranları:**
-| Ürün | Oran |
+## 5) Chargeback Katmanı
+
+| Kriter | PayTR | iyzico | Param |
+|---|---|---|---|
+| 3D Secure | Var | Var | Var |
+| Fraud skorlama | Standart | Daha gelişmiş | Orta |
+| İtiraz paneli | Var | Daha detaylı | Değişken |
+
+Yüksek chargeback oranına sahip sektörlerde daha güçlü operasyon paneli toplam zararı düşürebilir.
+
+## 6) Komisyon Pazarlık Eşiği
+
+| Aylık Hacim | Pazarlık Gücü | Beklenti |
+|---|---|---|
+| 50K TL altı | Düşük | Liste oranı |
+| 100K+ TL | Orta | Sınırlı indirim |
+| 250K+ TL | Güçlü | Rekabetçi oran |
+| 500K+ TL | Çok güçlü | Özel anlaşma + hibrit model |
+
+## 7) Karar Matrisi
+
+| İş Profili | Öneri |
 |---|---|
-| Sanal POS | %1.99–%2.69 |
-| iFrame API | %2.39 |
-| Link ile ödeme | %2.49 |
+| Yeni KOBİ, maliyet hassas | PayTR |
+| Pazaryeri / çok satıcılı | iyzico |
+| Yüksek hacim, kurumsal süreç | Banka POS + ödeme kuruluşu |
+| E-ihracat ağırlıklı | Stripe + TR sağlayıcı |
+| Yüksek riskli ürün grubu | iyzico |
 
-**Güçlü yanları:**
-- Düşük komisyon, yüksek ciro için avantajlı
-- İframe entegrasyonu çok kolay
-- Türk lirası ve döviz desteği
+## 8) Teknik Entegrasyon Notları (Next.js / React)
 
-**Zayıf yanları:**
-- Uluslararası kart kabulü iyzico kadar geniş değil
-- Arayüz modern değil
+- API anahtarlarını yalnızca sunucu tarafında tutun.
+- Route Handler veya Server Action ile ödeme başlatın.
+- Webhook doğrulamasını zorunlu yapın.
+- Başarısız ödeme ve iade senaryolarını test ortamında uçtan uca deneyin.
 
----
+## Kısa Kontrol Listesi
 
-## 4) Diğer Seçenekler
-
-| Sağlayıcı | Güçlü | Kim için |
-|---|---|---|
-| Shopier | En kolay kurulum | Başlangıç / sosyal medya satıcıları |
-| Paycell | Turkcell ekosistemi | Mobil ağırlıklı |
-| Sipay | Fintech odaklı | Startup / API-first |
-| Stripe | Uluslararası | Yabancı müşteri hedefleyenler |
-| Banka POS | En düşük komisyon | 500K+ TL/ay ciro |
-
----
-
-## 5) Doğru Sistemi Seçme Kriterleri
-
-<MintlifyCallout type="tip" title="Karar çerçevesi">
-  Aylık cironuz 50K TL altındaysa iyzico veya PayTR iFrame yeterli. 50K–500K arasında PayTR kurumsal veya iyzico Büyüme planlayın. 500K+ için banka POS + ödeme kuruluşu kombinasyonu optimaldır.
-</MintlifyCallout>
-
-1. **Ciro seviyesi** — düşük ciroda sabit ücret, yüksek ciroda oran önemli
-2. **Teknik kapasite** — API mi, iFrame mı, no-code entegrasyon mı?
-3. **Müşteri profili** — yabancı kart geliyor mu?
-4. **Taksit ihtiyacı** — kaç taksit sunacaksınız?
-5. **Destek gereksinimi** — hızlı cevap kritik mi?
-
----
-
-## 6) Entegrasyon (Next.js / React)
-
-<MintlifyCallout type="note" title="Next.js entegrasyon yaklaşımı">
-  Ödeme formunu her zaman sunucu tarafında başlatın — API key'leri client'a asla sızdırmayın. Route Handler veya Server Action kullanın.
-</MintlifyCallout>
-
-```ts
-// app/api/payment/route.ts
-import Iyzipay from 'iyzipay'
-
-const iyzipay = new Iyzipay({
-  apiKey: process.env.IYZICO_API_KEY!,
-  secretKey: process.env.IYZICO_SECRET_KEY!,
-  uri: 'https://api.iyzipay.com',
-})
-
-export async function POST(req: Request) {
-  const { price, basketItems } = await req.json()
-  // checkout form oluştur...
-}
-```
-
----
-
-## 7) Güvenlik ve Uyumluluk
-
-- **PCI DSS** — kart verisini asla kendi sunucunuzda tutmayın
-- **3D Secure zorunluluğu** — Türkiye'de bankacılık regülasyonu
-- **KVKK** — ödeme verisi işleme için açık rıza
-- **Chargeback yönetimi** — itiraz oranı %1'i geçerse hesap askıya alınabilir
-
----
-
-## Checklist
-
-- [ ] Ödeme sağlayıcı başvurusu tamamlandı mı?
-- [ ] Sandbox testleri geçildi mi?
-- [ ] 3D Secure aktif mi?
-- [ ] Webhook'lar doğru yapılandırıldı mı?
-- [ ] Başarısız ödeme senaryoları test edildi mi?
-- [ ] SSL sertifikası aktif mi?
-- [ ] Chargeback süreci tanımlandı mı?
-
----
+- [ ] Sağlayıcı seçimi ciro ve risk profiline göre yapıldı
+- [ ] Vade etkisi ve nakit planı hesaplandı
+- [ ] Chargeback prosedürü yazılı hale getirildi
+- [ ] Webhook ve hata senaryoları test edildi
+- [ ] En az bir yedek ödeme kurgusu planlandı
 
 ## Sık Sorulan Sorular
 
-<Accordions type="single">
-  <Accordion title="iyzico mu PayTR mi seçmeliyim?">
-    Küçük ciro için iyzico daha iyi destek ve dokümantasyon sunar. Büyük ciro (500K+ TL/ay) için PayTR'nin oranları avantajlı. Karşılaştırma için sanal POS hesaplayıcımızı kullanın.
-  </Accordion>
-  <Accordion title="Banka POS ne zaman mantıklı?">
-    Aylık 500.000 TL+ ciro seviyesinde banka POS komisyonları %1.5 altına inebilir. Altında ödeme kuruluşu daha pratik ve hızlı.
-  </Accordion>
-  <Accordion title="Uluslararası ödeme için ne kullanmalıyım?">
-    Stripe en iyi seçenek. Yabancı kart oranları %2.9 + $0.30/işlem. Türk iyzico/PayTR ile birlikte çift altyapı kurmanızı öneririz.
-  </Accordion>
-  <Accordion title="Taksit seçeneği sunmak zorunlu mu?">
-    Yasal zorunluluk yok, ama Türkiye'de taksit sunmayan site dönüşüm kaybeder. Bankalar 12 aya kadar taksit için komisyon alıyor — planınıza dahil edin.
-  </Accordion>
-</Accordions>
+**En iyi ödeme sistemi hangisi?**
+Tek cevap yok. İş modelinize göre "en düşük maliyet", "en güçlü operasyon" veya "en hızlı kurulum" farklı sağlayıcıya götürür.
+
+**Banka POS ne zaman mantıklı?**
+Genellikle yüksek hacimde oran avantajı belirginleştiğinde.
+
+**Tek sağlayıcıyla devam edebilir miyim?**
+Başlangıçta evet. Hacim büyüdükçe hibrit/yedek kurgu operasyonel güvenliği artırır.
+
+---
+
+## İlgili Kaynaklar
+
+- [PayTR mi iyzico mu?](/blog/paytr-vs-iyzico)
+- [Sanal POS karşılaştırması 2026](/blog/sanal-pos-karsilastirmasi-2026)
+- [En iyi sanal POS](/blog/en-iyi-sanal-pos)
+- [Sanal POS hesaplayıcı](/tools/sanal-pos-hesaplama)

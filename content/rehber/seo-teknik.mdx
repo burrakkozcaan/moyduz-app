@@ -8,10 +8,12 @@ published_at: '2026-02-24T00:00:00Z'
 updated_at: '2026-02-24T00:00:00Z'
 draft: false
 key_points:
-  - "robots.txt, sitemap.xml ve canonical tag teknik SEO'nun üç temel taşıdır."
-  - "Core Web Vitals eşiklerini geçmek (LCP < 2.5s vb.) sıralamayı doğrudan etkiler."
-  - "Schema markup ile rich snippet'lar SERP tıklama oranını ve dönüşümü artırır."
-  - "Crawl budget büyük sitelerde kritik — değersiz sayfaları noindex yapın."
+  - 'robots.txt, sitemap.xml ve canonical tag teknik SEO''nun üç temel taşıdır.'
+  - >-
+    Core Web Vitals eşiklerini geçmek (LCP < 2.5s vb.) sıralamayı doğrudan
+    etkiler.
+  - Schema markup ile rich snippet'lar SERP tıklama oranını ve dönüşümü artırır.
+  - Crawl budget büyük sitelerde kritik — değersiz sayfaları noindex yapın.
 related_tools:
   - /tools/site-saglik-skoru
   - /tools/maliyet-hesaplama
@@ -19,15 +21,72 @@ related_blogs:
   - e-ticaret-seo-rehberi
   - core-web-vitals-nedir
   - site-hizi-satislari-nasil-etkiler
-audio_src: "https://cdn.moyduz.com/audio/seo-teknik.mp3"
-hero_image: "https://cdn.moyduz.com/images/blog/seo-teknik-hero.jpg"
-ai_related: "/blog/e-ticaret-seo-rehberi,/rehber/e-ticaret-altyapisi,/blog/e-ticaret-basarili-olmak,/blog/satis-yapmayan-site,/blog/site-hizi-satislari-nasil-etkiler"
-title_en: "Technical SEO Guide: Step by Step for E-Commerce Sites"
-meta_description_en: "> – –"
-title_es: "Guía técnica de SEO: paso a paso para sitios de comercio electrónico"
-meta_description_es: "> -"
-title_de: "Technische SEO-Anleitung: Schritt für Schritt für E-Commerce-Sites"
-meta_description_de: "> -"
+audio_src: 'https://cdn.moyduz.com/audio/seo-teknik.mp3'
+hero_image: 'https://cdn.moyduz.com/images/blog/seo-teknik-hero.jpg'
+ai_related: >-
+  /blog/e-ticaret-seo-rehberi,/rehber/e-ticaret-altyapisi,/blog/e-ticaret-basarili-olmak,/blog/satis-yapmayan-site,/blog/site-hizi-satislari-nasil-etkiler
+title_en: 'Technical SEO Guide: Step by Step for E-Commerce Sites'
+meta_description_en: '> – –'
+title_es: 'Guía técnica de SEO: paso a paso para sitios de comercio electrónico'
+meta_description_es: '> -'
+title_de: 'Technische SEO-Anleitung: Schritt für Schritt für E-Commerce-Sites'
+meta_description_de: '> -'
+meta_title: 'Teknik SEO Rehberi: E-Ticaret Siteleri İçin Adım Adım'
+faqs:
+  - question: 'Teknik SEO Rehberi: E-Ticaret Siteleri İçin Adım Adım neden önemlidir?'
+    answer: >-
+      Doğru uygulandığında maliyet, hız ve dönüşüm etkisi yaratır; yanlış
+      kurgulandığında ise operasyonel risk ve gelir kaybı doğurabilir.
+  - question: >-
+      Teknik SEO Rehberi: E-Ticaret Siteleri İçin Adım Adım için en sık yapılan
+      hata nedir?
+    answer: >-
+      Sadece teorik bilgiye odaklanıp veri, senaryo ve karar kriteri
+      eklememektir. Bu da uygulama tarafında belirsizlik yaratır.
+  - question: Bu içerikteki yaklaşımı nasıl uygulamalıyım?
+    answer: >-
+      Önce hızlı cevap bölümünü okuyup kendi durumunuzu karar matrisiyle
+      eşleştirin, ardından risk ve kontrol listesindeki adımları sırayla
+      uygulayın.
+  - question: Sonuçları nasıl ölçebilirim?
+    answer: >-
+      KPI, dönüşüm oranı, maliyet ve operasyon metriklerini haftalık takip
+      ederek yaklaşımın etkisini düzenli olarak doğrulayabilirsiniz.
+---
+
+## Hızlı Cevap (2026)
+
+- **Küçük site (%10 altı ürün):** Önce hız + canonical — 2 haftada etki görürsünüz
+- **Orta boy e-ticaret (100–10K ürün):** Schema + crawl budget + Core Web Vitals önceliği
+- **Büyük katalog (10K+ SKU):** Faceted navigation kontrolü + sitemap segmentasyonu + IndexNow zorunlu
+- **Yeni site (< 6 ay):** robots.txt + sitemap + canonical'ı doğru kur; kalanı büyüyünce yap
+
+Teknik SEO etkisi 2–8 haftada görünür. Başlamak için 100 puanlık PageSpeed şart değil — sadece eşik değerlerin altına girin.
+
+---
+
+## Kime Uygun? User Profili
+
+| Durum | Öncelik |
+|---|---|
+| Sitede 404 ve kırık link varsa | Redirect map + GSC hata temizliği |
+| Sıralaması olan ama tıklanmıyorsa | Schema + title/meta CTR optimizasyonu |
+| Hiç indekslenmiyorsa | robots.txt + sitemap + canonical audit |
+| Çok ürün var ama yavaş büyüyorsa | Crawl budget + iç link yapısı |
+| Hız skoru düşükse | Core Web Vitals (LCP + INP) |
+
+---
+
+## Teknik SEO Yapılmazsa Ne Olur? (Risk)
+
+| Sorun | Etki |
+|---|---|
+| robots.txt yanlış yapılandırılmış | Tüm site indekslenmez |
+| Canonical yok | Duplicate content nedeniyle sıralama bölünür |
+| LCP > 4s | Google mobile sıralamada ceza |
+| Faceted navigation kontrolsüz | Binlerce değersiz URL crawl budget'ı tüketir |
+| Schema yok | Rich snippet yok → CTR düşük |
+
 ---
 
 ## Kısa Tanım
@@ -140,6 +199,21 @@ export default function Page({ product }) {
 
 ---
 
+## Karar Matrisi: Hangi Teknik SEO Adımını Önce Yapmalısın?
+
+| Sitenin Durumu | İlk Yapılacak |
+|---|---|
+| Yeni kurulmuş site | robots.txt + sitemap + canonical doğrula |
+| Hız sorunu (LCP > 3s) | Hero görsel + CDN + font optimizasyonu |
+| İndekslenme sorunu | GSC hata analizi + crawl budget audit |
+| Sıralama var ama tıklanma yok | Schema markup + title/meta CTR güncelleme |
+| 10K+ ürün kataloğu | Faceted navigation kontrolü + noindex filtreler |
+| Rakiplerden geri | Core Web Vitals + iç link + schema tamamı |
+
+*[Site Sağlık Skoru aracıyla durumunuzu görün →](/tools/site-saglik-skoru)*
+
+---
+
 ## Checklist
 
 - [ ] robots.txt doğru yapılandırıldı mı?
@@ -170,3 +244,20 @@ export default function Page({ product }) {
     Evet. 10 sayfalık site bile doğru canonical, hız ve schema ile çok daha iyi sonuç alır.
   </Accordion>
 </Accordions>
+
+
+## Karar Matrisi: Hangi Durumda Hangi Yaklaşım?
+
+| Durum | Önerilen Yaklaşım |
+|---|---|
+| Yeni başlayan ekip | Basit kurgu + hızlı test |
+| Büyüme aşaması | Ölçüm odaklı optimizasyon |
+| Yüksek trafik / hacim | Risk ve operasyon odaklı ileri kurgu |
+
+Bu bölüm, "**hangi durumda hangi tercih daha mantıklı**" sorusuna net cevap verir.
+
+## İlgili İçerikler
+
+- [E-Ticaret Maliyet Hesaplama](/blog/e-ticaret-maliyet-hesaplama)
+- [Komisyon Hesaplama Rehberi](/blog/komisyon-hesaplama-rehberi)
+- [Ödeme Sistemleri Rehberi](/rehber/odeme-sistemleri)

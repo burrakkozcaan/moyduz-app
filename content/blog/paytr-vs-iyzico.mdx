@@ -1,117 +1,187 @@
 ---
-title: "PayTR vs iyzico: Hangisi Daha İyi? (2026 Karşılaştırması)"
+title: "PayTR mi iyzico mu? (2026 Güncel) Komisyon, Bloke ve Gerçek Maliyet Karşılaştırması"
 slug: "paytr-vs-iyzico"
-meta_description: "2026 güncel Sanal POS komisyon oranları: PayTR mi iyzico mu? Komisyonlar, Iyzico nedir, PayTR taksit oranları ve e-ticaret siteniz için en doğru seçim rehberi."
+meta_description: "2026 PayTR vs iyzico karşılaştırması: komisyon, bloke riski ve chargeback süreçlerini TL bazlı hesapladık. 50.000 ve 250.000 TL ciro senaryolarını görün."
 published_at: "2026-03-04T00:00:00Z"
-updated_at: "2026-03-04T00:00:00Z"
+updated_at: "2026-03-05T00:00:00Z"
 author_name: "Moyduz Ekibi"
-reading_time: 8
+reading_time: 11
 category:
   name: "Ödeme Sistemleri"
   slug: "odeme-sistemleri"
-snippet: "2026 yılı güncel sanal POS komisyon oranları: PayTR daha uygun maliyetli olabilirken, iyzico gelişmiş altyapısıyla öne çıkıyor. Tüm iyzico ve PayTR taksit oranları ve komisyon detayları bu yazıda."
+snippet: "PayTR ve iyzico arasında sadece komisyon değil, bloke süresi, chargeback yönetimi ve ödeme vadesi farkı da var. 2026 için net karar tablosu ve TL bazlı simülasyon burada."
+key_points:
+  - "50.000 TL ciroda örnek fark ~270 TL/ay; 200.000 TL bandında yıllık fark 12.000 TL'yi aşabilir."
+  - "Ertesi gün ödeme nakit akışını hızlandırır; 15 gün bloke senaryosu işletme sermayesini kilitleyebilir."
+  - "Fraud ve chargeback operasyonunda iyzico daha güçlü araçlar sunarken, maliyet tarafında PayTR çoğu KOBİ için avantajlıdır."
+  - "En doğru seçim, komisyon + vade + bloke + chargeback katmanlarını birlikte hesaplamaktır."
+faqs:
+  - question: "PayTR mi iyzico mu 2026'da daha ucuz?"
+    answer: "Düşük marj ve maliyet odaklı senaryolarda PayTR çoğu zaman daha düşük toplam kesinti verir. Ancak chargeback/fraud operasyonu yoğun işlerde iyzico'nun operasyon avantajı maliyet farkını dengeleyebilir."
+  - question: "PayTR'de ertesi gün ödeme her zaman geçerli mi?"
+    answer: "Ertesi gün ödeme bazı paket ve risk profillerinde avantaj sağlar. Riskli işlem paternlerinde geçici bekletme veya farklı vade uygulanabilir."
+  - question: "Bloke süresi sadece yeni şirketlerde mi olur?"
+    answer: "Hayır. Ani ciro artışı, yüksek iade oranı ve riskli ürün kategorileri de geçici bloke ihtimalini artırabilir."
+  - question: "iyzico Korumalı Alışveriş satışları artırır mı?"
+    answer: "Özellikle marka güveni düşük veya ilk satın alma bariyeri yüksek mağazalarda güven sinyali üreterek dönüşümü artırabilir. Güçlü marka güveni olan sitelerde etki daha sınırlı olabilir."
 hero_image: "https://cdn.moyduz.com/images/blog/paytr-vs-iyzico-hero-v2.jpg"
 audio_src: "https://cdn.moyduz.com/audio/paytr-vs-iyzico.mp3"
-ai_related: "/blog/paytr-nedir,/blog/iyzico-nedir,/compare/no-code-vs-custom-development,/compare/webflow-vs-custom-development,/blog/webflow-vs-ozel-yazilim"
-title_en: "PayTR vs iyzico: Which is Better? (2026 Comparison)"
-meta_description_en: "Commission, integration, support and security comparison.The right payment system for e-commerce in Turkey."
-title_es: "PayTR vs iyzico: ¿Cuál es mejor? (2026 Comparación)"
-meta_description_es: "Comisiones, integración, soporte y comparación de seguridad. elegir el sistema de pago correcto para el comercio electrónico en Turquía."
-title_de: "PayTR vs iyzico: Welches ist besser? (2026 Vergleich)"
-meta_description_de: "Kommissions-, Integrations-, Support- und Sicherheitsvergleich.Die Wahl des richtigen Zahlungssystems für den E-Commerce in der Türkei."
+ai_related: "/blog/paytr-nedir,/blog/iyzico-nedir,/blog/sanal-pos-karsilastirmasi-2026,/blog/en-iyi-sanal-pos,/tools/sanal-pos-hesaplama,/rehber/odeme-sistemleri"
+title_en: "PayTR vs iyzico: Which is Better? (2026 Cost & Risk Comparison)"
+meta_description_en: "Compare PayTR and iyzico with real TL simulations: commission, payout delays, temporary hold risk and chargeback workflow."
+title_es: "PayTR vs iyzico: ¿Cuál conviene más? (2026)"
+meta_description_es: "Comparativa 2026 con simulaciones reales en TL: comisión, bloqueos temporales, flujo de caja y chargeback."
+title_de: "PayTR vs iyzico: Was ist günstiger? (2026)"
+meta_description_de: "2026 Vergleich mit realen TL-Szenarien: Provisionen, Auszahlungsdauer, Hold-Risiko und Chargeback-Prozesse."
 ---
 
-E-ticarete yeni başlarken veya altyapınızı değiştirirken en kritik kararlardan biri Sanal POS seçimidir. Arama motorlarında en çok merak edilen **"PayTR komisyon oranı 2026", "PayTR taksit oranları", "iyzico.com nedir?"** gibi soruların tüm yanıtlarını bu rehberde topladık.
+PayTR mi iyzico mu sorusunda asıl fark sadece yüzde komisyon değildir. Gerçek karar; **toplam kesinti, ödeme vadesi, geçici bloke riski ve chargeback operasyonu** birlikte değerlendirildiğinde netleşir.
 
-## Özet: Hangisi Kazanıyor?
+Bu rehberde 2026 için en çok aranan soruyu doğrudan yanıtlıyoruz: **"Hangi sanal POS gerçekten daha ucuz?"** Kısa cevap: Düşük marj ve maliyet odağında PayTR genelde avantajlı; fraud/itiraz yönetimi ve detaylı panel ihtiyacında iyzico bir adım önde.
 
-**Kısa cevap:**
-- **Yüksek ciro + maliyet odaklı** → PayTR
-- **Geliştirici deneyimi + tam özellik (Marketplace)** → iyzico
-- **Yabancı kart + uluslararası** → Stripe (ikisi de uluslararası için tek başına yeterli değil)
+## Hızlı Cevap: Kim Hangisini Seçmeli?
 
----
+- **Düşük marj + maliyet baskısı:** PayTR
+- **Pazaryeri / çok satıcılı model:** iyzico
+- **Yüksek riskli kategori (dijital ürün vb.):** iyzico (fraud ve itiraz yönetimi)
+- **500K+ aylık ciro:** Banka POS + PayTR/iyzico hibrit kurgu
 
-## 1) 2026 Güncel Komisyon Oranları Karşılaştırması
+<MintlifyCallout type="tip" title="Önce hesap, sonra seçim">
+  Komisyon oranını tek başına kıyaslamayın. Taksit ek kesintisi, vade gecikmesi ve bloke olasılığını TL karşılığıyla birlikte hesaplayın.
+</MintlifyCallout>
 
-Sanal POS firmalarının 2026 yılı itibarıyla sunduğu ortalama komisyon oranları aşağıdaki gibidir. (Not: Bu oranlar aylık cironuza, şirket türünüze ve pazarlık gücünüze göre değişiklik gösterecektir.)
+## Gerçek Maliyet Analizi (Sadece Komisyon Değil)
 
-| Özellik | PayTR (2026) | iyzico (2026) | Param & Diğerleri |
-|---|---|---|---|
-| Başlangıç oranı (Tek Çekim) | ≈%1.99 | ≈%2.99 | ≈%2.20 |
-| Büyüme oranı (Yüksek Ciro) | %1.79 (görüşme ile) | %2.5 (görüşme ile) | Görüşme ile |
-| İşlem Başı Sabit Ücret | Yok | ₺0.25/işlem | Yok |
-| Kurulum/Aylık/Yıllık Ücret | Yok | ₺0 / ₺199 (Premium için) | Yok |
+### Moyduz Hesaplama Tablosundaki Maliyet Farkları Nasıl Detaylandırılır?
 
-**Örnek Hesaplama (Aylık 50.000 TL ciro, 100 işlem):**
-- **PayTR Kesintisi:** 50.000 × %1.99 = **₺995**
-- **iyzico Kesintisi:** (50.000 × %2.99) + (100 × ₺0.25) = **₺1.520**
+Amaç yüzde değil, **TL konuşmaktır**. Bu yüzden önce tek bir baz senaryoyu netleştirip sonra ölçekleriz.
 
-PayTR genel olarak tek çekimli işlemlerde ve yeni başlayan KOBİ'ler için daha uygun maliyetli görünmektedir.
+**Senaryo A (örnek model):**
+- Aylık Ciro: **50.000 TL**
+- İşlem Sayısı: **100**
+- Ortalama Sepet: **500 TL**
 
----
+| Kriter | PayTR | iyzico |
+|---|---:|---:|
+| Komisyon | %2,50 | %2,99 |
+| İşlem başı ücret | Yok | 0,25 TL |
+| Toplam kesinti | 1.250 TL | 1.495 TL + 25 TL |
+| Net elinize geçen | 48.750 TL | 48.480 TL |
 
-## 2) PayTR Taksit Oranları 2026
+👉 Aylık fark: **~270 TL**  
+👉 Yıllık fark: **~3.240 TL**
 
-**"PayTR taksit oranları ne kadar?"** sorusunun cevabı, müşterinizin kart programına (Bonus, Maximum, World, Axess vb.) ve seçtiğiniz taksit sayısına göre değişir.
+### 3 Farklı Ciro Seviyesinde Toplam Etki
 
-2026 itibarıyla ortalama **vade farkı oranları (Tüketiciye yansıyan)**:
-- 3 Taksit: ~%5 - %7
-- 6 Taksit: ~%9 - %12
-- 9 Taksit: ~%14 - %18
+| Aylık Ciro | PayTR Toplam Kesinti | iyzico Toplam Kesinti | Aylık Fark |
+|---|---:|---:|---:|
+| 50.000 TL | 1.545 TL | 1.865 TL | **320 TL** |
+| 200.000 TL | 6.180 TL | 7.460 TL | **1.280 TL** |
+| 250.000 TL | 7.725 TL | 9.325 TL | **1.600 TL** |
 
-> **İpucu:** Moyduz altyapısını kullanırken isterseniz vade farkını tamamen müşteriye yansıtabilir, isterseniz "Peşin Fiyatına Taksit" kurgusuyla maliyeti kâr marjınızdan karşılayarak satış dönüşüm oranınızı artırabilirsiniz.
+**Kritik not:** Aylık 200.000 TL ciro yapan bir KOBİ için komisyon farkı yıllık 12.000 TL'yi aşabilir. Ancak bloke süresi 15 gün ise işletme fiilen 100.000 TL bandında bir nakit akışını bekletiyor olabilir.
 
----
+## Nakit Akışı ve Bloke Süreleri
 
-## 3) iyzico.com Nedir ve Neden Tercih Edilir?
+### PayTR'nin Ertesi Gün Ödeme Avantajı
 
-**"Iyzico nedir?"** diye aratan e-ticaret girişimcileri için kısa bir özet: Iyzico, sadece bir Sanal POS değil, aynı zamanda "Korumalı Alışveriş" özelliği ile tüketicilere güven veren, yapay zeka destekli bir ödeme altyapısıdır.
+Ertesi gün ödeme, özellikle reklamla büyüyen ve stok döngüsü hızlı işletmelerde ciddi avantaj yaratır. Komisyon farkı küçük görünse bile nakit devir hızı büyümeyi belirler.
+
+| Senaryo | Bekleyen Nakit | %3 Kısa Vadeli Finansman Maliyeti |
+|---|---:|---:|
+| 100.000 TL ciro | 19.998 TL | ~600 TL |
+| 250.000 TL ciro | 49.998 TL | ~1.500 TL |
+
+**Örnek yorum:** Günlük 10.000 TL satış yapan bir mağaza, 15 gün blokede yaklaşık 150.000 TL'yi bekletmek zorunda kalabilir. Bu etki çoğu işletmede komisyon farkından daha büyük olabilir.
+
+### Bloke Riski Hangi Durumlarda Artar?
+
+Geçici bloke riski yalnızca tek bir firmaya özgü değildir. **TCMB lisanslı tüm ödeme kuruluşları** risk politikası uygular.
+
+| Senaryo | Olası Bloke Riski | Sektörde Görülen Süre |
+|---|---|---|
+| Yeni şirket (3 aydan yeni) | Orta | 7–14 gün |
+| Ani ciro artışı | Yüksek | 7–21 gün |
+| Dijital ürün satışı | Orta | 7–14 gün |
+| Düşük iade oranlı fiziksel ürün | Düşük | Çoğu zaman blokeye girmez |
+
+Bloke çoğu durumda kalıcı değildir; risk analizi tamamlandığında ödeme açılır. Ancak bu dönemde nakit akış planı yapılmadıysa operasyon zorlanır. **Düşük komisyon tek başına avantaj değildir; bloke uzarsa işletme sermayesi kilitlenebilir.**
+
+## Dönüşüm ve Güven Faktörü
+
+### iyzico'nun Korumalı Alışveriş Özelliği Satışları Artırır mı?
+
+Özellikle yeni veya marka güveni henüz tam oluşmamış mağazalarda güven rozeti etkisiyle ilk satın alma bariyeri düşebilir. Sektöre göre değişmekle birlikte güven sinyalinin dönüşümde ölçülebilir katkı üretmesi mümkündür.
+
+**Objektif not:** Eğer marka güveniniz zaten yüksekse, bu özellik satışa büyük katkı sağlamayabilir.
+
+### Chargeback Sürecinde Kim Satıcıyı Daha İyi Korur?
+
+Chargeback, kart sahibinin bankaya itiraz başlatmasıdır. Banka geçici olarak tutarı çekebilir ve satıcıdan savunma belgeleri istenir.
 
 | Kriter | PayTR | iyzico |
 |---|---|---|
-| Dokümantasyon | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
-| Tüketici Tarafı Güven (Bilinirlik) | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
-| Marketplace (Pazaryeri) Para Bölme | Yok | Var |
-| API Gücü ve SDK | Orta | Gelişmiş |
+| 3D Secure | Var | Var |
+| Fraud skorlama | Standart | Daha gelişmiş |
+| Chargeback paneli | Var | Daha detaylı |
+| Savunma dokümantasyonu | Yeterli | Daha güçlü |
 
-iyzico, özellikle **Çok Satıcılı (Multi-Vendor)** platformlar geliştirenler ve API düzeyinde esneklik isteyen geliştiriciler için Türkiye'deki en iyi alternatiftir.
+**Pratik sonuç:**
+- **Fraud/itiraz operasyonu** kritikse iyzico avantajlıdır.
+- **Toplam kesinti ve maliyet optimizasyonu** kritikse PayTR genelde avantajlıdır.
 
----
+## Komisyon Pazarlık Eşiği (Çoğu İçerikte Eksik)
 
-## 4) Havale Ödeme Yöntemleri ve B2B Seçenekleri
+Oranlar sabit değildir. Ciro büyüdükçe pazarlık gücü artar.
 
-Kredi kartı komisyonlarından kaçınmak isteyen işletmeler için **havale/EFT ödeme yöntemleri** hala kritik bir rol oynar. 
+| Aylık Hacim | Pazarlık Gücü | Beklenen Sonuç |
+|---|---|---|
+| 50K TL altı | Düşük | Liste fiyatına yakın |
+| 100K+ TL | Orta | Oranlarda sınırlı iyileşme |
+| 250K+ TL | Güçlü | Daha rekabetçi teklif |
+| 500K+ TL | Çok güçlü | Özel oran + hibrit kurgu |
 
-- **PayTR Havale/EFT Entegrasyonu:** Müşterilerinize banka hesap numaralarınızı panel üzerinden gösterip, müşteri açıklamaya referans kodunu girdiğinde sistemin bunu otomatik onaylamasını (B2B senaryoları) sağlayabilirsiniz.
-- **iyzico Havale:** Benzer şekilde "İyzico ile Öde" cüzdan mantığında havale/EFT kabul işlemleri yapılabilir.
+## 2026 Karar Matrisi
 
-Eğer yüksek sepet tutarlı B2B satış yapıyorsanız veya komisyon yüküne girmeden direkt nakit akışı sağlamak istiyorsanız, e-ticaret sitenizde "Havale Bildirim Formu"nun doğru ve zahmetsiz çalışması şarattır.
-
----
-
-## Karar Matrisi
-
-<MintlifyCallout type="tip" title="2026 İçin Hangi Durumda Hangisi?">
-  Maliyetleri minimumda tutmak isteyen ve basit bir eticaret sitesi kuranlar için **PayTR**. Pazar yeri altyapısı kuran veya tüketici güvenine (iyzico Korumalı Alışveriş markasına) oynayanlar için **iyzico**.
-</MintlifyCallout>
-
-| Durum | Bizim Önerimiz |
+| İş Modeli / Öncelik | Daha Mantıklı Tercih |
 |---|---|
-| Ciro < 50K TL ve Yeni Başlangıç | PayTR (sabit ücret yok, düşük komisyon) |
-| Ciro 500K+ TL | Banka Sanal POS + PayTR/iyzico kombinasyonu |
-| Multi-vendor (Pazaryeri) site | iyzico Marketplace |
-| Yabancı kart ağırlıklı (E-ihracat) | Stripe + PayTR/iyzico |
+| Yeni KOBİ, düşük marj | **PayTR** |
+| Pazaryeri (para bölme) | **iyzico** |
+| Yüksek riskli ürün kategorisi | **iyzico** |
+| Düşük marjlı fiziksel ürün | **PayTR** |
+| Yüksek ciro, kurumsal operasyon | **Banka POS + PayTR/iyzico** |
+| E-ihracat odaklı | **Stripe + TR sağlayıcı hibriti** |
+
+## Teknik ve Operasyonel Karşılaştırma (Kısa)
+
+| Başlık | PayTR | iyzico |
+|---|---|---|
+| Entegrasyon hızı | Yüksek | Yüksek |
+| Dokümantasyon | Orta | Çok iyi |
+| Sandbox derinliği | Orta | Güçlü |
+| Marketplace/para bölme | Sınırlı | Güçlü |
+
+## Sık Sorulan Sorular
+
+**PayTR mi iyzico mu daha ucuz?**
+Çoğu düşük marj senaryosunda PayTR toplam kesinti tarafında daha ucuz görünür. Ama chargeback operasyonu ve fraud koruması önemliyse iyzico maliyet farkını dengeleyebilir.
+
+**Bloke sadece yeni şirketlerde mi olur?**
+Hayır. Ani ciro artışı, yüksek riskli ürün ve olağan dışı işlem paterni de geçici blokeye neden olabilir.
+
+**T+1 yerine T+7 gerçekten fark yaratır mı?**
+Evet. 100K ciro bandında bile yüzlerce TL dolaylı finansman maliyeti yaratabilir.
+
+**Bu tabloyu kendi oranlarımla hesaplayabilir miyim?**
+Evet. [Sanal POS Hesaplayıcı](/tools/sanal-pos-hesaplama) ile kendi ciro ve işlem dağılımınıza göre anında hesaplayın.
 
 ---
 
-## 🚀 Moyduz ile Ödeme Sistemleriyle Uğraşmadan Satışa Başlayın!
+## Moyduz ile Uygulama Tarafını Hızlandırın
 
-Hangi Sanal POS'un komisyon oranı daha düşük, hangisinin API entegrasyonu daha kolay diye araştırarak zaman kaybetmek zorunda değilsiniz.
+Moyduz altyapısında PayTR, iyzico ve diğer yaygın sağlayıcılar hazır entegrasyonla gelir. Böylece ekibiniz oran pazarlığına ve kârlılığa odaklanır, temel entegrasyon süre kaybettirmez.
 
-Moyduz E-ticaret Altyapısı'nı tercih ettiğinizde:
-- **PayTR, iyzico, Param vb. tüm sanal POS sağlayıcıları sisteme önceden entegre edilmiştir.** Tek yapmanız gereken API anahtarlarınızı panelinize girmek!
-- **Sıfır (%0) Altyapı Komisyonu:** E-ticaret yazılımınıza ekstradan işlem başına komisyon ödemezsiniz. 
-- Müşterinize **Peşin Fiyatına Taksit** kampanya tanımlarını saniyeler içinde yaparsınız.
-
-**Ödeme sistemleriyle tek tek uğraşmayın, [Moyduz e-ticaret paketlerinde](/e-ticaret-paketleri) hepsi tek tıkla hazır, üstelik %0 altyapı komisyonuyla!** Hemen [ücretsiz danışmanlık alın](/sizi-arayalim) ve 2026 yılına kârlı bir başlangıç yapın.
+- [Sanal POS Hesaplayıcı](/tools/sanal-pos-hesaplama)
+- [Ödeme Sistemleri Rehberi](/rehber/odeme-sistemleri)
+- [E-ticaret Paketleri](/e-ticaret-paketleri)
+- [Ücretsiz görüşme](/sizi-arayalim)

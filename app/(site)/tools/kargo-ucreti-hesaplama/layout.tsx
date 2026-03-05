@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { buildWebApplicationToolSchema } from '@/seo/json-ld/index'
+import { buildWebApplicationToolSchema, buildFAQPageSchema } from '@/seo/json-ld/index'
 
 export const metadata: Metadata = {
   title: 'Kargo Ücreti Hesaplama 2026 | MNG, Yurtiçi, Aras Karşılaştır | Moyduz',
@@ -33,15 +33,24 @@ export const metadata: Metadata = {
   },
 }
 
+const FAQS = [
+  { question: 'Hangi kargo firması en ucuz?', answer: '2026\'da aylık 100–500 gönderi bandında Yurtiçi Kargo anlaşmalı fiyatıyla genellikle en avantajlıdır. Daha düşük hacimde MNG ve Aras rekabetçidir. 1000+ gönderide özel anlaşma şarttır; bu araçla desine ve hacme göre karşılaştırabilirsiniz.' },
+  { question: 'Kargo ücreti desi mi yoksa kg\'a göre mi hesaplanır?', answer: 'Tüm büyük kargo firmaları gerçek ağırlık ile desi ağırlığından büyük olanı esas alır. Desi formülü: (En × Boy × Yükseklik) / 3000. Hafif ama hacimli paketlerde desi devreye girer ve fatura beklenenden yüksek çıkabilir.' },
+  { question: 'E-ticaret kargo anlaşması nasıl yapılır?', answer: 'Aylık 200 gönderinin üzerinde hacminiz varsa kargo firmalarının kurumsal satış ekibiyle görüşerek indirimli tarife alabilirsiniz. Genellikle %15–40 arasında indirim mümkündür. Birden fazla firmadan teklif alarak müzakere edin.' },
+  { question: 'Kapıdan ödeme seçeneği kargo maliyetini artırır mı?', answer: 'Evet. Kapıdan ödeme (nakit veya kartlı) kargo firmaları tarafından ek hizmet bedeli ile faturalandırılır. Ortalama ek maliyet gönderi başına 3–8 TL arasındadır. Ön ödemeli siparişlerde bu maliyet ortadan kalkar.' },
+]
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   const schema = buildWebApplicationToolSchema({
     name: 'Kargo Ücreti Hesaplama',
     description: 'Farklı kargo firmalarının fiyatlarını karşılaştırın. Aylık gönderim hacminize göre en avantajlı seçeneği bulun.',
     url: 'https://moyduz.com/tools/kargo-ucreti-hesaplama',
   })
+  const faqSchema = buildFAQPageSchema(FAQS)
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {children}
     </>
   )

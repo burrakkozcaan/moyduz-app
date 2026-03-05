@@ -31,6 +31,46 @@ function formatCategoryLabel(slug: string) {
   return PILLAR_LABELS[slug] || slug.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
 }
 
+function sanitizeFaqText(input: string): string {
+  return input
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/\*\*(.+?)\*\*/g, '$1')
+    .replace(/\*(.+?)\*/g, '$1')
+    .replace(/^#+\s*/gm, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function normalizeFaqItems(
+  items: Array<{ question: string; answer: string }>,
+  maxFaqs = 8,
+): Array<{ question: string; answer: string }> {
+  const out: Array<{ question: string; answer: string }> = []
+  const seen = new Set<string>()
+
+  for (const item of items) {
+    if (out.length >= maxFaqs) break
+    const question = sanitizeFaqText(item.question)
+    const answer = sanitizeFaqText(item.answer)
+    if (question.length < 5 || answer.length < 20) continue
+
+    const normalizedQuestion = question.endsWith('?') ? question : `${question}?`
+    const key = normalizedQuestion.toLocaleLowerCase('tr-TR')
+    if (seen.has(key)) continue
+
+    seen.add(key)
+    out.push({
+      question: normalizedQuestion,
+      answer: answer.length > 320 ? `${answer.slice(0, 320)}…` : answer,
+    })
+  }
+
+  return out
+}
+
 /** Blog içeriğinden otomatik FAQ üretir: ## / ### başlıkları soru, altındaki ilk paragraf cevap */
 function extractFaqFromContent(content: string): Array<{ question: string; answer: string }> {
   const faqs: Array<{ question: string; answer: string }> = []
@@ -328,9 +368,10 @@ export default async function BlogSlugPage({
     })),
   }
 
-  const autoFaqs = Array.isArray(post.frontmatter.faqs)
+  const rawFaqs = Array.isArray(post.frontmatter.faqs)
     ? post.frontmatter.faqs as Array<{ question: string; answer: string }>
     : extractFaqFromContent(post.content)
+  const autoFaqs = normalizeFaqItems(rawFaqs, 8)
 
   const faqJsonLd = autoFaqs.length > 0 ? {
     '@context': 'https://schema.org',
@@ -508,28 +549,21 @@ export default async function BlogSlugPage({
             />
           </div>
 
-          {/* FAQ: Her blog detayında otomatik — içerikten ##/### başlık + ilk paragraf; istersen frontmatter.faqs ile ezebilirsin */}
-          {(() => {
-            const faqs =
-              post.frontmatter.faqs && post.frontmatter.faqs.length > 0
-                ? post.frontmatter.faqs
-                : extractFaqFromContent(post.content)
-            if (faqs.length === 0) return null
-            return (
-              <section className="mt-12 pt-8 border-t border-ln-gray-200 dark:border-ln-gray-800" id="faq">
-                <h2 className="text-2xl md:text-3xl font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-6">
-                  Sıkça Sorulan Sorular
-                </h2>
-                <Accordions type="single" className="space-y-2">
-                  {faqs.map((faq, idx) => (
-                    <Accordion key={idx} title={faq.question} id={idx === 0 ? 'faq' : undefined}>
-                      <p className="text-ln-gray-700 dark:text-ln-gray-300 leading-relaxed">{faq.answer}</p>
-                    </Accordion>
-                  ))}
-                </Accordions>
-              </section>
-            )
-          })()}
+          {/* FAQ: Şema ve UI aynı normalize edilmiş veri kaynağını kullanır */}
+          {autoFaqs.length > 0 && (
+            <section className="mt-12 pt-8 border-t border-ln-gray-200 dark:border-ln-gray-800" id="faq">
+              <h2 className="text-2xl md:text-3xl font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-6">
+                Sıkça Sorulan Sorular
+              </h2>
+              <Accordions type="single" className="space-y-2">
+                {autoFaqs.map((faq, idx) => (
+                  <Accordion key={idx} title={faq.question} id={idx === 0 ? 'faq' : undefined}>
+                    <p className="text-ln-gray-700 dark:text-ln-gray-300 leading-relaxed">{faq.answer}</p>
+                  </Accordion>
+                ))}
+              </Accordions>
+            </section>
+          )}
 
           {/* Conversion CTA — plandaki "Sitenizi analiz edin" */}
           <section className="mt-12 pt-8 border-t border-ln-gray-200 dark:border-ln-gray-800">

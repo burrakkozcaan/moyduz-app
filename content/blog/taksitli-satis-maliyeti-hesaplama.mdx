@@ -1,0 +1,107 @@
+---
+title: "Taksitli Satış Maliyeti Hesaplama: Taksit Oranı Kârınızı Nasıl Etkiler?"
+slug: "taksitli-satis-maliyeti-hesaplama"
+meta_title: "Taksitli Satış Maliyeti Hesaplama 2026 | Net Kâr Etkisi"
+meta_description: "Taksitli satış maliyeti nasıl hesaplanır? Taksit oranı, ödeme kesintisi ve tahsilat vadesinin net kâra etkisini TL bazlı senaryolarla görün."
+snippet: "Taksit, dönüşümü artırabilir ama marjı da düşürebilir. Bu rehberde taksitli satışın gerçek maliyetini hesaplama modelini adım adım bulabilirsiniz."
+published_at: "2026-03-05T00:00:00Z"
+updated_at: "2026-03-05T00:00:00Z"
+author_name: "Moyduz Ekibi"
+reading_time: 8
+category:
+  name: "Ödeme Sistemleri"
+  slug: "odeme-sistemleri"
+tags: ["taksitli satış", "komisyon", "karlılık", "sanal pos"]
+draft: true
+ai_related: "/blog/sanal-pos-komisyon-hesaplama-2026,/blog/e-ticaret-karlilik-hesaplama-2026,/blog/paytr-vs-iyzico,/blog/komisyon-hesaplama-rehberi,/rehber/odeme-sistemleri"
+key_points:
+  - "Taksitli satış dönüşümü artırırken sipariş başına net marjı düşürebilir."
+  - "Doğru analiz için taksit payı ve sipariş katkı marjı birlikte izlenmelidir."
+  - "Her ürün taksite uygun değildir; ürün bazlı kârlılık segmentasyonu gerekir."
+  - "Yüksek taksit payı olan mağazalarda ödeme altyapısı seçimi stratejik hale gelir."
+faqs:
+  - question: "Taksitli satış maliyeti nasıl hesaplanır?"
+    answer: "Ana ödeme kesintisine ek taksit maliyeti eklenir ve sipariş başına net katkı marjı tekrar hesaplanır."
+  - question: "Taksit her zaman satış artırır mı?"
+    answer: "Bazı kategorilerde artırır, bazı kategorilerde etkisi düşüktür. Etkiyi kategori ve sepet tutarı bazında ölçmek gerekir."
+  - question: "Taksit oranı ne zaman riskli hale gelir?"
+    answer: "Taksitli sipariş payı yükselip birim katkı marjı kritik eşik altına düştüğünde kârlılık riski oluşur."
+  - question: "Taksitli satışta ilk optimizasyon adımı nedir?"
+    answer: "Ürün bazında taksit açık/kapalı A/B testi yaparak dönüşüm katkısı ile marj kaybını birlikte ölçmektir."
+---
+
+Taksitli satış, e-ticarette dönüşümü artıran güçlü bir araçtır. Ancak doğru fiyatlama ve maliyet kontrolü yoksa satış artarken kârlılık düşebilir.
+
+Kısa cevap: **Taksit kararını kampanya değil marj verisi yönetmelidir.**
+
+## Hızlı Cevap
+
+- **Taksit = daha yüksek dönüşüm potansiyeli**
+- **Taksit = daha yüksek ödeme maliyeti**
+- **Karar metriği:** sipariş başına net katkı marjı
+- **En iyi yöntem:** ürün bazlı taksit stratejisi
+
+## Taksitli Satışta Maliyet Formülü
+
+`Sipariş Net Katkı = Satış Fiyatı - Ürün Maliyeti - Ana Komisyon - Taksit Ek Maliyeti - Kargo - İade Payı`
+
+### Örnek Senaryo (Temsilidir)
+
+- Aylık ciro: **180.000 TL**
+- Sipariş: **390**
+- Taksitli satış payı: **%40**
+
+| Kalem | Peşin Senaryo | Taksitli Senaryo |
+|---|---:|---:|
+| Ortalama sipariş geliri | 460 TL | 460 TL |
+| Ödeme kesintisi | 12 TL | 21 TL |
+| Sipariş net katkı | 96 TL | 87 TL |
+
+Birimde **9 TL** fark, aylık 156 taksitli siparişte **1.404 TL** etki yaratır.
+
+## Taksit Payına Göre Aylık Etki
+
+| Taksitli Sipariş Payı | Aylık Ek Maliyet |
+|---|---:|
+| %20 | 700 TL |
+| %40 | 1.400 TL |
+| %60 | 2.100 TL |
+
+Bu yüzden taksit oranı yükseldikçe fiyat, kampanya ve ürün karması yeniden optimize edilmelidir.
+
+## Karar Matrisi: Hangi Ürünlerde Taksit Açılmalı?
+
+| Ürün Tipi | Taksit Stratejisi |
+|---|---|
+| Yüksek sepet / dayanıklı tüketim | Taksit açık, marj kontrollü |
+| Düşük sepet / düşük marj | Sınırlı taksit veya peşin teşvik |
+| İade riski yüksek ürün | Taksit temkinli + net iade politikası |
+| Premium ürün | Taksit + güven sinyali kombinasyonu |
+
+## Riskler ve Dikkat Noktaları
+
+### 1) Taksiti tüm ürünlere kör açmak
+
+Bazı ürünlerde dönüşüm artışı marj kaybını telafi etmez.
+
+### 2) Sadece ciroya bakmak
+
+Taksitli satışta ciro artışı, net katkı düşüşünü gizleyebilir.
+
+### 3) Kategori bazlı analiz yapmamak
+
+Her kategori aynı taksit davranışını üretmez.
+
+## 21 Günlük Optimizasyon Planı
+
+1. Ürünleri marj seviyesine göre sınıflandırın.
+2. Taksit açık/kapalı testini ürün grubunda çalıştırın.
+3. Kanal bazında dönüşüm-kârlılık dengesini ölçün.
+4. Düşük katkılı ürünlerde taksit politikasını daraltın.
+
+## İlgili İçerikler
+
+- [Sanal POS Komisyon Hesaplama 2026](/blog/sanal-pos-komisyon-hesaplama-2026)
+- [E-Ticaret Karlılık Hesaplama 2026](/blog/e-ticaret-karlilik-hesaplama-2026)
+- [Komisyon Hesaplama Rehberi](/blog/komisyon-hesaplama-rehberi)
+- [Ödeme Sistemleri Rehberi](/rehber/odeme-sistemleri)
