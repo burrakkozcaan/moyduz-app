@@ -24,7 +24,7 @@ function SecureDeliveryCard() {
       className="bg-gradient-to-br from-ln-gray-50 to-ln-gray-50 rounded-3xl relative overflow-hidden border border-ln-gray-100 dark:border-ln-gray-800"
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
       {/* visual: grid layout (5 cols, center card prominent) */}
@@ -36,8 +36,7 @@ function SecureDeliveryCard() {
             <motion.div
               className="h-28 rounded-xl ring-1 ring-ln-gray-200/60 bg-transparent dark:ring-ln-gray-700/60"
               initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.35 }}
             />
             <div className="rounded-xl ring-1 ring-ln-gray-200/60 bg-ln-gray-50/50 dark:ring-ln-gray-700/60 dark:bg-ln-gray-800/30" />
@@ -51,16 +50,14 @@ function SecureDeliveryCard() {
               <motion.div
                 className="relative rounded-xl ring-1 ring-ln-gray-200/80 bg-transparent dark:ring-ln-gray-700/80 shadow-lg aspect-video p-4 flex flex-col justify-between"
                 initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.4 }}
               >
                 <div className="flex items-start justify-between gap-2">
                   <motion.span
                     className="rounded-md border border-emerald-600/30 bg-emerald-500 px-1.5 py-0.5 text-[10px] font-medium text-white shadow-sm"
                     initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
+                    animate={{ opacity: 1 }}
                     transition={{ delay: 0.5, duration: 0.3 }}
                   >
                     SSL
@@ -77,8 +74,7 @@ function SecureDeliveryCard() {
                       key={i}
                       className="size-6 rounded-full border-2 border-white dark:border-ln-gray-900 bg-ln-gray-200 dark:bg-ln-gray-700"
                       initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
+                      animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.3 + i * 0.06, duration: 0.25 }}
                     />
                   ))}
@@ -94,8 +90,7 @@ function SecureDeliveryCard() {
             <motion.div
               className="h-28 rounded-xl ring-1 ring-ln-gray-200/60 bg-transparent dark:ring-ln-gray-700/60"
               initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.15, duration: 0.35 }}
             />
             <div className="rounded-xl ring-1 ring-ln-gray-200/60 bg-ln-gray-50/50 dark:ring-ln-gray-700/60 dark:bg-ln-gray-800/30" />
@@ -141,7 +136,7 @@ function MeasureCard() {
       className="bg-transparent rounded-3xl relative overflow-hidden border border-ln-gray-100 dark:border-ln-gray-800"
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
       <div className="h-60 relative flex items-center justify-center overflow-hidden select-none p-4">
@@ -206,7 +201,7 @@ function DistributionCard() {
       className="bg-transparent rounded-3xl relative overflow-hidden border border-ln-gray-100 dark:border-ln-gray-800 shadow ring-1 ring-ln-gray-200/50 dark:ring-ln-gray-700/50"
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
       <div className="grid grid-rows-[auto_1fr] gap-6 sm:gap-8 overflow-hidden rounded-3xl p-6 sm:p-8">

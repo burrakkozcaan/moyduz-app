@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
@@ -25,6 +25,8 @@ const logos = [
 ];
 
 export default function Intro() {
+  const [introSeen, setIntroSeen] = useState(false);
+
   return (
     <section
       id='intro'
@@ -49,8 +51,10 @@ export default function Intro() {
           id="nasil-calisir"
           className='flex w-full flex-col items-center gap-6 scroll-mt-24'
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          animate={introSeen ? { opacity: 1, y: 0 } : undefined}
+          whileInView={introSeen ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          onViewportEnter={() => setIntroSeen(true)}
           transition={{ type: 'spring', duration: 0.6, bounce: 0.05 }}
           itemScope
           itemType="https://schema.org/ProfessionalService"
@@ -112,7 +116,7 @@ export default function Intro() {
           </h2>
           <p className='text-muted-foreground md:text-lg m-2 w-full px-6 text-center text-[14px] leading-[1.5] md:max-w-[700px] md:px-0 md:leading-relaxed'>
             Küresel markalar, pazarlarda başarılı olan ölçeklenebilir web siteleri, SaaS
-            platformları ve otomasyon sistemleri kurmak için Moyduz'a güveniyor.
+            platformları ve otomasyon sistemleri kurmak için Moyduz&apos;a güveniyor.
           </p>
           {/* Logos Marquee */}
           <div

@@ -89,7 +89,7 @@ export function BuiltForTeamsSection() {
         className="container relative mx-auto px-4 py-16 md:py-24 lg:px-8"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2, margin: "-40px" }}
+        viewport={{ once: true, amount: 0.15 }}
         variants={container}
       >
         {/* Cursor avatars – fixed positions, no mouse-driven transform */}

@@ -19,7 +19,7 @@ export function DeferredElectronBento() {
 
 export function DeferredEcosystemMarquee() {
   return (
-    <DeferredMount fallback={<div className="h-[200px] w-full" />}>
+    <DeferredMount fallback={<div className="h-[200px] w-full" />} className="w-full overflow-x-hidden">
       <EcosystemMarqueeSection />
     </DeferredMount>
   );

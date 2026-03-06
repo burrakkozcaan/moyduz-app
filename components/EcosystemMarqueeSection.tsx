@@ -34,7 +34,7 @@ const ITEMS = [
 
 export default function EcosystemMarqueeSection() {
   return (
-    <section className="w-full max-w-full overflow-x-clip py-12">
+    <section className="w-full max-w-full overflow-x-hidden py-12">
       <div className="container max-w-full px-4 md:px-6">
         <div className="mx-auto flex max-w-3xl flex-col items-center justify-center gap-6 text-center">
           <Badge
@@ -133,29 +133,25 @@ export default function EcosystemMarqueeSection() {
           dangerouslySetInnerHTML={{
             __html: `
               .ecosystem-marquee-container {
+                contain: layout paint;
                 overflow-x: clip;
-                content-visibility: visible;
               }
               .ecosystem-marquee-container * {
                 box-sizing: border-box;
               }
               @keyframes ecosystem-marquee {
-                0% { transform: translate3d(0, 0, 0); }
-                100% { transform: translate3d(-100%, 0, 0); }
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-100%); }
               }
               @keyframes ecosystem-marquee-reverse {
-                0% { transform: translate3d(-100%, 0, 0); }
-                100% { transform: translate3d(0, 0, 0); }
+                0% { transform: translateX(-100%); }
+                100% { transform: translateX(0); }
               }
               .ecosystem-marquee-container .animate-marquee {
                 animation: ecosystem-marquee 60s linear infinite;
-                animation-play-state: running;
-                backface-visibility: hidden;
               }
               .ecosystem-marquee-container .animate-marquee-reverse {
                 animation: ecosystem-marquee-reverse 60s linear infinite;
-                animation-play-state: running;
-                backface-visibility: hidden;
               }
               @media (prefers-reduced-motion: reduce) {
                 .ecosystem-marquee-container .animate-marquee,

@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { DottedMapWithMarkers } from "@/components/DottedMapWithMarkers";
 
+const viewportOnce = { once: true, amount: 0.15 };
+
 export default function Stats() {
   return (
     <motion.section
@@ -13,7 +15,7 @@ export default function Stats() {
       style={{ height: "min-content" }}
       initial={{ opacity: 0, y: 50, scale: 0.98 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={viewportOnce}
       transition={{ type: "spring", duration: 0.8, bounce: 0.01 }}
     >
       <div className="flex flex-col items-center gap-[43px] w-full max-w-[1100px]">
@@ -47,7 +49,7 @@ export default function Stats() {
               className="text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={viewportOnce}
               transition={{ type: "spring", duration: 0.6, bounce: 0.05 }}
             >
               <h3 className="text-black text-lg md:text-xl font-semibold mb-2">
@@ -61,7 +63,7 @@ export default function Stats() {
               className="text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={viewportOnce}
               transition={{ type: "spring", duration: 0.6, bounce: 0.05, delay: 0.1 }}
             >
               <h3 className="text-black text-lg md:text-xl font-semibold mb-2">
@@ -75,7 +77,7 @@ export default function Stats() {
               className="text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={viewportOnce}
               transition={{ type: "spring", duration: 0.6, bounce: 0.05, delay: 0.2 }}
             >
               <h3 className="text-black text-lg md:text-xl font-semibold mb-2">
@@ -92,7 +94,7 @@ export default function Stats() {
             className="flex flex-col items-start gap-[5px] w-min h-min"
             initial={{ opacity: 0, y: 50, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={viewportOnce}
             transition={{ type: "spring", duration: 0.8, bounce: 0.01 }}
           >
             <p className="text-black text-[52px] md:text-[65px] leading-[1.2] tracking-[-0.05em] font-semibold text-left">
@@ -104,7 +106,7 @@ export default function Stats() {
             className="flex flex-col items-start gap-[5px] w-min h-min"
             initial={{ opacity: 0, y: 50, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={viewportOnce}
             transition={{ type: "spring", duration: 0.8, bounce: 0.01, delay: 0.1 }}
           >
             <p className="text-black text-[52px] md:text-[65px] leading-[1.2] tracking-[-0.05em] font-semibold text-left">
@@ -116,7 +118,7 @@ export default function Stats() {
             className="flex flex-col items-start gap-[5px] w-min h-min"
             initial={{ opacity: 0, y: 50, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={viewportOnce}
             transition={{ type: "spring", duration: 0.8, bounce: 0.01, delay: 0.2 }}
           >
             <p className="text-black text-[52px] md:text-[65px] leading-[1.2] tracking-[-0.05em] font-semibold text-left">
