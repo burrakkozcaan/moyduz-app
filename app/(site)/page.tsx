@@ -32,26 +32,29 @@ export const metadata: Metadata = {
   },
 };
 
-import Faqs from '@/components/Faqs';
+import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
-import RapidDevelopment from '@/components/RapidDevelopment';
-import { CTASectionNew } from '@/components/CTASectionNew';
-import SectorTemplates from '@/components/SectorTemplates';
+import VerticalMarqueeHero from '@/components/VerticalMarqueeHero';
 import Intro from '@/components/Intro';
+import EffortlessSection from '@/components/EffortlessSection';
+import RapidDevelopment from '@/components/RapidDevelopment';
 import FeaturesSection from '@/components/FeaturesSection';
+import { BuildFasterSection } from '@/components/BuildFasterSection';
 import { BuiltForTeamsSection } from '@/components/BuiltForTeamsSection';
 import { EndlessPossibilitiesSection } from '@/components/EndlessPossibilitiesSection';
-import EffortlessSection from '@/components/EffortlessSection';
 import Stats from '@/components/Stats';
-import { BuildFasterSection } from '@/components/BuildFasterSection';
-import PlatformPillars from '@/components/PlatformPillars';
 import HomePricingCards from '@/components/HomePricingCards';
-import Testimional from '@/components/Testimional';
-import ElectronBento from '@/components/ElectronBento';
-import VerticalMarqueeHero from '@/components/VerticalMarqueeHero';
+import Faqs from '@/components/Faqs';
+import { CTASectionNew } from '@/components/CTASectionNew';
+import DeferredMount from '@/components/DeferredMount';
 import { r2cdn } from '@/lib/cdn';
 
-import EcosystemMarqueeSection from '@/components/EcosystemMarqueeSection';
+// Fold altı heavy component'lar — sadece viewport'a yaklaşınca yükle
+const ElectronBento = dynamic(() => import('@/components/ElectronBento'), { ssr: false });
+const EcosystemMarqueeSection = dynamic(() => import('@/components/EcosystemMarqueeSection'), { ssr: false });
+const PlatformPillars = dynamic(() => import('@/components/PlatformPillars'), { ssr: false });
+const SectorTemplates = dynamic(() => import('@/components/SectorTemplates'), { ssr: false });
+const Testimional = dynamic(() => import('@/components/Testimional'), { ssr: false });
 
 export default function Home() {
   return (
@@ -78,7 +81,9 @@ export default function Home() {
      
 
 
-        <ElectronBento />
+        <DeferredMount fallback={<div className="h-[600px] w-full" />}>
+          <ElectronBento />
+        </DeferredMount>
 
 
         {/* Moyduz Engine: altyapı, performans, ticari, global, güvenlik */}
@@ -98,8 +103,12 @@ export default function Home() {
 
       
 
-          <EcosystemMarqueeSection />
-          <PlatformPillars />
+          <DeferredMount fallback={<div className="h-[200px] w-full" />}>
+            <EcosystemMarqueeSection />
+          </DeferredMount>
+          <DeferredMount fallback={<div className="h-[300px] w-full" />}>
+            <PlatformPillars />
+          </DeferredMount>
 
         {/* pricing */}
         <div id="pricing" className='md:px-2.5'>
@@ -301,9 +310,13 @@ export default function Home() {
             />
           </div>
         </div>
-        <SectorTemplates />
-    
-        <Testimional />
+        <DeferredMount fallback={<div className="h-[400px] w-full" />}>
+          <SectorTemplates />
+        </DeferredMount>
+
+        <DeferredMount fallback={<div className="h-[400px] w-full" />}>
+          <Testimional />
+        </DeferredMount>
 
         <Faqs />
         <CTASectionNew />
