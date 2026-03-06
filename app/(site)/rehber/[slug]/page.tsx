@@ -26,6 +26,18 @@ const TOOL_LABELS: Record<string, string> = {
   '/tools/sanal-pos-hesaplama': 'Sanal POS Maliyet Hesaplayıcı',
 }
 
+/** Get a string category for comparison (handles both string and { name, slug } object) */
+function getCategorySlug(category: unknown): string | undefined {
+  if (typeof category === 'string') return category
+  if (category && typeof category === 'object' && 'slug' in category && typeof (category as { slug?: string }).slug === 'string') {
+    return (category as { slug: string }).slug
+  }
+  if (category && typeof category === 'object' && 'name' in category && typeof (category as { name?: string }).name === 'string') {
+    return (category as { name: string }).name
+  }
+  return undefined
+}
+
 function sanitizeFaqText(input: string): string {
   return input
     .replace(/```[\s\S]*?```/g, ' ')
@@ -197,13 +209,14 @@ export default async function RehberSlugPage({
   const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : undefined
   const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : undefined
 
-  // Related posts — same category
-  const postCategory = frontmatter.category as string | undefined
-  const relatedPosts = postCategory
+  // Related posts — same category (category can be string or { name, slug })
+  const postCategorySlug = getCategorySlug(frontmatter.category)
+  const relatedPosts = postCategorySlug
     ? allPosts
         .filter((p) => {
           if (p.frontmatter.slug === slug) return false
-          return (p.frontmatter.category as string | undefined)?.toLowerCase() === postCategory.toLowerCase()
+          const otherSlug = getCategorySlug(p.frontmatter.category)
+          return otherSlug != null && otherSlug.toLowerCase() === postCategorySlug.toLowerCase()
         })
         .slice(0, 4)
     : []
@@ -320,11 +333,14 @@ export default async function RehberSlugPage({
 
         {/* On this page — TOC */}
         {(() => {
-          const headings = [...content.matchAll(/^## (.+)$/gm)].map(m => ({
-            id: m[1].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
-            label: m[1].replace(/\*\*/g, '').trim(),
-            depth: 2,
-          }))
+          const headings = [...content.matchAll(/^## (.+)$/gm)]
+            .map(m => (typeof m[1] === 'string' ? m[1] : ''))
+            .filter(Boolean)
+            .map(label => ({
+              id: label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+              label: label.replace(/\*\*/g, '').trim(),
+              depth: 2,
+            }))
           return headings.length > 0 ? (
             <div className="not-prose mb-6">
               <TableOfContents items={headings} title="Bu Sayfada" />
