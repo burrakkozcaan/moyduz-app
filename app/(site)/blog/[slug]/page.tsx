@@ -198,7 +198,10 @@ export default async function BlogSlugPage({
   const { slug } = await params
 
   if (BLOG_PILLAR_CATEGORIES.includes(slug as (typeof BLOG_PILLAR_CATEGORIES)[number])) {
-    const posts = await getBlogPostsByCategory(slug)
+    const [posts, allPosts] = await Promise.all([
+      getBlogPostsByCategory(slug),
+      getAllBlogPosts(),
+    ])
     const list = posts.map((post) => ({
       slug: post.frontmatter.slug,
       title: post.frontmatter.title,
@@ -211,7 +214,6 @@ export default async function BlogSlugPage({
       hero_image: post.frontmatter.hero_image as string | undefined,
       featured_image: post.frontmatter.featured_image,
     }))
-    const allPosts = await getAllBlogPosts()
     const categoryMap = new Map<string, { count: number; name?: string }>()
     allPosts.forEach((p) => {
       const cs = typeof p.frontmatter.category === 'object' ? p.frontmatter.category?.slug : p.frontmatter.category
@@ -241,7 +243,10 @@ export default async function BlogSlugPage({
     )
   }
 
-  const post = await getBlogPost(slug)
+  const [post, allPosts] = await Promise.all([
+    getBlogPost(slug),
+    getAllBlogPosts(),
+  ])
   if (!post) notFound()
 
   const tocItems = extractTOC(post.content)
@@ -278,8 +283,7 @@ export default async function BlogSlugPage({
 
   breadcrumbItems.push({ label: post.frontmatter.title, href: `/blog/${slug}` })
 
-  // All posts for pagination + related
-  const allPosts = await getAllBlogPosts()
+  // All posts for pagination + related (fetched in parallel above)
   const currentIndex = allPosts.findIndex((p) => p.frontmatter.slug === slug)
 
   const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : undefined

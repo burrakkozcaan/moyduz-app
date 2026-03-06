@@ -32,7 +32,6 @@ export const metadata: Metadata = {
   },
 };
 
-import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
 import VerticalMarqueeHero from '@/components/VerticalMarqueeHero';
 import Intro from '@/components/Intro';
@@ -46,15 +45,14 @@ import Stats from '@/components/Stats';
 import HomePricingCards from '@/components/HomePricingCards';
 import Faqs from '@/components/Faqs';
 import { CTASectionNew } from '@/components/CTASectionNew';
-import DeferredMount from '@/components/DeferredMount';
 import { r2cdn } from '@/lib/cdn';
-
-// Fold altı heavy component'lar — sadece viewport'a yaklaşınca yükle
-const ElectronBento = dynamic(() => import('@/components/ElectronBento'), { ssr: false });
-const EcosystemMarqueeSection = dynamic(() => import('@/components/EcosystemMarqueeSection'), { ssr: false });
-const PlatformPillars = dynamic(() => import('@/components/PlatformPillars'), { ssr: false });
-const SectorTemplates = dynamic(() => import('@/components/SectorTemplates'), { ssr: false });
-const Testimional = dynamic(() => import('@/components/Testimional'), { ssr: false });
+import {
+  DeferredElectronBento,
+  DeferredEcosystemMarquee,
+  DeferredPlatformPillars,
+  DeferredSectorTemplates,
+  DeferredTestimonials,
+} from '@/components/home/DeferredSections';
 
 export default function Home() {
   return (
@@ -81,9 +79,7 @@ export default function Home() {
      
 
 
-        <DeferredMount fallback={<div className="h-[600px] w-full" />}>
-          <ElectronBento />
-        </DeferredMount>
+        <DeferredElectronBento />
 
 
         {/* Moyduz Engine: altyapı, performans, ticari, global, güvenlik */}
@@ -103,12 +99,8 @@ export default function Home() {
 
       
 
-          <DeferredMount fallback={<div className="h-[200px] w-full" />}>
-            <EcosystemMarqueeSection />
-          </DeferredMount>
-          <DeferredMount fallback={<div className="h-[300px] w-full" />}>
-            <PlatformPillars />
-          </DeferredMount>
+          <DeferredEcosystemMarquee />
+          <DeferredPlatformPillars />
 
         {/* pricing */}
         <div id="pricing" className='md:px-2.5'>
@@ -310,13 +302,9 @@ export default function Home() {
             />
           </div>
         </div>
-        <DeferredMount fallback={<div className="h-[400px] w-full" />}>
-          <SectorTemplates />
-        </DeferredMount>
+        <DeferredSectorTemplates />
 
-        <DeferredMount fallback={<div className="h-[400px] w-full" />}>
-          <Testimional />
-        </DeferredMount>
+        <DeferredTestimonials />
 
         <Faqs />
         <CTASectionNew />

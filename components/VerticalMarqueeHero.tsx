@@ -211,11 +211,11 @@ export default function VerticalMarqueeHero() {
         style={{ bottom: "-2px", transform: "translateZ(0)", isolation: "isolate", pointerEvents: "none" }}
       />
       <div
-        className="absolute left-0 top-0 z-50 h-full w-[80px]  from-[#f7f7f7] to-transparent md:w-[120px]"
+        className="absolute left-0 top-0 z-50 h-full w-[100px] bg-gradient-to-r from-[#f7f7f7] via-[#f7f7f7]/90 to-transparent shadow-[8px_0_24px_-4px_rgba(247,247,247,0.5)] md:w-[120px] md:shadow-none"
         style={{ transform: "translateZ(0)", isolation: "isolate", pointerEvents: "none" }}
       />
       <div
-        className="absolute right-0 top-0 z-50 h-full w-[80px]    md:w-[120px]"
+        className="absolute right-0 top-0 z-50 h-full w-[100px] bg-gradient-to-l from-[#f7f7f7] via-[#f7f7f7]/90 to-transparent shadow-[-8px_0_24px_-4px_rgba(247,247,247,0.5)] md:w-[120px] md:shadow-none"
         style={{ transform: "translateZ(0)", isolation: "isolate", pointerEvents: "none" }}
       />
     </section>

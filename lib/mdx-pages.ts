@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import matter from 'gray-matter'
 import fs from 'fs'
 import path from 'path'
@@ -69,7 +70,7 @@ export const SERVICE_SLUGS = [
 
 export type ServiceSlug = (typeof SERVICE_SLUGS)[number]
 
-export async function getPage(slug: string): Promise<PageContent | null> {
+export const getPage = cache(async function getPage(slug: string): Promise<PageContent | null> {
   try {
     const filePath = path.join(PAGES_DIR, `${slug}.mdx`)
     if (!fs.existsSync(filePath)) return null
@@ -84,7 +85,7 @@ export async function getPage(slug: string): Promise<PageContent | null> {
   } catch {
     return null
   }
-}
+})
 
 export function getPageSlugs(): PageSlug[] {
   return [...PAGE_SLUGS]

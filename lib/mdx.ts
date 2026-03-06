@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import matter from 'gray-matter'
 import fs from 'fs'
 import path from 'path'
@@ -26,7 +27,7 @@ export interface BlogPost {
 
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog')
 
-export async function getBlogPost(slug: string): Promise<BlogPost | null> {
+export const getBlogPost = cache(async function getBlogPost(slug: string): Promise<BlogPost | null> {
   try {
     const filePath = path.join(BLOG_DIR, `${slug}.mdx`)
     if (!fs.existsSync(filePath)) return null
@@ -41,9 +42,9 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   } catch {
     return null
   }
-}
+})
 
-export async function getAllBlogPosts(): Promise<BlogPost[]> {
+export const getAllBlogPosts = cache(async function getAllBlogPosts(): Promise<BlogPost[]> {
   try {
     if (!fs.existsSync(BLOG_DIR)) return []
 
@@ -75,7 +76,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
   } catch {
     return []
   }
-}
+})
 
 export async function getBlogPostsByCategory(
   categorySlug?: string | null
