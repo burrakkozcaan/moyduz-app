@@ -52,6 +52,7 @@ export const category = defineType({
       type: 'array',
       of: [{ type: 'image' }],
       validation: (rule) => rule.max(3),
+      description: '1–3 images for marketplace category cards. Edit from Content → Category (not from within a Template).',
     }),
     defineField({
       name: 'order',

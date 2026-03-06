@@ -92,20 +92,6 @@ const TOOLS = [
     live: true,
   },
   {
-    slug: 'hepsiburada-komisyon-hesaplama',
-    title: 'Hepsiburada Komisyon Hesaplama',
-    description: 'Hepsiburada kategori komisyonlarını girin, net kâr ve kâr marjınızı anında görün.',
-    iconPath: 'hepsi',
-    live: true,
-  },
-  {
-    slug: 'e-ihracat-maliyet-hesaplama',
-    title: 'E-İhracat Maliyet Hesaplama',
-    description: 'Kargo, gümrük ve dönüşüm maliyetleriyle e-ihracat kârlılığınızı hesaplayın.',
-    iconPath: 'globe',
-    live: true,
-  },
-  {
     slug: 'site-saglik-skoru',
     title: 'Site Sağlık Skoru',
     description: 'Sitenizin performans ve teknik sağlık skoru. Yakında.',
@@ -160,16 +146,6 @@ const ICONS: Record<string, React.ReactNode> = {
   activity: (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 shrink-0 text-ln-orange">
       <path strokeLinecap="round" strokeLinejoin="round" d="M3 12h2.25M12 3v2.25M20.25 12H22M12 20.25V22M8.5 12l2.5-3 2.5 3 3-4.5" />
-    </svg>
-  ),
-  hepsi: (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 shrink-0 text-ln-orange">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016 2.993 2.993 0 0 0 2.25-1.016 3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72" />
-    </svg>
-  ),
-  globe: (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 shrink-0 text-ln-orange">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
     </svg>
   ),
 }

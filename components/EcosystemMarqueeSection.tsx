@@ -48,7 +48,7 @@ export default function EcosystemMarqueeSection() {
             <br />
             <span className="text-[#ff4d00]">Ölçeklenen Ürünler</span>
           </h2>
-          <p className="mx-auto max-w-3xl text-lg text-black/60">
+          <p className="mx-auto max-w-3xl break-words text-lg text-black/60">
             Tasarımdan geliştirmeye, performanstan SEO ve güvenliğe—dijital varlığınızı inşa eder ve büyütürüz.
           </p>
         </div>
@@ -112,10 +112,10 @@ export default function EcosystemMarqueeSection() {
                   .map((item, i) => (
                     <div
                       key={i}
-                      className="flex shrink-0 items-center gap-1 rounded-full border border-white/10 bg-transparent px-3 py-2 sm:px-4"
+                      className="flex shrink-0 items-center gap-2 rounded-full border border-black/10 bg-transparent px-3 py-2 sm:px-4"
                     >
-                      <item.icon className="h-4 w-4 shrink-0 text-white/40" />
-                      <span className="whitespace-nowrap text-sm font-medium text-white/50">
+                      <item.icon className="h-4 w-4 shrink-0 text-[#ff4d00]" />
+                      <span className="whitespace-nowrap text-sm font-medium text-black/60">
                         {item.label}
                       </span>
                     </div>
@@ -123,9 +123,9 @@ export default function EcosystemMarqueeSection() {
               </div>
             </div>
 
-            {/* Fade Gradients - dark theme */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/4 bg-gradient-to-r from-[#ffffff] to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/4 bg-gradient-to-l from-[#ffffff] to-transparent" />
+            {/* Fade Gradients - site background color */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-[#f7f7f7] to-transparent dark:from-[#2e2e2e]" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-[#f7f7f7] to-transparent dark:from-[#2e2e2e]" />
           </div>
         </div>
 
@@ -133,25 +133,35 @@ export default function EcosystemMarqueeSection() {
           dangerouslySetInnerHTML={{
             __html: `
               .ecosystem-marquee-container {
-                contain: layout paint;
                 overflow-x: clip;
+                content-visibility: visible;
               }
               .ecosystem-marquee-container * {
                 box-sizing: border-box;
               }
               @keyframes ecosystem-marquee {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-100%); }
+                0% { transform: translate3d(0, 0, 0); }
+                100% { transform: translate3d(-100%, 0, 0); }
               }
               @keyframes ecosystem-marquee-reverse {
-                0% { transform: translateX(-100%); }
-                100% { transform: translateX(0); }
+                0% { transform: translate3d(-100%, 0, 0); }
+                100% { transform: translate3d(0, 0, 0); }
               }
               .ecosystem-marquee-container .animate-marquee {
-                animation: ecosystem-marquee 40s linear infinite;
+                animation: ecosystem-marquee 60s linear infinite;
+                animation-play-state: running;
+                backface-visibility: hidden;
               }
               .ecosystem-marquee-container .animate-marquee-reverse {
-                animation: ecosystem-marquee-reverse 40s linear infinite;
+                animation: ecosystem-marquee-reverse 60s linear infinite;
+                animation-play-state: running;
+                backface-visibility: hidden;
+              }
+              @media (prefers-reduced-motion: reduce) {
+                .ecosystem-marquee-container .animate-marquee,
+                .ecosystem-marquee-container .animate-marquee-reverse {
+                  animation-duration: 120s;
+                }
               }
             `,
           }}

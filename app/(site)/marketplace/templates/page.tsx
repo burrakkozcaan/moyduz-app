@@ -150,7 +150,7 @@ export default async function MarketplaceTemplatesPage({
   }
 
   return (
-    <main className="flex-1">
+    <main className="min-h-screen flex-1 bg-[#000000] text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
@@ -158,10 +158,10 @@ export default async function MarketplaceTemplatesPage({
       <div className="container mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16">
         {/* Header */}
         <div className="mb-12">
-          <h1 className="mb-4 text-[34px] font-550 leading-[40px] -tracking-[0.02em] text-ln-gray-800 md:text-5xl md:text-ln-title-h4 md:text-ln-gray-900 lg:text-6xl">
+          <h1 className="mb-4 text-[34px] font-550 leading-[40px] -tracking-[0.02em] text-white md:text-5xl lg:text-6xl">
             Şablonlar
           </h1>
-          <p className="max-w-2xl text-ln-paragraph-md text-ln-gray-600 lg:text-ln-paragraph-lg">
+          <p className="max-w-2xl text-ln-paragraph-md text-white/70 lg:text-ln-paragraph-lg">
             Web sitesi, e-ticaret ve SaaS projeleri için profesyonel tasarlanmış
             şablonları keşfedin. Ölçeklenebilir ve üretime hazır UI sistemleriyle
             daha hızlı yayına çıkın.
@@ -172,10 +172,10 @@ export default async function MarketplaceTemplatesPage({
         {categories.length > 0 && (
           <div className="mb-16">
             <div className="mb-6 flex items-center justify-between">
-              <h2 className="text-xl font-550 text-ln-gray-900">Kategoriler</h2>
+              <h2 className="text-xl font-550 text-white">Kategoriler</h2>
               <Link
                 href="/marketplace/templates/category"
-                className="text-ln-label-sm text-ln-gray-600 transition hover:text-ln-gray-800"
+                className="text-ln-label-sm text-white/70 transition hover:text-white"
               >
                 Tümünü Gör →
               </Link>
@@ -185,7 +185,7 @@ export default async function MarketplaceTemplatesPage({
                 <Link
                   key={cat.slug}
                   href={`/marketplace/templates/category/${cat.slug}`}
-                  className="group flex flex-col overflow-hidden rounded-lg bg-ln-gray-50 transition hover:bg-ln-gray-100"
+                  className="group flex flex-col overflow-hidden rounded-lg bg-[#1C1C1C] transition hover:bg-[#262626]"
                 >
                   <div className="grid grid-cols-2 gap-[5px] p-[5px] pb-0">
                     {(() => {
@@ -210,7 +210,7 @@ export default async function MarketplaceTemplatesPage({
                                   placeholder="blur"
                                   blurDataURL={urlForBlurPlaceholder(img0)}
                                   sizes="(max-width: 768px) 50vw, 66vw"
-                                  className="rounded-[3px] object-cover outline outline-1 outline-ln-gray-200 outline-offset-[-1px]"
+                                  className="rounded-[3px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
                                 />
                               </div>
                               <div className="relative aspect-[4/3] overflow-hidden rounded-[3px] md:hidden">
@@ -227,7 +227,7 @@ export default async function MarketplaceTemplatesPage({
                                   placeholder="blur"
                                   blurDataURL={urlForBlurPlaceholder(img0)}
                                   sizes="100vw"
-                                  className="rounded-[3px] object-cover outline outline-1 outline-ln-gray-200 outline-offset-[-1px]"
+                                  className="rounded-[3px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
                                 />
                               </div>
                             </>
@@ -247,11 +247,11 @@ export default async function MarketplaceTemplatesPage({
                                 placeholder="blur"
                                 blurDataURL={urlForBlurPlaceholder(img1)}
                                 sizes="(max-width: 768px) 50vw, 33vw"
-                                className="rounded-[3px] object-cover outline outline-1 outline-ln-gray-200 outline-offset-[-1px]"
+                                className="rounded-[3px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
                               />
                             </div>
                           ) : (
-                            <div className="aspect-[4/3] rounded-[3px] bg-ln-gray-200" />
+                            <div className="aspect-[4/3] rounded-[3px] bg-white/10" />
                           )}
                           {img2 ? (
                             <div className="relative hidden aspect-[4/3] overflow-hidden rounded-[3px] md:col-span-1 md:block">
@@ -264,21 +264,21 @@ export default async function MarketplaceTemplatesPage({
                                 }).url()}
                                 alt={`${cat.title} thumbnail 3`}
                                 fill
-                                className="rounded-[3px] object-cover outline outline-1 outline-ln-gray-200 outline-offset-[-1px]"
+                                className="rounded-[3px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
                               />
                             </div>
                           ) : (
-                            <div className="hidden aspect-[4/3] rounded-[3px] bg-ln-gray-200 md:block" />
+                            <div className="hidden aspect-[4/3] rounded-[3px] bg-white/10 md:block" />
                           )}
                         </>
                       )
                     })()}
                   </div>
                   <div className="p-[15px]">
-                    <h4 className="truncate text-ln-label-sm font-550 text-ln-gray-900">
+                    <h4 className="truncate text-ln-label-sm font-550 text-white">
                       {cat.title}
                     </h4>
-                    <p className="mt-0 text-ln-paragraph-xs text-ln-gray-600">
+                    <p className="mt-0 text-ln-paragraph-xs text-white/70">
                       {(() => {
                         const views = Number(cat.views) || 0
                         const count = Number(cat.templateCount) || 0
@@ -307,10 +307,10 @@ export default async function MarketplaceTemplatesPage({
             <div className="flex flex-wrap gap-3">
                 <Link
                   href="/marketplace/templates"
-                  className={`rounded-full px-5 py-1.5 text-ln-label-sm font-500 transition ${
+                  className={`rounded-full border px-5 py-1.5 text-ln-label-sm font-500 transition ${
                   selectedCategory === null && selectedPrice === null
-                    ? 'bg-ln-gray-900 text-ln-gray-0 shadow-ln-button-gray'
-                    : 'bg-ln-gray-50 text-ln-gray-600 hover:bg-ln-gray-100'
+                    ? 'border-white/10 bg-white text-black'
+                    : 'border-white/10 bg-[#1C1C1C] text-white hover:bg-[#262626]'
                 }`}
               >
                 Tümü
@@ -334,7 +334,7 @@ export default async function MarketplaceTemplatesPage({
                 className="group relative overflow-hidden rounded-[4px] transition-all duration-300"
               >
                 {t.thumbnails?.[0] && (
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[10px] bg-ln-gray-100">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[10px] bg-[#1C1C1C]">
                     <Image
                       src={urlFor(t.thumbnails[0]).width(800).height(600).url()}
                       alt={t.title}
@@ -359,12 +359,12 @@ export default async function MarketplaceTemplatesPage({
                 )}
                 <div className="p-3">
                   <div className="mb-2 flex items-start justify-between">
-                    <h3 className="line-clamp-1 text-ln-label-md font-550 text-ln-gray-900 group-hover:text-ln-gray-800">
+                    <h3 className="line-clamp-1 text-ln-label-md font-550 text-white group-hover:text-white/90">
                       {t.title}
                     </h3>
                   </div>
                   {t.designer && (
-                    <p className="text-ln-paragraph-xs text-ln-gray-600">
+                    <p className="text-ln-paragraph-xs text-white/70">
                       Tasarımcı: {t.designer}
                     </p>
                   )}
@@ -373,7 +373,7 @@ export default async function MarketplaceTemplatesPage({
                       {t.tags.slice(0, 2).map((tag) => (
                         <span
                           key={tag}
-                          className="rounded bg-ln-gray-100 px-2 py-0.5 text-[10px] text-ln-gray-600"
+                          className="rounded bg-white/10 px-2 py-0.5 text-[10px] text-white/70"
                         >
                           {tag}
                         </span>
@@ -386,7 +386,7 @@ export default async function MarketplaceTemplatesPage({
           </div>
         ) : (
           <div className="py-16 text-center">
-            <p className="text-ln-paragraph-md text-ln-gray-600">
+            <p className="text-ln-paragraph-md text-white/70">
               Bu filtrede şablon bulunamadı.
             </p>
           </div>

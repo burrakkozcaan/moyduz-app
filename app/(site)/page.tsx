@@ -1,37 +1,36 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Moyduz | Esnek E-Ticaret Paketleri ve Kurumsal Çözümler',
+  title: 'Moyduz — E-Ticaret & Yazılım Geliştirme Şirketi',
   description:
-    'Gizli maliyetlere son! İster dakikalar içinde hazır e-ticaret paketleriyle satışa başlayın, ister ihtiyacınıza özel kurumsal web sitenizi tasarlayalım.',
+    'Moyduz ile özel e-ticaret altyapısı, web tasarım ve yazılım geliştirme hizmetleri alın. Türkiye\'nin büyüyen işletmeleri için performans odaklı dijital çözümler.',
   keywords: [
-    'esnek e-ticaret paketleri',
-    'e-ticaret altyapısı',
-    'kurumsal çözüm',
-    'kurumsal web tasarım',
+    'e-ticaret yazılımı',
     'özel e-ticaret altyapısı',
+    'web tasarım şirketi',
     'yazılım geliştirme',
+    'e-ticaret sitesi yaptırma',
+    'dijital altyapı',
     'moyduz',
   ],
   alternates: { canonical: 'https://moyduz.com' },
   openGraph: {
-    title: 'Moyduz | Esnek E-Ticaret Paketleri ve Kurumsal Çözümler',
+    title: 'Moyduz — E-Ticaret & Yazılım Geliştirme Şirketi',
     description:
-      'Gizli maliyetlere son! İster dakikalar içinde hazır e-ticaret paketleriyle satışa başlayın, ister ihtiyacınıza özel kurumsal web sitenizi tasarlayalım.',
+      'Özel e-ticaret altyapısı, web tasarım ve yazılım geliştirme. Türkiye\'nin büyüyen işletmeleri için performans odaklı dijital çözümler.',
     url: 'https://moyduz.com',
     locale: 'tr_TR',
     siteName: 'Moyduz',
     type: 'website',
-    images: [{ url: 'https://moyduz.com/opengraph-image', width: 1200, height: 630, alt: 'Moyduz — E-Ticaret & Özel Yazılım' }],
+    images: [{ url: 'https://moyduz.com/opengraph-image', width: 1200, height: 630, alt: 'Moyduz — E-Ticaret & Yazılım' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Moyduz | Esnek E-Ticaret Paketleri ve Kurumsal Çözümler',
-    description: 'Gizli maliyetlere son! İster dakikalar içinde hazır e-ticaret paketleriyle satışa başlayın, ister ihtiyacınıza özel kurumsal web sitenizi tasarlayalım.',
+    title: 'Moyduz — E-Ticaret & Yazılım Geliştirme Şirketi',
+    description: 'Özel e-ticaret altyapısı, web tasarım ve yazılım geliştirme. Türkiye\'nin büyüyen işletmeleri için performans odaklı dijital çözümler.',
     images: ['https://moyduz.com/opengraph-image'],
   },
 };
-
 
 import Faqs from '@/components/Faqs';
 import Hero from '@/components/Hero';
@@ -51,13 +50,13 @@ import HomePricingCards from '@/components/HomePricingCards';
 
 import LazyVerticalMarqueeHero from '@/components/LazyVerticalMarqueeHero';
 import LazyElectronBento from '@/components/LazyElectronBento';
-import LazyEcosystemMarqueeSection from '@/components/LazyEcosystemMarqueeSection';
+import EcosystemMarqueeSection from '@/components/EcosystemMarqueeSection';
 
 export default function Home() {
   return (
     <>
       {/* Vertical marquee hero (AI headshots style) */}
-
+   
       {/* Hero: announcement pill, headline, CTA, decorative visual */}
       <div className='relative left-1/2 w-screen max-w-none -translate-x-1/2 dark:bg-ln-gray-900'>
         <Hero />
@@ -69,13 +68,13 @@ export default function Home() {
       <div className='container mx-auto flex h-min w-full flex-col items-center justify-center text-center'>
         <Intro />
         <EffortlessSection />
-
+        
 
         <RapidDevelopment />
 
 
 
-
+     
 
 
         <LazyElectronBento />
@@ -96,10 +95,10 @@ export default function Home() {
 
         <Stats />
 
+      
 
-
-        <LazyEcosystemMarqueeSection />
-        <PlatformPillars />
+          <EcosystemMarqueeSection />
+          <PlatformPillars />
 
         {/* pricing */}
         <div id="pricing" className='md:px-2.5'>
@@ -284,7 +283,7 @@ export default function Home() {
           </div>
         </div>
         <SectorTemplates />
-
+    
         <DeferredTestimonials />
 
         <Faqs />

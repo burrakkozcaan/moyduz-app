@@ -32,17 +32,31 @@ interface Category {
   slug: string
   description?: string
   group?: string
+  parentSlug?: string | null
   order?: number
   thumbnails?: Array<{ asset?: { url?: string } }>
   templateCount: number
   previewTemplates: Array<{ thumbnails?: Array<{ asset?: { url?: string } }> }>
 }
 
-const groupLabels: Record<string, string> = {
-  business: 'İş Şablonları',
-  community: 'Topluluk Şablonları',
-  creative: 'Yaratıcı Şablonlar',
-  style: 'Stil Şablonları',
+const DISPLAY_GROUP_ORDER = [
+  'business',
+  'restaurant',
+  'health',
+  'beauty',
+  'real-estate',
+  'portfolio',
+  'ecommerce',
+]
+
+const displayGroupLabels: Record<string, string> = {
+  business: 'İşletme Şablonları',
+  restaurant: 'Restoran Şablonları',
+  health: 'Sağlık Şablonları',
+  beauty: 'Güzellik Şablonları',
+  'real-estate': 'Emlak Şablonları',
+  portfolio: 'Portfolyo Şablonları',
+  ecommerce: 'E-Ticaret Şablonları',
 }
 
 async function getCategories(): Promise<Category[]> {
@@ -53,6 +67,7 @@ async function getCategories(): Promise<Category[]> {
       "slug": slug.current,
       description,
       group,
+      "parentSlug": parent->slug.current,
       order,
       thumbnails,
       "templateCount": count(*[_type == "template" && published == true && (primaryCategory._ref == ^._id || ^._id in categories[]->_ref)]),
@@ -61,26 +76,142 @@ async function getCategories(): Promise<Category[]> {
   )
 }
 
-function inferGroup(title: string, existingGroup?: string | null): string {
+function includesAny(text: string, keywords: string[]) {
+  return keywords.some((keyword) => text.includes(keyword))
+}
+
+function resolveDisplayGroup(category: Category): string {
+  const slug = (category.slug || '').toLowerCase()
+  const parentSlug = (category.parentSlug || '').toLowerCase()
+  const title = (category.title || '').toLowerCase()
+  const combined = `${slug} ${parentSlug} ${title}`
+
+  if (DISPLAY_GROUP_ORDER.includes(slug)) return slug
+  if (DISPLAY_GROUP_ORDER.includes(parentSlug)) return parentSlug
+
   if (
-    existingGroup &&
-    ['business', 'community', 'creative', 'style'].includes(
-      existingGroup.toLowerCase()
-    )
+    includesAny(combined, [
+      'saglik',
+      'wellness',
+      'klinik',
+      'diyet',
+      'fizyoterapi',
+      'psikolog',
+      'dis',
+      'health',
+      'medical',
+      'doctor',
+      'hospital',
+    ])
   ) {
-    return existingGroup.toLowerCase()
+    return 'health'
   }
-  const lower = title.toLowerCase()
+
   if (
-    ['ai', 'saas', 'technology', 'business'].includes(lower) ||
-    lower.includes('business')
-  )
-    return 'business'
-  if (['community'].includes(lower) || lower.includes('community'))
-    return 'community'
-  if (['style'].includes(lower) || lower.includes('style')) return 'style'
-  if (['creative'].includes(lower) || lower.includes('creative')) return 'creative'
-  return 'other'
+    includesAny(combined, [
+      'restoran',
+      'restaurant',
+      'cafe',
+      'pastane',
+      'food',
+      'bar',
+      'pub',
+      'menu',
+      'menü',
+      'catering',
+    ])
+  ) {
+    return 'restaurant'
+  }
+
+  if (
+    includesAny(combined, [
+      'guzellik',
+      'beauty',
+      'berber',
+      'kuafor',
+      'spa',
+      'masaj',
+      'nail',
+      'makyaj',
+      'cilt',
+    ])
+  ) {
+    return 'beauty'
+  }
+
+  if (
+    includesAny(combined, [
+      'emlak',
+      'real-estate',
+      'realestate',
+      'gayrimenkul',
+      'kiralik',
+      'satilik',
+      'property',
+      'estate',
+    ])
+  ) {
+    return 'real-estate'
+  }
+
+  if (
+    includesAny(combined, [
+      'portfolio',
+      'portfolyo',
+      'grafik',
+      'fotograf',
+      'video',
+      'designer',
+      'freelancer',
+      'blog',
+      'ux',
+      'ui',
+    ])
+  ) {
+    return 'portfolio'
+  }
+
+  if (
+    includesAny(combined, [
+      'eticaret',
+      'e-ticaret',
+      'ecommerce',
+      'magaza',
+      'shop',
+      'store',
+      'takı',
+      'taki',
+      'kozmetik',
+      'elektronik',
+      'mobilya',
+      'moda',
+      'urun',
+      'ürün',
+      'cart',
+      'checkout',
+    ])
+  ) {
+    return 'ecommerce'
+  }
+
+  return 'business'
+}
+
+function sortWithinDisplayGroup(items: Category[], groupKey: string) {
+  return [...items].sort((a, b) => {
+    const aTier =
+      a.slug === groupKey ? 0 : a.parentSlug === groupKey ? 1 : 2
+    const bTier =
+      b.slug === groupKey ? 0 : b.parentSlug === groupKey ? 1 : 2
+    if (aTier !== bTier) return aTier - bTier
+
+    const aOrder = Number.isFinite(a.order) ? Number(a.order) : 9999
+    const bOrder = Number.isFinite(b.order) ? Number(b.order) : 9999
+    if (aOrder !== bOrder) return aOrder - bOrder
+
+    return a.title.localeCompare(b.title, 'tr')
+  })
 }
 
 export default async function CategoryPage() {
@@ -92,17 +223,11 @@ export default async function CategoryPage() {
   }
 
   const grouped = categories.reduce<Record<string, Category[]>>((acc, c) => {
-    const group = c.group?.toLowerCase().trim() || inferGroup(c.title, c.group)
-    const normalizedGroup = ['business', 'community', 'creative', 'style'].includes(group)
-      ? group
-      : 'other'
-
-    if (!acc[normalizedGroup]) acc[normalizedGroup] = []
-    acc[normalizedGroup].push(c)
+    const key = resolveDisplayGroup(c)
+    if (!acc[key]) acc[key] = []
+    acc[key].push(c)
     return acc
   }, {})
-
-  const groupOrder = ['business', 'community', 'creative', 'style']
 
   const itemListSchema = {
     '@context': 'https://schema.org',
@@ -117,40 +242,40 @@ export default async function CategoryPage() {
   }
 
   return (
-    <main className="flex-1">
+    <main className="min-h-screen bg-[#000000] py-24 text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
-      <div className="container">
-        <div className="mx-auto max-w-[956px] pt-11 xl:mt-[72px]">
-          <h1 className="text-[34px]/[40px] font-550 -tracking-[0.02em] text-ln-gray-800 xl:text-ln-title-h4 xl:text-ln-gray-900">
+      <div className="container mx-auto max-w-7xl px-4 md:px-6">
+        <div className="mb-12">
+          <h1 className="text-5xl font-550 tracking-tight text-white md:text-6xl">
             Kategoriler
           </h1>
-          <p className="mt-5 text-pretty text-ln-paragraph-md text-ln-gray-600 xl:text-ln-paragraph-lg">
+          <p className="mt-5 max-w-3xl text-lg text-white/70">
             Ürün kategorilerine göre gruplanmış şablonları keşfedin. Web sitesi,
             e-ticaret ve SaaS projeleri için ölçeklenebilir, üretime hazır UI
             sistemleriyle daha hızlı yayına çıkın.
           </p>
         </div>
 
-        {groupOrder.map((groupKey) => {
-          const list = grouped[groupKey] || []
+        {DISPLAY_GROUP_ORDER.map((groupKey) => {
+          const list = sortWithinDisplayGroup(grouped[groupKey] || [], groupKey)
           if (list.length === 0) return null
           return (
-            <div key={groupKey} className="mt-12">
+            <div key={groupKey} className="mb-16">
               <div className="mb-6 flex items-center justify-between">
                 <div>
-                  <h2 className="text-xl font-550 text-ln-gray-900">
-                    {groupLabels[groupKey] || groupKey}
+                  <h2 className="text-2xl font-550 text-white">
+                    {displayGroupLabels[groupKey] || groupKey}
                   </h2>
-                  <p className="text-ln-paragraph-sm text-ln-gray-600">
+                  <p className="text-sm text-white/70">
                     {list.length} kategori
                   </p>
                 </div>
                 <Link
                   href={`/marketplace/templates/category/${groupKey}`}
-                  className="text-ln-label-sm text-ln-gray-600 transition hover:text-ln-gray-800"
+                  className="text-sm font-500 text-white/70 transition hover:text-white"
                 >
                   Tümünü Gör →
                 </Link>
@@ -160,7 +285,7 @@ export default async function CategoryPage() {
                   <Link
                     key={cat.slug}
                     href={`/marketplace/templates/category/${cat.slug}`}
-                    className="group flex flex-col overflow-hidden rounded-lg bg-ln-gray-50 transition hover:bg-ln-gray-100"
+                    className="group flex flex-col overflow-hidden rounded-lg bg-[#1C1C1C] transition-colors hover:bg-[#262626]"
                   >
                     <div className="grid grid-cols-2 gap-[5px] p-[5px] pb-0">
                       {cat.thumbnails?.[0] ? (
@@ -169,7 +294,7 @@ export default async function CategoryPage() {
                             src={urlFor(cat.thumbnails[0]).width(400).height(300).url()}
                             alt={cat.title}
                             fill
-                            className="object-cover"
+                            className="rounded-[3px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
                           />
                         </div>
                       ) : cat.previewTemplates?.[0]?.thumbnails?.[0] ? (
@@ -178,11 +303,11 @@ export default async function CategoryPage() {
                             src={urlFor(cat.previewTemplates[0].thumbnails[0]).width(400).height(300).url()}
                             alt={cat.title}
                             fill
-                            className="object-cover"
+                            className="rounded-[3px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
                           />
                         </div>
                       ) : (
-                        <div className="aspect-[4/3] rounded-[3px] bg-ln-gray-200" />
+                        <div className="aspect-[4/3] rounded-[3px] bg-white/10" />
                       )}
                       {cat.thumbnails?.[1] ? (
                         <div className="relative aspect-[4/3] overflow-hidden rounded-[3px]">
@@ -190,7 +315,7 @@ export default async function CategoryPage() {
                             src={urlFor(cat.thumbnails[1]).width(400).height(300).url()}
                             alt=""
                             fill
-                            className="object-cover"
+                            className="rounded-[3px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
                           />
                         </div>
                       ) : cat.previewTemplates?.[1]?.thumbnails?.[0] ? (
@@ -199,18 +324,18 @@ export default async function CategoryPage() {
                             src={urlFor(cat.previewTemplates[1].thumbnails[0]).width(400).height(300).url()}
                             alt=""
                             fill
-                            className="object-cover"
+                            className="rounded-[3px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
                           />
                         </div>
                       ) : (
-                        <div className="aspect-[4/3] rounded-[3px] bg-ln-gray-200" />
+                        <div className="aspect-[4/3] rounded-[3px] bg-white/10" />
                       )}
                     </div>
                     <div className="p-[15px]">
-                      <h4 className="truncate text-ln-label-sm font-550 text-ln-gray-900">
+                      <h4 className="truncate text-sm font-550 text-white">
                         {cat.title}
                       </h4>
-                      <p className="text-ln-paragraph-xs text-ln-gray-600">
+                      <p className="text-xs text-white/70">
                         {(() => {
                           const n = Number(cat.templateCount) || 0
                           if (n >= 1000)
@@ -228,63 +353,6 @@ export default async function CategoryPage() {
             </div>
           )
         })}
-
-        {grouped.other && grouped.other.length > 0 && (
-          <div className="mt-12">
-            <h2 className="mb-6 text-xl font-550 text-ln-gray-900">
-              Diğer Kategoriler
-            </h2>
-            <div className="grid grid-cols-2 gap-2.5 md:grid-cols-4 xl:grid-cols-5">
-              {grouped.other.map((cat) => (
-                <Link
-                  key={cat.slug}
-                  href={`/marketplace/templates/category/${cat.slug}`}
-                  className="group flex flex-col overflow-hidden rounded-lg bg-ln-gray-50 transition hover:bg-ln-gray-100"
-                >
-                  <div className="grid grid-cols-2 gap-[5px] p-[5px] pb-0">
-                    {cat.thumbnails?.[0] ? (
-                      <>
-                        <div className="relative aspect-[4/3] overflow-hidden rounded-[3px]">
-                          <Image
-                            src={urlFor(cat.thumbnails[0]).width(400).height(300).url()}
-                            alt={cat.title}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        {cat.thumbnails[1] ? (
-                          <div className="relative aspect-[4/3] overflow-hidden rounded-[3px]">
-                            <Image
-                              src={urlFor(cat.thumbnails[1]).width(400).height(300).url()}
-                              alt=""
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                        ) : (
-                          <div className="aspect-[4/3] rounded-[3px] bg-ln-gray-200" />
-                        )}
-                      </>
-                    ) : (
-                      <>
-                        <div className="aspect-[4/3] rounded-[3px] bg-ln-gray-200" />
-                        <div className="aspect-[4/3] rounded-[3px] bg-ln-gray-200" />
-                      </>
-                    )}
-                  </div>
-                  <div className="p-[15px]">
-                    <h4 className="truncate text-ln-label-sm font-550 text-ln-gray-900">
-                      {cat.title}
-                    </h4>
-                    <p className="text-ln-paragraph-xs text-ln-gray-600">
-                      {cat.templateCount || 0} şablon
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </main>
   )

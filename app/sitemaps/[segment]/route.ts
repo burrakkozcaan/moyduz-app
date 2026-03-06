@@ -36,10 +36,6 @@ const STATIC_URLS: Array<{
   { path: '/b2b-ecommerce', changefreq: 'monthly', priority: 0.7 },
   { path: '/cok-saticili-e-ticaret-altyapisi', changefreq: 'monthly', priority: 0.7 },
   { path: '/ecommerce-migration', changefreq: 'monthly', priority: 0.7 },
-  { path: '/mobilya-e-ticaret-yazilimi', changefreq: 'monthly', priority: 0.7 },
-  { path: '/tekstil-moda-e-ticaret-sitesi', changefreq: 'monthly', priority: 0.7 },
-  { path: '/e-ticaret-danismanligi', changefreq: 'monthly', priority: 0.8 },
-  { path: '/partner', changefreq: 'monthly', priority: 0.6 },
   { path: '/basinda-biz', changefreq: 'yearly', priority: 0.4 },
   { path: '/partner-programi', changefreq: 'monthly', priority: 0.5 },
   { path: '/marketplace/templates', changefreq: 'weekly', priority: 0.8 },
@@ -151,12 +147,6 @@ export async function GET(
         '/tools/komisyon-hesaplama',
         '/tools/sanal-pos-hesaplama',
         '/tools/site-saglik-skoru',
-        '/tools/kdv-hesaplama',
-        '/tools/desi-hesaplama',
-        '/tools/kargo-ucreti-hesaplama',
-        '/tools/e-ticaret-kar-hesaplama',
-        '/tools/hepsiburada-komisyon-hesaplama',
-        '/tools/e-ihracat-maliyet-hesaplama',
         '/tools',
       ]
       urls = toolPaths.map((p) =>

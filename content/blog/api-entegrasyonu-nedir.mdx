@@ -37,45 +37,23 @@ meta_description_de: >-
   E-Commerce.
 meta_title: API Entegrasyonu Nedir? E-Ticaret Entegrasyonları Nasıl Çalışır?
 key_points:
-  - >-
-    API Entegrasyonu Nedir? E-Ticaret Entegrasyonları Nasıl Çalışır? konusunda
-    karar verirken yalnızca tanım değil uygulama senaryosu ve ölçülebilir çıktı
-    önemlidir.
-  - >-
-    Bu içerikte hızlı karar için tablo, risk noktaları ve uygulanabilir adımlar
-    bir arada verilir.
-  - >-
-    Yanlış uygulama maliyet, zaman kaybı veya dönüşüm düşüşü riski yaratabilir;
-    bu nedenle kontrol listesiyle ilerlenmelidir.
-  - >-
-    İçeriğin sonunda hangi durumda hangi yaklaşımın daha mantıklı olduğu net bir
-    karar çerçevesiyle özetlenir.
+  - "E-ticarette ödeme, kargo, stok ve ERP sistemleri API üzerinden entegre edilmeden büyüdükçe manuel işlem yükü operasyonu felç eder."
+  - "REST API e-ticarette en yaygın tercih; Webhook anlık bildirim için kritik — örneğin sipariş geldiğinde kargo firmasına otomatik bildirim gönderir."
+  - "API entegrasyonu olmayan mağaza, Trendyol ve Hepsiburada siparişlerini manuel girmek zorunda kalır — günde 50+ siparişte bu sürdürülemez."
+  - "Kötü belgelenmiş API entegrasyonu, üçüncü taraf güncellemelerinde sistem çökmesine neden olabilir; sandbox ortamında test zorunludur."
 faqs:
-  - question: >-
-      API Entegrasyonu Nedir? E-Ticaret Entegrasyonları Nasıl Çalışır? neden
-      önemlidir?
-    answer: >-
-      Doğru uygulandığında maliyet, hız ve dönüşüm etkisi yaratır; yanlış
-      kurgulandığında ise operasyonel risk ve gelir kaybı doğurabilir.
-  - question: >-
-      API Entegrasyonu Nedir? E-Ticaret Entegrasyonları Nasıl Çalışır? için en
-      sık yapılan hata nedir?
-    answer: >-
-      Sadece teorik bilgiye odaklanıp veri, senaryo ve karar kriteri
-      eklememektir. Bu da uygulama tarafında belirsizlik yaratır.
-  - question: Bu içerikteki yaklaşımı nasıl uygulamalıyım?
-    answer: >-
-      Önce hızlı cevap bölümünü okuyup kendi durumunuzu karar matrisiyle
-      eşleştirin, ardından risk ve kontrol listesindeki adımları sırayla
-      uygulayın.
-  - question: Sonuçları nasıl ölçebilirim?
-    answer: >-
-      KPI, dönüşüm oranı, maliyet ve operasyon metriklerini haftalık takip
-      ederek yaklaşımın etkisini düzenli olarak doğrulayabilirsiniz.
+  - question: "E-ticaret için hangi API entegrasyonları zorunlu?"
+    answer: "Minimum: ödeme (iyzico/PayTR), kargo (Yurtiçi/Aras) ve pazaryeri (Trendyol/Hepsiburada). Büyüdükçe ERP (Logo/SAP), stok yönetimi ve CRM entegrasyonları zorunlu hale gelir."
+  - question: "API entegrasyonu yapmadan e-ticaret büyütülebilir mi?"
+    answer: "Günde 30 siparişe kadar manuel yönetim zorlanarak mümkün. Üzerinde her işlem iki kez yapılır: hem platformda hem muhasebede. Bu, büyüme döneminde ciddi hata ve gecikme riski yaratır."
+  - question: "REST API ve Webhook farkı nedir?"
+    answer: "REST API'ye siz soru sorarsınız, cevap gelir (istek-yanıt modeli). Webhook ise olay olduğunda (sipariş verildi, ödeme onaylandı) sistem size otomatik bildirim gönderir. E-ticarette ikisi birlikte kullanılır."
+  - question: "API entegrasyonu ne kadar sürer?"
+    answer: "Basit ödeme entegrasyonu 1–3 gün. ERP entegrasyonu (çift yönlü, gerçek zamanlı) 2–6 hafta arası. Pazaryeri entegrasyonu ortalama 1–2 hafta. Süre dokümantasyon kalitesine ve iş karmaşıklığına göre değişir."
 ---
 ## Hızlı Cevap
 
-Bu yazıda API Entegrasyonu Nedir? E-Ticaret Entegrasyonları Nasıl Çalışır? için **kısa karar çerçevesi**, **risk analizi** ve **uygulanabilir tablo** sunuluyor. Hedef, bu sayfadan çıktıktan sonra net bir karar verebilmeniz.
+**API entegrasyonu**, e-ticaret sisteminizdeki ödeme, kargo, ERP ve pazaryeri bağlantılarını otomatize eder. Entegrasyonsuz mağaza Trendyol/Hepsiburada siparişlerini manuel girmek zorunda kalır — **günde 50+ siparişte bu sürdürülemez**. Minimum gerekli entegrasyonlar: ödeme (iyzico/PayTR), kargo (Yurtiçi/Aras), pazaryeri API'si.
 
 
 ## API Nedir?
@@ -123,20 +101,21 @@ Trendyol, Hepsiburada, Amazon gibi pazaryerleri API'leri üzerinden ürün yöne
 > **Özel API entegrasyonlarına ihtiyaç duyuyor musunuz?** [Özel e-ticaret çözümlerimiz](/ozel-e-ticaret) tüm entegrasyonları kapsar. [İletişime geçin](/contact).
 
 
-## Hızlı Değerlendirme Tablosu
+## API Entegrasyon Süre ve Karmaşıklık Tablosu
 
-| Kriter | Düşük Seviye | Orta Seviye | Yüksek Seviye |
-|---|---:|---:|---:|
-| Uygulama zorluğu (1-10) | 3 | 6 | 9 |
-| Beklenen etki (1-10) | 4 | 7 | 9 |
-| Operasyon riski (1-10) | 2 | 5 | 8 |
+| Entegrasyon Türü | Süre | Zorluk |
+|---|---|---|
+| Basit ödeme (iyzico/PayTR) | 1–3 gün | Düşük |
+| Kargo API (Yurtiçi/Aras) | 3–7 gün | Düşük |
+| Pazaryeri (Trendyol/Hepsiburada) | 1–2 hafta | Orta |
+| ERP (Logo/Mikro, tek yönlü) | 1–2 hafta | Orta |
+| ERP (çift yönlü, gerçek zamanlı) | 2–6 hafta | Yüksek |
 
-## Karar Matrisi: Hangi Durumda Hangi Yaklaşım?
+## Karar Matrisi: Ne Zaman Hangi Entegrasyon?
 
-| Durum | Önerilen Yaklaşım |
+| Durum | Öncelikli Entegrasyon |
 |---|---|
-| Yeni başlayan ekip | Basit kurgu + hızlı test |
-| Büyüme aşaması | Ölçüm odaklı optimizasyon |
-| Yüksek trafik / hacim | Risk ve operasyon odaklı ileri kurgu |
-
-Bu bölüm, "**hangi durumda hangi tercih daha mantıklı**" sorusuna net cevap verir.
+| Yeni açılan mağaza | Ödeme + kargo (zorunlu minimum) |
+| Günde 30–50 sipariş | Pazaryeri API ekle |
+| Günde 100+ sipariş | ERP stok senkronizasyonu zorunlu |
+| B2B kanal açma | Özel fiyatlandırma + ERP entegrasyonu |

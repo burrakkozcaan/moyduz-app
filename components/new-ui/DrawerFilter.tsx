@@ -18,6 +18,7 @@ interface DrawerFilterProps {
   selectedPrice: string | null;
   onCategoryChange: (category: string | null) => void;
   onPriceChange: (price: string | null) => void;
+  variant?: 'light' | 'dark';
 }
 
 const PRICE_OPTIONS = [
@@ -33,6 +34,7 @@ export const AnimatedDrawer = ({
   selectedPrice,
   onCategoryChange,
   onPriceChange,
+  variant = 'light',
 }: DrawerFilterProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [view, setView] = useState<'default' | 'category' | 'price'>('default');
@@ -216,12 +218,14 @@ export const AnimatedDrawer = ({
     onPriceChange,
   ]);
 
+  const buttonClass =
+    variant === 'dark'
+      ? 'rounded-full border border-white/10 bg-[#1C1C1C] px-6 py-2 font-medium text-white transition hover:bg-[#262626] md:font-medium'
+      : 'rounded-full border border-ln-gray-200 bg-ln-gray-50 px-6 py-2 font-medium text-ln-gray-800 shadow-ln-button-white transition hover:bg-ln-gray-100 md:font-medium'
+
   return (
     <>
-      <Button
-        className='rounded-full border border-ln-gray-200 bg-ln-gray-50 px-6 py-2 font-medium text-ln-gray-800 shadow-ln-button-white transition hover:bg-ln-gray-100 md:font-medium'
-        onClick={() => setIsOpen(true)}
-      >
+      <Button className={buttonClass} onClick={() => setIsOpen(true)}>
         <Tag size={16} className='mr-2' />
         Filter Templates
       </Button>

@@ -45,6 +45,7 @@ export function TemplatesFilterClient({
       selectedPrice={selectedPrice}
       onCategoryChange={onCategoryChange}
       onPriceChange={onPriceChange}
+      variant="dark"
     />
   )
 }

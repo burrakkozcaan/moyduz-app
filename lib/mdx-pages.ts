@@ -54,9 +54,6 @@ const PAGE_SLUGS = [
   'b2b-ecommerce',
   'multi-vendor',
   'ecommerce-migration',
-  'mobilya-e-ticaret-yazilimi',
-  'tekstil-moda-e-ticaret-sitesi',
-  'e-ticaret-danismanligi',
 ] as const
 
 export type PageSlug = (typeof PAGE_SLUGS)[number]

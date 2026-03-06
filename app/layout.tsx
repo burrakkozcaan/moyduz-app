@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/utils/cn';
 import { Provider as TooltipProvider } from '@/components/new-ui/tooltip';
 import { NotificationProvider } from '@/components/new-ui/notification-provider';
+import LenisScrollProvider from '@/components/providers/lenis-provider';
 import Script from 'next/script';
 import {
   buildWebsiteSchema,
@@ -42,18 +43,20 @@ const kalam = Kalam({
 export const metadata: Metadata = {
   metadataBase: new URL("https://moyduz.com"),
 
-  title: "Moyduz | Esnek E-Ticaret Paketleri ve Kurumsal Çözümler",
+  title: "Yazılım Şirketi & Web Tasarım Ajansı | Moyduz",
   description:
-    "Gizli maliyetlere son! İster dakikalar içinde hazır e-ticaret paketleriyle satışa başlayın, ister ihtiyacınıza özel kurumsal web sitenizi tasarlayalım.",
+    "E-ticaret platformları, SaaS ürünleri ve yapay zeka otomasyon çözümleri sunan yazılım şirketi ve web tasarım ajansı. Dünya genelinde işletmelerin güvendiği çözüm ortağı.",
 
   keywords: [
-    "esnek e-ticaret paketleri",
-    "e-ticaret altyapısı",
-    "kurumsal çözüm",
-    "kurumsal web tasarım",
-    "özel e-ticaret altyapısı",
-    "yazılım şirketleri",
+    "yazılım şirketi",
+    "web tasarım ajansı",
+    "web geliştirme şirketi",
+    "e-ticaret ajansı",
+    "e-ticaret geliştirme",
+    "saas geliştirme",
+    "web tasarımcı",
     "dijital ajans",
+    "web tasarım şirketi",
   ],
 
   authors: [{ name: "Moyduz Team", url: "https://moyduz.com" }],
@@ -84,9 +87,9 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 
   openGraph: {
-    title: "Moyduz | Esnek E-Ticaret Paketleri ve Kurumsal Çözümler",
+    title: "Moyduz – Yazılım Şirketi & Web Tasarım Ajansı",
     description:
-      "Gizli maliyetlere son! İster dakikalar içinde hazır e-ticaret paketleriyle satışa başlayın, ister ihtiyacınıza özel kurumsal web sitenizi tasarlayalım.",
+      "Önde gelen yazılım şirketi ve web tasarım ajansı tarafından sunulan özel e-ticaret platformları, SaaS ürünleri ve yapay zeka otomasyon araçları.",
     url: "https://moyduz.com",
     siteName: "Moyduz",
     images: [
@@ -94,7 +97,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Moyduz | Esnek E-Ticaret Paketleri ve Kurumsal Çözümler",
+        alt: "Moyduz – Yazılım Şirketi & Web Tasarım Ajansı",
       },
     ],
     locale: "tr_TR",
@@ -103,8 +106,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Moyduz | Esnek E-Ticaret Paketleri ve Kurumsal Çözümler",
-    description: "Gizli maliyetlere son! İster dakikalar içinde hazır e-ticaret paketleriyle satışa başlayın, ister ihtiyacınıza özel kurumsal web sitenizi tasarlayalım.",
+    title: "Moyduz – Yazılım Şirketi & Web Tasarım Ajansı",
+    description: "E-Ticaret, SaaS, Yapay Zeka Otomasyonu & Web Tasarımı",
     images: ["/opengraph-image"],
   },
 
@@ -199,7 +202,9 @@ export default function RootLayout({
         <div className='relative isolate flex min-h-screen flex-col overflow-x-hidden bg-ln-gray-25 dark:bg-ln-gray-900'>
           <ThemeProvider attribute='class' defaultTheme='light' enableSystem>
             <TooltipProvider>
-              {children}
+              <LenisScrollProvider>
+                {children}
+              </LenisScrollProvider>
             </TooltipProvider>
           </ThemeProvider>
         </div>

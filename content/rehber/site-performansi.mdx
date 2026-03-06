@@ -42,30 +42,15 @@ title_de: >-
 meta_description_de: '> -'
 meta_title: 'Site Performansı Rehberi: Core Web Vitals, LCP ve Hız Optimizasyonu'
 faqs:
-  - question: >-
-      Site Performansı Rehberi: Core Web Vitals, LCP ve Hız Optimizasyonu neden
-      önemlidir?
-    answer: >-
-      Doğru uygulandığında maliyet, hız ve dönüşüm etkisi yaratır; yanlış
-      kurgulandığında ise operasyonel risk ve gelir kaybı doğurabilir.
-  - question: >-
-      Site Performansı Rehberi: Core Web Vitals, LCP ve Hız Optimizasyonu için
-      en sık yapılan hata nedir?
-    answer: >-
-      Sadece teorik bilgiye odaklanıp veri, senaryo ve karar kriteri
-      eklememektir. Bu da uygulama tarafında belirsizlik yaratır.
-  - question: Bu içerikteki yaklaşımı nasıl uygulamalıyım?
-    answer: >-
-      Önce hızlı cevap bölümünü okuyup kendi durumunuzu karar matrisiyle
-      eşleştirin, ardından risk ve kontrol listesindeki adımları sırayla
-      uygulayın.
-  - question: Sonuçları nasıl ölçebilirim?
-    answer: >-
-      KPI, dönüşüm oranı, maliyet ve operasyon metriklerini haftalık takip
-      ederek yaklaşımın etkisini düzenli olarak doğrulayabilirsiniz.
+  - question: "Core Web Vitals eşik değerleri nelerdir?"
+    answer: "Google'ın 2026 eşikleri: LCP (Largest Contentful Paint) < 2.5s, INP (Interaction to Next Paint) < 200ms, CLS (Cumulative Layout Shift) < 0.1. Bu üçü 'İyi' aralığında olan siteler Core Web Vitals sıralama avantajı kazanır."
+  - question: "Sayfa hızı e-ticaret satışlarını etkiler mi?"
+    answer: "Evet, doğrudan. Amazon verisine göre 100ms gecikme %1 gelir kaybı yaratır. Türkiye e-ticaret sitelerinin %74'ü LCP eşiğini geçemiyor — hızlı site rakiplere karşı dönüşüm avantajı sağlar."
+  - question: "Shared hosting'den ne zaman vazgeçilmeli?"
+    answer: "TTFB (Time to First Byte) 800ms+ ise ve/veya aylık 10.000+ ziyaret alıyorsanız. Vercel veya Cloudflare Pages edge hosting, shared hosting'e kıyasla 4x daha düşük TTFB sağlar ve Next.js projeleri için ücretsiz tier yeterlidir."
+  - question: "PageSpeed Insights'ta 100 puan şart mı?"
+    answer: "Hayır. Hedef eşik değerlerin altında olmaktır: LCP < 2.5s, INP < 200ms, CLS < 0.1. 100 puan elde etmek çoğu zaman orantısız geliştirme süresi gerektirir. 'İyi' aralığında olmak sıralama avantajı için yeterli."
 ---
-## Hızlı Cevap
-
 ## Hızlı Cevap: Siteni Hızlandırmak İçin Ne Yapmalısın?
 
 - **LCP > 3s ise:** Hero görselini `priority` yap + WebP/AVIF'e geç → en hızlı kazanım, 1–2 haftada etki

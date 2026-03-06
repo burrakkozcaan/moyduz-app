@@ -33,45 +33,23 @@ meta_description_de: >-
   Conversion-Messung und wichtigen Metriken mit GA4.
 meta_title: Google Analytics Nedir? E-Ticaret için GA4 Kurulum Rehberi
 key_points:
-  - >-
-    Google Analytics Nedir? E-Ticaret için GA4 Kurulum Rehberi konusunda karar
-    verirken yalnızca tanım değil uygulama senaryosu ve ölçülebilir çıktı
-    önemlidir.
-  - >-
-    Bu içerikte hızlı karar için tablo, risk noktaları ve uygulanabilir adımlar
-    bir arada verilir.
-  - >-
-    Yanlış uygulama maliyet, zaman kaybı veya dönüşüm düşüşü riski yaratabilir;
-    bu nedenle kontrol listesiyle ilerlenmelidir.
-  - >-
-    İçeriğin sonunda hangi durumda hangi yaklaşımın daha mantıklı olduğu net bir
-    karar çerçevesiyle özetlenir.
+  - "GA4, 2023'ten itibaren Universal Analytics'in yerini aldı; eski UA verisi artık silinmiş durumda — geçiş yapmadıysanız tarihsel veri kaybettiniz."
+  - "E-ticaret için kritik: view_item, add_to_cart, begin_checkout, purchase etkinliklerini doğru kurmadan hangi trafik kaynağının satışa dönüştüğünü ölçemezsiniz."
+  - "GA4 kendi sitenizdeki trafiği ölçer; Trendyol/Hepsiburada gibi pazaryerlerindeki satışlarınızı ölçmez — bu nedenle çok kanallı satışta kör nokta oluşur."
+  - "GA4 ücretsiz ama veri saklama süresi varsayılan 2 ay; 14 aya çıkarmak için admin ayarlarından manuel değişiklik gerekir."
 faqs:
-  - question: >-
-      Google Analytics Nedir? E-Ticaret için GA4 Kurulum Rehberi neden
-      önemlidir?
-    answer: >-
-      Doğru uygulandığında maliyet, hız ve dönüşüm etkisi yaratır; yanlış
-      kurgulandığında ise operasyonel risk ve gelir kaybı doğurabilir.
-  - question: >-
-      Google Analytics Nedir? E-Ticaret için GA4 Kurulum Rehberi için en sık
-      yapılan hata nedir?
-    answer: >-
-      Sadece teorik bilgiye odaklanıp veri, senaryo ve karar kriteri
-      eklememektir. Bu da uygulama tarafında belirsizlik yaratır.
-  - question: Bu içerikteki yaklaşımı nasıl uygulamalıyım?
-    answer: >-
-      Önce hızlı cevap bölümünü okuyup kendi durumunuzu karar matrisiyle
-      eşleştirin, ardından risk ve kontrol listesindeki adımları sırayla
-      uygulayın.
-  - question: Sonuçları nasıl ölçebilirim?
-    answer: >-
-      KPI, dönüşüm oranı, maliyet ve operasyon metriklerini haftalık takip
-      ederek yaklaşımın etkisini düzenli olarak doğrulayabilirsiniz.
+  - question: "GA4 ücretsiz mi?"
+    answer: "Evet, standart GA4 tamamen ücretsiz. Büyük ölçekli işletmeler için Google Analytics 360 (ücretli kurumsal versiyon) var; ama e-ticaret mağazalarının büyük çoğunluğu için ücretsiz GA4 yeterli."
+  - question: "GA4 kurulumu ne kadar sürer?"
+    answer: "Temel kurulum (ölçüm kodu ekleme) 1 saat. E-ticaret etkinlik takibi (add_to_cart, purchase) 1–3 gün geliştirme gerektirir. Özel e-ticaret altyapınız bu entegrasyonu hazır sunarsa süre sıfıra iner."
+  - question: "Universal Analytics verilerime hâlâ erişebilir miyim?"
+    answer: "Hayır. Google, UA verilerini Temmuz 2024'te kalıcı olarak sildi. GA4'e zamanında geçmediyseniz tarihsel veriye erişim yok. Bundan sonra tüm ölçüm GA4 üzerinden yürütülmeli."
+  - question: "GA4 ile hangi e-ticaret soruları cevaplanır?"
+    answer: "Hangi trafik kaynağı en çok satış getiriyor? Hangi adımda sepet terk ediliyor? Hangi ürün en çok görüntülenip satılmıyor? Yeni vs geri dönen müşteri davranışı nasıl farklı? Bu sorular GA4 olmadan cevaplanamaz."
 ---
 ## Hızlı Cevap
 
-Bu yazıda Google Analytics Nedir? E-Ticaret için GA4 Kurulum Rehberi için **kısa karar çerçevesi**, **risk analizi** ve **uygulanabilir tablo** sunuluyor. Hedef, bu sayfadan çıktıktan sonra net bir karar verebilmeniz.
+**Google Analytics 4 (GA4)**, web sitenizin trafik kaynaklarını, kullanıcı davranışını ve satış dönüşümlerini izleyen ücretsiz analitik platformdur. 2023'ten itibaren eski Universal Analytics'in yerini aldı — geçiş yapmadıysanız tarihsel verinizi kaybettiniz. E-ticaret için kurulumun en kritik adımı: `purchase` etkinliğini doğru kurmak, hangi trafik kaynağının satışa dönüştüğünü netleştirir.
 
 
 ## Google Analytics Nedir?
@@ -167,12 +145,12 @@ GA4 verilerini kullanarak [A/B testi](/blog/a-b-testi-nedir) kararları alabilir
 > **GA4 entegre, analitik odaklı e-ticaret sistemi kurmak ister misiniz?** [Çözümlerimizi inceleyin](/ozel-e-ticaret) veya [iletişime geçin](/contact).
 
 
-## Karar Matrisi: Hangi Durumda Hangi Yaklaşım?
+## GA4 Kurulum Öncelik Matrisi
 
-| Durum | Önerilen Yaklaşım |
+| Durum | Öncelikli Adım |
 |---|---|
-| Yeni başlayan ekip | Basit kurgu + hızlı test |
-| Büyüme aşaması | Ölçüm odaklı optimizasyon |
-| Yüksek trafik / hacim | Risk ve operasyon odaklı ileri kurgu |
-
-Bu bölüm, "**hangi durumda hangi tercih daha mantıklı**" sorusuna net cevap verir.
+| Henüz GA4 kurmadım | Hemen kur — tarihsel veri birikmeye başlasın |
+| GA4 var ama e-ticaret etkinlikleri yok | purchase + add_to_cart etkinliklerini kur |
+| Etkinlikler var, raporlar okunmuyor | Satın alma yolculuğu ve trafik kaynağı raporlarına odaklan |
+| Veri saklama süresi 2 ay (varsayılan) | Admin'den 14 aya uzat |
+| Reklam harcıyorum ama dönüşüm ölçmüyorum | Google Ads ↔ GA4 bağlantısı ve dönüşüm hedefleri kur |

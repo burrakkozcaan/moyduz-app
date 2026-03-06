@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import DeferredMount from "@/components/DeferredMount";
 
 const EcosystemMarqueeSection = dynamic(
   () => import("@/components/EcosystemMarqueeSection"),
@@ -9,9 +8,5 @@ const EcosystemMarqueeSection = dynamic(
 );
 
 export default function LazyEcosystemMarqueeSection() {
-  return (
-    <DeferredMount fallback={<div className="h-[300px] w-full" />}>
-      <EcosystemMarqueeSection />
-    </DeferredMount>
-  );
+  return <EcosystemMarqueeSection />;
 }
