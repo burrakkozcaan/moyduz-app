@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'motion/react';
 import {
   ShieldCheck,
   Cloud,
@@ -83,12 +82,8 @@ export default function FeaturesSection() {
     >
       <div className="mx-auto max-w-5xl w-full px-6">
         <div className="@container">
-          <motion.div
+          <div
             className="flex max-w-3xl flex-col items-center gap-4 text-center mb-12 md:mb-16"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
           >
             <h2 className="text-2xl font-bold leading-tight text-ln-gray-900 dark:text-ln-gray-0 md:text-3xl lg:text-4xl">
               Moyduz Engine İçinde Neler Var?
@@ -96,14 +91,10 @@ export default function FeaturesSection() {
             <p className="text-base leading-relaxed text-ln-gray-600 dark:text-ln-gray-400 md:text-lg">
               Teknik altyapı ile güven veriyoruz: modüler, ölçeklenebilir, güvenli.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.dl
+          <dl
             className="grid gap-6 *:space-y-2 *:text-balance *:text-center *:text-sm @md:grid-cols-2 @2xl:grid-cols-3 @2xl:gap-12"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.08 }}
-            transition={{ duration: 0.4 }}
           >
             {FEATURES.map((item) => (
               <div key={item.title}>
@@ -112,7 +103,7 @@ export default function FeaturesSection() {
                 <dd className="text-muted-foreground">{item.description}</dd>
               </div>
             ))}
-          </motion.dl>
+          </dl>
         </div>
       </div>
     </section>
