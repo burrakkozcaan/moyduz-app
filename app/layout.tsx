@@ -199,7 +199,7 @@ export default function RootLayout({
           gtag('config', 'G-RS0YYVJ21H');
         `}
         </Script>
-        <div className='relative isolate flex min-h-screen flex-col overflow-x-hidden bg-ln-gray-25 dark:bg-ln-gray-900'>
+        <div className='relative isolate flex min-h-screen flex-col overflow-x-hidden bg-[#f7f7f7] dark:bg-ln-gray-900'>
           <ThemeProvider attribute='class' defaultTheme='light' enableSystem>
             <TooltipProvider>
               <LenisScrollProvider>

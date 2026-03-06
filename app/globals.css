@@ -328,7 +328,7 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: #f7f7f7;
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
@@ -856,11 +856,16 @@
     @apply antialiased;
     scroll-behavior: auto;
     color: rgb(var(--text-strong-950));
-    background-color: rgb(var(--bg-white-0));
+    background-color: #f7f7f7;
   }
   body {
-    @apply min-h-screen bg-background text-foreground;
+    @apply min-h-screen text-foreground;
     overflow-x: hidden;
+    background-color: #f7f7f7 !important;
+  }
+  .dark html,
+  .dark body {
+    background-color: var(--background);
   }
   ::selection {
     background-color: rgb(59 130 246 / 0.18);

@@ -45,11 +45,11 @@ import EffortlessSection from '@/components/EffortlessSection';
 import Stats from '@/components/Stats';
 import { BuildFasterSection } from '@/components/BuildFasterSection';
 import PlatformPillars from '@/components/PlatformPillars';
-import DeferredTestimonials from '@/components/DeferredTestimonials';
 import HomePricingCards from '@/components/HomePricingCards';
+import Testimional from '@/components/Testimional';
+import ElectronBento from '@/components/ElectronBento';
 
 import LazyVerticalMarqueeHero from '@/components/LazyVerticalMarqueeHero';
-import LazyElectronBento from '@/components/LazyElectronBento';
 import EcosystemMarqueeSection from '@/components/EcosystemMarqueeSection';
 
 export default function Home() {
@@ -77,7 +77,7 @@ export default function Home() {
      
 
 
-        <LazyElectronBento />
+        <ElectronBento />
 
 
         {/* Moyduz Engine: altyapı, performans, ticari, global, güvenlik */}
@@ -284,7 +284,7 @@ export default function Home() {
         </div>
         <SectorTemplates />
     
-        <DeferredTestimonials />
+        <Testimional />
 
         <Faqs />
         <CTASectionNew />

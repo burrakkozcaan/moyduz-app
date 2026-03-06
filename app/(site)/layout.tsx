@@ -108,7 +108,7 @@ export default function SiteLayout({
 }>) {
   return (
     <>
-      <div className='relative z-50 flex flex-1 flex-col items-center xl:container dark:bg-ln-gray-900 lg:mt-6 lg:flex xl:mx-auto'>
+      <div className='relative bg-ln-gray-25 z-50 flex flex-1 flex-col items-center xl:container dark:bg-ln-gray-900 lg:mt-6 lg:flex xl:mx-auto'>
         <Header />
         <main className='w-full flex-1 overflow-x-hidden'>{children}</main>
       </div>
