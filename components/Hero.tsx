@@ -1,8 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { DottedGlowBackground } from '@/components/ui/dotted-glow-background';
+import dynamic from 'next/dynamic';
 import { ArrowRight } from 'lucide-react';
+
+const DottedGlowBackground = dynamic(
+  () => import('@/components/ui/dotted-glow-background').then((m) => m.DottedGlowBackground),
+  { ssr: false }
+);
 
 const borderIllustrationOpacity = '0.12';
 

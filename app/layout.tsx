@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import "fumadocs-ui/style.css";
 import "./globals.css";
 import { Inter as FontSans, Kalam } from 'next/font/google';
 import localFont from 'next/font/local';
