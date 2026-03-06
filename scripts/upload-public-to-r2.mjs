@@ -128,7 +128,7 @@ function loadEnvFile(envPath) {
   for (const line of fs.readFileSync(envPath, "utf8").split("\n")) {
     const match = line.match(/^([A-Z_][A-Z0-9_]*)=(.*)$/);
     if (!match) continue;
-    if (process.env[match[1]]) continue;
+    if (Object.prototype.hasOwnProperty.call(process.env, match[1])) continue;
     process.env[match[1]] = match[2].replace(/^["']|["']$/g, "");
   }
 }

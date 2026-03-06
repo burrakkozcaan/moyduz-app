@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, memo, useEffect, useRef, useState } from "react";
+import React, { useMemo, memo } from "react";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { r2cdn } from "@/lib/cdn";
@@ -45,7 +45,6 @@ type MarqueeColumnProps = {
   className?: string;
   aspect?: "normal" | "tall";
   prioritizeFirstItem?: boolean;
-  isActive?: boolean;
 };
 
 const MarqueeColumn = memo(function MarqueeColumn({
@@ -56,7 +55,6 @@ const MarqueeColumn = memo(function MarqueeColumn({
   className,
   aspect = "normal",
   prioritizeFirstItem = false,
-  isActive = true,
 }: MarqueeColumnProps) {
   const normalized = useMemo(() => items.map(toMediaItem), [items]);
   const content = useMemo(() => [...normalized, ...normalized], [normalized]);
@@ -77,7 +75,6 @@ const MarqueeColumn = memo(function MarqueeColumn({
           {
             "--marquee-duration": `${duration}s`,
             gap: gap,
-            animationPlayState: isActive ? "running" : "paused",
           } as React.CSSProperties
         }
       >
@@ -127,14 +124,12 @@ type VerticalMarqueeGridProps = {
   }>;
   backgroundLines?: boolean;
   className?: string;
-  isActive?: boolean;
 };
 
 function VerticalMarqueeGrid({
   columns,
   backgroundLines = true,
   className,
-  isActive = true,
 }: VerticalMarqueeGridProps) {
   return (
     <div className={cn("relative w-full h-full overflow-hidden", className)}>
@@ -154,8 +149,7 @@ function VerticalMarqueeGrid({
               key={idx}
               {...colConfig}
               prioritizeFirstItem={idx === 2}
-              isActive={isActive}
-              className={cn("flex-1 min-w-0 transition-all duration-500", colConfig.className)}
+              className={cn("flex-1 min-w-0", colConfig.className)}
             />
           ))}
         </div>
@@ -177,27 +171,8 @@ const gridConfiguration = columnItems.map((items, i) => ({
 }));
 
 export default function VerticalMarqueeHero() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const [isActive, setIsActive] = useState(true);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsActive(entry?.isIntersecting ?? true);
-      },
-      { threshold: 0, rootMargin: "300px 0px" },
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       className="relative min-h-[420px] w-full overflow-hidden bg-[#f7f7f7] antialiased sm:min-h-[520px] md:min-h-screen"
       style={{
         isolation: "isolate",
@@ -206,7 +181,7 @@ export default function VerticalMarqueeHero() {
     >
       <div className="absolute inset-0 flex flex-col items-center">
         <div className="w-full h-[38vh] min-h-[280px] sm:min-h-[320px] md:h-[45vh] md:min-h-[400px] relative flex-1">
-          <VerticalMarqueeGrid columns={gridConfiguration} isActive={isActive} />
+          <VerticalMarqueeGrid columns={gridConfiguration} />
         </div>
       </div>
 
