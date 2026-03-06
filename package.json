@@ -12,6 +12,7 @@
     "seo:discover": "node scripts/seo-discover.mjs",
     "audio:generate": "node scripts/generate-audio.mjs",
     "audio:generate:all": "node scripts/generate-audio.mjs --all",
+    "cdn:sync": "node scripts/upload-public-to-r2.mjs",
     "worker:audio:deploy": "cd workers/audio-tts && wrangler deploy",
     "worker:content:deploy": "cd workers/content-ai && wrangler deploy",
     "indexnow": "node scripts/indexnow-submit.mjs",
