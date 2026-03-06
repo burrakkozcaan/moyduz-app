@@ -22,8 +22,8 @@ function SecureDeliveryCard() {
   return (
     <motion.div
       className="bg-gradient-to-br from-ln-gray-50 to-ln-gray-50 rounded-3xl relative overflow-hidden border border-ln-gray-100 dark:border-ln-gray-800"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
@@ -134,8 +134,8 @@ function MeasureCard() {
   return (
     <motion.div
       className="bg-transparent rounded-3xl relative overflow-hidden border border-ln-gray-100 dark:border-ln-gray-800"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
@@ -199,8 +199,8 @@ function DistributionCard() {
   return (
     <motion.div
       className="bg-transparent rounded-3xl relative overflow-hidden border border-ln-gray-100 dark:border-ln-gray-800 shadow ring-1 ring-ln-gray-200/50 dark:ring-ln-gray-700/50"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
@@ -367,8 +367,8 @@ function FeaturesBucketCard() {
   return (
     <motion.div
       className="bg-transparent border border-ln-gray-100 dark:border-ln-gray-800 flex flex-col gap-2 overflow-hidden rounded-3xl py-5 min-h-[220px] justify-center"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
@@ -435,8 +435,8 @@ function PerformanceOptimizationCard() {
   return (
     <motion.div
       className="bg-transparent rounded-3xl border border-ln-gray-100 dark:border-ln-gray-800 flex flex-col overflow-hidden"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
@@ -619,8 +619,8 @@ function KurulumStepsCard() {
   return (
     <motion.div
       className="bg-transparent rounded-3xl border border-ln-gray-100 dark:border-ln-gray-800 flex flex-col overflow-hidden"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
@@ -649,8 +649,8 @@ function VoiceSupportCard() {
   return (
     <motion.div
       className="bg-transparent rounded-3xl border border-ln-gray-100 dark:border-ln-gray-800 flex flex-col overflow-hidden"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
@@ -707,8 +707,8 @@ function RealtimeLocationCard() {
   return (
     <motion.div
       className="bg-transparent rounded-3xl border border-ln-gray-100 dark:border-ln-gray-800 flex flex-col overflow-hidden"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
@@ -752,8 +752,8 @@ function EmailWebSupportCard() {
   return (
     <motion.div
       className="bg-transparent rounded-3xl border border-ln-gray-100 dark:border-ln-gray-800 flex flex-col overflow-hidden"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
@@ -794,8 +794,8 @@ function SupportSignatureCard() {
   return (
     <motion.div
       className="bg-transparent rounded-3xl border border-ln-gray-100 dark:border-ln-gray-800 flex flex-col overflow-hidden min-h-[220px]"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
@@ -876,8 +876,8 @@ function UptimeMonitoringCard() {
     <motion.div
       data-slot="card"
       className="ring-border bg-transparent text-card-foreground shadow-black/6.5 rounded-2xl p-8 shadow ring-1 grid grid-rows-[auto_1fr] gap-8 border-0"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
@@ -940,8 +940,8 @@ function ServiceReliabilityCard() {
     <motion.div
       data-slot="card"
       className="ring-border bg-transparent text-card-foreground shadow-black/6.5 rounded-2xl p-8 shadow ring-1 border-0 grid grid-rows-[auto_1fr] gap-8"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >
@@ -982,8 +982,8 @@ function EnterpriseSecurityCard() {
     <motion.div
       data-slot="card"
       className="ring-foreground/6.5 bg-transparent text-card-foreground shadow ring-1 group overflow-hidden rounded-2xl p-8 grid grid-rows-[auto_1fr] gap-8 border-0"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.4 }}
     >

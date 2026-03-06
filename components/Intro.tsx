@@ -50,9 +50,9 @@ export default function Intro() {
         <motion.section
           id="nasil-calisir"
           className='flex w-full flex-col items-center gap-6 scroll-mt-24'
-          initial={{ opacity: 0, y: 20 }}
-          animate={introSeen ? { opacity: 1, y: 0 } : undefined}
-          whileInView={introSeen ? undefined : { opacity: 1, y: 0 }}
+          initial={{ y: 15 }}
+          animate={introSeen ? { y: 0 } : undefined}
+          whileInView={introSeen ? undefined : { y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           onViewportEnter={() => setIntroSeen(true)}
           transition={{ type: 'spring', duration: 0.6, bounce: 0.05 }}
@@ -205,8 +205,8 @@ export default function Intro() {
           {/* Feature Visual */}
           {/* <motion.div
             className="flex flex-col items-center justify-center h-[188px] md:h-[288px]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 15 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{
               type: "spring",
@@ -335,8 +335,8 @@ export default function Intro() {
           {/* Heading & Button */}
           {/* <motion.div
             className="flex flex-col items-center md:items-start gap-5 md:gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 15 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{
               type: "spring",

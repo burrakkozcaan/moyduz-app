@@ -13,8 +13,8 @@ export default function Stats() {
       id="metrics"
       className="flex flex-col items-center gap-[70px] w-full relative overflow-hidden z-[1] px-5 md:px-[100px] py-8 md:py-12"
       style={{ height: "min-content" }}
-      initial={{ opacity: 0, y: 50, scale: 0.98 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      initial={{ y: 30, scale: 0.98 }}
+      whileInView={{ y: 0, scale: 1 }}
       viewport={viewportOnce}
       transition={{ type: "spring", duration: 0.8, bounce: 0.01 }}
     >
@@ -47,8 +47,8 @@ export default function Stats() {
           <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[800px]">
             <motion.div
               className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ y: 15 }}
+              whileInView={{ y: 0 }}
               viewport={viewportOnce}
               transition={{ type: "spring", duration: 0.6, bounce: 0.05 }}
             >
@@ -61,8 +61,8 @@ export default function Stats() {
             </motion.div>
             <motion.div
               className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ y: 15 }}
+              whileInView={{ y: 0 }}
               viewport={viewportOnce}
               transition={{ type: "spring", duration: 0.6, bounce: 0.05, delay: 0.1 }}
             >
@@ -75,8 +75,8 @@ export default function Stats() {
             </motion.div>
             <motion.div
               className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ y: 15 }}
+              whileInView={{ y: 0 }}
               viewport={viewportOnce}
               transition={{ type: "spring", duration: 0.6, bounce: 0.05, delay: 0.2 }}
             >
@@ -92,8 +92,8 @@ export default function Stats() {
         <div className="flex w-full items-stretch md:items-center justify-between flex-col md:flex-row gap-8 md:gap-0">
           <motion.div
             className="flex flex-col items-start gap-[5px] w-min h-min"
-            initial={{ opacity: 0, y: 50, scale: 0.98 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ y: 30, scale: 0.98 }}
+            whileInView={{ y: 0, scale: 1 }}
             viewport={viewportOnce}
             transition={{ type: "spring", duration: 0.8, bounce: 0.01 }}
           >
@@ -104,8 +104,8 @@ export default function Stats() {
           </motion.div>
           <motion.div
             className="flex flex-col items-start gap-[5px] w-min h-min"
-            initial={{ opacity: 0, y: 50, scale: 0.98 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ y: 30, scale: 0.98 }}
+            whileInView={{ y: 0, scale: 1 }}
             viewport={viewportOnce}
             transition={{ type: "spring", duration: 0.8, bounce: 0.01, delay: 0.1 }}
           >
@@ -116,8 +116,8 @@ export default function Stats() {
           </motion.div>
           <motion.div
             className="flex flex-col items-start gap-[5px] w-min h-min"
-            initial={{ opacity: 0, y: 50, scale: 0.98 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ y: 30, scale: 0.98 }}
+            whileInView={{ y: 0, scale: 1 }}
             viewport={viewportOnce}
             transition={{ type: "spring", duration: 0.8, bounce: 0.01, delay: 0.2 }}
           >
