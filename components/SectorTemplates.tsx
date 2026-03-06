@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { r2cdn } from '@/lib/cdn';
 
 type TemplateId = 'ai' | 'hr' | 'finance' | 'marketing' | 'crypto';
 
@@ -354,7 +355,7 @@ export default function SectorTemplates() {
                     style={!isActive ? { transform: 'none', transformOrigin: '50% 50% 0px' } : undefined}
                   >
                     <div className={`size-5 shrink-0 overflow-hidden rounded-full bg-${template.colorClass} ${template.shadowClass}`}>
-                      <img src={template.icon} width={20} height={20} alt='' />
+                      <img src={r2cdn(template.icon)} width={20} height={20} alt='' />
                     </div>
                     {isActive && (
                       <div className='overflow-hidden' style={{ opacity: 1, width: 'auto' }}>
@@ -386,7 +387,7 @@ export default function SectorTemplates() {
                 style={{ transform: 'none', transformOrigin: '50% 50% 0px' }}
               >
                 <div className={`size-6 overflow-hidden rounded-[7px] bg-${template.colorClass} ${template.shadowClass}`}>
-                  <img src={template.icon} width={24} height={24} alt='' />
+                  <img src={r2cdn(template.icon)} width={24} height={24} alt='' />
                 </div>
                 <span className='pr-1 text-ln-label-md text-ln-gray-800'>{template.name}</span>
                 {template.isNew && (
@@ -449,8 +450,10 @@ export default function SectorTemplates() {
                         }}
                       >
                         <img
-                          src={currentPage.mobileImage}
-                          loading='lazy'
+                          src={r2cdn(currentPage.mobileImage)}
+                          loading='eager'
+                          decoding='async'
+                          fetchPriority='high'
                           width={278}
                           height={601}
                           alt=''
@@ -536,7 +539,14 @@ export default function SectorTemplates() {
                           </div>
                         </div>
                         <div className='px-3'>
-                          <img src={page.desktopImage} alt='' className='w-full rounded-20 shadow-ln-xs' />
+                          <img
+                            src={r2cdn(page.desktopImage)}
+                            alt=''
+                            loading={idx === 0 ? 'eager' : 'lazy'}
+                            decoding='async'
+                            fetchPriority={idx === 0 ? 'high' : 'auto'}
+                            className='w-full rounded-20 shadow-ln-xs'
+                          />
                         </div>
                       </div>
                     </div>

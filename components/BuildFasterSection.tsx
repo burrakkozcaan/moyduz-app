@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ShieldCheck, Hourglass, Brain, Bot, GitBranch } from 'lucide-react';
+import { r2cdn } from '@/lib/cdn';
 
 const TABS = [
   { id: 'ai-models', label: 'Brief\'iniz', icon: Brain },
@@ -28,7 +29,7 @@ function EmailMockupCard() {
               <div className="relative size-4 overflow-hidden rounded-full border border-foreground/20 bg-muted">
                 <img
                   alt="Moyduz"
-                  src="/images/team/moyduz.svg"
+                  src={r2cdn('/images/team/moyduz.svg')}
                   width={20}
                   height={20}
                   className="size-full object-contain"
@@ -205,6 +206,8 @@ export function BuildFasterSection() {
                 <img
                   alt=""
                   src="https://images.unsplash.com/photo-1600223260976-32a509b23602?q=80&w=1200&auto=format&fit=crop"
+                  loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 size-full object-cover opacity-65 dark:opacity-35"
                 />
               </div>
@@ -245,7 +248,7 @@ export function BuildFasterSection() {
                 <div className="relative size-10 overflow-hidden rounded-full border border-foreground/10 shadow">
                   <img
                     alt="Moyduz"
-                    src="/images/team/moyduz.svg"
+                    src={r2cdn('/images/team/moyduz.svg')}
                     width={56}
                     height={56}
                     className="size-full object-contain"

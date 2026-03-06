@@ -158,8 +158,9 @@ export const DottedGlowBackground = ({
 
     let raf = 0;
     let stopped = false;
+    let isVisible = true;
 
-    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    const dpr = Math.min(Math.max(1, window.devicePixelRatio || 1), 1.5);
 
     const resize = () => {
       const { width, height } = container.getBoundingClientRect();
@@ -203,12 +204,14 @@ export const DottedGlowBackground = ({
 
     regenDots();
 
-    let last = performance.now();
+    const queueFrame = () => {
+      if (!stopped && isVisible && !document.hidden) {
+        raf = requestAnimationFrame(draw);
+      }
+    };
 
     const draw = (now: number) => {
       if (stopped) return;
-      const dt = (now - last) / 1000; // seconds
-      last = now;
       const { width, height } = container.getBoundingClientRect();
 
       ctx.clearRect(0, 0, el.width, el.height);
@@ -262,7 +265,7 @@ export const DottedGlowBackground = ({
       }
       ctx.restore();
 
-      raf = requestAnimationFrame(draw);
+      queueFrame();
     };
 
     const handleResize = () => {
@@ -270,12 +273,44 @@ export const DottedGlowBackground = ({
       regenThrottled();
     };
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry?.isIntersecting ?? true;
+        if (!isVisible && raf) {
+          cancelAnimationFrame(raf);
+          raf = 0;
+          return;
+        }
+
+        if (isVisible && !document.hidden && !raf) {
+          queueFrame();
+        }
+      },
+      { threshold: 0, rootMargin: "200px 0px" },
+    );
+
+    const handleVisibilityChange = () => {
+      if (document.hidden && raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+        return;
+      }
+
+      if (!document.hidden && isVisible && !raf) {
+        queueFrame();
+      }
+    };
+
+    observer.observe(container);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
     window.addEventListener("resize", handleResize);
-    raf = requestAnimationFrame(draw);
+    queueFrame();
 
     return () => {
       stopped = true;
       cancelAnimationFrame(raf);
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       window.removeEventListener("resize", handleResize);
       ro.disconnect();
     };

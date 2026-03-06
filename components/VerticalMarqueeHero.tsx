@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useMemo, memo } from "react";
+import React, { useMemo, memo, useEffect, useRef, useState } from "react";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { r2cdn } from "@/lib/cdn";
 
 function cn(...inputs: Parameters<typeof clsx>) {
   return twMerge(clsx(inputs));
@@ -17,15 +18,15 @@ function toMediaItem(item: string | MediaItem): MediaItem {
 
 /** Tüm görseller tek pool; kolonlara round-robin dağıtılır, hiçbir görsel iki kolonda olmaz. */
 const ALL_MEDIA: (string | MediaItem)[] = [
-  "/images/hero/1.webp",
-  "/images/hero/2.webp",
-  "/images/hero/3.webp",
-  "/images/hero/4.webp",
-  "/images/hero/5.webp",
-  "/images/hero/6.webp",
-  "/images/hero/7.webp",
-  "/images/hero/8.webp",
-  "/images/hero/9.webp",
+  r2cdn("/images/hero/1.webp"),
+  r2cdn("/images/hero/2.webp"),
+  r2cdn("/images/hero/3.webp"),
+  r2cdn("/images/hero/4.webp"),
+  r2cdn("/images/hero/5.webp"),
+  r2cdn("/images/hero/6.webp"),
+  r2cdn("/images/hero/7.webp"),
+  r2cdn("/images/hero/8.webp"),
+  r2cdn("/images/hero/9.webp"),
 ];
 
 function splitIntoColumns<T>(array: T[], columnCount: number): T[][] {
@@ -43,6 +44,8 @@ type MarqueeColumnProps = {
   gap?: string;
   className?: string;
   aspect?: "normal" | "tall";
+  prioritizeFirstItem?: boolean;
+  isActive?: boolean;
 };
 
 const MarqueeColumn = memo(function MarqueeColumn({
@@ -52,6 +55,8 @@ const MarqueeColumn = memo(function MarqueeColumn({
   gap = "1rem",
   className,
   aspect = "normal",
+  prioritizeFirstItem = false,
+  isActive = true,
 }: MarqueeColumnProps) {
   const normalized = useMemo(() => items.map(toMediaItem), [items]);
   const content = useMemo(() => [...normalized, ...normalized], [normalized]);
@@ -72,6 +77,7 @@ const MarqueeColumn = memo(function MarqueeColumn({
           {
             "--marquee-duration": `${duration}s`,
             gap: gap,
+            animationPlayState: isActive ? "running" : "paused",
           } as React.CSSProperties
         }
       >
@@ -97,8 +103,10 @@ const MarqueeColumn = memo(function MarqueeColumn({
                 src={item.src}
                 alt=""
                 className="w-full h-full object-cover"
-                loading={i < 3 ? "eager" : "lazy"}
-                fetchPriority={i === 0 ? "high" : "auto"}
+                loading={prioritizeFirstItem && i === 0 ? "eager" : "lazy"}
+                fetchPriority={prioritizeFirstItem && i === 0 ? "high" : "auto"}
+                decoding="async"
+                draggable={false}
               />
             )}
           </div>
@@ -119,12 +127,14 @@ type VerticalMarqueeGridProps = {
   }>;
   backgroundLines?: boolean;
   className?: string;
+  isActive?: boolean;
 };
 
 function VerticalMarqueeGrid({
   columns,
   backgroundLines = true,
   className,
+  isActive = true,
 }: VerticalMarqueeGridProps) {
   return (
     <div className={cn("relative w-full h-full overflow-hidden", className)}>
@@ -143,6 +153,8 @@ function VerticalMarqueeGrid({
             <MarqueeColumn
               key={idx}
               {...colConfig}
+              prioritizeFirstItem={idx === 2}
+              isActive={isActive}
               className={cn("flex-1 min-w-0 transition-all duration-500", colConfig.className)}
             />
           ))}
@@ -165,8 +177,27 @@ const gridConfiguration = columnItems.map((items, i) => ({
 }));
 
 export default function VerticalMarqueeHero() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isActive, setIsActive] = useState(true);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsActive(entry?.isIntersecting ?? true);
+      },
+      { threshold: 0, rootMargin: "300px 0px" },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       className="relative min-h-[420px] w-full overflow-hidden bg-[#f7f7f7] antialiased sm:min-h-[520px] md:min-h-screen"
       style={{
         isolation: "isolate",
@@ -175,7 +206,7 @@ export default function VerticalMarqueeHero() {
     >
       <div className="absolute inset-0 flex flex-col items-center">
         <div className="w-full h-[38vh] min-h-[280px] sm:min-h-[320px] md:h-[45vh] md:min-h-[400px] relative flex-1">
-          <VerticalMarqueeGrid columns={gridConfiguration} />
+          <VerticalMarqueeGrid columns={gridConfiguration} isActive={isActive} />
         </div>
       </div>
 
@@ -189,27 +220,27 @@ export default function VerticalMarqueeHero() {
       />
 
       <div
-        className="absolute left-0 top-0 z-50 h-[200px] w-full bg-gradient-to-b from-[#f7f7f7] via-[#f7f7f7]/80 to-transparent md:hidden"
+        className="absolute left-0 top-0 z-50 h-[200px] w-full bg-gradient-to-b from-[#f7f7f7] via-[#f7f7f7]/80  md:hidden"
         style={{ top: "-2px", transform: "translateZ(0)", isolation: "isolate", pointerEvents: "none" }}
       />
       <div
-        className="absolute bottom-0 left-0 z-50 h-[200px] w-full bg-gradient-to-t from-[#f7f7f7] via-[#f7f7f7]/80 to-transparent md:hidden"
+        className="absolute bottom-0 left-0 z-50 h-[200px] w-full bg-gradient-to-t from-[#f7f7f7] via-[#f7f7f7]/80  md:hidden"
         style={{ bottom: "-2px", transform: "translateZ(0)", isolation: "isolate", pointerEvents: "none" }}
       />
       <div
-        className="absolute left-0 top-0 z-50 hidden h-[300px] w-full bg-gradient-to-b from-[#f7f7f7] via-[#f7f7f7]/80 to-transparent md:block"
+        className="absolute left-0 top-0 z-50 hidden h-[300px] w-full bg-gradient-to-b from-[#f7f7f7] via-[#f7f7f7]/80  md:block"
         style={{ top: "-2px", transform: "translateZ(0)", isolation: "isolate", pointerEvents: "none" }}
       />
       <div
-        className="absolute bottom-0 left-0 z-50 hidden h-[300px] w-full bg-gradient-to-t from-[#f7f7f7] via-[#f7f7f7]/80 to-transparent md:block"
+        className="absolute bottom-0 left-0 z-50 hidden h-[300px] w-full bg-gradient-to-t from-[#f7f7f7] via-[#f7f7f7]/80  md:block"
         style={{ bottom: "-2px", transform: "translateZ(0)", isolation: "isolate", pointerEvents: "none" }}
       />
       <div
-        className="absolute left-0 top-0 z-50 h-full w-[80px] bg-gradient-to-r from-[#f7f7f7] to-transparent md:w-[120px]"
+        className="absolute left-0 top-0 z-50 h-full w-[80px]  from-[#f7f7f7] to-transparent md:w-[120px]"
         style={{ transform: "translateZ(0)", isolation: "isolate", pointerEvents: "none" }}
       />
       <div
-        className="absolute right-0 top-0 z-50 h-full w-[80px] bg-gradient-to-l from-[#f7f7f7] to-transparent md:w-[120px]"
+        className="absolute right-0 top-0 z-50 h-full w-[80px]    md:w-[120px]"
         style={{ transform: "translateZ(0)", isolation: "isolate", pointerEvents: "none" }}
       />
     </section>

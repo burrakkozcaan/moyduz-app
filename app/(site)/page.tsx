@@ -48,8 +48,9 @@ import PlatformPillars from '@/components/PlatformPillars';
 import HomePricingCards from '@/components/HomePricingCards';
 import Testimional from '@/components/Testimional';
 import ElectronBento from '@/components/ElectronBento';
+import VerticalMarqueeHero from '@/components/VerticalMarqueeHero';
+import { r2cdn } from '@/lib/cdn';
 
-import LazyVerticalMarqueeHero from '@/components/LazyVerticalMarqueeHero';
 import EcosystemMarqueeSection from '@/components/EcosystemMarqueeSection';
 
 export default function Home() {
@@ -62,7 +63,7 @@ export default function Home() {
         <Hero />
       </div>
       <div className='relative left-1/2 w-screen max-w-none -translate-x-1/2'>
-        <LazyVerticalMarqueeHero />
+        <VerticalMarqueeHero />
       </div>
       {/* <Gallery /> */}
       <div className='container mx-auto flex h-min w-full flex-col items-center justify-center text-center'>
@@ -146,17 +147,21 @@ export default function Home() {
               </div>
               <div className='mac:flex pointer-events-none absolute -inset-x-16 top-24 hidden'>
                 <img
-                  src='/images/landing/dot.png'
+                  src={r2cdn('/images/landing/dot.png')}
                   width={9}
                   height={9}
                   alt=''
+                  loading='lazy'
+                  decoding='async'
                   className='absolute left-8 top-1/2 z-30 min-h-[9px] min-w-[9px] -translate-x-1/2 -translate-y-1/2'
                 />
                 <img
-                  src='/images/landing/dot.png'
+                  src={r2cdn('/images/landing/dot.png')}
                   width={9}
                   height={9}
                   alt=''
+                  loading='lazy'
+                  decoding='async'
                   className='absolute left-auto right-8 top-1/2 z-30 min-h-[9px] min-w-[9px] -translate-y-1/2 translate-x-1/2'
                 />
               </div>
@@ -180,10 +185,12 @@ export default function Home() {
                 <div className='relative flex items-center px-3.5 xl:px-6'>
                   <div className='bleed-bg-l bleed-ln-gray-100 relative -left-10 hidden h-px bg-ln-gray-100 xl:flex'>
                     <img
-                      src='/images/landing/dot.png'
+                      src={r2cdn('/images/landing/dot.png')}
                       width={9}
                       height={9}
                       alt=''
+                      loading='lazy'
+                      decoding='async'
                       className='absolute -right-px -top-1 z-30 min-h-[9px] min-w-[9px]'
                     />
                   </div>
@@ -214,10 +221,12 @@ export default function Home() {
                   </div>
                   <div className='bleed-bg-r bleed-ln-gray-100 relative -right-10 hidden h-px flex-1 bg-ln-gray-100 xl:flex'>
                     <img
-                      src='/images/landing/dot.png'
+                      src={r2cdn('/images/landing/dot.png')}
                       width={9}
                       height={9}
                       alt=''
+                      loading='lazy'
+                      decoding='async'
                       className='absolute -left-px -top-1 z-30 min-h-[9px] min-w-[9px]'
                     />
                   </div>
@@ -244,40 +253,50 @@ export default function Home() {
         <div className='mx-auto my-12 flex h-8 w-full max-w-[596px] items-center gap-6 px-4 md:my-24'>
           <div className='relative h-px w-full flex-1 bg-ln-gray-200'>
             <img
-              src='/images/landing/dot-gray-25.png'
+              src={r2cdn('/images/landing/dot-gray-25.png')}
               width={9}
               height={9}
               alt=''
+              loading='lazy'
+              decoding='async'
               className='absolute left-0 top-1/2 z-30 min-h-[9px] min-w-[9px] -translate-x-1/2 -translate-y-1/2'
             />
             <img
-              src='/images/landing/dot-gray-25.png'
+              src={r2cdn('/images/landing/dot-gray-25.png')}
               width={9}
               height={9}
               alt=''
+              loading='lazy'
+              decoding='async'
               className='absolute right-0 top-1/2 z-30 min-h-[9px] min-w-[9px] -translate-y-1/2 translate-x-1/2'
             />
           </div>
           <img
-            src='/images/landing/section-separator-icon.png'
+            src={r2cdn('/images/landing/section-separator-icon.png')}
             alt=''
             width={34}
             height={26}
+            loading='lazy'
+            decoding='async'
             className='shrink-0 object-contain'
           />
           <div className='relative h-px w-full flex-1 bg-ln-gray-200'>
             <img
-              src='/images/landing/dot-gray-25.png'
+              src={r2cdn('/images/landing/dot-gray-25.png')}
               width={9}
               height={9}
               alt=''
+              loading='lazy'
+              decoding='async'
               className='absolute left-0 top-1/2 z-30 min-h-[9px] min-w-[9px] -translate-x-1/2 -translate-y-1/2'
             />
             <img
-              src='/images/landing/dot-gray-25.png'
+              src={r2cdn('/images/landing/dot-gray-25.png')}
               width={9}
               height={9}
               alt=''
+              loading='lazy'
+              decoding='async'
               className='absolute right-0 top-1/2 z-30 min-h-[9px] min-w-[9px] -translate-y-1/2 translate-x-1/2'
             />
           </div>

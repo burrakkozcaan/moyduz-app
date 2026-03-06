@@ -3,6 +3,7 @@
 import React from 'react';
 import { Zap, Rocket, Shield, Clock, ArrowRight } from 'lucide-react';
 import { Highlighter } from '@/components/ui/highlighter';
+import { r2cdn } from '@/lib/cdn';
 
 const FEATURES = [
   {
@@ -27,20 +28,21 @@ const FEATURES = [
   },
 ];
 
-const STATS = [
-  { value: '500+', label: 'Tamamlanan Proje' },
-  { value: '%99.9', label: 'Uptime Garantisi' },
-  { value: '24/7', label: 'Teknik Destek' },
-  { value: '50+', label: 'Mutlu Müşteri' },
-];
-
 export default function EffortlessSection() {
   return (
     <section className="w-full mb-16  md:py-24">
       <div className="mx-auto max-w-7xl ">
         {/* Header */}
         <div className="flex flex-col items-center pt-16">
-          <video src="/moyduz.mp4" autoPlay muted loop className="w-full h-full object-cover" />
+          <video
+            src={r2cdn('/moyduz.mp4')}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover"
+          />
           <span
             className="relative text-lg md:text-2xl lg:text-3xl inline-block bg-[length:250%_100%,auto] bg-clip-text text-transparent font-normal"
             style={{

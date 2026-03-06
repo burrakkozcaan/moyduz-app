@@ -3,8 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { usePathname } from 'next/navigation';
-import { cn } from '@/utils/cn';
 import { CommandMenuDemo } from './CommandMenuDemo';
 import { 
   X, 
@@ -22,24 +20,13 @@ import {
 } from 'lucide-react';
 import * as Modal from '@/components/new-ui/modal';
 import Image from 'next/image';
-
-const menuItems = [
-  { name: 'Hizmetler', href: '/services' },
-  { name: 'Karşılaştır', href: '/compare' },
-  { name: 'Araçlar', href: '/tools' },
-  { name: 'Fiyatlandırma', href: '/pricing' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'İletişim', href: '/contact' },
-];
-
-const cdn = (path: string, w: number, q: number) => `${path}`;
+import { r2cdn } from '@/lib/cdn';
 
 const DynamicThemeSwitch = dynamic(() => import('./theme-switch'), {
   ssr: false,
 });
 
 export default function Header() {
-  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -83,14 +70,14 @@ export default function Header() {
         <div className="relative z-20 flex w-full items-center justify-center gap-8 mac:justify-stretch">
           <div className="relative hidden h-px flex-1 bg-ln-gray-200 bleed-bg-l bleed-ln-gray-200 mac:block">
 
-            <Image src="/images/landing/dot.png" width={9} height={9} alt="" className="absolute z-30 min-h-[9px] min-w-[9px] -top-1 -left-[37px]" />
-            <Image src="/images/landing/dot.png" width={9} height={9} alt="" className="absolute z-30 min-h-[9px] min-w-[9px] -right-px -top-1" />
+            <Image src={r2cdn("/images/landing/dot.png")} width={9} height={9} alt="" className="absolute z-30 min-h-[9px] min-w-[9px] -top-1 -left-[37px]" />
+            <Image src={r2cdn("/images/landing/dot.png")} width={9} height={9} alt="" className="absolute z-30 min-h-[9px] min-w-[9px] -right-px -top-1" />
           </div>
           <header className="relative z-10 flex h-16 w-full items-center justify-between gap-4 bg-ln-gray-25 dark:bg-ln-gray-900 px-4 lg:h-auto lg:w-auto lg:justify-start lg:rounded-3xl lg:bg-ln-gray-0 dark:lg:bg-ln-gray-950 lg:p-[18px] lg:shadow-ln-xs dark:lg:shadow-none dark:lg:ring-1 dark:lg:ring-ln-gray-800">
             <div className="flex items-center gap-2.5 pr-3">
               <Link className="focus:outline-none" href="/">
                 <div className="relative size-9  ">
-                  <Image src="/favicon.svg" alt=" moyduz Logo" className="absolute -top-0.5 left-1/2 max-w-none -translate-x-1/2 object-contain" width={42} height={42} />
+                  <Image src={r2cdn("/favicon.svg")} alt=" moyduz Logo" className="absolute -top-0.5 left-1/2 max-w-none -translate-x-1/2 object-contain" width={42} height={42} />
                 
                 </div>
               </Link>

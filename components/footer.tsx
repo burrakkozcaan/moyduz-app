@@ -5,6 +5,7 @@ import { TrendingUp } from 'lucide-react';
 import FlickeringFooter from './flickering-footer';
 import { getFooterLinkGroups } from '@/lib/seo/internal-link-graph';
 import Image from 'next/image';
+import { r2cdn } from '@/lib/cdn';
 
 // Footer link groups from internal link graph (authority dağıtımı: her sayfada bu linkler taşınır)
 const footerGroups = getFooterLinkGroups();
@@ -65,7 +66,7 @@ export default function Footer() {
               >
                 <div className="relative size-9">
                   <Image
-                    src="/favicon.svg"
+                    src={r2cdn("/favicon.svg")}
                     alt="Moyduz Logo"
                     className="absolute -top-0.5 left-1/2 max-w-none -translate-x-1/2 object-contain"
                     width={42}
@@ -99,7 +100,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-ln-label-sm text-ln-orange transition-colors hover:text-ln-orange/80"
                 >
-                  📍 Google Haritalar'da konumumuzu görüntüle
+                  📍 Google Haritalar&apos;da konumumuzu görüntüle
                 </a>
               </div>
             </div>

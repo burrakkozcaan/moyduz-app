@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Sparkles, CornerDownLeft, CircleCheck, GitBranch, Plus, Play, Signature, Mail, Database, Send, ListChecks, Rocket } from "lucide-react";
 import { AnimatedBadge } from "./new-ui/Animated-Badge";
+import { r2cdn } from "@/lib/cdn";
 
 const PlusIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -281,7 +282,7 @@ function EmailMockupCardContent() {
                 <span className="text-foreground/50">Alıcı:</span>
                 <div className="flex cursor-pointer gap-1 rounded-full border border-border bg-card p-0.5 pr-2 shadow-md shadow-black/6.5">
                   <div className="relative size-3 overflow-hidden rounded-full border border-foreground/20 before:absolute before:inset-0 before:rounded-full before:border">
-                    <img alt="Moyduz" src="/images/team/moyduz.svg" width={12} height={12} className="size-full object-contain" />
+                    <img alt="Moyduz" src={r2cdn("/images/team/moyduz.svg")} width={12} height={12} className="size-full object-contain" />
                   </div>
                   <span className="text-[10px] font-medium">Moyduz</span>
                 </div>

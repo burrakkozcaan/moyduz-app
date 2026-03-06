@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-// import { cdn } from "@/lib/cdn";
+import { r2cdn } from "@/lib/cdn";
 
 type Testimonial = {
   name: string;
@@ -83,7 +83,7 @@ function Card({ t }: { t: Testimonial }) {
   const avatarSrc =
     t.avatar.startsWith("http://") || t.avatar.startsWith("https://")
       ? t.avatar // External URL - use directly
-      : t.avatar; // Internal path - use CDN helper
+      : r2cdn(t.avatar); // Internal path - use CDN helper
 
   return (
     <div className="w-full rounded-[15px] border border-ln-gray-100 bg-ln-gray-25 shadow-[0_4px_24px_rgba(0,0,0,0.06)] ring-1 ring-black/5 hover:bg-ln-gray-200 transition-colors dark:shadow-[0_4px_24px_rgba(0,0,0,0.15)] dark:ring-white/5">
