@@ -156,8 +156,8 @@ export default function RootLayout({
       )}
     >
       <head>
-        <link rel="preconnect" href="https://cdn.moydus.com" />
-        <link rel="dns-prefetch" href="https://cdn.moydus.com" />
+        <link rel="preconnect" href="https://cdn.moyduz.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.moyduz.com" />
 
         <link
           rel="alternate"

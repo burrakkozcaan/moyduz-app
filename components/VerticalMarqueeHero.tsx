@@ -82,7 +82,7 @@ const MarqueeColumn = memo(function MarqueeColumn({
           <div
             key={i}
             className={cn(
-              "relative w-full rounded-2xl overflow-hidden bg-gray-100 shadow-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:z-10",
+              "relative w-full rounded-2xl overflow-hidden bg-gray-100 shadow-sm transition-transform duration-300 hover:scale-[1.02] hover:z-10",
               aspectClass
             )}
           >

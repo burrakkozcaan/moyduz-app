@@ -57,8 +57,11 @@ import {
 export default function Home() {
   return (
     <>
-      {/* Vertical marquee hero (AI headshots style) */}
-   
+      {/* Preload above-fold hero images to improve LCP */}
+      <link rel="preload" as="image" href={r2cdn('/images/hero/3.webp')} fetchPriority="high" />
+      <link rel="preload" as="image" href={r2cdn('/images/hero/2.webp')} />
+      <link rel="preload" as="image" href={r2cdn('/images/hero/4.webp')} />
+
       {/* Hero: announcement pill, headline, CTA, decorative visual */}
       <div className='relative left-1/2 w-screen max-w-none -translate-x-1/2 dark:bg-ln-gray-900'>
         <Hero />
