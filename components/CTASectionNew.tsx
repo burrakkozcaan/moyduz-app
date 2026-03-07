@@ -109,7 +109,7 @@ export function CTASectionNew() {
             </p>
 
             {/* Button */}
-            <button className='hover:ring-primary-base/20 group relative inline-flex h-14 items-center justify-center gap-3 overflow-hidden rounded-full border border-white/10 bg-white/5 px-12 text-paragraph-md font-medium text-white shadow-button-primary-focus transition-all duration-300 hover:scale-105 hover:bg-primary-darker hover:ring-4 active:scale-95'>
+            <button className='hover:bg-ln-orange/10 group border-ln-orange border-2 relative inline-flex h-14 items-center justify-center gap-3 overflow-hidden rounded-full border border-white/10 bg-white/5 px-12 text-paragraph-md font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-primary-darker hover:ring-4 active:scale-95'>
               <span className='relative z-10'>Hemen Başla</span>
               <ArrowRight className='relative z-10 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1' />
             </button>
