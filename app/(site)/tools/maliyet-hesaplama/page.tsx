@@ -66,7 +66,7 @@ export default function MaliyetHesaplamaPage() {
             {/* Monthly Sales */}
             <div className="space-y-2">
               <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-                Aylık Satış Cirosu: <span className="font-bold text-orange-600">{monthlySales.toLocaleString('tr-TR')} ₺</span>
+                Aylık Satış Cirosu: <span className="font-bold text-ln-orange">{monthlySales.toLocaleString('tr-TR')} ₺</span>
               </label>
               <input
                 type="range"
@@ -75,7 +75,7 @@ export default function MaliyetHesaplamaPage() {
                 step={5000}
                 value={monthlySales}
                 onChange={(e) => setMonthlySales(Number(e.target.value))}
-                className="w-full accent-orange-500"
+                className="w-full accent-ln-orange"
               />
               <div className="flex justify-between text-xs text-ln-gray-500">
                 <span>5.000 ₺</span>
@@ -86,7 +86,7 @@ export default function MaliyetHesaplamaPage() {
             {/* Products */}
             <div className="space-y-2">
               <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-                Ürün Sayısı: <span className="font-bold text-orange-600">{products}</span>
+                Ürün Sayısı: <span className="font-bold text-ln-orange">{products}</span>
               </label>
               <input
                 type="range"
@@ -95,7 +95,7 @@ export default function MaliyetHesaplamaPage() {
                 step={10}
                 value={products}
                 onChange={(e) => setProducts(Number(e.target.value))}
-                className="w-full accent-orange-500"
+                className="w-full accent-ln-orange"
               />
               <div className="flex justify-between text-xs text-ln-gray-500">
                 <span>10</span>
@@ -106,7 +106,7 @@ export default function MaliyetHesaplamaPage() {
             {/* Plugins */}
             <div className="space-y-2">
               <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-                Eklenti Sayısı: <span className="font-bold text-orange-600">{plugins}</span>
+                Eklenti Sayısı: <span className="font-bold text-ln-orange">{plugins}</span>
               </label>
               <input
                 type="range"
@@ -115,7 +115,7 @@ export default function MaliyetHesaplamaPage() {
                 step={1}
                 value={plugins}
                 onChange={(e) => setPlugins(Number(e.target.value))}
-                className="w-full accent-orange-500"
+                className="w-full accent-ln-orange"
               />
               <div className="flex justify-between text-xs text-ln-gray-500">
                 <span>0</span>
@@ -126,7 +126,7 @@ export default function MaliyetHesaplamaPage() {
             {/* Years */}
             <div className="space-y-2">
               <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-                Hesaplama Periyodu: <span className="font-bold text-orange-600">{years} yıl</span>
+                Hesaplama Periyodu: <span className="font-bold text-ln-orange">{years} yıl</span>
               </label>
               <input
                 type="range"
@@ -135,7 +135,7 @@ export default function MaliyetHesaplamaPage() {
                 step={1}
                 value={years}
                 onChange={(e) => setYears(Number(e.target.value))}
-                className="w-full accent-orange-500"
+                className="w-full accent-ln-orange"
               />
               <div className="flex justify-between text-xs text-ln-gray-500">
                 <span>1 yıl</span>
@@ -163,7 +163,7 @@ export default function MaliyetHesaplamaPage() {
                 {p.commission > 0 && (
                   <div className="flex justify-between text-sm">
                     <span className="text-ln-gray-600 dark:text-ln-gray-400">Satış komisyonu (%{p.commission})</span>
-                    <span className="font-medium text-red-600">{commissionCost.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺/ay</span>
+                    <span className="font-medium text-ln-red">{commissionCost.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺/ay</span>
                   </div>
                 )}
                 <div className="border-t border-ln-gray-200 dark:border-ln-gray-700 pt-3 flex justify-between text-sm">
@@ -176,7 +176,7 @@ export default function MaliyetHesaplamaPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="font-semibold text-ln-gray-700 dark:text-ln-gray-300">{years} yıllık toplam</span>
-                  <span className="font-bold text-xl text-red-600">{totalOverYears.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</span>
+                  <span className="font-bold text-xl text-ln-red">{totalOverYears.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</span>
                 </div>
               </div>
             </div>

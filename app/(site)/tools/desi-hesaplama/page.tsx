@@ -53,60 +53,60 @@ export default function DesiHesaplamaPage() {
 
           <div className="space-y-2">
             <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-              Boy (uzunluk): <span className="font-bold text-orange-600">{length} cm</span>
+              Boy (uzunluk): <span className="font-bold text-ln-orange">{length} cm</span>
             </label>
             <input
               type="range" min={1} max={200} step={1} value={length}
               onChange={(e) => setLength(Number(e.target.value))}
-              className="w-full accent-orange-500"
+              className="w-full accent-ln-orange"
             />
             <div className="flex justify-between text-xs text-ln-gray-500"><span>1 cm</span><span>200 cm</span></div>
           </div>
 
           <div className="space-y-2">
             <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-              En (genişlik): <span className="font-bold text-orange-600">{width} cm</span>
+              En (genişlik): <span className="font-bold text-ln-orange">{width} cm</span>
             </label>
             <input
               type="range" min={1} max={200} step={1} value={width}
               onChange={(e) => setWidth(Number(e.target.value))}
-              className="w-full accent-orange-500"
+              className="w-full accent-ln-orange"
             />
             <div className="flex justify-between text-xs text-ln-gray-500"><span>1 cm</span><span>200 cm</span></div>
           </div>
 
           <div className="space-y-2">
             <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-              Yükseklik: <span className="font-bold text-orange-600">{height} cm</span>
+              Yükseklik: <span className="font-bold text-ln-orange">{height} cm</span>
             </label>
             <input
               type="range" min={1} max={200} step={1} value={height}
               onChange={(e) => setHeight(Number(e.target.value))}
-              className="w-full accent-orange-500"
+              className="w-full accent-ln-orange"
             />
             <div className="flex justify-between text-xs text-ln-gray-500"><span>1 cm</span><span>200 cm</span></div>
           </div>
 
           <div className="space-y-2">
             <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-              Gerçek Ağırlık: <span className="font-bold text-orange-600">{weight.toFixed(1)} kg</span>
+              Gerçek Ağırlık: <span className="font-bold text-ln-orange">{weight.toFixed(1)} kg</span>
             </label>
             <input
               type="range" min={0.1} max={50} step={0.1} value={weight}
               onChange={(e) => setWeight(Number(e.target.value))}
-              className="w-full accent-orange-500"
+              className="w-full accent-ln-orange"
             />
             <div className="flex justify-between text-xs text-ln-gray-500"><span>0.1 kg</span><span>50 kg</span></div>
           </div>
 
           <div className="space-y-2">
             <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-              Aylık Gönderi Adedi: <span className="font-bold text-orange-600">{monthlySales} adet</span>
+              Aylık Gönderi Adedi: <span className="font-bold text-ln-orange">{monthlySales} adet</span>
             </label>
             <input
               type="range" min={1} max={5000} step={10} value={monthlySales}
               onChange={(e) => setMonthlySales(Number(e.target.value))}
-              className="w-full accent-orange-500"
+              className="w-full accent-ln-orange"
             />
           </div>
 
@@ -223,10 +223,10 @@ export default function DesiHesaplamaPage() {
               Kargo maliyetlerinizi e-ticaret kâr hesabına ekleyin
             </p>
             <div className="flex flex-col gap-2 sm:flex-row">
-              <Link href="/tools/kargo-ucreti-hesaplama" className={`flex-1 justify-center ${TOOLS_BTN_PRIMARY_CLASS}`}>
+              <Link href="/tools/kargo-ucreti-hesaplama" className={`flex-1 justify-center w-full sm:w-auto ${TOOLS_BTN_PRIMARY_CLASS}`}>
                 Kargo Ücreti Hesapla
               </Link>
-              <Link href="/tools/e-ticaret-kar-hesaplama" className={`flex-1 justify-center ${TOOLS_BTN_SECONDARY_CLASS}`}>
+              <Link href="/tools/e-ticaret-kar-hesaplama" className={`flex-1 justify-center w-full sm:w-auto ${TOOLS_BTN_SECONDARY_CLASS}`}>
                 Kâr Marjı Hesapla
               </Link>
             </div>
@@ -240,7 +240,7 @@ export default function DesiHesaplamaPage() {
         <p>
           <strong>Desi</strong>, kargo firmaları tarafından kullanılan hacimsel ağırlık birimidir. Kargonun fiziksel
           ağırlığı az olsa bile büyük hacim kaplıyorsa, kargo firmaları daha fazla ücret talep edebilir.
-          Türkiye'de yurt içi gönderilerde standart bölme katsayısı <strong>3.000</strong> olarak kullanılmaktadır.
+          Türkiye&apos;de yurt içi gönderilerde standart bölme katsayısı <strong>3.000</strong> olarak kullanılmaktadır.
         </p>
 
         <h3>Desi Hesaplama Formülü</h3>

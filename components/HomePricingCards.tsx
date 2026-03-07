@@ -11,18 +11,20 @@ const cards = [
         <path stroke='currentColor' strokeLinejoin='round' strokeWidth='1.25' d='M13.126 5.416a3.125 3.125 0 1 1-6.25 0 3.125 3.125 0 0 1 6.25 0ZM10 11.041c-2.825 0-4.97 1.679-5.847 4.052-.34.922.447 1.781 1.429 1.781h8.838c.982 0 1.77-.86 1.429-1.78C14.97 12.72 12.827 11.04 10 11.04Z' />
       </svg>
     ),
+    key: 'starter',
     name: 'Başlangıç',
-    price: '$2,250+',
-    try: '≈ ₺75.000+',
+    aylik: '₺7.900',
+    tekOdeme: '₺79.900',
+    bakimSonrasi: '₺2.900/ay',
     desc: 'Kurumsal kimliğini dijitale kusursuz taşımak isteyenler için.',
-    maintenance: '+ $125–175/ay bakım dahil',
     features: [
       { label: 'Rakiplerinize fark atın:', desc: 'Google Lighthouse 90+ ile ışık hızında açılış.' },
       { label: 'Platforma hapsolmayın:', desc: 'Kaynak kodları tamamen size teslim edilir.' },
-      { label: 'Arkanızdayız:', desc: '3 ay ücretsiz teknik destek ve revizyon.' },
+      { label: 'Arkanızdayız:', desc: '12 ay boyunca birebir proje desteği.' },
     ],
     dark: false,
     badge: null,
+    href: 'https://app.moyduz.com/onboarding?package=starter',
   },
   {
     icon: (
@@ -30,11 +32,12 @@ const cards = [
         <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='1.25' d='M2.5 6.25h15m-15 0a1.25 1.25 0 0 1 1.25-1.25h11.25A1.25 1.25 0 0 1 17.5 6.25m-15 0v8.75A1.25 1.25 0 0 0 3.75 16.25h12.5a1.25 1.25 0 0 0 1.25-1.25V6.25M7.5 10h5' />
       </svg>
     ),
+    key: 'business',
     name: 'Business',
-    price: '$3,750+',
-    try: '≈ ₺125.000+',
+    aylik: '₺10.400',
+    tekOdeme: '₺119.900',
+    bakimSonrasi: '₺3.900/ay',
     desc: 'Büyüyen işletmeler ve operasyonunu otomatikleştiren B2B projeler için.',
-    maintenance: '+ $150–225/ay bakım dahil',
     features: [
       { label: 'Zaman kazanın:', desc: 'ERP, CRM ve muhasebe programlarınızla tam otomatik veri akışı.' },
       { label: 'Müşteriye özel deneyim:', desc: 'Gelişmiş kullanıcı ve bayi panelleri.' },
@@ -42,6 +45,7 @@ const cards = [
     ],
     dark: false,
     badge: null,
+    href: 'https://app.moyduz.com/onboarding?package=business',
   },
   {
     icon: (
@@ -49,11 +53,12 @@ const cards = [
         <path stroke='currentColor' strokeLinejoin='round' strokeWidth='1.5' d='M6.861 13.25H4.935a1 1 0 0 1-.878-1.48L5.68 8.791A2 2 0 0 1 7.437 7.75h3.792m-4.368 5.5 3.889 3.889M6.861 13.25l4.368-5.5m0 0c2.593-2.828 5.402-4.675 9.021-4.96a.89.89 0 0 1 .961.96c-.286 3.62-2.133 6.428-4.961 9.02m-5.5 4.369v1.927a1 1 0 0 0 1.479.877l2.979-1.624a2 2 0 0 0 1.042-1.756V12.77m-5.5 4.368 5.5-4.368M4.806 21.25H3.75a1 1 0 0 1-1-1v-1.056a2.056 2.056 0 1 1 2.056 2.055Z' />
       </svg>
     ),
-    name: 'Ticaret',
-    price: '$4,750+',
-    try: '≈ ₺159.000+',
+    key: 'eticaret',
+    name: 'E-Ticaret',
+    aylik: 'Pakete göre',
+    tekOdeme: 'Pakete göre',
+    bakimSonrasi: null,
     desc: 'Sınırları aşan B2C/B2B e-ticaret ve e-ihracat operasyonları için.',
-    maintenance: '+ $175–275/ay bakım dahil',
     features: [
       { label: 'Kârınız cebinizde kalsın:', desc: 'Her satıştan %0 komisyon, sürpriz kesinti yok.' },
       { label: 'Veriye dayalı büyüme:', desc: 'Meta/Google reklam dönüşümleri anlık takipte.' },
@@ -61,6 +66,7 @@ const cards = [
     ],
     dark: true,
     badge: 'EN ÇOK TERCİH EDİLEN',
+    href: '/e-ticaret-paketleri',
   },
   {
     icon: (
@@ -68,11 +74,12 @@ const cards = [
         <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='1.5' d='M3.75 19.25h10.5m-10.5 0V5.75a2 2 0 0 1 2-2h6.5a2 2 0 0 1 2 2V8M3.75 19.25h-2m12.5 0V8m0 11.25h6M14.25 8h4a2 2 0 0 1 2 2v9.25m0 0h2m-12-10.5h-2.5m0 4h2.5' />
       </svg>
     ),
+    key: 'marketplace',
     name: 'Pazar Yeri',
-    price: '$8,500+',
-    try: '≈ ₺285.000+',
+    aylik: '₺23.600',
+    tekOdeme: '₺269.900',
+    bakimSonrasi: '₺7.900/ay',
     desc: 'Kendi ekosistemini kuran vizyoner markalar ve B2B ağları için.',
-    maintenance: '+ $250–450/ay bakım dahil',
     features: [
       { label: 'Siz komisyonu toplayın:', desc: 'Satıcılar kendi ürün ve kargolarını yönetir.' },
       { label: 'Finansal otomasyon:', desc: 'Ödemeler otomatik bölünür, satıcıya anında transfer.' },
@@ -80,46 +87,45 @@ const cards = [
     ],
     dark: false,
     badge: null,
+    href: 'https://app.moyduz.com/onboarding?package=marketplace',
   },
 ];
 
 export default function HomePricingCards() {
-  const [includeMaintenance, setIncludeMaintenance] = useState(false);
+  const [billingMode, setBillingMode] = useState<'aylik' | 'tek'>('aylik');
 
   return (
     <div className='mt-6 flex flex-col xl:mt-10'>
-      {/* Maintenance toggle */}
-      <div className='flex items-center gap-3 px-3.5 xl:px-6 mb-6'>
+      {/* Billing toggle */}
+      <div className='flex items-center gap-1 rounded-[11px] bg-ln-gray-100 p-1 self-start mx-3.5 xl:mx-6 mb-6'>
         <button
           type='button'
-          role='switch'
-          aria-checked={includeMaintenance}
-          onClick={() => setIncludeMaintenance(!includeMaintenance)}
-          className={`relative h-6 w-[46px] shrink-0 rounded-full transition duration-200 ease-out ${includeMaintenance ? 'bg-ln-orange' : 'bg-ln-gray-200'}`}
+          onClick={() => setBillingMode('aylik')}
+          className={`h-8 rounded-[9px] px-3.5 text-ln-label-sm transition duration-200 ease-out ${billingMode === 'aylik' ? 'bg-ln-gray-0 text-ln-gray-800 shadow-ln-badge-orange' : 'text-ln-gray-600'}`}
         >
-          <span
-            className={`absolute left-0.5 top-0.5 flex size-5 items-center justify-center rounded-full bg-ln-gray-0 transition-transform duration-500 ${includeMaintenance ? 'translate-x-[22px]' : 'translate-x-0'}`}
-            style={{ transitionTimingFunction: 'cubic-bezier(0.6, 0.6, 0, 1)' }}
-          >
-            <div className={`size-1.5 rounded-full transition-colors duration-200 ${includeMaintenance ? 'bg-ln-orange' : 'bg-ln-gray-200'}`} />
+          Aylık
+        </button>
+        <button
+          type='button'
+          onClick={() => setBillingMode('tek')}
+          className={`h-8 rounded-[9px] px-3.5 text-ln-label-sm transition duration-200 ease-out ${billingMode === 'tek' ? 'bg-ln-gray-0 text-ln-gray-800 shadow-ln-badge-orange' : 'text-ln-gray-600'}`}
+        >
+          Tek Ödeme
+          <span className='ml-1.5 inline-flex h-4 items-center rounded-[4px] bg-ln-orange/[.12] px-1.5 text-[10px] font-medium text-ln-orange'>
+            indirimli
           </span>
         </button>
-        <div className='flex items-center gap-2'>
-          <span className='text-ln-label-sm text-ln-gray-700'>Aylık bakım paketi ekle</span>
-          {includeMaintenance && (
-            <span className='inline-flex h-5 items-center rounded-[5px] bg-ln-orange/[.10] px-[7px] text-ln-subheading-xs text-ln-orange'>
-              $125–$450/ay
-            </span>
-          )}
-        </div>
       </div>
 
       {/* Cards grid */}
       <div className='grid items-stretch justify-center gap-4 md:grid-cols-2 xl:grid xl:grid-cols-4 xl:gap-5 xl:p-6'>
-        {cards.map((card) => (
+        {cards.map((card) => {
+          const displayPrice = billingMode === 'aylik' ? card.aylik : card.tekOdeme;
+          const priceLabel = billingMode === 'aylik' ? '/ay' : 'tek seferlik';
+          return (
           <div key={card.name} className='w-full max-w-[390px] xl:max-w-full'>
             {card.dark ? (
-              /* Dark featured card — Ticaret */
+              /* Dark featured card — E-Ticaret */
               <div
                 className='relative flex h-full flex-col overflow-hidden rounded-20 bg-ln-gray-925 p-7 md:rounded-3xl'
                 style={{
@@ -154,18 +160,20 @@ export default function HomePricingCards() {
                   <div>
                     <div className='text-ln-label-md text-ln-orange'>{card.name}</div>
                     <div className='mt-1 flex items-baseline gap-1.5'>
-                      <span className='text-[15px]/[20px] font-550 text-ln-gray-0'>{card.price}</span>
-                      <span className='text-[11px]/[14px] text-ln-gray-500'>{card.try}</span>
+                      <span className='text-[15px]/[20px] font-550 text-ln-gray-0'>{displayPrice}</span>
+                      {card.key !== 'eticaret' && (
+                        <span className='text-[11px]/[14px] text-ln-gray-500'>{priceLabel}</span>
+                      )}
                     </div>
                   </div>
                   <p className='text-sm text-ln-gray-400'>{card.desc}</p>
 
-                  {includeMaintenance && (
+                  {card.bakimSonrasi && billingMode === 'aylik' && (
                     <div className='flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.15] px-2.5 py-1.5'>
                       <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' className='size-3.5 shrink-0 text-ln-orange'>
                         <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='1.5' d='m5.625 10.886 2.625 2.656 6.125-7.083' />
                       </svg>
-                      <span className='text-[11px]/[14px] font-medium text-ln-orange'>{card.maintenance}</span>
+                      <span className='text-[11px]/[14px] font-medium text-ln-orange'>12 ay sonra {card.bakimSonrasi} bakım</span>
                     </div>
                   )}
 
@@ -187,10 +195,10 @@ export default function HomePricingCards() {
                 </div>
 
                 <Link
-                  href='/pricing'
+                  href={card.href}
                   className='focus:outline-none group relative z-10 mt-6 inline-flex h-11 w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-[11px] bg-ln-orange px-3.5 text-ln-label-sm text-ln-gray-0 shadow-ln-button-orange transition duration-200 ease-linear'
                 >
-                  Bu Paketle Başla
+                  {card.key === 'eticaret' ? 'Paketleri İncele' : 'Bu Paketle Başla'}
                   <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' className='-mx-1.5 size-5 shrink-0 text-ln-gray-0/80 transition duration-200 ease-out group-hover:-translate-y-px group-hover:translate-x-0.5'>
                     <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='1.25' d='M14.5 12.204V6m0 0H8.296M14.5 6l-8 8' />
                   </svg>
@@ -202,20 +210,20 @@ export default function HomePricingCards() {
                 <div className='flex items-start justify-between'>
                   {card.icon}
                   <div className='flex flex-col items-end gap-0.5'>
-                    <div className='text-[15px]/[20px] font-550 text-ln-gray-800'>{card.price}</div>
-                    <div className='text-[11px]/[14px] text-ln-gray-400'>{card.try}</div>
+                    <div className='text-[15px]/[20px] font-550 text-ln-gray-800'>{displayPrice}</div>
+                    <div className='text-[11px]/[14px] text-ln-gray-400'>{priceLabel}</div>
                   </div>
                 </div>
 
                 <div className='mt-3 text-ln-label-md text-ln-gray-700'>{card.name}</div>
                 <p className='mt-1.5 text-sm text-ln-gray-600'>{card.desc}</p>
 
-                {includeMaintenance && (
+                {card.bakimSonrasi && billingMode === 'aylik' && (
                   <div className='mt-4 flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.08] px-2.5 py-1.5'>
                     <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' className='size-3.5 shrink-0 text-ln-orange'>
                       <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='1.5' d='m5.625 10.886 2.625 2.656 6.125-7.083' />
                     </svg>
-                    <span className='text-[11px]/[14px] font-medium text-ln-orange'>{card.maintenance}</span>
+                    <span className='text-[11px]/[14px] font-medium text-ln-orange'>12 ay sonra {card.bakimSonrasi} bakım</span>
                   </div>
                 )}
 
@@ -236,7 +244,7 @@ export default function HomePricingCards() {
                 </ul>
 
                 <Link
-                  href='/pricing'
+                  href={card.href}
                   className='group mt-6 relative inline-flex h-9 w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-[11px] bg-ln-gray-0 px-3.5 text-ln-label-sm text-ln-gray-800 shadow-ln-button-white transition duration-200 ease-linear focus:outline-none'
                 >
                   Projeye Başla
@@ -247,7 +255,8 @@ export default function HomePricingCards() {
               </div>
             )}
           </div>
-        ))}
+          );
+        })}
 
         {/* Custom Panel — full-width row */}
         <div className='w-full max-w-[390px] md:col-span-2 md:max-w-full xl:col-span-4'>

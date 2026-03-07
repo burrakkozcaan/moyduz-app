@@ -78,7 +78,7 @@ export default function ROIHesaplamaPage() {
             {/* Expected Growth */}
             <div className="space-y-2">
               <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-                Beklenen Büyüme (yıllık): <span className="font-bold text-orange-600">%{expectedGrowth}</span>
+                Beklenen Büyüme (yıllık): <span className="font-bold text-ln-orange">%{expectedGrowth}</span>
               </label>
               <input
                 type="range"
@@ -87,7 +87,7 @@ export default function ROIHesaplamaPage() {
                 step={5}
                 value={expectedGrowth}
                 onChange={(e) => setExpectedGrowth(Number(e.target.value))}
-                className="w-full accent-orange-500"
+                className="w-full accent-ln-orange"
               />
               <div className="flex justify-between text-xs text-ln-gray-500">
                 <span>%5</span>
@@ -98,7 +98,7 @@ export default function ROIHesaplamaPage() {
             {/* Conversion Improvement */}
             <div className="space-y-2">
               <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-                Dönüşüm Artışı Beklentisi: <span className="font-bold text-orange-600">%{conversionImprovement}</span>
+                Dönüşüm Artışı Beklentisi: <span className="font-bold text-ln-orange">%{conversionImprovement}</span>
               </label>
               <input
                 type="range"
@@ -107,7 +107,7 @@ export default function ROIHesaplamaPage() {
                 step={5}
                 value={conversionImprovement}
                 onChange={(e) => setConversionImprovement(Number(e.target.value))}
-                className="w-full accent-orange-500"
+                className="w-full accent-ln-orange"
               />
               <div className="flex justify-between text-xs text-ln-gray-500">
                 <span>%0</span>
@@ -118,7 +118,7 @@ export default function ROIHesaplamaPage() {
             {/* Period */}
             <div className="space-y-2">
               <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-                Hesaplama Dönemi: <span className="font-bold text-orange-600">{months} ay</span>
+                Hesaplama Dönemi: <span className="font-bold text-ln-orange">{months} ay</span>
               </label>
               <input
                 type="range"
@@ -127,7 +127,7 @@ export default function ROIHesaplamaPage() {
                 step={6}
                 value={months}
                 onChange={(e) => setMonths(Number(e.target.value))}
-                className="w-full accent-orange-500"
+                className="w-full accent-ln-orange"
               />
               <div className="flex justify-between text-xs text-ln-gray-500">
                 <span>6 ay</span>

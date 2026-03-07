@@ -92,24 +92,24 @@ export default function KargoUcretiHesaplamaPage() {
 
           <div className="space-y-2">
             <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-              Gerçek Ağırlık: <span className="font-bold text-orange-600">{weight.toFixed(1)} kg</span>
+              Gerçek Ağırlık: <span className="font-bold text-ln-orange">{weight.toFixed(1)} kg</span>
             </label>
             <input
               type="range" min={0.1} max={50} step={0.1} value={weight}
               onChange={(e) => setWeight(Number(e.target.value))}
-              className="w-full accent-orange-500"
+              className="w-full accent-ln-orange"
             />
             <div className="flex justify-between text-xs text-ln-gray-500"><span>0.1 kg</span><span>50 kg</span></div>
           </div>
 
           <div className="space-y-2">
             <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-              Aylık Gönderi Adedi: <span className="font-bold text-orange-600">{monthlySales} adet</span>
+              Aylık Gönderi Adedi: <span className="font-bold text-ln-orange">{monthlySales} adet</span>
             </label>
             <input
               type="range" min={1} max={10000} step={10} value={monthlySales}
               onChange={(e) => setMonthlySales(Number(e.target.value))}
-              className="w-full accent-orange-500"
+              className="w-full accent-ln-orange"
             />
             <div className="flex justify-between text-xs text-ln-gray-500"><span>1</span><span>10.000</span></div>
           </div>
@@ -182,11 +182,11 @@ export default function KargoUcretiHesaplamaPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-ln-gray-600 dark:text-ln-gray-400">Aylık toplam ({monthlySales} adet)</span>
-                  <span className="font-semibold text-orange-600">{selected.monthlyCost.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</span>
+                  <span className="font-semibold text-ln-orange">{selected.monthlyCost.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</span>
                 </div>
                 <div className="flex justify-between border-t border-ln-gray-200 dark:border-ln-gray-700 pt-2">
                   <span className="text-ln-gray-600 dark:text-ln-gray-400">Yıllık toplam</span>
-                  <span className="font-bold text-orange-600">{selected.yearlyCost.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</span>
+                  <span className="font-bold text-ln-orange">{selected.yearlyCost.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</span>
                 </div>
               </div>
             </div>
@@ -201,15 +201,15 @@ export default function KargoUcretiHesaplamaPage() {
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span className="text-ln-gray-600 dark:text-ln-gray-400">Gönderi başına tasarruf</span>
-                  <span className="font-semibold text-green-600">+{maxSavingsPerShipment.toFixed(0)} ₺</span>
+                  <span className="font-semibold text-ln-green">+{maxSavingsPerShipment.toFixed(0)} ₺</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-ln-gray-600 dark:text-ln-gray-400">Aylık tasarruf</span>
-                  <span className="font-semibold text-green-600">+{maxMonthlySavings.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</span>
+                  <span className="font-semibold text-ln-green">+{maxMonthlySavings.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</span>
                 </div>
                 <div className="flex justify-between border-t border-ln-gray-200 dark:border-ln-gray-700 pt-2">
                   <span className="text-ln-gray-600 dark:text-ln-gray-400">Yıllık tasarruf</span>
-                  <span className="font-bold text-green-600">+{maxYearlySavings.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</span>
+                  <span className="font-bold text-ln-green">+{maxYearlySavings.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</span>
                 </div>
               </div>
             </div>
@@ -245,7 +245,7 @@ export default function KargoUcretiHesaplamaPage() {
       <div className="mt-12 prose prose-lg max-w-none dark:prose-invert">
         <h2>Kargo Ücreti Nasıl Hesaplanır? — 2026</h2>
         <p>
-          Türkiye'de kargo ücretleri <strong>desi (hacimsel ağırlık)</strong> veya <strong>gerçek ağırlık</strong>tan
+          Türkiye&apos;de kargo ücretleri <strong>desi (hacimsel ağırlık)</strong> veya <strong>gerçek ağırlık</strong>tan
           büyük olanına göre hesaplanır. Her kargo firmasının farklı desi birim ücreti ve minimum ücret tutarı
           bulunmaktadır.
         </p>

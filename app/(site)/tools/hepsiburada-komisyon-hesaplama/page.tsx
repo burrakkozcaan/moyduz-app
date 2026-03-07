@@ -81,53 +81,53 @@ export default function HepsiburadaKomisyonHesaplamaPage() {
 
                     <div className="space-y-2">
                         <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-                            Satış Fiyatı (KDV dahil): <span className="font-bold text-orange-600">{salePrice.toLocaleString('tr-TR')} ₺</span>
+                            Satış Fiyatı (KDV dahil): <span className="font-bold text-ln-orange">{salePrice.toLocaleString('tr-TR')} ₺</span>
                         </label>
                         <input
                             type="range" min={50} max={20000} step={50} value={salePrice}
                             onChange={(e) => setSalePrice(Number(e.target.value))}
-                            className="w-full accent-orange-500"
+                            className="w-full accent-ln-orange"
                         />
                         <div className="flex justify-between text-xs text-ln-gray-500"><span>50 ₺</span><span>20.000 ₺</span></div>
                     </div>
 
                     <div className="space-y-2">
                         <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-                            Alış / Maliyet Fiyatı: <span className="font-bold text-orange-600">{costPrice.toLocaleString('tr-TR')} ₺</span>
+                            Alış / Maliyet Fiyatı: <span className="font-bold text-ln-orange">{costPrice.toLocaleString('tr-TR')} ₺</span>
                         </label>
                         <input
                             type="range" min={0} max={salePrice} step={10} value={costPrice}
                             onChange={(e) => setCostPrice(Number(e.target.value))}
-                            className="w-full accent-orange-500"
+                            className="w-full accent-ln-orange"
                         />
                     </div>
 
                     <div className="space-y-2">
                         <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-                            Kargo Maliyeti + KDV: <span className="font-bold text-orange-600">{shippingCost} ₺</span>
+                            Kargo Maliyeti + KDV: <span className="font-bold text-ln-orange">{shippingCost} ₺</span>
                         </label>
                         <input
                             type="range" min={0} max={300} step={5} value={shippingCost}
                             onChange={(e) => setShippingCost(Number(e.target.value))}
-                            className="w-full accent-orange-500"
+                            className="w-full accent-ln-orange"
                         />
                     </div>
 
                     <div className="space-y-2">
                         <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-                            Hepsiburada Komisyon Oranı: <span className="font-bold text-orange-600">%{commissionRate}</span>
+                            Hepsiburada Komisyon Oranı: <span className="font-bold text-ln-orange">%{commissionRate}</span>
                         </label>
                         <input
                             type="range" min={0} max={30} step={0.5} value={commissionRate}
                             onChange={(e) => setCommissionRate(Number(e.target.value))}
-                            className="w-full accent-orange-500"
+                            className="w-full accent-ln-orange"
                         />
                         <p className="text-xs text-ln-gray-500">Not: Kesilen komisyona +%20 Hizmet Bedeli KDV'si yansıtılır.</p>
                     </div>
 
                     <div className="space-y-2">
                         <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-                            Ürün KDV Oranı: <span className="font-bold text-orange-600">%{taxRate}</span>
+                            Ürün KDV Oranı: <span className="font-bold text-ln-orange">%{taxRate}</span>
                         </label>
                         <div className="flex gap-2">
                             {[0, 10, 20].map((r) => (
@@ -144,12 +144,12 @@ export default function HepsiburadaKomisyonHesaplamaPage() {
 
                     <div className="space-y-2">
                         <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-                            Tahmini Aylık Satış Adedi: <span className="font-bold text-orange-600">{monthlySales} adet</span>
+                            Tahmini Aylık Satış Adedi: <span className="font-bold text-ln-orange">{monthlySales} adet</span>
                         </label>
                         <input
                             type="range" min={1} max={1000} step={10} value={monthlySales}
                             onChange={(e) => setMonthlySales(Number(e.target.value))}
-                            className="w-full accent-orange-500"
+                            className="w-full accent-ln-orange"
                         />
                     </div>
                 </div>
@@ -168,11 +168,11 @@ export default function HepsiburadaKomisyonHesaplamaPage() {
                             </div>
                             <div className="flex justify-between text-sm">
                                 <span className="text-ln-gray-600 dark:text-ln-gray-400">Ürün KDV'si (%{taxRate})</span>
-                                <span className="font-medium text-red-500">-{taxAmount.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</span>
+                                <span className="font-medium text-ln-red">-{taxAmount.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</span>
                             </div>
                             <div className="flex justify-between text-sm">
                                 <span className="text-ln-gray-600 dark:text-ln-gray-400">HB Komisyon Tutarı (%{commissionRate})</span>
-                                <span className="font-medium text-red-500">-{commissionAmount.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</span>
+                                            <span className="font-medium text-ln-red">-{commissionAmount.toLocaleString('tr-TR', { maximumFractionDigits: 0 })} ₺</span>
                             </div>
                             <div className="flex justify-between text-sm pl-4 border-l-2 border-dashed border-red-200 dark:border-red-900/50">
                                 <span className="text-ln-gray-500 text-xs">Komisyon KDV'si (%20)</span>

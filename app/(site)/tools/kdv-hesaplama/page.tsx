@@ -106,12 +106,12 @@ export default function KdvHesaplamaPage() {
           {/* Price */}
           <div className="space-y-2">
             <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-              Fiyat ({mode === 'dahil' ? 'KDV dahil' : 'KDV hariç'}): <span className="font-bold text-orange-600">{price.toLocaleString('tr-TR')} ₺</span>
+              Fiyat ({mode === 'dahil' ? 'KDV dahil' : 'KDV hariç'}): <span className="font-bold text-ln-orange">{price.toLocaleString('tr-TR')} ₺</span>
             </label>
             <input
               type="range" min={10} max={50000} step={10} value={price}
               onChange={(e) => setPrice(Number(e.target.value))}
-              className="w-full accent-orange-500"
+              className="w-full accent-ln-orange"
             />
             <div className="flex justify-between text-xs text-ln-gray-500"><span>10 ₺</span><span>50.000 ₺</span></div>
           </div>
@@ -119,7 +119,7 @@ export default function KdvHesaplamaPage() {
           {/* KDV Rate */}
           <div className="space-y-2">
             <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-              KDV Oranı: <span className="font-bold text-orange-600">%{kdvRate}</span>
+              KDV Oranı: <span className="font-bold text-ln-orange">%{kdvRate}</span>
             </label>
             <div className="flex gap-2">
               {KDV_RATES.map((r) => (
@@ -141,12 +141,12 @@ export default function KdvHesaplamaPage() {
           {/* Monthly sales */}
           <div className="space-y-2">
             <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-              Aylık Satış Adedi: <span className="font-bold text-orange-600">{monthlySales} adet</span>
+              Aylık Satış Adedi: <span className="font-bold text-ln-orange">{monthlySales} adet</span>
             </label>
             <input
               type="range" min={1} max={10000} step={10} value={monthlySales}
               onChange={(e) => setMonthlySales(Number(e.target.value))}
-              className="w-full accent-orange-500"
+              className="w-full accent-ln-orange"
             />
             <div className="flex justify-between text-xs text-ln-gray-500"><span>1</span><span>10.000</span></div>
           </div>

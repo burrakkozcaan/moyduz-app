@@ -582,65 +582,14 @@ export default function PricingPage() {
             </div>
           </div>
           <div className="my-6 flex flex-col items-start">
-            <div className="hidden items-center gap-2.5 xl:flex">
-              <div className="text-[36px]/[40px] font-550 text-ln-gray-800">
-                <div className="relative flex">
-                  $
-                  <div className="grid overflow-hidden">
-                    <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '0ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>3</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)'  }}>,</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>2</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
-                    </div>
-                  </div>
-                  +
-                </div>
-              </div>
-              <div>
-                <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-700">
-                  başlangıç fiyatı
-                </div>
-                <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-500">
-                  KDV hariç
-                </div>
-                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-400">
-                  ≈ ₺109.000+
-                </div>
-              </div>
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-[36px]/[40px] font-550 text-ln-gray-800">₺7.900</span>
+              <span className="text-[13px]/[16px] text-ln-gray-500">/ay</span>
             </div>
-            <div className="flex flex-col items-start gap-1 xl:hidden">
-              <div className="text-[36px]/[40px] font-550 text-ln-gray-800">
-                <div className="relative flex">
-                  $
-                  <div className="grid overflow-hidden">
-                    <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '0ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>3</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>2</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
-                    </div>
-                  </div>
-                  +
-                </div>
-              </div>
-              <div>
-                <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-700">
-                  başlangıç fiyatı
-                </div>
-                <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-500">
-                  KDV hariç
-                </div>
-                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-400">
-                  ≈ ₺109.000+
-                </div>
-              </div>
-            </div>
+            <div className="mt-1 text-[11px]/[14px] text-ln-gray-400">Tek ödemede ₺79.900 · KDV hariç</div>
           </div>
           <a
-            href="/contact"
+            href="https://app.moyduz.com/onboarding?package=starter"
             className="flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-10 bg-ln-gray-50 text-ln-label-sm text-ln-gray-800"
           >
             Hemen Başla
@@ -882,53 +831,14 @@ export default function PricingPage() {
             </div>
           </div>
           <div className="my-6 flex flex-col items-start">
-            <div className="hidden items-center gap-2.5 xl:flex">
-              <div className="text-[36px]/[40px] font-550 text-ln-gray-800">
-                <div className="relative flex">
-                  $
-                  <div className="grid overflow-hidden">
-                    <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>3</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>7</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '250ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
-                    </div>
-                  </div>
-                  +
-                </div>
-              </div>
-              <div>
-                <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-700">başlangıç fiyatı</div>
-                <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-500">KDV hariç</div>
-                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-400">≈ ₺125.000+</div>
-              </div>
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-[36px]/[40px] font-550 text-ln-gray-800">₺10.400</span>
+              <span className="text-[13px]/[16px] text-ln-gray-500">/ay</span>
             </div>
-            <div className="flex flex-col items-start gap-1 xl:hidden">
-              <div className="text-[36px]/[40px] font-550 text-ln-gray-800">
-                <div className="relative flex">
-                  $
-                  <div className="grid overflow-hidden">
-                    <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>3</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>7</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '250ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
-                    </div>
-                  </div>
-                  +
-                </div>
-              </div>
-              <div>
-                <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-700">başlangıç fiyatı</div>
-                <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-500">KDV hariç</div>
-                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-400">≈ ₺125.000+</div>
-              </div>
-            </div>
+            <div className="mt-1 text-[11px]/[14px] text-ln-gray-400">Tek ödemede ₺119.900 · KDV hariç</div>
           </div>
-          <a href="/contact" className="flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-10 bg-ln-gray-50 text-ln-label-sm text-ln-gray-800">
-            Teklif Al
+          <a href="https://app.moyduz.com/onboarding?package=business" className="flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-10 bg-ln-gray-50 text-ln-label-sm text-ln-gray-800">
+            Hemen Başla
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-gray-500">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M14.5 12.204V6m0 0H8.296M14.5 6l-8 8" />
             </svg>
@@ -1032,72 +942,20 @@ export default function PricingPage() {
             </div>
           </div>
           <div className="my-6 flex flex-col items-start">
-            <div className="hidden items-center gap-2.5 xl:flex">
-              <div className="text-[36px]/[40px] font-550 text-ln-gray-0">
-                <div className="relative flex">
-                  $
-                  <div className="grid overflow-hidden">
-                    <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '250ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>9</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '300ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '350ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
-                    </div>
-                  </div>
-                  +
-                </div>
-              </div>
-              <div>
-                <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-400">
-                  başlangıç fiyatı
-                </div>
-                <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-600">
-                  KDV hariç
-                </div>
-                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-500">
-                  ≈ ₺199.000+
-                </div>
-              </div>
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-[36px]/[40px] font-550 text-ln-gray-0">Pakete göre</span>
             </div>
-            <div className="flex flex-col items-start gap-1 xl:hidden">
-              <div className="text-[36px]/[40px] font-550 text-ln-gray-0">
-                <div className="relative flex">
-                  $
-                  <div className="grid overflow-hidden">
-                    <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '250ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>9</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '300ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '350ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
-                    </div>
-                  </div>
-                  +
-                </div>
-              </div>
-              <div>
-                <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-400">
-                  başlangıç fiyatı
-                </div>
-                <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-600">
-                  KDV hariç
-                </div>
-                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-500">
-                  ≈ ₺199.000+
-                </div>
-              </div>
-            </div>
+            <div className="mt-1 text-[11px]/[14px] text-ln-gray-500">E-ticaret paketlerini inceleyin · KDV hariç</div>
           </div>
           <a
-            href="/contact"
+            href="/e-ticaret-paketleri"
             className="flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-10 bg-ln-orange text-ln-label-sm text-ln-gray-0"
             style={{
               boxShadow:
                 "0 19px 8px rgba(31, 31, 31, 0.01), 0 11px 6px rgba(31, 31, 31, 0.04), 0 5px 5px rgba(31, 31, 31, 0.07), 0 1px 3px rgba(31, 31, 31, 0.08), 0 0 0 1px rgba(26, 26, 26, 0.28), inset 0 1px 2px rgba(255, 255, 255, 0.34)"
             }}
           >
-            Teklif Al
+            Paketleri İncele
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1347,56 +1205,17 @@ export default function PricingPage() {
             </div>
           </div>
           <div className="my-6 flex flex-col items-start">
-            <div className="hidden items-center gap-2.5 xl:flex">
-              <div className="text-[36px]/[40px] font-550 text-ln-gray-800">
-                <div className="relative flex">
-                  $
-                  <div className="grid overflow-hidden">
-                    <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '0ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>8</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
-                    </div>
-                  </div>
-                  +
-                </div>
-              </div>
-              <div>
-                <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-700">başlangıç fiyatı</div>
-                <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-500">KDV hariç</div>
-                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-400">≈ ₺285.000+</div>
-              </div>
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-[36px]/[40px] font-550 text-ln-gray-800">₺23.600</span>
+              <span className="text-[13px]/[16px] text-ln-gray-500">/ay</span>
             </div>
-            <div className="flex flex-col items-start gap-1 xl:hidden">
-              <div className="text-[36px]/[40px] font-550 text-ln-gray-800">
-                <div className="relative flex">
-                  $
-                  <div className="grid overflow-hidden">
-                    <div className="flex [grid-area:1/1]">
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '0ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>8</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '50ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>,</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>5</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '150ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
-                      <div className={`transition-transform duration-700 ${isLoaded ? 'translate-y-0' : 'translate-y-full'}`} style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.33, 1, 0.68, 1)' }}>0</div>
-                    </div>
-                  </div>
-                  +
-                </div>
-              </div>
-              <div>
-                <div className="text-[13px]/[16px] font-medium -tracking-[0.006em] text-ln-gray-700">başlangıç fiyatı</div>
-                <div className="mt-1 text-[13px]/[16px] -tracking-[0.006em] text-ln-gray-500">KDV hariç</div>
-                <div className="mt-0.5 text-[11px]/[14px] -tracking-[0.004em] text-ln-gray-400">≈ ₺285.000+</div>
-              </div>
-            </div>
+            <div className="mt-1 text-[11px]/[14px] text-ln-gray-400">Tek ödemede ₺269.900 · KDV hariç</div>
           </div>
           <a
             className="mt-auto flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-10 bg-ln-gray-0 text-ln-label-sm text-ln-gray-800 ring-1 ring-inset ring-ln-gray-100"
-            href="/contact"
+            href="https://app.moyduz.com/onboarding?package=marketplace"
           >
-            Görüşme Başlat
+            Hemen Başla
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

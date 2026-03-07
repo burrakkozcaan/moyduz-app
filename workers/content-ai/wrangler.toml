@@ -8,3 +8,4 @@ binding = "AI"
 [[r2_buckets]]
 binding = "MOYDUZ_BUCKET"
 bucket_name = "moyduz"
+preview_bucket_name = "moyduz"

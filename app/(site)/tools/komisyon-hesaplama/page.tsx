@@ -82,7 +82,7 @@ export default function KomisyonHesaplamaPage() {
               <input
                 type="range" min={50} max={10000} step={50} value={salePrice}
                 onChange={(e) => setSalePrice(Number(e.target.value))}
-                className="w-full accent-orange-500"
+                className="w-full accent-ln-orange"
               />
               <div className="flex justify-between text-xs text-ln-gray-500"><span>50 ₺</span><span>10.000 ₺</span></div>
             </div>
@@ -105,7 +105,7 @@ export default function KomisyonHesaplamaPage() {
               <input
                 type="range" min={0} max={200} step={5} value={shippingCost}
                 onChange={(e) => setShippingCost(Number(e.target.value))}
-                className="w-full accent-orange-500"
+                className="w-full accent-ln-orange"
               />
             </div>
 
@@ -116,7 +116,7 @@ export default function KomisyonHesaplamaPage() {
               <input
                 type="range" min={0} max={30} step={0.5} value={commissionRate}
                 onChange={(e) => setCommissionRate(Number(e.target.value))}
-                className="w-full accent-orange-500"
+                  className="w-full accent-ln-orange"
               />
             </div>
 

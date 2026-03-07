@@ -86,7 +86,7 @@ export default function EIhracatHesaplamaPage() {
                         <input
                             type="range" min={10} max={1000} step={10} value={salePrice}
                             onChange={(e) => setSalePrice(Number(e.target.value))}
-                            className="w-full accent-orange-500"
+                            className="w-full accent-ln-orange"
                         />
                     </div>
 
@@ -108,7 +108,7 @@ export default function EIhracatHesaplamaPage() {
                         <input
                             type="range" min={0.5} max={30} step={0.5} value={weight}
                             onChange={(e) => setWeight(Number(e.target.value))}
-                            className="w-full accent-orange-500"
+                            className="w-full accent-ln-orange"
                         />
                         <p className="text-xs text-ln-gray-500 mt-1">Tahmini Yurtdışı Kargo: {shippingCostEur} {selectedRegion.currency} ({shippingCostTry.toLocaleString('tr-TR')} ₺)</p>
                     </div>
@@ -120,18 +120,18 @@ export default function EIhracatHesaplamaPage() {
                         <input
                             type="range" min={20} max={50} step={0.5} value={exchangeRate}
                             onChange={(e) => setExchangeRate(Number(e.target.value))}
-                            className="w-full accent-orange-500"
+                            className="w-full accent-ln-orange"
                         />
                     </div>
 
                     <div className="space-y-2">
                         <label className="block text-sm font-medium text-ln-gray-700 dark:text-ln-gray-300">
-                            Aylık Tahmini Sipariş: <span className="font-bold text-orange-600">{monthlySales} adet</span>
+                            Aylık Tahmini Sipariş: <span className="font-bold text-ln-orange">{monthlySales} adet</span>
                         </label>
                         <input
                             type="range" min={1} max={500} step={5} value={monthlySales}
                             onChange={(e) => setMonthlySales(Number(e.target.value))}
-                            className="w-full accent-orange-500"
+                            className="w-full accent-ln-orange"
                         />
                     </div>
                 </div>

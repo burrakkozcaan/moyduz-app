@@ -131,7 +131,7 @@ export default function SanalPosHesaplamaPage() {
               type="range" min={5000} max={2000000} step={5000}
               value={monthlyRevenue}
               onChange={(e) => { onInteract(); setMonthlyRevenue(Number(e.target.value)) }}
-              className="w-full accent-orange-500"
+                  className="w-full accent-ln-orange"
             />
             <div className="flex justify-between text-xs text-ln-gray-400">
               <span>5K ₺</span><span>2M ₺</span>
@@ -147,7 +147,7 @@ export default function SanalPosHesaplamaPage() {
               type="range" min={10} max={5000} step={10}
               value={transactionCount}
               onChange={(e) => setTransactionCount(Number(e.target.value))}
-              className="w-full accent-orange-500"
+              className="w-full accent-ln-orange"
             />
             <div className="flex justify-between text-xs text-ln-gray-400">
               <span>10</span><span>5.000</span>
@@ -163,7 +163,7 @@ export default function SanalPosHesaplamaPage() {
               type="range" min={50} max={10000} step={50}
               value={avgBasket}
               onChange={(e) => setAvgBasket(Number(e.target.value))}
-              className="w-full accent-orange-500"
+              className="w-full accent-ln-orange"
             />
             <div className="flex justify-between text-xs text-ln-gray-400">
               <span>50 ₺</span><span>10.000 ₺</span>

@@ -54,7 +54,7 @@ export const TOOLS_CARD_CLASS =
 
 /** CTA buton — primary */
 export const TOOLS_BTN_PRIMARY_CLASS =
-  'inline-flex h-9 items-center justify-center gap-1.5 rounded-10 bg-ln-orange px-4 text-ln-label-sm text-ln-gray-0 shadow-[0_0_0_1px_rgba(26,26,26,.28),inset_0_1px_2px_rgba(255,255,255,.34)] hover:bg-ln-orange/90'
+  'inline-flex h-10 w-full sm:h-10 items-center justify-center gap-1.5 rounded-10 bg-ln-orange px-4 text-ln-label-sm text-ln-gray-0 shadow-[0_0_0_1px_rgba(26,26,26,.28),inset_0_1px_2px_rgba(255,255,255,.34)] hover:bg-ln-orange/90'
 
 /** CTA buton — secondary */
 export const TOOLS_BTN_SECONDARY_CLASS =
