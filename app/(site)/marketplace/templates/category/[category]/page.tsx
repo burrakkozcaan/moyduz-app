@@ -353,15 +353,15 @@ export default async function CategoryTemplatesPage({
     }
 
     return (
-      <main className="min-h-screen bg-[#000000] text-white py-24">
+      <main className="min-h-screen bg-ln-gray-250 text-ln-gray-900 dark:text-white py-24">
         <div className="container mx-auto max-w-7xl px-4 md:px-6">
-          <div className="mb-8 flex flex-wrap items-center gap-2 text-sm text-white/60">
-            <Link href="/marketplace/templates/category" className="transition hover:text-white">
+          <div className="mb-8 flex flex-wrap items-center gap-2 text-sm text-ln-gray-700 dark:text-white/60">
+            <Link href="/marketplace/templates/category" className="transition hover:text-ln-gray-900 dark:hover:text-white">
               Kategoriler
             </Link>
             <span className="flex items-center gap-2">
               <BreadcrumbChevron />
-              <span className="text-white">{groupTitle}</span>
+              <span className="text-ln-gray-900 dark:text-white">{groupTitle}</span>
             </span>
           </div>
 
@@ -369,7 +369,7 @@ export default async function CategoryTemplatesPage({
             <h1 className="text-4xl font-550 tracking-tight md:text-5xl">
               {groupTitle}
             </h1>
-            <p className="mt-5 max-w-3xl text-base text-white/65 md:text-lg">
+            <p className="mt-5 max-w-3xl text-base text-ln-gray-700 dark:text-white/65 md:text-lg">
               Bu grup için öne çıkan, yüksek dönüşüm odaklı şablonları keşfedin.
               Modern ürün ekipleri için hızlıca yayına alınabilecek yapılar.
             </p>
@@ -383,10 +383,10 @@ export default async function CategoryTemplatesPage({
                     <Link
                       key={cat.slug}
                       href={`/marketplace/templates/category/${cat.slug}`}
-                      className="flex h-[50px] shrink-0 items-center gap-[15px] rounded-sm bg-white/5 pl-[2px] pr-[14px] py-[2px] transition hover:bg-[#262626]"
+                      className="flex h-[50px] shrink-0 items-center gap-[15px] rounded-sm  bg-ln-gray-100 dark:bg-[#1C1C1C] pl-[2px] pr-[14px] py-[2px] transition hover:bg-ln-gray-950 dark:hover:bg-[#262626]"
                     >
                       {cat.thumbnails?.[0] && (
-                        <div className="relative h-full aspect-[5/3] shrink-0 overflow-hidden rounded-sm bg-white/10">
+                        <div className="relative h-full aspect-[5/3] shrink-0 overflow-hidden rounded-sm bg-ln-gray-250 dark:bg-[#1C1C1C]">
                           <Image
                             src={urlFor(cat.thumbnails[0]).width(200).height(200).url()}
                             alt={cat.title}
@@ -395,7 +395,7 @@ export default async function CategoryTemplatesPage({
                           />
                         </div>
                       )}
-                      <span className="whitespace-nowrap text-sm font-500 text-white">
+                      <span className="whitespace-nowrap text-sm font-500 text-ln-gray-900 dark:text-white">
                         {cat.title}
                       </span>
                     </Link>
@@ -479,19 +479,19 @@ export default async function CategoryTemplatesPage({
   const breadcrumbs = buildBreadcrumbs(category)
 
   return (
-    <main className="min-h-screen bg-[#000000] text-white py-24">
+    <main className="min-h-screen bg-ln-gray-250 text-ln-gray-900 dark:text-white py-24">
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
-        <div className="mb-8 flex flex-wrap items-center gap-2 text-sm text-white/60">
-          <Link href="/marketplace/templates" className="transition hover:text-white">
+        <div className="mb-8 flex flex-wrap items-center gap-2 text-sm text-ln-gray-700 dark:text-white/60">
+          <Link href="/marketplace/templates" className="transition hover:text-ln-gray-900 dark:hover:text-white">
             Şablonlar
           </Link>
           {breadcrumbs.map((crumb, i) => (
             <span key={crumb.slug} className="flex items-center gap-2">
               <BreadcrumbChevron />
               {i === breadcrumbs.length - 1 ? (
-                <span className="text-white">{crumb.title}</span>
+                <span className="text-ln-gray-900 dark:text-white">{crumb.title}</span>
               ) : (
-                <Link href={`/marketplace/templates/category/${crumb.slug}`} className="transition hover:text-white">
+                <Link href={`/marketplace/templates/category/${crumb.slug}`} className="transition hover:text-ln-gray-900 dark:hover:text-white">
                   {crumb.title}
                 </Link>
               )}
@@ -513,7 +513,7 @@ export default async function CategoryTemplatesPage({
             {category.title}
           </h1>
           {category.description && (
-            <p className="mt-5 max-w-3xl text-base text-white/65 md:text-lg">
+            <p className="mt-5 max-w-3xl text-base text-ln-gray-700 dark:text-white/65 md:text-lg">
               {category.description}
             </p>
           )}
@@ -521,26 +521,26 @@ export default async function CategoryTemplatesPage({
 
         {subcategories.length > 0 && (
           <div className="mb-12">
-            <h2 className="mb-6 text-2xl font-550 text-white">Alt Kategoriler</h2>
+            <h2 className="mb-6 text-2xl font-550 text-ln-gray-900 dark:text-white">Alt Kategoriler</h2>
             <div className="w-full overflow-x-auto overflow-y-hidden -mx-4 px-4">
               <div className="flex min-w-max gap-[10px]">
                 {subcategories.map((sub) => (
                   <Link
                     key={sub.slug}
                     href={`/marketplace/templates/category/${sub.slug}`}
-                    className="flex h-[50px] shrink-0 items-center gap-[15px] rounded-sm bg-white/5 pl-[2px] pr-[14px] py-[2px] transition hover:bg-[#262626]"
+                    className="flex h-[50px] shrink-0 items-center gap-[15px] rounded-sm bg-ln-gray-100 dark:bg-[#1C1C1C] pl-[2px] pr-[14px] py-[2px] transition hover:bg-ln-gray-950 dark:hover:bg-[#262626]"
                   >
                     {(sub.thumbnails?.[0] || sub.previewTemplate?.thumbnails?.[0]) && (
-                        <div className="relative h-full aspect-[5/3] shrink-0 overflow-hidden rounded-sm bg-white/10">
+                        <div className="relative h-full aspect-[5/3] shrink-0 overflow-hidden rounded-sm bg-ln-gray-925 dark:bg-[#1C1C1C]">
                           <Image
                             src={urlFor(sub.thumbnails?.[0] || sub.previewTemplate!.thumbnails![0]).width(200).height(200).url()}
                             alt={sub.title}
                             fill
-                            className="rounded-sm object-cover outline outline-1 outline-white/20"
+                            className="rounded-sm object-cover outline outline-1 outline-ln-gray-700 dark:outline-white/20"
                           />
                         </div>
                       )}
-                    <span className="whitespace-nowrap text-sm font-500 text-white">{sub.title}</span>
+                    <span className="whitespace-nowrap text-sm font-500 text-ln-gray-900 dark:text-white">{sub.title}</span>
                   </Link>
                 ))}
               </div>
@@ -556,7 +556,7 @@ export default async function CategoryTemplatesPage({
               className="group relative overflow-hidden rounded-[4px] transition-all duration-300"
             >
               {t.thumbnails?.[0] && (
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[10px] bg-[#0a0a0a]">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[10px] bg-ln-gray-925 dark:bg-[#1C1C1C]">
                   <Image
                     src={urlFor(t.thumbnails[0]).width(800).height(600).url()}
                     alt={t.title}
@@ -571,19 +571,19 @@ export default async function CategoryTemplatesPage({
                       className="rounded-[3px] object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     />
                   )}
-                  <div className="absolute right-3 top-3 z-10 rounded-full bg-black/60 p-2 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="absolute right-3 top-3 z-10 rounded-full bg-ln-gray-925 dark:bg-[#1C1C1C] p-2 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
                     <TrendingUp className="h-4 w-4 text-white" />
                   </div>
                 </div>
               )}
 
               <div className="p-4">
-                <h3 className="line-clamp-1 text-base font-550 text-white group-hover:text-white/90">{t.title}</h3>
-                {t.designer && <p className="mt-1 text-xs text-white/50">by {t.designer}</p>}
+                <h3 className="line-clamp-1 text-base font-550 text-ln-gray-900 dark:text-white group-hover:text-white/90">{t.title}</h3>
+                {t.designer && <p className="mt-1 text-xs text-ln-gray-700 dark:text-white/50">by {t.designer}</p>}
                 {t.tags && t.tags.length > 0 && (
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {t.tags.slice(0, 2).map((tag) => (
-                      <span key={tag} className="rounded bg-white/5 px-2 py-0.5 text-[10px] text-white/40">
+                      <span key={tag} className="rounded bg-ln-gray-100 dark:bg-[#1C1C1C] px-2 py-0.5 text-[10px] text-ln-gray-700 dark:text-white/40">
                         {tag}
                       </span>
                     ))}
@@ -595,7 +595,7 @@ export default async function CategoryTemplatesPage({
         </div>
 
         {templates.length === 0 && (
-          <div className="py-16 text-center text-lg text-white/60">
+          <div className="py-16 text-center text-lg text-ln-gray-700 dark:text-white/60">
             Bu kategoride henüz şablon bulunmuyor.
           </div>
         )}

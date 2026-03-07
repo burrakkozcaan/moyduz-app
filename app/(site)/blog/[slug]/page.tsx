@@ -11,7 +11,7 @@ import { ShareArticle } from '@/components/ShareArticle'
 import { TableOfContents } from '@/components/TableOfContents'
 import { FeedbackWidget } from '@/components/FeedbackWidget'
 import { DocPagination } from '@/components/DocPagination'
-import { Accordion, Accordions } from 'fumadocs-ui/components/accordion'
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion'
 import { AudioPlayer } from '@/components/AudioPlayer'
 import { AiSummaryButtons } from '@/components/AiSummaryButtons'
 import { buildBlogPostingSchema } from '@/seo/json-ld/index'
@@ -503,8 +503,8 @@ export default async function BlogSlugPage({
           {/* Audio Player */}
           <AudioPlayer src={audioSrc} text={audioText} title={`Dinle: ${post.frontmatter.title}`} />
 
-          {/* Content */}
-          <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-ln-orange prose-a:no-underline hover:prose-a:underline">
+          {/* Content — fumadocs-ui prose (moydus-fumadocs ile aynı: globals.css’te fumadocs preset) */}
+          <div className="prose prose-headings:font-semibold min-w-0 max-w-none dark:prose-invert">
             <MDXRemote
               source={markdownTablesToHtml(post.content)}
               components={MDXComponents}
@@ -524,13 +524,16 @@ export default async function BlogSlugPage({
                 <h2 className="text-2xl md:text-3xl font-semibold text-ln-gray-900 dark:text-ln-gray-0 mb-6">
                   Sıkça Sorulan Sorular
                 </h2>
-                <Accordions type="single" className="space-y-2">
+                <Accordion type="single" collapsible className="space-y-2">
                   {faqs.map((faq, idx) => (
-                    <Accordion key={idx} title={faq.question} id={idx === 0 ? 'faq' : undefined}>
-                      <p className="text-ln-gray-700 dark:text-ln-gray-300 leading-relaxed">{faq.answer}</p>
-                    </Accordion>
+                    <AccordionItem key={idx} value={`faq-${idx}`} id={idx === 0 ? 'faq' : undefined}>
+                      <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
+                      <AccordionContent>
+                        <p className="text-ln-gray-700 dark:text-ln-gray-300 leading-relaxed">{faq.answer}</p>
+                      </AccordionContent>
+                    </AccordionItem>
                   ))}
-                </Accordions>
+                </Accordion>
               </section>
             )
           })()}

@@ -242,17 +242,17 @@ export default async function CategoryPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#000000] py-24 text-white">
+    <main className="min-h-screen bg-ln-gray-250 text-ln-gray-900 dark:text-white py-24">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="mb-12">
-          <h1 className="text-5xl font-550 tracking-tight text-white md:text-6xl">
+          <h1 className="text-5xl font-550 tracking-tight text-ln-gray-900 dark:text-white md:text-6xl">
             Kategoriler
           </h1>
-          <p className="mt-5 max-w-3xl text-lg text-white/70">
+          <p className="mt-5 max-w-3xl text-lg text-ln-gray-700 dark:text-white/70">
             Ürün kategorilerine göre gruplanmış şablonları keşfedin. Web sitesi,
             e-ticaret ve SaaS projeleri için ölçeklenebilir, üretime hazır UI
             sistemleriyle daha hızlı yayına çıkın.
@@ -266,16 +266,16 @@ export default async function CategoryPage() {
             <div key={groupKey} className="mb-16">
               <div className="mb-6 flex items-center justify-between">
                 <div>
-                  <h2 className="text-2xl font-550 text-white">
+                  <h2 className="text-2xl font-550 text-ln-gray-900 dark:text-white">
                     {displayGroupLabels[groupKey] || groupKey}
                   </h2>
-                  <p className="text-sm text-white/70">
+                  <p className="text-sm text-ln-gray-700 dark:text-white/70">
                     {list.length} kategori
                   </p>
                 </div>
                 <Link
                   href={`/marketplace/templates/category/${groupKey}`}
-                  className="text-sm font-500 text-white/70 transition hover:text-white"
+                  className="text-sm font-500 text-ln-gray-700 dark:text-white/70 transition hover:text-ln-gray-900 dark:hover:text-white"
                 >
                   Tümünü Gör →
                 </Link>
@@ -285,7 +285,7 @@ export default async function CategoryPage() {
                   <Link
                     key={cat.slug}
                     href={`/marketplace/templates/category/${cat.slug}`}
-                    className="group flex flex-col overflow-hidden rounded-lg bg-[#1C1C1C] transition-colors hover:bg-[#262626]"
+                    className="group flex flex-col overflow-hidden rounded-lg bg-ln-gray-100 dark:bg-[#1C1C1C] transition-colors hover:bg-ln-gray-200 dark:hover:bg-[#262626]"
                   >
                     <div className="grid grid-cols-2 gap-[5px] p-[5px] pb-0">
                       {cat.thumbnails?.[0] ? (
@@ -294,7 +294,7 @@ export default async function CategoryPage() {
                             src={urlFor(cat.thumbnails[0]).width(400).height(300).url()}
                             alt={cat.title}
                             fill
-                            className="rounded-[3px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
+                            className="rounded-[10px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
                           />
                         </div>
                       ) : cat.previewTemplates?.[0]?.thumbnails?.[0] ? (
@@ -303,11 +303,11 @@ export default async function CategoryPage() {
                             src={urlFor(cat.previewTemplates[0].thumbnails[0]).width(400).height(300).url()}
                             alt={cat.title}
                             fill
-                            className="rounded-[3px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
+                            className="rounded-[10px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
                           />
                         </div>
                       ) : (
-                        <div className="aspect-[4/3] rounded-[3px] bg-white/10" />
+                        <div className="aspect-[4/3] rounded-[10px] bg-ln-gray-300 dark:bg-[#1C1C1C]" />
                       )}
                       {cat.thumbnails?.[1] ? (
                         <div className="relative aspect-[4/3] overflow-hidden rounded-[3px]">
@@ -315,7 +315,7 @@ export default async function CategoryPage() {
                             src={urlFor(cat.thumbnails[1]).width(400).height(300).url()}
                             alt=""
                             fill
-                            className="rounded-[3px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
+                            className="rounded-[10px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
                           />
                         </div>
                       ) : cat.previewTemplates?.[1]?.thumbnails?.[0] ? (
@@ -324,18 +324,18 @@ export default async function CategoryPage() {
                             src={urlFor(cat.previewTemplates[1].thumbnails[0]).width(400).height(300).url()}
                             alt=""
                             fill
-                            className="rounded-[3px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
+                            className="rounded-[10px] object-cover outline outline-1 outline-white/10 outline-offset-[-1px]"
                           />
                         </div>
                       ) : (
-                        <div className="aspect-[4/3] rounded-[3px] bg-white/10" />
+                        <div className="aspect-[4/3] rounded-[10px] bg-ln-gray-300 dark:bg-[#1C1C1C]" />
                       )}
                     </div>
                     <div className="p-[15px]">
-                      <h4 className="truncate text-sm font-550 text-white">
+                      <h4 className="truncate text-ln-label-sm font-550 text-ln-gray-900 dark:text-white">
                         {cat.title}
                       </h4>
-                      <p className="text-xs text-white/70">
+                      <p className="text-xs text-ln-gray-700 dark:text-white/70">
                         {(() => {
                           const n = Number(cat.templateCount) || 0
                           if (n >= 1000)
