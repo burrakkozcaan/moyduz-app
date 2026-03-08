@@ -72,8 +72,8 @@ export default function Home() {
         <Intro />
         <EffortlessSection />
         
-
-        <RapidDevelopment />
+{/* 
+        <RapidDevelopment /> */}
 
 
 
