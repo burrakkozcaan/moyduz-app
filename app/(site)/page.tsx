@@ -48,7 +48,7 @@ import HomePricingCards from '@/components/HomePricingCards';
 import Faqs from '@/components/Faqs';
 import { CTASectionNew } from '@/components/CTASectionNew';
 import { r2cdn } from '@/lib/cdn';
-import { DeferredElectronBento } from '@/components/home/DeferredSections';
+import ElectronBento from '@/components/ElectronBento';
 import SectorTemplates from '@/components/SectorTemplates';
 import Testimional from '@/components/Testimional';
 
@@ -80,7 +80,7 @@ export default function Home() {
      
 
 
-        <DeferredElectronBento />
+        <ElectronBento />
 
 
         {/* Moyduz Engine: altyapı, performans, ticari, global, güvenlik */}
