@@ -42,14 +42,14 @@ import { BuildFasterSection } from '@/components/BuildFasterSection';
 import { BuiltForTeamsSection } from '@/components/BuiltForTeamsSection';
 import { EndlessPossibilitiesSection } from '@/components/EndlessPossibilitiesSection';
 import Stats from '@/components/Stats';
+import EcosystemMarqueeSection from '@/components/EcosystemMarqueeSection';
+import PlatformPillars from '@/components/PlatformPillars';
 import HomePricingCards from '@/components/HomePricingCards';
 import Faqs from '@/components/Faqs';
 import { CTASectionNew } from '@/components/CTASectionNew';
 import { r2cdn } from '@/lib/cdn';
 import {
   DeferredElectronBento,
-  DeferredEcosystemMarquee,
-  DeferredPlatformPillars,
   DeferredSectorTemplates,
   DeferredTestimonials,
 } from '@/components/home/DeferredSections';
@@ -102,8 +102,10 @@ export default function Home() {
 
       
 
-          <DeferredEcosystemMarquee />
-          <DeferredPlatformPillars />
+          <div className="w-full overflow-x-hidden">
+            <EcosystemMarqueeSection />
+          </div>
+          <PlatformPillars />
 
         {/* pricing */}
         <div id="pricing" className='md:px-2.5'>
