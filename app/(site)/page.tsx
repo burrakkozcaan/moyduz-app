@@ -48,11 +48,9 @@ import HomePricingCards from '@/components/HomePricingCards';
 import Faqs from '@/components/Faqs';
 import { CTASectionNew } from '@/components/CTASectionNew';
 import { r2cdn } from '@/lib/cdn';
-import {
-  DeferredElectronBento,
-  DeferredSectorTemplates,
-  DeferredTestimonials,
-} from '@/components/home/DeferredSections';
+import { DeferredElectronBento } from '@/components/home/DeferredSections';
+import SectorTemplates from '@/components/SectorTemplates';
+import Testimional from '@/components/Testimional';
 
 export default function Home() {
   return (
@@ -307,9 +305,9 @@ export default function Home() {
             />
           </div>
         </div>
-        <DeferredSectorTemplates />
+        <SectorTemplates />
 
-        <DeferredTestimonials />
+        <Testimional />
 
         <Faqs />
         <CTASectionNew />
