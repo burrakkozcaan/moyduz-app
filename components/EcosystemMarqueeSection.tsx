@@ -34,7 +34,7 @@ const ITEMS = [
 
 export default function EcosystemMarqueeSection() {
   return (
-    <section className="w-full max-w-full overflow-x-hidden py-12">
+    <section className="w-full max-w-full overflow-x-clip py-12">
       <div className="container max-w-full px-4 md:px-6">
         <div className="mx-auto flex max-w-3xl flex-col items-center justify-center gap-6 text-center">
           <Badge

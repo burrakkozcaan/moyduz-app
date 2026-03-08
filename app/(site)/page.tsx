@@ -100,7 +100,7 @@ export default function Home() {
 
       
 
-          <div className="w-full overflow-x-hidden">
+          <div className="w-full overflow-x-clip">
             <EcosystemMarqueeSection />
           </div>
           <PlatformPillars />
