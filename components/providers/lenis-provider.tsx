@@ -20,8 +20,8 @@ export default function LenisScrollProvider({ children }: LenisScrollProviderPro
     }
 
     const lenis = new Lenis({
-      lerp: 0.15,
-      duration: 1.1,
+      lerp: 0.1,
+      duration: 1.5,
       smoothWheel: true,
       touchMultiplier: 2,
     });
