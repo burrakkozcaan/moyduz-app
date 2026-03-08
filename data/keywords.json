@@ -151,8 +151,8 @@
       "page_type": "blog",
       "intent": "informational",
       "priority": 5,
-      "status": "pending",
-      "last_generated_at": null
+      "status": "done",
+      "last_generated_at": "2026-03-08T04:27:21.473Z"
     },
     {
       "id": "kw_0014",
