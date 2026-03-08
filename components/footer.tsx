@@ -171,8 +171,9 @@ export default function Footer() {
             </p>
           </div>
         </div>
-        <FlickeringFooter />
+      
       </footer>
+      <FlickeringFooter />
     </div>
   );
 }

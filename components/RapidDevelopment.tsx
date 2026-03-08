@@ -330,38 +330,41 @@ export default function RapidDevelopment() {
                 'rgba(41, 41, 41, 0.04) 0px 1px 1px 0.5px, rgba(41, 41, 41, 0.02) 0px 3px 3px -1.5px, rgba(41, 41, 41, 0.04) 0px 6px 6px -3px, rgba(41, 41, 41, 0.04) 0px 12px 12px -6px, rgba(41, 41, 41, 0.04) 0px 24px 24px -12px, rgba(41, 41, 41, 0.04) 0px 48px 48px -24px, rgba(51, 51, 51, 0.06) 0px -1px 1px -0.5px inset',
             }}
           >
-            {/* Code column — son adımda gizlenir, "Siten hazırlanıyor" ortalansın diye */}
-            {activeStep < 3 && (
-              <div
-                className='relative flex h-[388px] min-h-0 flex-col overflow-hidden rounded-2xl bg-ln-gray-0 before:absolute before:inset-y-3 before:right-0 before:z-10 before:hidden before:w-px before:bg-ln-gray-100 md:h-full md:rounded-none md:bg-transparent md:!shadow-none md:before:block'
-                style={{
-                  boxShadow:
-                    'rgba(41, 41, 41, 0.04) 0px 1px 1px 0.5px, rgba(41, 41, 41, 0.02) 0px 3px 3px -1.5px, rgba(41, 41, 41, 0.04) 0px 6px 6px -3px, rgba(41, 41, 41, 0.04) 0px 12px 12px -6px, rgba(41, 41, 41, 0.04) 0px 24px 24px -12px, rgba(41, 41, 41, 0.04) 0px 48px 48px -24px, rgba(51, 51, 51, 0.06) 0px -1px 1px -0.5px inset',
-                }}
-              >
-                <div
-                  key={activeStep}
-                  className='relative flex flex-1 overflow-hidden bg-ln-gray-100'
-                >
-                  <img
-                    src={`/images/${activeStep + 1}.png`}
-                    alt={`Adım ${activeStep + 1}`}
-                    className='h-full w-full object-cover object-left-top'
-                    onError={(e) => {
-                      const el = e.currentTarget;
-                      if (el.dataset.fallback) return;
-                      el.dataset.fallback = '1';
-                      el.style.display = 'none';
-                    }}
-                  />
-                </div>
-              </div>
-            )}
-            {/* Preview column — son adımda tam genişlikte ortalı */}
+            {/* Code column — her zaman render edilir, step 3'te overlay gösterilir (CLS önlenir) */}
             <div
-              className={`relative flex min-h-[200px] flex-col justify-center gap-3 p-4 md:min-h-0 md:flex-1 md:justify-center md:p-6 ${activeStep === 3 ? 'md:col-span-2 flex items-center justify-center' : ''}`}
+              className='relative flex h-[388px] min-h-0 flex-col overflow-hidden rounded-2xl bg-ln-gray-0 before:absolute before:inset-y-3 before:right-0 before:z-10 before:hidden before:w-px before:bg-ln-gray-100 md:h-full md:rounded-none md:bg-transparent md:!shadow-none md:before:block'
+              style={{
+                boxShadow:
+                  'rgba(41, 41, 41, 0.04) 0px 1px 1px 0.5px, rgba(41, 41, 41, 0.02) 0px 3px 3px -1.5px, rgba(41, 41, 41, 0.04) 0px 6px 6px -3px, rgba(41, 41, 41, 0.04) 0px 12px 12px -6px, rgba(41, 41, 41, 0.04) 0px 24px 24px -12px, rgba(41, 41, 41, 0.04) 0px 48px 48px -24px, rgba(51, 51, 51, 0.06) 0px -1px 1px -0.5px inset',
+              }}
             >
-              <div className={`mx-auto w-full space-y-3 rounded-xl bg-ln-gray-25 p-4 ${activeStep === 3 ? 'max-w-[260px] bg-transparent' : 'max-w-[260px]'}`}>
+              <div
+                key={Math.min(activeStep, 2)}
+                className='relative flex flex-1 overflow-hidden bg-ln-gray-100'
+              >
+                <img
+                  src={`/images/${Math.min(activeStep + 1, 3)}.png`}
+                  alt={`Adım ${Math.min(activeStep + 1, 3)}`}
+                  className='h-full w-full object-cover object-left-top'
+                  onError={(e) => {
+                    const el = e.currentTarget;
+                    if (el.dataset.fallback) return;
+                    el.dataset.fallback = '1';
+                    el.style.display = 'none';
+                  }}
+                />
+                {activeStep === 3 && (
+                  <div className='absolute inset-0 flex items-center justify-center bg-white/70 backdrop-blur-sm'>
+                    <Loader className='size-10 animate-spin text-ln-orange' />
+                  </div>
+                )}
+              </div>
+            </div>
+            {/* Preview column */}
+            <div
+              className='relative flex min-h-[200px] flex-col justify-center gap-3 p-4 md:min-h-0 md:flex-1 md:justify-center md:p-6'
+            >
+              <div className='mx-auto w-full max-w-[260px] space-y-3 rounded-xl bg-ln-gray-25 p-4'>
                 {activeStep === 0 && (
                   <>
                     <div className='text-sm font-medium text-ln-gray-800'>Şablonu görüntüle</div>
@@ -396,9 +399,7 @@ export default function RapidDevelopment() {
                 )}
                 {activeStep === 3 && (
                   <div className='flex flex-col items-center justify-center py-3'>
-                    
-                    <Loader className='size-9 animate-spin text-ln-orange' />
-                    <p className='mt-4 text-sm font-medium text-ln-gray-800'>Siten hazırlanıyor...</p>
+                    <p className='text-sm font-medium text-ln-gray-800'>Siten hazırlanıyor...</p>
                     <p className='mt-1 text-xs text-ln-gray-500'>Sizinle iletişime geçeceğiz</p>
                   </div>
                 )}

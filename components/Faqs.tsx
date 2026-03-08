@@ -17,7 +17,7 @@ export function FAQItem({ question, answer, isOpen, onToggle }: FAQItemProps) {
 
   return (
     <div
-      className={`'' } w-full cursor-pointer rounded-[20px] bg-white p-5 transition-all duration-200 hover:scale-[1.005] dark:bg-[linear-gradient(180deg,#1C1C1C_0%,#141414_100%)] dark:shadow-[0_16px_8px_rgba(31,31,31,.01),0_12px_6px_rgba(31,31,31,.04),0_4px_4px_rgba(31,31,31,.07),0_1.5px_3px_rgba(31,31,31,.08),0_0_0_1px_#0F0F0F,inset_0_1px_2px_rgba(255,255,255,.12)] md:p-6`}
+      className='w-full cursor-pointer rounded-[20px] bg-white p-5 transition-all duration-200 hover:scale-[1.005] dark:bg-[linear-gradient(180deg,#1C1C1C_0%,#141414_100%)] dark:shadow-[0_16px_8px_rgba(31,31,31,.01),0_12px_6px_rgba(31,31,31,.04),0_4px_4px_rgba(31,31,31,.07),0_1.5px_3px_rgba(31,31,31,.08),0_0_0_1px_#0F0F0F,inset_0_1px_2px_rgba(255,255,255,.12)] md:p-6'
       onClick={(e) => {
         // Prevent toggle if clicking on interactive elements inside
         if (
@@ -57,10 +57,11 @@ export function FAQItem({ question, answer, isOpen, onToggle }: FAQItemProps) {
 
       {/* Answer */}
       <div
-        className={`overflow-hidden transition-all duration-300 ease-out ${
-          isOpen ? 'mt-4 max-h-[600px] opacity-100' : 'mt-0 max-h-0 opacity-0'
+        className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+          isOpen ? 'mt-4 grid-rows-[1fr] opacity-100' : 'mt-0 grid-rows-[0fr] opacity-0'
         }`}
       >
+        <div className='min-h-0 overflow-hidden'>
         <div
           className='cursor-default border-t border-ln-gray-200 pt-4 dark:border-ln-gray-800'
           onClick={(e) => e.stopPropagation()}
@@ -131,6 +132,7 @@ export function FAQItem({ question, answer, isOpen, onToggle }: FAQItemProps) {
               Geri bildiriminiz için teşekkürler!
             </div>
           )}
+        </div>
         </div>
       </div>
     </div>
