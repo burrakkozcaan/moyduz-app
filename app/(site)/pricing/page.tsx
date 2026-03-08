@@ -10,8 +10,8 @@ import { DottedGlowBackground } from '@/components/ui/dotted-glow-background';
 import FaqsPricing from '@/components/Faqs-pricing';
 
 export default function PricingPage() {
-  const [activeTab, setActiveTab] = useState<'personal' | 'business' | 'startup' | 'enterprise'>('startup');
-  const [includeFigma, setIncludeFigma] = useState(false);
+  const [activeTab, setActiveTab] = useState<'personal' | 'business' | 'startup' | 'enterprise'>('business');
+  const [includeFigma, setIncludeFigma] = useState(true);
   const [showSaveBadge, setShowSaveBadge] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   
@@ -193,7 +193,7 @@ export default function PricingPage() {
             </div>
             {includeFigma && (
               <div className="mt-2 text-[12px]/[16px] text-ln-gray-500">
-                $125–$450/ay · pakete göre değişir
+                ₺2.900–₺7.900/ay · pakete göre değişir
               </div>
             )}
           </div>
@@ -635,7 +635,7 @@ export default function PricingPage() {
         </div>
         {includeFigma && (
           <div className="flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.08] px-2 py-1 -mt-1">
-            <span className="text-[11px]/[14px] font-medium text-ln-orange">+ $125–175/ay bakım</span>
+            <span className="text-[11px]/[14px] font-medium text-ln-orange">+ ₺2.900/ay bakım</span>
           </div>
         )}
         <div className="relative h-0 w-full">
@@ -816,91 +816,7 @@ export default function PricingPage() {
           </div>
         </div>
       </div>
-      <div className={`flex-col gap-4 px-2.5 py-7 min-[480px]:px-4 sm:gap-5 md:px-7 xl:!flex ${activeTab === 'business' ? 'flex' : 'hidden xl:flex'}`}>
-        <div
-          className="flex w-full flex-col items-start pb-2 max-[768px]:!h-72"
-          style={{ height: 244 }}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-6 shrink-0 text-ln-orange">
-            <path stroke="currentColor" strokeLinejoin="round" strokeWidth="1.25" d="M3.333 10h13.334M3.333 6.667h13.334M3.333 13.333h8" />
-          </svg>
-          <div className="mt-4">
-            <div className="text-ln-label-lg text-ln-gray-900">Business</div>
-            <div className="mt-1 h-10 max-w-44 text-ln-paragraph-xs text-ln-gray-600 sm:text-ln-paragraph-sm">
-              Büyüyen işletmeler ve B2B projeler için.
-            </div>
-          </div>
-          <div className="my-6 flex flex-col items-start">
-            <div className="flex items-baseline gap-1.5">
-              <span className="text-[36px]/[40px] font-550 text-ln-gray-800">₺10.400</span>
-              <span className="text-[13px]/[16px] text-ln-gray-500">/ay</span>
-            </div>
-            <div className="mt-1 text-[11px]/[14px] text-ln-gray-400">Tek ödemede ₺119.900 · KDV hariç</div>
-          </div>
-          <a href="https://app.moyduz.com/onboarding?package=business" className="flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-10 bg-ln-gray-50 text-ln-label-sm text-ln-gray-800">
-            Hemen Başla
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-gray-500">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M14.5 12.204V6m0 0H8.296M14.5 6l-8 8" />
-            </svg>
-          </a>
-        </div>
-        {includeFigma && (
-          <div className="flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.08] px-2 py-1 -mt-1">
-            <span className="text-[11px]/[14px] font-medium text-ln-orange">+ $150–225/ay bakım</span>
-          </div>
-        )}
-        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
-        <div className="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
-          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">Sınırsız ürün ve sayfa</span>
-        </div>
-        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
-        <div className="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
-          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">6–8 hafta</span>
-        </div>
-        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
-        <div className="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
-          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">B2B + kampanya motoru</span>
-        </div>
-        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
-        <div className="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
-          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">Özel UI/UX tasarım</span>
-        </div>
-        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
-        <div className="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
-          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">E-posta + WhatsApp otomasyon</span>
-        </div>
-        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
-        <div className="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
-          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">48 saat</span>
-        </div>
-        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
-        <div className="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
-          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">AWS VPS dahil</span>
-        </div>
-        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
-        <div className="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
-          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">GEO temelleri</span>
-        </div>
-        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
-        <div className="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
-          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">Gelişmiş güvenlik</span>
-        </div>
-        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" /></div>
-        <div className="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
-          <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">CDN + hız opt.</span>
-        </div>
-      </div>
-      <div className={`relative flex-col gap-4 rounded-20 bg-ln-gray-925 px-2.5 py-7 shadow-ln-button-gray min-[480px]:px-4 sm:gap-5 md:rounded-2xl md:px-7 xl:!flex ${activeTab === 'startup' ? 'flex' : 'hidden xl:flex'}`}>
+      <div className={`relative flex-col gap-4 rounded-20 bg-ln-gray-925 px-2.5 py-7 shadow-ln-button-gray min-[480px]:px-4 sm:gap-5 md:rounded-2xl md:px-7 xl:!flex ${activeTab === 'business' ? 'flex' : 'hidden xl:flex'}`}>
       <DottedGlowBackground
         className="pointer-events-none mask-radial-at-center max-md:mask-radial-to-50 md:mask-radial-to-90"
         opacity={1}
@@ -922,6 +838,90 @@ export default function PricingPage() {
           className="flex w-full flex-col items-start pb-2 max-[768px]:!h-72"
           style={{ height: 244 }}
         >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-6 shrink-0 text-ln-orange">
+            <path stroke="currentColor" strokeLinejoin="round" strokeWidth="1.25" d="M3.333 10h13.334M3.333 6.667h13.334M3.333 13.333h8" />
+          </svg>
+          <div className="mt-4">
+            <div className="text-ln-label-lg text-ln-gray-0">Business</div>
+            <div className="mt-1 h-10 max-w-44 text-ln-paragraph-xs text-ln-gray-450 sm:text-ln-paragraph-sm">
+              Büyüyen işletmeler ve B2B projeler için.
+            </div>
+          </div>
+          <div className="my-6 flex flex-col items-start">
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-[36px]/[40px] font-550 text-ln-gray-0">₺10.400</span>
+              <span className="text-[13px]/[16px] text-ln-gray-500">/ay</span>
+            </div>
+            <div className="mt-1 text-[11px]/[14px] text-ln-gray-500">Tek ödemede ₺119.900 · KDV hariç</div>
+          </div>
+          <a href="https://app.moyduz.com/onboarding?package=business" className="flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-10 bg-ln-orange text-ln-label-sm text-ln-gray-0">
+            Hemen Başla
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-gray-0">
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="M14.5 12.204V6m0 0H8.296M14.5 6l-8 8" />
+            </svg>
+          </a>
+        </div>
+        {includeFigma && (
+          <div className="flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.08] px-2 py-1 -mt-1">
+            <span className="text-[11px]/[14px] font-medium text-ln-orange">+ ₺3.900/ay bakım</span>
+          </div>
+        )}
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-0 sm:text-ln-label-sm">Sınırsız ürün ve sayfa</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-0 sm:text-ln-label-sm">6–8 hafta</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-0 sm:text-ln-label-sm">B2B + kampanya motoru</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-0 sm:text-ln-label-sm">Özel UI/UX tasarım</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-0 sm:text-ln-label-sm">E-posta + WhatsApp otomasyon</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-0 sm:text-ln-label-sm">48 saat</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-0 sm:text-ln-label-sm">AWS VPS dahil</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-0 sm:text-ln-label-sm">GEO temelleri</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-0 sm:text-ln-label-sm">Gelişmiş güvenlik</span>
+        </div>
+        <div className="relative h-0 w-full"><div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" /></div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" /></svg>
+          <span className="text-ln-label-xs text-ln-gray-0 sm:text-ln-label-sm">CDN + hız opt.</span>
+        </div>
+      </div>
+      <div className={`flex-col gap-4 px-2.5 py-7 min-[480px]:px-4 sm:gap-5 md:px-7 xl:!flex ${activeTab === 'startup' ? 'flex' : 'hidden xl:flex'}`}>
+        <div
+          className="flex w-full flex-col items-start pb-2 max-[768px]:!h-72"
+          style={{ height: 244 }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -936,31 +936,27 @@ export default function PricingPage() {
             />
           </svg>
           <div className="mt-4">
-            <div className="text-ln-label-lg text-ln-gray-0">Ticaret</div>
-            <div className="mt-1 h-10 text-ln-paragraph-xs text-ln-gray-450 sm:text-ln-paragraph-sm">
+            <div className="text-ln-label-lg text-ln-gray-900">Ticaret</div>
+            <div className="mt-1 h-10 text-ln-paragraph-xs text-ln-gray-600 sm:text-ln-paragraph-sm">
               B2C + B2B e-ticaret projeleri için.
             </div>
           </div>
           <div className="my-6 flex flex-col items-start">
             <div className="flex items-baseline gap-1.5">
-              <span className="text-[36px]/[40px] font-550 text-ln-gray-0">Pakete göre</span>
+              <span className="text-[36px]/[40px] font-550 text-ln-gray-800">Pakete göre</span>
             </div>
-            <div className="mt-1 text-[11px]/[14px] text-ln-gray-500">E-ticaret paketlerini inceleyin · KDV hariç</div>
+            <div className="mt-1 text-[11px]/[14px] text-ln-gray-400">E-ticaret paketlerini inceleyin · KDV hariç</div>
           </div>
           <a
             href="/e-ticaret-paketleri"
-            className="flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-10 bg-ln-orange text-ln-label-sm text-ln-gray-0"
-            style={{
-              boxShadow:
-                "0 19px 8px rgba(31, 31, 31, 0.01), 0 11px 6px rgba(31, 31, 31, 0.04), 0 5px 5px rgba(31, 31, 31, 0.07), 0 1px 3px rgba(31, 31, 31, 0.08), 0 0 0 1px rgba(26, 26, 26, 0.28), inset 0 1px 2px rgba(255, 255, 255, 0.34)"
-            }}
+            className="flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-10 bg-ln-gray-50 text-ln-label-sm text-ln-gray-800"
           >
             Paketleri İncele
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 20 20"
-              className="size-5 shrink-0 text-ln-gray-0"
+              className="size-5 shrink-0 text-ln-gray-500"
             >
               <path
                 stroke="currentColor"
@@ -974,11 +970,11 @@ export default function PricingPage() {
         </div>
         {includeFigma && (
           <div className="flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.15] px-2 py-1">
-            <span className="text-[11px]/[14px] font-medium text-ln-orange">+ $175–275/ay bakım</span>
+            <span className="text-[11px]/[14px] font-medium text-ln-orange">+ ₺4.900/ay bakım</span>
           </div>
         )}
         <div className="relative h-0 w-full">
-          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" />
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
         </div>
         <div className="flex items-center gap-2">
           <svg
@@ -996,13 +992,13 @@ export default function PricingPage() {
             />
           </svg>
           <div className="flex items-center gap-0.5">
-            <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
               Sınırsız ürün & katalog
             </span>
           </div>
         </div>
         <div className="relative h-0 w-full">
-          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" />
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
         </div>
         <div className="flex items-center gap-2">
           <svg
@@ -1020,13 +1016,13 @@ export default function PricingPage() {
             />
           </svg>
           <div className="flex items-center gap-0.5">
-            <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
               3–6 hafta
             </span>
           </div>
         </div>
         <div className="relative h-0 w-full">
-          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" />
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
         </div>
         <div className="flex items-center gap-2">
           <svg
@@ -1044,13 +1040,13 @@ export default function PricingPage() {
             />
           </svg>
           <div className="flex items-center gap-0.5">
-            <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
               B2B + RFQ + Sepet akışı
             </span>
           </div>
         </div>
         <div className="relative h-0 w-full">
-          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" />
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
         </div>
         <div className="flex items-center gap-2">
           <svg
@@ -1068,13 +1064,13 @@ export default function PricingPage() {
             />
           </svg>
           <div className="flex items-center gap-0.5">
-            <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
               Özel mağaza tasarımı
             </span>
           </div>
         </div>
         <div className="relative h-0 w-full">
-          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" />
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
         </div>
         <div className="flex items-center gap-2">
           <svg
@@ -1092,13 +1088,13 @@ export default function PricingPage() {
             />
           </svg>
           <div className="flex items-center gap-0.5">
-            <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
               Canlı chat + e-posta
             </span>
           </div>
         </div>
         <div className="relative h-0 w-full">
-          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" />
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
         </div>
         <div className="flex items-center gap-2">
           <svg
@@ -1116,13 +1112,13 @@ export default function PricingPage() {
             />
           </svg>
           <div className="flex items-center gap-0.5">
-            <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
               24 saat
             </span>
           </div>
         </div>
         <div className="relative h-0 w-full">
-          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" />
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
         </div>
         <div className="flex items-center gap-2">
           <svg
@@ -1140,42 +1136,42 @@ export default function PricingPage() {
             />
           </svg>
           <div className="flex items-center gap-0.5">
-            <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">
               Dahil
             </span>
           </div>
         </div>
         <div className="relative h-0 w-full">
-          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" />
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
         </div>
         <div className="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" />
           </svg>
           <div className="flex items-center gap-0.5">
-            <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">Çoklu dil + GEO</span>
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">Çoklu dil + GEO</span>
           </div>
         </div>
         <div className="relative h-0 w-full">
-          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" />
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
         </div>
         <div className="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" />
           </svg>
           <div className="flex items-center gap-0.5">
-            <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">Bot koruması + IP filtre</span>
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">Bot koruması + IP filtre</span>
           </div>
         </div>
         <div className="relative h-0 w-full">
-          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-800" />
+          <div className="absolute left-0 top-0 h-px w-full bg-ln-gray-100" />
         </div>
         <div className="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="size-5 shrink-0 text-ln-orange">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.25" d="m5.625 10.886 2.625 2.656 6.125-7.083" />
           </svg>
           <div className="flex items-center gap-0.5">
-            <span className="text-ln-label-xs text-ln-gray-300 sm:text-ln-label-sm">Gelişmiş CDN + önbellek</span>
+            <span className="text-ln-label-xs text-ln-gray-800 sm:text-ln-label-sm">Gelişmiş CDN + önbellek</span>
           </div>
         </div>
       </div>
@@ -1234,7 +1230,7 @@ export default function PricingPage() {
         </div>
         {includeFigma && (
           <div className="flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.08] px-2 py-1">
-            <span className="text-[11px]/[14px] font-medium text-ln-orange">+ $250–450/ay bakım</span>
+            <span className="text-[11px]/[14px] font-medium text-ln-orange">+ ₺7.900/ay bakım</span>
           </div>
         )}
         <div className="relative h-0 w-full">

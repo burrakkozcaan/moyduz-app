@@ -6,7 +6,6 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/utils/cn';
 import { Provider as TooltipProvider } from '@/components/new-ui/tooltip';
 import { NotificationProvider } from '@/components/new-ui/notification-provider';
-import LenisScrollProvider from '@/components/providers/lenis-provider';
 import Script from 'next/script';
 import {
   buildWebsiteSchema,
@@ -207,9 +206,7 @@ export default function RootLayout({
         <div className='relative isolate flex min-h-screen flex-col overflow-x-hidden bg-[#f7f7f7] dark:bg-ln-gray-900'>
           <ThemeProvider attribute='class' defaultTheme='light' enableSystem>
               <TooltipProvider>
-                <LenisScrollProvider>
-                  {children}
-                </LenisScrollProvider>
+                {children}
               </TooltipProvider>
           </ThemeProvider>
         </div>

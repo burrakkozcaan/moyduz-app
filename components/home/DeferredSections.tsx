@@ -11,7 +11,7 @@ const Testimional = dynamic(() => import("@/components/Testimional"), { ssr: fal
 
 export function DeferredElectronBento() {
   return (
-    <DeferredMount fallback={<div className="h-[600px] w-full" />}>
+    <DeferredMount fallback={<div className="h-[600px] w-full" />} rootMargin="800px 0px">
       <ElectronBento />
     </DeferredMount>
   );
@@ -19,7 +19,7 @@ export function DeferredElectronBento() {
 
 export function DeferredEcosystemMarquee() {
   return (
-    <DeferredMount fallback={<div className="h-[200px] w-full" />} className="w-full overflow-x-hidden">
+    <DeferredMount fallback={<div className="h-[450px] w-full" />} className="w-full overflow-x-hidden" rootMargin="800px 0px">
       <EcosystemMarqueeSection />
     </DeferredMount>
   );
@@ -27,7 +27,7 @@ export function DeferredEcosystemMarquee() {
 
 export function DeferredPlatformPillars() {
   return (
-    <DeferredMount fallback={<div className="h-[300px] w-full" />}>
+    <DeferredMount fallback={<div className="h-[800px] w-full" />} rootMargin="800px 0px">
       <PlatformPillars />
     </DeferredMount>
   );
@@ -35,7 +35,7 @@ export function DeferredPlatformPillars() {
 
 export function DeferredSectorTemplates() {
   return (
-    <DeferredMount fallback={<div className="h-[400px] w-full" />}>
+    <DeferredMount fallback={<div className="h-[700px] w-full" />} rootMargin="800px 0px">
       <SectorTemplates />
     </DeferredMount>
   );
@@ -43,7 +43,7 @@ export function DeferredSectorTemplates() {
 
 export function DeferredTestimonials() {
   return (
-    <DeferredMount fallback={<div className="h-[400px] w-full" />}>
+    <DeferredMount fallback={<div className="h-[400px] w-full" />} rootMargin="800px 0px">
       <Testimional />
     </DeferredMount>
   );

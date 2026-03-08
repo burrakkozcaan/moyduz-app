@@ -43,8 +43,8 @@ const cards = [
       { label: 'Müşteriye özel deneyim:', desc: 'Gelişmiş kullanıcı ve bayi panelleri.' },
       { label: 'Özgürlük sizde:', desc: 'Kaynak kodu teslimi ile yarın dilediğiniz ekiple çalışın.' },
     ],
-    dark: false,
-    badge: null,
+    dark: true,
+    badge: 'EN ÇOK TERCİH EDİLEN',
     href: 'https://app.moyduz.com/onboarding?package=business',
   },
   {
@@ -64,8 +64,8 @@ const cards = [
       { label: 'Veriye dayalı büyüme:', desc: 'Meta/Google reklam dönüşümleri anlık takipte.' },
       { label: 'Sizi yalnız bırakmıyoruz:', desc: 'Siparişten kargoya 9 ay boyunca birebir destek.' },
     ],
-    dark: true,
-    badge: 'EN ÇOK TERCİH EDİLEN',
+    dark: false,
+    badge: null,
     href: '/e-ticaret-paketleri',
   },
   {
@@ -92,7 +92,7 @@ const cards = [
 ];
 
 export default function HomePricingCards() {
-  const [billingMode, setBillingMode] = useState<'aylik' | 'tek'>('aylik');
+  const [billingMode, setBillingMode] = useState<'bakimDahil' | 'tek'>('bakimDahil');
 
   return (
     <div className='mt-6 flex flex-col xl:mt-10'>
@@ -100,10 +100,13 @@ export default function HomePricingCards() {
       <div className='flex items-center gap-1 rounded-[11px] bg-ln-gray-100 p-1 self-start mx-3.5 xl:mx-6 mb-6'>
         <button
           type='button'
-          onClick={() => setBillingMode('aylik')}
-          className={`h-8 rounded-[9px] px-3.5 text-ln-label-sm transition duration-200 ease-out ${billingMode === 'aylik' ? 'bg-ln-gray-0 text-ln-gray-800 shadow-ln-badge-orange' : 'text-ln-gray-600'}`}
+          onClick={() => setBillingMode('bakimDahil')}
+          className={`h-8 rounded-[9px] px-3.5 text-ln-label-sm transition duration-200 ease-out ${billingMode === 'bakimDahil' ? 'bg-ln-gray-0 text-ln-gray-800 shadow-ln-badge-orange' : 'text-ln-gray-600'}`}
         >
-          Aylık
+          Bakım Dahil
+          <span className='ml-1.5 inline-flex h-4 items-center rounded-[4px] bg-ln-orange/[.12] px-1.5 text-[10px] font-medium text-ln-orange'>
+            önerilen
+          </span>
         </button>
         <button
           type='button'
@@ -120,8 +123,9 @@ export default function HomePricingCards() {
       {/* Cards grid */}
       <div className='grid items-stretch justify-center gap-4 md:grid-cols-2 xl:grid xl:grid-cols-4 xl:gap-5 xl:p-6'>
         {cards.map((card) => {
-          const displayPrice = billingMode === 'aylik' ? card.aylik : card.tekOdeme;
-          const priceLabel = billingMode === 'aylik' ? '/ay' : 'tek seferlik';
+          const displayPrice = billingMode === 'tek' ? card.tekOdeme : card.aylik;
+          const priceLabel = billingMode === 'tek' ? 'tek seferlik' : '/ay';
+          const showBakim = billingMode === 'bakimDahil' && !!card.bakimSonrasi;
           return (
           <div key={card.name} className='w-full max-w-[390px] xl:max-w-full'>
             {card.dark ? (
@@ -168,7 +172,7 @@ export default function HomePricingCards() {
                   </div>
                   <p className='text-sm text-ln-gray-400'>{card.desc}</p>
 
-                  {card.bakimSonrasi && billingMode === 'aylik' && (
+                  {showBakim && (
                     <div className='flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.15] px-2.5 py-1.5'>
                       <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' className='size-3.5 shrink-0 text-ln-orange'>
                         <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='1.5' d='m5.625 10.886 2.625 2.656 6.125-7.083' />
@@ -218,7 +222,7 @@ export default function HomePricingCards() {
                 <div className='mt-3 text-ln-label-md text-ln-gray-700'>{card.name}</div>
                 <p className='mt-1.5 text-sm text-ln-gray-600'>{card.desc}</p>
 
-                {card.bakimSonrasi && billingMode === 'aylik' && (
+                {showBakim && (
                   <div className='mt-4 flex items-center gap-1.5 rounded-[7px] bg-ln-orange/[.08] px-2.5 py-1.5'>
                     <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' className='size-3.5 shrink-0 text-ln-orange'>
                       <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='1.5' d='m5.625 10.886 2.625 2.656 6.125-7.083' />
